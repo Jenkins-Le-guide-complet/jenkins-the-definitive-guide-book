@@ -16,6 +16,7 @@
         <primary>déploiement</primary>
 
         <see>déploiement automatisé; déploiement continu</see>
+
       </indexterm>livre s'adresse à des lecteurs relativement techniques,
     bien qu'aucune expérience préalable dans le domaine de l'Intégration Continue ne soit requise. Vous
     découvrez peut-être ce qu'est l'Intégration Continue, et désirez savoir ce
@@ -24,7 +25,7 @@
     comment emmener plus loin votre infrastructure d'Intégration
     Continue.</para>
 
-    <para>Une partie importante de ce livre parle de Jenkins dans le
+    <para>Une partie importante de ce livre traite de Jenkins dans le
     contexte de projets Java, ou liés à une JVM. Cependant, même si vous utilisez
     une autre pile technologique, ce livre devrait vous donner de bonnes bases
     en ce qui concerne l'Intégration Continue avec Jenkins. La construction de
@@ -100,7 +101,7 @@
 
         <listitem>
           <para>Utilisé pour les noms de fichiers, extensions de fichiers,
-          URLs, noms d'application, emphases et les nouveaux termes lorsqu'ils
+          URLs, noms d'applications, emphases et les nouveaux termes lorsqu'ils
           sont introduits pour la première fois.</para>
         </listitem>
       </varlistentry>
@@ -109,7 +110,7 @@
         <term><literal moreinfo="none">Largeur constante</literal></term>
 
         <listitem>
-          <para>Utilisé pour les noms de classe Java, les méthodes, variables,
+          <para>Utilisé pour les noms de classes Java, les méthodes, variables,
           propriétés, types de données, éléments de base de données et
           extraits de code apparaissant dans le texte.</para>
         </listitem>
@@ -164,7 +165,7 @@ drwxr-xr-x   12 johnsmart  staff    408 17 Feb  2009 users
 drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
 
     <para>Lorsque nécessaire, l'antislash à la fin de la ligne est utilisé
-    pour indiqué un saut de ligne : vous pouvez taper l'ensemble sur une seule
+    pour indiquer un saut de ligne : vous pouvez taper l'ensemble sur une seule
     ligne (sans l'antislash) si vous préférez. N'oubliez pas d'enlever le
     caractère “&gt;” au début des lignes concernées — c'est un caractère de
     l'invite de commandes Unix :</para>
@@ -211,9 +212,9 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
             <primary>Goldin, Evgeny (contributeur)</primary>
           </indexterm> un ingénieur logiciel né en Russie vivant en Israël. Il
         est lead developer chez Thomson Reuters où il est responsable d'un
-        certain nombre d'activité, dont certaines sont directement liées à
+        certain nombre d'activités, dont certaines sont directement liées à
         Maven, Groovy, et des outils de build comme Artifactory et Jenkins. Il
-        possède une vaste expérience dans un large panel de technologies,
+        possède une vaste expérience d'un panel assez large de technologies,
         dont Perl, Java, JavaScript et Groovy. Les outils de build et les
         langages dynamiques sont les sujets favoris de Evgeny, à propos
         desquels il écrit, présente ou bloggue souvent. Il écrit actuellement
@@ -348,8 +349,8 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
           id="I_indexterm_d1e397" significance="normal">
           <primary>CloudBees (sponsor)</primary>
         </indexterm>est la seule entreprise spécialisée pour offrir un service
-      de gestion du cycle de vie depuis le développement jusqu'au déploiement
-      d'application Java web dans le cloud. L'entreprise est aussi l'experte
+      de gestion du cycle de vie, depuis le développement jusqu'au déploiement,
+      d'applications Java web dans le cloud. L'entreprise est aussi l'experte
       mondiale sur l'outil d'intégration continue Jenkins/Hudson.</para>
 
       <para>Le créateur de Jenkins/Hudson Kohsuke Kawaguchi dirige une équipe
