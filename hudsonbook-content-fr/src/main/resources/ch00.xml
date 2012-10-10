@@ -96,41 +96,41 @@
 
     <variablelist>
       <varlistentry>
-        <term>Italic</term>
+        <term>Italique</term>
 
         <listitem>
-          <para>Utilisé pour les noms de fichiers, extensions de fichiers,
+          <para>Utilisée pour les noms de fichiers, extensions de fichiers,
           URLs, noms d'applications, emphases et les nouveaux termes lorsqu'ils
           sont introduits pour la première fois.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><literal moreinfo="none">Largeur constante</literal></term>
+        <term><literal moreinfo="none">Chasse fixe</literal></term>
 
         <listitem>
-          <para>Utilisé pour les noms de classes Java, les méthodes, variables,
+          <para>Utilisée pour les noms de classes Java, les méthodes, variables,
           propriétés, types de données, éléments de base de données et
           extraits de code apparaissant dans le texte.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><userinput moreinfo="none">Largeur constante en
+        <term><userinput moreinfo="none">Chasse fixe en
         gras</userinput></term>
 
         <listitem>
-          <para>Utilisé pour les commandes à entrer dans la ligne de commande
+          <para>Utilisée pour les commandes à entrer dans la ligne de commande
           et pour mettre en valeur du code nouveau introduit dans un exemple
           fonctionnel.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term><replaceable>Largeur constante en italique</replaceable></term>
+        <term><replaceable>Chasse fixe en italique</replaceable></term>
 
         <listitem>
-          <para>Utilisé pour annoter la sortie.</para>
+          <para>Utilisée pour annoter la sortie.</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -173,7 +173,7 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
 &gt; | sudo apt-key add -</screen>
 
     <para>Pour des raisons de cohérence, à moins que nous ne traitions une
-    question spécique à Windows, nous utiliserons des invites de commande de
+    question spécifique à Windows, nous utiliserons des invites de commande de
     style Unix (le signe dollar, “$”), comme montré ici :</para>
 
     <screen format="linespecific">$ java -jar jenkins.war</screen>
@@ -210,10 +210,10 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
             id="I_indexterm_d1e295" significance="normal">
             <primary>Goldin, Evgeny (contributeur)</primary>
           </indexterm> un ingénieur logiciel né en Russie vivant en Israël. Il
-        est lead developer chez Thomson Reuters où il est responsable d'un
+        est <emphasis>lead developer</emphasis> chez Thomson Reuters où il est responsable d'un
         certain nombre d'activités, dont certaines sont directement liées à
         Maven, Groovy, et des outils de build comme Artifactory et Jenkins. Il
-        possède une vaste expérience d'un panel assez large de technologies,
+        possède une vaste expérience dans un panel assez large de technologies,
         dont Perl, Java, JavaScript et Groovy. Les outils de build et les
         langages dynamiques sont les sujets favoris de Evgeny, à propos
         desquels il écrit, présente ou bloggue souvent. Il écrit actuellement
@@ -239,14 +239,14 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
         développement logiciel d'entreprise, l'éducation open source, et
         co-fondateur de LLC, une entreprise de consulting de Denver. Matthew
         est actuellement formateur pour GitHub.com, auteur de la série Git
-        Master Class pour O’Reilly, speaker à plus de 30 conférences
+        Master Class pour O’Reilly, conférencier à plus de 30 conférences
         nationales et internationales, auteur de 3 des 10 plus importantes
         RefCards DZone, et président du Groupe Utilisateur d'Open Source de
         Denver. Ses sujets de recherche sont aujourd'hui concentrés autour de
         l'automatisation de projet : outils de build (Maven, Leiningen,
         Gradle), contrôle de version distribué (Git), Intégration Continue
         (Jenkins) et les métriques de qualité (Sonar). Matthew réside à
-        Denver, dans le Colorado avec sa magnifique femme et ses deux jeunes
+        Denver, dans le Colorado, avec sa magnifique femme et ses deux jeunes
         filles, qui sont actives dans pratiquement toutes les activités
         d'extérieur que le Colorado puisse offrir.</para>
 
@@ -257,8 +257,8 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
       <listitem>
         <para><emphasis role="bold">Juven Xu</emphasis> est <indexterm
             id="I_indexterm_d1e332" significance="normal">
-            <primary>Xu, Juven (contributor)</primary>
-          </indexterm>un ingénieur logiciel de Chine travaillant pour
+            <primary>Xu, Juven (contributeur)</primary>
+          </indexterm>un ingénieur logiciel venant de Chine qui travaille pour
         Sonatype. Membre actif de la communauté open source et expert Maven
         reconnu, Juven était responsable de la traduction chinoise de
         <emphasis>Maven: The Definitive Guide</emphasis> et aussi d'un livre
@@ -331,11 +331,11 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
 
       <para>Wakaleo aide les entreprises avec des formations et de
       l'assistance dans des domaines comme l'Intégration Continue,
-      l'automatisation de build, le développement guidé par les tests, le test
-      Web automatisé et le code propre, en utilisant des outils open source
+      l'automatisation de build, le développement guidé par les tests, les tests
+      Web automatisés et le code propre, en utilisant des outils open source
       tels que Maven, Jenkins, Selenium 2 et Nexus. Wakaleo Consulting donne
       aussi des formations publiques et sur site autour de l'Intégration
-      Continue and le Déploiement Continu, l'automatisation de build, les
+      Continue et le Déploiement Continu, l'automatisation de build, les
       pratiques de codage propre, le développement guidé par les tests (TDD)
       et le Behavior-Driven Development, incluant des cours Certified Scrum
       Developer (CSD).</para>
@@ -368,7 +368,7 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
       souhaitez — pas de gros investissements dès le début dans vos serveurs de
       build, plus de capacités limitées pour vos builds et plus de soucis de
       maintenance. Une fois qu'une application est prête à partir, vous pouvez
-      la déployer sur l'offre Platform As A Service CloudBees RUN@cloud en
+      la déployer sur l'offre Platform as a Service CloudBees RUN@cloud en
       seulement quelques clics.</para>
 
       <para>Avec les services CloudBees DEV@cloud et RUN@cloud, vous n'avez
@@ -412,7 +412,7 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
     source du livre est disponible à <ulink
     url="http://www.github.org/wakaleo/jenkins-the-definitive-guide"></ulink>.</para>
 
-    <para>Les projets exemple Jenkins de ce livre sont open source et
+    <para>Les exemples de projets Jenkins de ce livre sont open source et
     librement disponibles en ligne — référez-vous à la page web du livre à
     <ulink
     url="http://www.wakaleo.com/books/jenkins-the-definitive-guide"></ulink>
@@ -437,7 +437,7 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
     Smart, 978-1-449-30535-2.”</para>
 
     <para>Si vous pensez que votre utilisation des exemples de code tombe en
-    dehors d'un usage raisonnable (NDT : fair-use) des permissions données
+    dehors d'un usage raisonnable (NdT : fair-use) des permissions données
     ci-dessus, n'hésitez pas à nous contacter à
     <email>permissions@oreilly.com</email>.</para>
   </sect1>
@@ -475,7 +475,7 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
     <title>Comment nous contacter</title>
 
     <para>Merci <indexterm id="I_indexterm_d1e473" significance="normal">
-        <primary>information de contact pour ce livre</primary>
+        <primary>informations de contact pour ce livre</primary>
       </indexterm>d'adresser vos commentaires et vos questions concernant ce
     livre à l'éditeur :</para>
 
@@ -539,15 +539,15 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
     Dechery, Sacha Labourey, Harpreet Singh et le reste de l'équipe CloudBees
     pour leur aide et leur soutien.</para>
 
-    <para>Je suis aussi très reconnaissant envers ceux qui ont consacré le
-    temps et l'énergie à contribuer leur travail à ce livre : Evgeny Goldin,
-    Matthew McCullough, Juven Xu, and Rene Groeschke.</para>
+    <para>Je suis aussi très reconnaissant envers ceux qui ont consacré du
+    temps et de l'énergie pour contribuer à ce livre : Evgeny Goldin,
+    Matthew McCullough, Juven Xu, et Rene Groeschke.</para>
 
     <para>Un grand merci revient aux relecteurs suivants, qui ont fourni des
     retours de grande valeur tout le long du processus d'écriture : Alan
     Harder, Andrew Bayer, Carlo Bonamico, Chris Graham, Eric Smalling, Gregory
     Boissinot, Harald Soevik, Julien Simpson, Juven Xu, Kohsuke Kawaguchi,
-    Martijn Verberg, Ross Rowe, and Tyler Ballance.</para>
+    Martijn Verberg, Ross Rowe, et Tyler Ballance.</para>
 
     <para>Merci à Andrew Bayer, Martijn Verburg, Matthew McCullough, Rob
     Purcell, Ray King, Andrew Walker, et beaucoup d'autres, dont les
@@ -556,9 +556,9 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
 
     <para>Et beaucoup d'autres personnes ont aidé de différentes façons pour
     enrichir et compléter ce livre tel qu'il n'aurait pu l'être autrement :
-    Geoff and Alex Bullen, Pete Thomas, Gordon Weir, Jay Zimmerman, Tim
+    Geoff et Alex Bullen, Pete Thomas, Gordon Weir, Jay Zimmerman, Tim
     O’Brien, Russ Miles, Richard Paul, Julien Simpson, John Stevenson, Michael
-    Neale, Arnaud Héritier, and Manfred Moser.</para>
+    Neale, Arnaud Héritier, et Manfred Moser.</para>
 
     <para>Et enfin un grand merci aux développeurs et à la communauté
     utilisateur de Hudson/Jenkins pour les encouragements et le soutien
