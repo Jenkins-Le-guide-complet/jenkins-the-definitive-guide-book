@@ -45,7 +45,7 @@ Tests run: 38, Failures: 0, Errors: 0, Skipped: 0</screen>
     test échoue, Maven va produire un ensemble de rapports de tests (encore, par
     défaut) dans le dossier <filename moreinfo="none">target/surefire-reports</filename>, dans les formats
     XML et texte. Pour nos objectifs d’intégration continue, ce sont les fichiers XML qui
-    nous intéressent puisque Jenkins est en mesure de comprendre et d'analyser ces fichiers
+    nous intéressent puisque Jenkins est en mesure de comprendre et d’analyser ces fichiers
     pour ses rapports d’intégration :</para>
     <screen format="linespecific">$ <userinput moreinfo="none">ls target/surefire-reports/*.xml</userinput>
 target/surefire-reports/TEST-com.wakaleo.training.tweeter.domain.HamcrestTest.xml
