@@ -42,7 +42,7 @@
 
         <secondary>activer</secondary>
       </indexterm> une sécurité basique dans Jenkins est assez simple. Allez
-    dans la page de configuration principale et sélectionnez la case à cocher
+    sur la page de configuration principale et sélectionnez la case à cocher
     Activer la sécurité (voir <xref
     linkend="fig-hudson-enabling-security" />). Ceci affiche plusieurs options
     que nous allons expliquer en détails dans ce chapitre. La première
@@ -50,7 +50,7 @@
         <primary>securité</primary>
 
         <secondary>domaine de sécurité</secondary>
-      </indexterm>section, domaine de sécurité, définit où Jenkins regardera
+      </indexterm>section, Domaine de sécurité, définit où Jenkins regardera
     pendant l'authentification, et inclut des options telles que l'utilisation
     d'utilisateurs stockés dans un serveur LDAP, en utilisant le compte
     utilisateur Unix sous-jacent (en supposant, bien sûr, que Jenkins est
@@ -83,7 +83,7 @@
       </mediaobject>
     </figure>
 
-    <para>Dans la fin de ce chapitre, nous regarderons comment configurer la
+    <para>À la fin de ce chapitre, nous regarderons comment configurer la
     sécurité Jenkins pour un certain nombre de scénarii courants.</para>
   </sect1>
 
@@ -112,9 +112,9 @@
     permet aux utilisateurs authentifiés de faire tout ce qu'ils veulent,
     alors que les utilisateurs non authentifiés auront seulement une vue en
     lecture seule de leurs tâches de build. C'est super pour les petites
-    équipes - les développeurs peuvent gérer les tâches de construction, alors
+    équipes - les développeurs peuvent gérer les tâches de build, alors
     que les autres utilisateurs (testeur, analyste métier, responsable de
-    projet etc.) peuvent accéder aux tâches de build pour voir l'état du
+    projet, etc.) peuvent accéder aux tâches de build pour voir l'état du
     projet. En effet, certaines tâches pourraient même être configurées
     uniquement dans ce but, affichant les résultats de tests d'acceptation
     automatisés ou des métriques de qualité de code, par exemple.</para>
@@ -155,7 +155,7 @@
     connecter". Cette option affichera un lien Se connecter en haut de l'écran
     permettant aux utilisateurs de créer leurs propres comptes (voir <xref
     linkend="fig-hudson-user-signup" />). C'est une bonne idée pour les
-    développeurs d'utiliser ici leur nom de gestionnaire de sources : dans ce
+    développeurs d'utiliser ici leur nom d'utilisateur de gestionnaire de sources : dans ce
     cas, Jenkins sera capable de retrouver quels utilisateurs ont contribué
     aux changements qui ont déclenché un build particulier.</para>
 
@@ -175,7 +175,7 @@
 
     <para>Cette approche est évidemment un peu trop simple pour beaucoup de
     situations — il est utile pour les petites équipes de travailler en forte
-    proximité, où le but est de savoir le changement de qui a déclenché (ou
+    proximité, où le but est de connaitre le changement de qui a déclenché (ou
     cassé) un build particulier, plutôt que de gérer l'accès de façon plus
     restrictive. Dans les sections suivantes, nous discuterons de deux aspects
     orthogonaux de la sécurité Jenkins : identifier vos utilisateurs (domaines
@@ -242,15 +242,15 @@
       utilisateurs sont autorisés à faire.</para>
 
       <para>Jenkins ajoute automatiquement tout utilisateur de gestionnaire de
-      sources à cette base de données dès qu'un changement est committé dans
+      sources à cette base de données dès qu'un changement est effectué dans
       le code source surveillé par Jenkins. Ces noms d'utilisateurs sont
       utilisés principalement pour enregistrer le responsable de chaque tâche
       de build. Vous pouvez voir la liste des utilisateurs actuellement connus
       en cliquant sur l'entrée de menu Personnes (voir <xref
       linkend="fig-hudson-user-list" />). Ici, vous pouvez visualiser les
       utilisateurs que Jenkins connaît actuellement, et aussi voir le dernier
-      projet dans lequel ils ont committé. Notez que cette liste contient la
-      liste de tous les utilisateurs à avoir jamais committé dans les projets
+      projet dans lequel ils ont archivé. Notez que cette liste contient la
+      liste de tous les utilisateurs à avoir jamais archivé dans les projets
       que Jenkins surveille — ils pourraient ne pas être (et en général ne
       sont pas) tous des utilisateurs actifs de Jenkins capables de se connecter
       sur le serveur Jenkins.</para>
@@ -329,7 +329,7 @@
           <secondary>email</secondary>
         </indexterm><indexterm id="I_indexterm7_d1e10261"
           significance="normal">
-          <primary>notifications email</primary>
+          <primary>notifications par email</primary>
         </indexterm>utile de noter que, si vos adresses email sont
       synchronisées avec vos noms d'utilisateurs de contrôle de version (par
       exemple, si vous travaillez chez acme.com, et que l'utilisateur “joe”
@@ -358,7 +358,7 @@
 
       <para>Une autre façon de gérer les utilisateurs courants actifs (ceux
       qui peuvent vraiment se connecter à Jenkins) s'effectue via le lien
-      Gérer les utilisateurs dans la page de configuration principale de
+      Gérer les utilisateurs sur la page de configuration principale de
       Jenkins (voir <xref linkend="fig-hudson-manage-users" />).</para>
 
       <figure float="none" id="fig-hudson-manage-users">
@@ -382,7 +382,7 @@
       manuellement (si cette option a été activée) et les utilisateurs SCM que
       vous avez activés en leur configurant un mot de passe. Vous pouvez aussi
       éditer des informations utilisateur (par exemple, modifier leur adresse
-      email or réinitialiser leur mot de passe), ou même les supprimer de la
+      email ou réinitialiser leur mot de passe), ou même les supprimer de la
       liste des utilisateurs actifs. Procéder ainsi ne les enlèvera pas de la
       liste globale des utilisateurs (leurs noms apparaîtront toujours dans
       l'historique de build, par exemple), mais ils ne seront plus capables de
@@ -559,7 +559,7 @@
       matrice d'autorisations générale ou par projet. Notez que, à l'inverse
       d'une intégration LDAP conventionnelle (voir <xref
       linkend="sec-security-ldap" />), il n'est pas nécessaire de préfixer les
-      groupes avec <literal moreinfo="none">ROLE_</literal>— vous pouvez
+      groupes avec <literal moreinfo="none">ROLE_</literal> — vous pouvez
       utiliser l'annuaire des groupes Active Directory <indexterm
           id="I_indexterm7_d1e10426" significance="normal">
           <primary>groups</primary>
@@ -569,7 +569,7 @@
 
       <para>Pour configurer le plugin, vous devez fournir le nom de domaine
       complet de votre serveur Active Directory. Si vous avez plus d'un
-      domaine, vous pouvez fournir une liste séparée par des virgule. Si vous
+      domaine, vous pouvez fournir une liste séparée par des virgules. Si vous
       fournissez le nom de la forêt (say “acme.com” au lieu de
       “europe.acme.com”), alors la recherche sera faite à partir du catalogue
       global. Notez que si vous faites cela sans spécifier le <emphasis>bind
@@ -642,7 +642,7 @@
 
           <secondary>domaines de sécurité</secondary>
 
-          <tertiary>Utilisateurs et groupes Unix</tertiary>
+          <tertiary>utilisateurs et groupes Unix</tertiary>
         </indexterm><indexterm id="I_indexterm7_d1e10490"
           significance="normal">
           <primary>groupes</primary>
@@ -667,7 +667,7 @@
 
       <para>Une autre <indexterm id="I_indexterm7_d1e10503"
           significance="normal">
-          <primary>Conteneur de servlet</primary>
+          <primary>conteneur de Servlet</primary>
 
           <secondary>en tant que domaine de sécurité</secondary>
         </indexterm><indexterm id="I_indexterm7_d1e10508"
@@ -676,22 +676,22 @@
 
           <secondary>domaines de sécurité</secondary>
 
-          <tertiary>Conteneur de servlet</tertiary>
+          <tertiary>conteneur de Servlet</tertiary>
         </indexterm>façon d'identifier les utilisateurs Jenkins est de laisser
-      le conteneur de servlet le faire pour vous. Cette approche est utile si
-      vous exécutez Jenkins dans un conteneur de servlet comme <indexterm
+      le conteneur de Servlet le faire pour vous. Cette approche est utile si
+      vous exécutez Jenkins dans un conteneur de Servlet comme <indexterm
           id="I_indexterm7_d1e10516" significance="normal">
-          <primary>Conteneur de servlet Tomcat</primary>
+          <primary>conteneur de Servlet Tomcat</primary>
         </indexterm>Tomcat ou <indexterm id="I_indexterm7_d1e10520"
           significance="normal">
-          <primary>Conteneur de servlet GlassFish</primary>
+          <primary>conteneur de Servlet GlassFish</primary>
         </indexterm>GlassFish, et que vous avez déjà un moyen établi pour
-      intégrer le conteneur de servlet avec votre annuaire utilisateur.
+      intégrer le conteneur de Servlet avec votre annuaire utilisateur.
       Tomcat, par exemple, vous permet d'authentifier les utilisateurs par
       rapport à une base de données relationnelle (en utilisant du JDBC direct
       ou une DataSource), JNDI, JAAS, ou fichier de configuration XML. Vous
       pouvez aussi utiliser les rôles définis dans l'annuaire utilisateur du
-      conteneur de servlet afin de les utiliser pour les stratégies
+      conteneur de Servlet afin de les utiliser pour les stratégies
       d'autorisation par matrice ou basée sur le projet.</para>
 
       <para>Dans Jenkins, c'est facile à configurer — sélectionnez simplement
@@ -802,8 +802,8 @@
           <primary>groupes</primary>
 
           <secondary>Atlassian Crowd</secondary>
-        </indexterm>groupes de Crowd pour toutes les stratégie d'autorisation
-      que nous avons présentée précédemment dans ce chapitre. Par exemple,
+        </indexterm>groupes de Crowd pour toutes les stratégies d'autorisation
+      que nous avons présenté précédemment dans ce chapitre. Par exemple,
       dans <xref linkend="fig-hudson-security-crowd-groups-matrix" />, nous
       utilisons des groupes utilisateurs définis dans Crowd pour configurer
       une sécurité basée sur la matrice dans l'écran principal de <indexterm
@@ -816,7 +816,7 @@
         </indexterm>configuration.</para>
 
       <figure float="0" id="fig-hudson-security-crowd-groups-matrix">
-        <title>Utiliser les groupes Atlassian Crowd groups dans
+        <title>Utiliser les groupes Atlassian Crowd dans
         Jenkins</title>
 
         <mediaobject id="I_mediaobject7_d1e10606">
@@ -886,10 +886,10 @@
           significance="normal">
           <primary>plugins</primary>
 
-          <secondary>Script de domaines de sécurité</secondary>
+          <secondary>Script Security Realm</secondary>
         </indexterm><indexterm class="startofrange" id="ch07-cust3"
           significance="normal">
-          <primary>Plugin de script de domaines de sécurité</primary>
+          <primary>plugin Script Security Realm</primary>
         </indexterm><indexterm class="startofrange" id="ch07-cust4"
           significance="normal">
           <primary>scripts</primary>
@@ -897,7 +897,7 @@
           <secondary>scripts d'authentification personnalisés</secondary>
         </indexterm>aucun plugin n'est disponible, vous pouvez aussi écrire
       votre propre script d'authentification. Pour faire cela, vous devez
-      installer le plugin de domaine de sécurité. Une fois que vous avez
+      installer le plugin Script Security Realm. Une fois que vous avez
       installé le script et redémarré Jenkins, vous pouvez écrire deux scripts
       dans votre langage de scripting favori. Un script authentifie
       l'utilisateur, tandis que l'autre détermine les groupes d'un utilisateur
@@ -998,7 +998,7 @@ def findGroupsFor(def username) {
   </sect1>
 
   <sect1 id="sect-authorization">
-    <title>Autorisation — Qui Peut Faire Quoi</title>
+    <title>Autorisation — Qui peut faire quoi</title>
 
     <para>Une fois que vous avez défini comment identifier vos utilisateurs,
     vous devez décider ce qu'ils sont autorisés à faire. Jenkins supporte
@@ -1036,7 +1036,7 @@ def findGroupsFor(def username) {
       sophistiquée est généralement requise.</para>
 
       <para>La sécurité basée sur matrice est une approche plus élaborée, où
-      différents utilisateurs se voient attribués différents droits, en
+      différents utilisateurs se voient attribuer différents droits, en
       utilisant une approche basée sur les rôles.</para>
 
       <sect3>
@@ -1058,7 +1058,7 @@ def findGroupsFor(def username) {
           </indexterm> première étape dans la configuration de la sécurité
         basée sur une matrice dans Jenkins est de créer un administrateur.
         <emphasis>C'est une étape essentielle, et elle doit être effectuée
-        avant toutes les autres. </emphasis>Votre administrateur peut être un
+        avant toutes les autres.</emphasis> Votre administrateur peut être un
         utilisateur existant, ou un créé spécialement dans ce but. Si vous
         voulez créer un utilisateur administrateur dédié, créez le simplement
         en vous enregistrant de la façon habituelle (voir <xref
@@ -1181,13 +1181,13 @@ def findGroupsFor(def username) {
                   <listitem>
                     <para>Cette permission fournit un accès en lecture seule à
                     pratiquement toutes les pages de Jenkins. Si vous voulez
-                    que les utilisateurs anonymes puissent voir les jobs
+                    que les utilisateurs anonymes puissent voir les tâches
                     librement, mais qu'ils ne puissent pas les modifier ou les
-                    démarrer, donnez leur le droit Lire à l'utilisateur
+                    démarrer, donnez le droit Lire à l'utilisateur
                     spécial “anonyme”. Sinon, enlevez simplement cette
                     permission à l'utilisateur Anonyme. Et si vous voulez que
-                    tous les utilisateurs authentifiés puissent voir les jobs
-                    de construction, ajoutez alors un un utilisateur spécial
+                    tous les utilisateurs authentifiés puissent voir les tâches
+                    de build, ajoutez alors un utilisateur spécial
                     “authenticated”, et donnez lui la permission
                     Global/Lire.</para>
                   </listitem>
@@ -1277,7 +1277,7 @@ def findGroupsFor(def username) {
 
                   <listitem>
                     <para>Voir et télécharger le contenu de l'espace de
-                    travail pour une tâche de construction. Rappelez-vous,
+                    travail pour une tâche de build. Rappelez-vous,
                     l'espace de travail contient le code source et les
                     artefacts, donc si vous voulez protéger ces derniers d'un
                     accès général, vous devriez enlever cette
@@ -1526,7 +1526,7 @@ def findGroupsFor(def username) {
       exemples pratiques. Dans <xref
       linkend="fig-hudson-project-based-security" />, par exemple, aucune
       permission n'a été donnée à l'utilisateur anonyme. Donc, par défaut,
-      toutes les tâches de build resterong invisibles jusqu'à ce que
+      toutes les tâches de build resteront invisibles jusqu'à ce que
       l'utilisateur se connecte. Toutefois, nous utilisons une sécurité basée
       sur le projet, nous pouvons donc redéfinir cela projet par projet. Dans
       <xref linkend="fig-hudson-security-project-anon" />, par exemple, nous
@@ -1645,13 +1645,13 @@ def findGroupsFor(def username) {
           <secondary>Role Strategy</secondary>
         </indexterm><indexterm id="I_indexterm7_d1e11170"
           significance="normal">
-          <primary>Role Strategy plugin</primary>
+          <primary>plugin Role Strategy</primary>
         </indexterm> Role Strategy, qui permet de définir des rôles globaux ou
       de niveau projet, et les affecter aux utilisateurs.</para>
 
       <para>Vous installez le plugin de façon habituelle, via le gestionnaire
       de plugin. Une fois installé, vous pouvez activer cette stratégie
-      d'autorisation dans la page de configuration principale (voir <xref
+      d'autorisation sur la page de configuration principale (voir <xref
       linkend="fig-hudson-security-role-based" />).</para>
 
       <figure float="none" id="fig-hudson-security-role-based">
@@ -1700,7 +1700,7 @@ def findGroupsFor(def username) {
       linkend="fig-hudson-security-global-roles" />). La mise en oeuvre de ces
       rôles est intuitive et similaire à la configuration des permissions
       utilisateur dans les autres modèles de securité que nous avons
-      vus.</para>
+      vu.</para>
 
       <figure float="0" id="fig-hudson-security-global-roles">
         <title>Gérer les rôles globaux</title>
@@ -1719,15 +1719,15 @@ def findGroupsFor(def username) {
       <para>Les rôles de projet sont légèrement plus compliqués. Un rôle de
       projet regroupe un ensemble de permissions applicables à un ou plusieurs
       projets (a priori reliés). Vous définissez les projets concernés en
-      utilisant une expression rationnelle, cela aide à avoir un ensemble
+      utilisant une expression régulière, cela aide à avoir un ensemble
       clair et cohérernt de conventions de nommage dans vos noms de projets
       (voir <xref linkend="fig-hudson-security-project-roles" />). Par
       exemple, vous pouvez vouloir créer des rôles distinguant les
       développeurs avec des droits complets sur leurs propres projets
-      d'utilisateurs qui peuvent simplement déclencher un build et voir le
+      d'utilisateur qui peuvent simplement déclencher un build et voir le
       résultat. Ou vous pouvez créer des rôles où les développeurs peuvent
       configurer certaines tâches de build de déploiement automatisé, mais que
-      seules les équipes de production soient autorisés à exécuter ces
+      seules les équipes de production soient autorisées à exécuter ces
       tâches.</para>
 
       <figure float="0" id="fig-hudson-security-project-roles">
@@ -1764,7 +1764,7 @@ def findGroupsFor(def username) {
 
       <para>La stratégie basée sur les rôles est relativement nouvelle dans
       Jenkins, mais c'est une excellente façon de simplifier les tâches de
-      gestion des permissions dans des organisations grosses, multi-équipes et
+      gestion des permissions dans de grosses organisations, multi-équipes et
       <indexterm class="endofrange" id="I_indexterm7_d1e11241"
           significance="normal" startref="ch07-role1">
           <primary></primary>
@@ -1788,7 +1788,7 @@ def findGroupsFor(def username) {
         significance="normal">
         <primary>utilisateurs</primary>
 
-        <secondary>auditer les actions de</secondary>
+        <secondary>auditer les actions des</secondary>
       </indexterm>plus de configurer les comptes utilisateurs et leurs droits
     d'accès, il peut être utile de garder des actions de chaque utilisateur :
     en d'autres termes, qui a fait quoi à votre configuration serveur. Ce type
@@ -1810,7 +1810,7 @@ def findGroupsFor(def username) {
         <primary>plugin Audit Trail</primary>
       </indexterm> Audit Trail garde une trace des principales actions
     utilisateur dans un ensemble de fichiers de logs tournants. Pour mettre
-    cela en place, allez dans la page Gérer les plugins et sélectionnez le
+    cela en place, allez sur la page Gérer les plugins et sélectionnez le
     plugin Audit Trail dans la liste des plugins disponibles. Ensuite, comme
     d'habitude, cliquez sur Installer et redémarrez Jenkins une fois que le
     plugin a été téléchargé.</para>
@@ -1892,7 +1892,7 @@ Dec 27, 2010 9:28:15 AM /configSubmit by johnsmart</programlisting>
 
     <para>Le <indexterm class="startofrange" id="ch07-jobconfig"
         significance="normal">
-        <primary>JobConfigHistory plugin</primary>
+        <primary>plugin JobConfigHistory</primary>
       </indexterm><indexterm class="startofrange" id="ch07-jobconfig2"
         significance="normal">
         <primary>plugins</primary>
@@ -1929,7 +1929,7 @@ Dec 27, 2010 9:28:15 AM /configSubmit by johnsmart</programlisting>
     (comme <filename moreinfo="none">/var/hudson/history</filename>), ou un
     répertoire relatif, calculé à partir de la racine du répertoire de Jenkins
     (voir <xref linkend="sec-hudson-home-directory" />). Si vous ne faites pas
-    cela, l'historique de configuration des tâches sera stockés dans les
+    cela, l'historique de configuration des tâches sera stocké dans les
     tâches elles-mêmes, et tout sera perdu si vous supprimez une tâche.</para>
 
     <para>Il y a un certain nombre d'autres options utiles dans la section
@@ -1942,7 +1942,7 @@ Dec 27, 2010 9:28:15 AM /configSubmit by johnsmart</programlisting>
     enregistrée, même si vous avez seulement appuyé sur le bouton Sauver sans
     faire aucun changement. Jenkins peut aussi provoquer cela en interne - par
     exemple, le paramétrage de la configuration système est entièrement
-    sauvée à chaque fois que la page principale de configuration est sauvée,
+    sauvé à chaque fois que la page principale de configuration est sauvée,
     même si aucune modification n'a été faite.</para>
 
     <para>Une fois que vous avez mis ce plugin en place, vous pouvez accéder à
@@ -1951,7 +1951,7 @@ Dec 27, 2010 9:28:15 AM /configSubmit by johnsmart</programlisting>
     configuration de chaque projet. Dans les deux cas, vous pouvez voir ces
     changements en cliquant sur l'icône Job Config History sur la droite de
     l'écran. Cliquer sur cette icône affichera une vue de tout votre
-    historique de configuration, incluant les changements de tâches and les
+    historique de configuration, incluant les changements de tâches et les
     changements de niveau système (voir <xref
     linkend="fig-hudson-jobconfig-global-history" />).</para>
 
@@ -2002,7 +2002,7 @@ Dec 27, 2010 9:28:15 AM /configSubmit by johnsmart</programlisting>
     pourrait être dangereux dans certaines circonstances, particulièrement
     pour les fichiers de configuration système). Cependant, il donne un aperçu
     très clair des changements ayant été effectués, à la fois sur vos tâches
-    de construction et sur votre configuration<indexterm class="endofrange"
+    de build et sur votre configuration<indexterm class="endofrange"
         id="I_indexterm7_d1e11384" significance="normal"
         startref="ch07-jobconfig">
         <primary></primary>
