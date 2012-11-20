@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <chapter id="chapter-first-steps">
-  <title>Your First Steps with Jenkins</title>
+  <title>Vos premiers pas avec Jenkins</title>
   <sect1 id="sect-first-steps-introduction">
     <title>Introduction</title>
     <para>Dans ce chapitre, nous allons faire un tour rapide des fonctionnalités clé de Jenkins. 
@@ -24,12 +24,9 @@
         fonction principale de tout outil d'Intégration Continue est de surveiller
         du code source dans un outil de gestion de configuration, d'en extraire
         la dernière version et de la construire dès que des modifications sont apportées.
-        Donc, il vous faudra un outil de gestion de configuration. Dans le cas qui nous
-        occupe, nous utiliserons <indexterm id="I_indexterm2_d1e953" significance="normal"><primary>Git</primary></indexterm><ulink url="http://git-scm.com">Git</ulink>.
+        Donc, il vous faudra un outil de gestion de configuration. Dans le cas qui nous        occupe, nous utiliserons <indexterm id="I_indexterm2_d1e953" significance="normal"><primary>Git</primary></indexterm><ulink url="http://git-scm.com">Git</ulink>.
         Le code source de notre simple projet se trouve hébergé sur <indexterm id="I_indexterm2_d1e959" significance="normal"><primary>GitHub repository</primary></indexterm><ulink url="https://github.com">GitHub</ulink>.
-        Ne vous inquiétez pas, vous ne risquerez pas de perturber ce référentiel avec vos modifications : vous travaillerez sur votre propre réplique et vous pourrez y faire ce que vous voulez.
-        Si vous n'avez jamais utilisé Git et/ou si vous n'avez pas un compte sur GitHub, ne vous inquiétez pas nous vous guiderons pour vos premiers pas et l'installation est très bien documentée
-        sur le site web de GitHub. Nous vous expliquerons comment mettre tout cela en place par la suite.</para>
+        Ne vous inquiétez pas, vous ne risquerez pas de perturber ce référentiel avec vos modifications : vous travaillerez sur votre propre réplique et vous pourrez y faire ce que vous voulez. Si vous n'avez jamais utilisé Git et/ou si vous n'avez pas un compte sur GitHub, ne vous inquiétez pas nous vous guiderons pour vos premiers pas et l'installation est très bien documentée sur le site web de GitHub. Nous vous expliquerons comment mettre tout cela en place par la suite.</para>
     <?dbfo-need height=”1in”?>
       <para>Dans ce chapitre, nous utiliserons Jenkins pour construire une application Java
         avec Apache Maven. <indexterm id="I_indexterm2_d1e968" significance="normal">
@@ -55,27 +52,25 @@
       </indexterm> première chose que vous allez devoir installer sur votre machine est Java.
       Hudson est une application web Java web application, aussi vous aurez besoin au minimum
       du Java Runtime Environment, ou JRE<indexterm id="I_indexterm2_d1e992" significance="normal">
-        <primary>JRE (Java Runtime Environment), installing</primary>
+        <primary>JRE (Java Runtime Environment), installation</primary>
       </indexterm>
       <indexterm id="I_indexterm2_d1e995" significance="normal">
-        <primary>Java Runtime Environment (JRE), installing</primary>
+        <primary>Java Runtime Environment (JRE), installation</primary>
       </indexterm>  pour l'exécuter. Pour les exemples de ce chapite, vous devrez avoir une version
       récente de Java 6 (ces exemples ont été écrits avec Java 6 update 17 et la dernière
       version disponible au moment où j'écris ces mots est Java 6 update 19). Si vous n'êtes pas
       sûr, vous pouvez vérifier votre version depuis la ligne de commande (en ouvrant une console
-        DOS sous Windows) et en exécutant <literal moreinfo="none">java
-          -version</literal>. Si Java est installé
-        sur votre machine vous devriez obtenir quelquechose ressemblant à ceci :</para>
+        DOS sous Windows) et en exécutant <literal moreinfo="none">java -version</literal>. 
+        Si Java est installé sur votre machine vous devriez obtenir un résultat ressemblant à ceci :</para>
       <screen format="linespecific">$ <userinput moreinfo="none">java -version</userinput>
 java version "1.6.0_17"
 Java(TM) SE Runtime Environment (build 1.6.0_17-b04-248-10M3025)
 Java HotSpot(TM) 64-Bit Server VM (build 14.3-b01-101, mixed mode)</screen>
-      <para>If you don’t have a version already installed, or if your version
-      is an older one, download and install the latest JRE installer from the
-      <ulink url="http://java.sun.com/javase/downloads/index.jsp">Java
-      website</ulink>, as shown in <xref linkend="fig-installing-java"/>.</para>
+      <para>Si vous n'avez une version déjà installée ou si votre version est plus ancienne, téléchargez et
+        isntallez la dernière version de la JRE depuis le <ulink url="http://java.sun.com/javase/downloads/index.jsp">
+        site web de Java</ulink>, comme le montre <xref linkend="fig-installing-java"/>.</para>
       <figure float="0" id="fig-installing-java">
-        <title>Installing Java</title>
+        <title>Installer Java</title>
         <mediaobject id="I_mediaobject2_d1e1017">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0201.pdf" format="PDF"/>
@@ -88,38 +83,33 @@ Java HotSpot(TM) 64-Bit Server VM (build 14.3-b01-101, mixed mode)</screen>
     </sect2>
     <sect2>
       <title>Installation de Git</title>
-      <para>Etant donné<indexterm id="I_indexterm2_d1e1027" significance="normal"><primary>installation</primary><secondary>Git</secondary></indexterm><indexterm id="I_indexterm2_d1e1032" significance="normal"><primary>Git</primary><secondary>installing</secondary></indexterm> que nous utiliserons Git, il va vous falloir installer et configurer
+      <para>Etant donné<indexterm id="I_indexterm2_d1e1027" significance="normal"><primary>installation</primary><secondary>Git</secondary></indexterm><indexterm id="I_indexterm2_d1e1032" significance="normal"><primary>Git</primary><secondary>installation</secondary></indexterm> que nous utiliserons Git, il va vous falloir installer et configurer
       Git sur votre machine. Si vous êtes novice en ce qui concerne Git, un petit tour sur le <ulink url="http://gitref.org">site de référence de Git</ulink> peut
-      vous être utile. Et si vous vous perdez en cours de route, la mnière de procéder est entièrement décrite dans les <ulink url="http://help.github.com">pages d'aide de GitHub</ulink>.</para>
-      <para>First of all, you need to install Git on your machine. This
-      involves downloading the appropriate installer for your operating system
-      from the <ulink url="http://git-scm.com">Git website</ulink>. There are
-      packaged installers for both Windows and Mac OS X. If you are using
-      Linux, you are in Git’s home ground: most Linux distributions. On Ubuntu
-      or some other Debian-based distribution, you could run something
-      like:</para>
+      vous être utile. Et si vous vous perdez en cours de route, la manière de procéder est entièrement décrite dans les <ulink url="http://help.github.com">pages d'aide de GitHub</ulink>.</para>
+      <para>Avant toute chose, il vous faut installer Git sur votre machine. Cela exige de télécharger le 
+        programme d'installation approprié pour votre système d'exploitation depuis le 
+        <ulink url="http://git-scm.com">site web de Git</ulink>. Il existe des programmes 
+        d'installtion packagés pour Windows et Mac OS X. Si vous utilisez GNU/Linux vous êtes sur le terrain
+        de Git : les distributions GNU/Linux. Sur Ubunut ou toute autre distribution basées sur Debian, vous
+        pouvez exécuter une commande comme celle-ci :</para>
       <screen format="linespecific">$ <userinput moreinfo="none">sudo apt-get install git-core</userinput></screen>
-      <para>On Fedora or another RPM-based distribution, you could use
-      <literal moreinfo="none">yum</literal> instead:</para>
+      <para>Sur Fedora ou toute distribution basée sur RPM, il pouvez utiliser <literal moreinfo="none">yum</literal> à la place :</para>
       <screen format="linespecific">$ <userinput moreinfo="none">sudo yum install git-core</userinput></screen>
-      <para>And, being Linux, you also have the option of installing the
-      application from source. There are instructions on how to do this on the
-      Git website.</para>
+      <para>Et, puisqu'il s'agit de GNU/Linux, vous avez aussi la possibilité d'installer l'application à partir des sources. 
+        Les instructions sont disponibles sur le site web de  Git.</para>
       <?dbfo-need height=”1in”?>
-      <para>Once you are done, check that Git is installed and available by
-      invoking it from the command line:</para>
+      <para>Une fois cette opération réalisée, vérifiez que Git est correctement installé en exécutant la commande suivante :</para>
       <screen format="linespecific">$ <userinput moreinfo="none">git --version</userinput>
 git version 1.7.1</screen>
     </sect2>
     <sect2>
-      <title>Setting Up a GitHub Account</title>
-      <para>Next, <indexterm id="I_indexterm2_d1e1077" significance="normal"><primary>GitHub repository</primary><secondary>account for, setting up</secondary></indexterm>if you don’t already have one, you will need to create a
-      GitHub account. This is easy and (for our purposes, at least) free of
-      charge, and all the cool kids have one. Go to the <ulink url="https://github.com/plans">GitHub signup page</ulink> and choose the
-      “Create a free account” option. You will just need to provide a
-      username, a password, and your email address (see <xref linkend="fig-github-signup"/>).</para>
+      <title>Configurer un compte GitHub</title>
+      <para>Ensuite, <indexterm id="I_indexterm2_d1e1077" significance="normal"><primary>dépôt GitHub</primary><secondary>compte, configuration</secondary></indexterm>si vous
+      n'en possédez pas déjà un, vous devrez vous créer un compte Github. Cela est simple et (pour notre usage du moins) gratuit, sans compter que tous les gars cools
+      en ont un. Allez sur la <ulink url="https://github.com/plans">page d'enregistrement de GitHub</ulink> et choissisez l'option “Create a free account”. 
+      Vousn'aurez qu'à fournir un nom d'utilisateur, un mot de passe et votre adresse e-mail (cf. <xref linkend="fig-github-signup"/>).</para>
       <figure float="0" id="fig-github-signup">
-        <title>Signing up for a GitHub account</title>
+        <title>Créer un compte GitHub</title>
         <mediaobject id="I_mediaobject2_d1e1091">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0202.pdf" format="PDF"/>
@@ -131,12 +121,10 @@ git version 1.7.1</screen>
       </figure>
     </sect2>
     <sect2>
-      <title>Configuring SSH Keys</title>
-      <para>GitHub <indexterm id="I_indexterm2_d1e1101" significance="normal"><primary>SSH keys</primary></indexterm>uses SSH keys to establish a secure connection between
-      your computer and the GitHub servers. Setting these up is not hard, but
-      involves a bit of work: fortunately there are clear and detailed
-      instructions for each operating system on the <ulink url="http://help.github.com/set-up-git-redirect">GitHub
-      website</ulink>.</para>
+      <title>Configurer les clefs SSH</title>
+      <para>GitHub <indexterm id="I_indexterm2_d1e1101" significance="normal"><primary>clefs SSH</primary></indexterm>utilise les clefs SSH pour établir une connexion sécuriésée entre
+      votre ordinateur et les serveurs Github. Les configurer n'est pas compliqué mais demande un peu d'effort : heureusement il 
+      existe des instructions claires et détaillées pour chaque système d'exploitation sur le <ulink url="http://help.github.com/set-up-git-redirect">site de GitHub</ulink>.</para>
     </sect2>
     <sect2 id="sect-git-fork">
       <title>Forking the Sample Repository</title>
