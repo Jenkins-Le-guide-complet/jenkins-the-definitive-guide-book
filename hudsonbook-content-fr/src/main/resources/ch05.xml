@@ -242,34 +242,36 @@
     </sect2>
   </sect1>
   <sect1 id="sect-subversion">
-    <title>Configuring Source Code Management</title>
-    <para>In<indexterm class="startofrange" id="ch05-scm" significance="normal"><primary>SCM (Source Code Management)</primary></indexterm> its most basic role, a Continuous Integration server
-    monitors your version control system, and checks out the latest changes as
-    they occur. The server then compiles and tests the most recent version of
-    the code. Alternatively, it may simply check out and build the latest
-    version of your source code on a regular basis. In either case, tight
-    integration with your version control system is essential.</para>
-    <para>Because of its fundamental role, SCM configuration options in
-    Jenkins are identical across all sorts of build jobs. Jenkins <indexterm id="I_indexterm5_d1e5249" significance="normal"><primary>version control systems</primary><secondary>supported by Jenkins</secondary></indexterm><indexterm id="I_indexterm5_d1e5254" significance="normal"><primary>Jenkins</primary><secondary>version control systems supported by</secondary></indexterm>supports CVS and Subversion out of the box, with built-in
-    support for Git, and also integrates with a large number of other version
-    control systems via plugins. At the time of writing, SCM plugin support
-    includes Accurev, Bazaar, BitKeeper, ClearCase, CMVC, Dimensions, Git, CA
-    Harvest, Mercurial, Perforce, PVCS, StarTeam, CM/Synergy, Microsoft Team
-    Foundation Server, and even Visual SourceSafe. In the rest of this
-    section, we will look at how to configure some of the more common SCM
-    tools.</para>
+      <title>Configurer la Gestion du Code Source</title>
+      <para>Dans<indexterm class="startofrange" id="ch05-scm" significance="normal"><primary>SCM (Gestion du Code Source)</primary></indexterm> son rôle le plus basique, un serveur d'Intégration Continue
+          surveille votre système de gestion de version et vérifie les derniers
+          changements au fur et à mesure. Le serveur compile et test alors la
+          version la plus récente du code. Il peut alternativement récupérer
+          et construire simplement la dernière version de votre code source de
+          manière régulière. Dans tous les cas, une forte intégration avec votre
+          système de gestion de version est essentielle.</para>
+      <para>De part leur rôle fondamental, les options de configuration du
+          SCM sont identiques au travers de tous les types de tâches de build dans Jenkins. Jenkins <indexterm id="I_indexterm5_d1e5249" significance="normal"><primary>systèmes de gestion de version</primary><secondary>supporté par Jenkins</secondary></indexterm><indexterm id="I_indexterm5_d1e5254" significance="normal"><primary>Jenkins</primary><secondary>systèmes de gestion de version supportés par</secondary></indexterm>supporte CVS et Subversion nativement, embarque
+          un support pour Git et s'intègre avec un grand nombre d'autres systèmes
+          de gestion de version via des plugins. A l'écriture de ce livre, le
+          support par plugin inclus Accurev, Bazaar, BitKeeper, ClearCase, CMVC,
+          Darcs, Dimensions, Git, CA Harvest, Mercurial, Perforce, PVCS, Rational
+          Team Concert, StarTeam, Surround SCM, CM/Synergy, Microsoft Team
+          Foundation Server et même Visual SourceSafe. Dans le reste de cette
+          section, nous verrons comment configurer quelques uns des SCM les
+          plus courants.</para>
     <sect2>
-      <title>Working with Subversion</title>
-      <para>Subversion<indexterm class="startofrange" id="ch05-sub1" significance="normal"><primary>freestyle build jobs</primary><secondary>Subversion used with</secondary></indexterm><indexterm class="startofrange" id="ch05-sub2" significance="normal"><primary>Subversion</primary><secondary sortas="free-style">with freestyle build jobs</secondary></indexterm> is one of the most widely used version control systems,
-      and Jenkins comes bundled with full Subversion support (see <xref linkend="fig-hudson-new-job-svn"/>). To use source code from a
-      Subversion repository, you simply provide the corresponding Subversion
-      URL—it will work fine with any of the three Subversion protocols of
-      (http, svn, or file). Jenkins will check that the URL is valid as soon
-      as you enter it. If the repository requires authentication, Jenkins will
-      prompt you for the corresponding credentials automatically, and store
-      them for any other build jobs that access this repository.</para>
+      <title>Travailler avec Subversion</title>
+      <para>Subversion<indexterm class="startofrange" id="ch05-sub1" significance="normal"><primary>tâches de build free-style</primary><secondary>Subversion utilisé avec</secondary></indexterm><indexterm class="startofrange" id="ch05-sub2" significance="normal"><primary>Subversion</primary><secondary sortas="free-style">avec les tâches de build free-style</secondary></indexterm> est l'un des systèmes de gestion de version parmi les plus utilisés,
+      et Jenkins embarque un support complet de Subversion (voir <xref linkend="fig-hudson-new-job-svn"/>). Pour utiliser du code source provenant
+      d'un dépôt Subversion, vous devez simplement fournir l'URL correspondante - cela
+      fonctionnera parfaitement avec n'importe lequel des trois protocoles utilisés
+      par Subversion (http, svn ou file). Jenkins vérifiera que l'URL est valide aussitôt
+      que vous l'aurez remplie. Si le dépôt nécessite une authentification, Jenkins vous
+      questionnera alors sur vos identifiants automatiquement et les enregistrera pour 
+      tout autre tâche de build qui aura besoin d'accéder à ce même dépôt.</para>
       <figure float="0" id="fig-hudson-new-job-svn">
-        <title>Jenkins provides built-in support for Subversion</title>
+        <title>Jenkins embarque par défaut le support pour Subversion</title>
         <mediaobject id="I_mediaobject5_d1e5281">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0506.pdf" format="PDF"/>
@@ -279,55 +281,69 @@
           </imageobject>
         </mediaobject>
       </figure>
-      <para>By default, Jenkins will check out the repository contents into a
-      subdirectory of your workspace, whose name will match the last element
-      in the Subversion URL. So if your Subversion URL is <ulink url="svn://localhost/gameoflife/trunk"/>, Jenkins will check out
-      the repository contents to a directory called <filename moreinfo="none">trunk</filename> in the build job workspace. If you
-      would prefer another directory name, just enter the directory name you
-      want in the <command moreinfo="none">Local module directory</command>
-      field. Place a period (“.”) here if you want Jenkins to check the source
-      code directly into the workspace.</para>
-      <para>Occasionally you may need to get source code from more than one
-      Subversion URL. In this case, just use the “Add more locations...”
-      button to add as many additional <phrase role="keep-together">repository</phrase> sources as you need.</para>
-      <para>A well-designed build process should not modify the source code,
-      or leave any extra files that might confuse your version control system
-      or the build process. Both generated artifacts and temporary files (such
-      as log files, reports, test data or file-based databases) should go in a
-      directory set aside for this purpose (such as the <filename moreinfo="none">target</filename> directory in Maven builds), and/or be
-      configured to be ignored by your version control repository. They should
-      also be deleted as part of the build process, once the build has
-      finished with them. This is also an important part of ensuring a clean
-      and reproducible build <phrase role="keep-together">process—</phrase>for
-      a given version of your source code, your build should behave in exactly
-      the same way, no matter where or when it is run. Locally changed source
-      code files, and the presence of temporary files, both have the potential
-      of compromising this.</para>
-      <para>You can fine-tune the way Jenkins obtains the latest source code
-      from your Subversion repository by selecting an appropriate value in the
-      Check-out Strategy drop-down list. If your project is well-behaved,
-      however, you may be able to speed things up substantially by selecting
-      “Use ‘svn update’ as much as possible”. This is the fastest option, but
-      may leave artifacts and files from previous builds in your workspace. To
-      be on the safe side, you may want to use the second option (“Use ‘svn
-      update’ as much as possible, with ‘svn revert’ before update”), which
-      will systematically run <literal moreinfo="none">svn revert</literal> before running
-      <literal moreinfo="none">svn update</literal>. This will ensure that no local files have
-      been modified, though it will not remove any new files that have been
-      created during the build process. Alternatively, you can ask Jenkins to
-      delete any unversioned or ignored files before performing an
-      <literal moreinfo="none">svn update</literal>, or play it safe by checking out a full
-      clean copy for each build.</para>
-      <para>Another<indexterm id="I_indexterm5_d1e5322" significance="normal"><primary>source code browsers</primary><secondary sortas="Subversion">with Subversion</secondary></indexterm><indexterm id="I_indexterm5_d1e5327" significance="normal"><primary>freestyle build jobs</primary><secondary>Subversion used with</secondary><tertiary>source code browsers for</tertiary></indexterm><indexterm id="I_indexterm5_d1e5334" significance="normal"><primary>Subversion</primary><secondary>source code browsers for</secondary></indexterm> very useful feature is Jenkins’s integration with source
-      code browsers. A good source code browser is an important part of your
-      Continuous Integration setup. It lets you see at a glance what changes
-      triggered a given build, which is very useful when it comes to
-      troubleshooting broken builds (see <xref linkend="fig-hudson-new-job-diff"/>). Jenkins integrates with most of
-      the major source code browsers, including open source tools such as
-      WebSVN and Sventon, and commercial ones like Atlassian’s FishEye.</para>
+      <para>Par défaut, Jenkins récupérera le contenu du dépôt dans un
+      sous-répertoire de votre espace de travail, dont le nom sera celui
+      du dernier élément de l'URL Subversion. Donc si votre URL Subversion
+      est <ulink url="svn://localhost/gameoflife/trunk"/>, Jenkins récupérera
+      le contenu du dépôt dans une répertoire nommé <filename moreinfo="none">trunk</filename> 
+      dans l'espace de travail de votre tâche de build. So vous préférez nommer 
+      votre répertoire différemment, remplissez le nom que vous souhaitez 
+      dans le champ <command moreinfo="none">Local module directory</command>. 
+      Mettez un point (“.”) dans le champ si vous souhaitez mettre le code 
+      source directement à la racine de l'espace de travail.</para>
+      <para>Occasionnellement, vous aurez besoin de récupérer du code 
+      source de plusieurs URLs Subversion. Dans ce cas, utilisez le bouton 
+      “Add more locations...” pour ajouter autant de <phrase role="keep-together">dépôts</phrase>
+      sources que vous en avez besoin.</para>
+      <para>Une bonne procédure de build ne devrait pas modifier le code
+      source ou laisser de fichiers supplémentaires qui pourrait porter à
+      confusion votre système de gestion de version ou la procédure de build. 
+      Les artefacts générés et fichiers temporaires (comme les fichiers de journaux,
+      rapports, données de test ou bases de données fichier) devraient être 
+      créés dans un répertoire séparé et créé spécifiquement pour ce besoin (tout comme
+      le répertoire <filename moreinfo="none">target</filename> dans les builds Apache 
+      Maven), et/ou être configurés pour être ignorés par le dépôt de votre système 
+      de gestion de version.
+      Ces fichiers devrait également être supprimés par la procédure de build, 
+      une fois que le build n'en a plus besoin. Cela prend également une grande 
+      importance dans l'assurance de construire une procédure de build propre 
+      et <phrase role="keep-together">reproductible—</phrase>pour une 
+      version donnée de votre code source, le build devrait se comporter 
+      exactement de la même manière, peu importe où et quand il est 
+      exécuté. Les changements locaux, et la présence de fichiers temporaires, 
+      peuvent potentiellement compromettre cela.</para>
+      <para>Vous pouvez finement configurer la manière dont Jenkins récupère 
+      la dernière version de votre code source en sélectionnant la valeur 
+      attendue dans la liste déroulante Check-out Strategy. Si votre projet 
+      est correctement configuré, vous pouvez cependant accélérer grandement 
+      les choses en choisissant “Use ‘svn update’ as much as possible”. Il 
+      s'agit de l'option la plus rapide mais elle laisse les artefacts et 
+      fichiers des builds précédents dans votre espace de travail. Pour 
+      vous positionner du côté de la sécurité, vous pouvez choisir la 
+      seconde option (“Use ‘svn update’ as much as possible, with ‘svn revert’ 
+      before update”), qui exécutera systématiquement <literal moreinfo="none">svn revert</literal> 
+      avant de lancer <literal moreinfo="none">svn update</literal>. Cela vous 
+      assurera qu'aucun fichier n'aura été modifié localement. Cependant, 
+      cela ne supprimera pas les fichiers nouvellement créés pendant la 
+      procédure de build. Sinon, vous pouvez demander à Jenkins de 
+      supprimer tous les fichiers à ignorer ou non versionnés avant de 
+      faire un <literal moreinfo="none">svn update</literal> ou encore 
+      jouer la carte de la sécurité et récupérer une copie propre et 
+      complète à chaque build.</para>
+      <para>Une autre<indexterm id="I_indexterm5_d1e5322" significance="normal"><primary>navigateurs de code source</primary><secondary sortas="Subversion">avec Subversion</secondary></indexterm><indexterm id="I_indexterm5_d1e5327" significance="normal"><primary>tâches de build free-style</primary><secondary>Subversion utilisé avec</secondary><tertiary>navigateurs de code source pour</tertiary></indexterm><indexterm id="I_indexterm5_d1e5334" significance="normal"><primary>Subversion</primary><secondary>navigateurs de code source pour</secondary></indexterm> fonctionnalité de Jenkins particulièrement utile 
+      est sont intégration avec les navigateurs de code source. Un bon 
+      navigateur de code source est un élément important de votre 
+      configuration d'Intégration Continue. Cela vous permet de voir 
+      d'un coup d'œil les changements qui sont à l'origine du 
+      lancement de votre build, ce qui est très utile quand vous 
+      avez besoin de localiser un problème lors d'un build échoué 
+      (voir <xref linkend="fig-hudson-new-job-diff"/>). Jenkins intègre la plupart des 
+      principaux navigateurs de source code, y compris des outils 
+      open source comme WebSVN ou Sventon, ainsi que ceux commerciaux 
+      tels qu'Atlassian FishEye.</para>
       <figure float="0" id="fig-hudson-new-job-diff">
-        <title>Source code browser showing what code changes caused a
-        build</title>
+        <title>Navigateur de code source montrant les changements dans le 
+        code qui ont causé le build.</title>
         <mediaobject id="I_mediaobject5_d1e5345">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0507.pdf" format="PDF"/>
@@ -337,83 +353,91 @@
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Jenkins<indexterm id="I_indexterm5_d1e5352" significance="normal"><primary>freestyle build jobs</primary><secondary>Subversion used with</secondary><tertiary>excluding regions from triggering</tertiary></indexterm><indexterm id="I_indexterm5_d1e5359" significance="normal"><primary>Subversion</primary><secondary>excluding regions from triggering builds</secondary></indexterm> also lets you refine the changes that will trigger a
-      build. In the Advanced section, you can use the Excluded Regions field
-      to tell Jenkins not to trigger a build if only certain files were
-      changed. This field takes a list of regular expressions, which identify
-      files that should <emphasis>not</emphasis> trigger a build. For example,
-      suppose you don’t want Jenkins to start a new build if only images have
-      been changed. To do this, you could use a set of regular expressions
-      like the following:</para>
+      <para>Jenkins<indexterm id="I_indexterm5_d1e5352" significance="normal"><primary>tâches de build freestyle</primary><secondary>Subversion utilisé avec</secondary><tertiary>exclure des régions du déclenchement</tertiary></indexterm><indexterm id="I_indexterm5_d1e5359" significance="normal"><primary>Subversion</primary><secondary>exclure des régions du déclenchement de builds</secondary></indexterm> vous permet également d'affiner la sélection des 
+      changements qui déclencherons un build. Dans la section avancée, 
+      vous pouvez utiliser le champ Régions exclues pour dire à Jenkins 
+      de ne pas déclencher de build si certains fichiers sont modifiés. 
+      Ce champ prend en compte une liste d'expressions régulières qui 
+      identifient les fichiers qui ne doivent <emphasis>pas</emphasis> 
+      déclencher de build. Par exemple, supposez que vous ne voulez pas 
+      que Jenkins démarre un build si seulement des images ont été 
+      modifiées. Pour ce faire, vous pouvez utiliser un groupe d'expressions 
+      régulières comme celles qui suivent :</para>
       <programlisting id="I_programlisting5_d1e5368" format="linespecific">/trunk/gameoflife/gameoflife-web/src/main/webapp/.*\.jpg
 /trunk/gameoflife/gameoflife-web/src/main/webapp/.*\.gif
 /trunk/gameoflife/gameoflife-web/src/main/webapp/.*\.png</programlisting>
-      <para>Alternatively, you can specify the Included Regions, if you are
-      only interested in changes in part of the source code directory
-      structure. You can even combine the Excluded Regions and Included
-      Regions fields—in this case a modified file will only trigger a build if
-      it is in the Included Regions but not in the Excluded Regions.</para>
-      <para>You <indexterm id="I_indexterm5_d1e5375" significance="normal"><primary>freestyle build jobs</primary><secondary>Subversion used with</secondary><tertiary>excluding users from triggering</tertiary></indexterm><indexterm id="I_indexterm5_d1e5382" significance="normal"><primary>users</primary><secondary>excluding from triggering builds</secondary></indexterm><indexterm id="I_indexterm5_d1e5387" significance="normal"><primary>Subversion</primary><secondary>excluding users from triggering builds</secondary></indexterm>can also ignore changes coming from certain users
-      (Excluded Users), or with certain <indexterm id="I_indexterm5_d1e5393" significance="normal"><primary>commit messages, excluding from triggering build
-          jobs</primary></indexterm><indexterm id="I_indexterm5_d1e5396" significance="normal"><primary>freestyle build jobs</primary><secondary>Subversion used with</secondary><tertiary>excluding commit messages from triggering</tertiary></indexterm><indexterm id="I_indexterm5_d1e5403" significance="normal"><primary>Subversion</primary><secondary>excluding commit messages from triggering
-          builds</secondary></indexterm>commit messages (Excluded Commit Messages). For example,
-      if your project uses Maven, you may want to use the Maven Release Plugin
-      to promote your application from snapshot<indexterm id="I_indexterm5_d1e5409" significance="normal"><primary>SNAPSHOT versions</primary></indexterm><indexterm id="I_indexterm5_d1e5412" significance="normal"><primary>Maven</primary><secondary>SNAPSHOT versions</secondary></indexterm> versions to official releases. This plugin will
-      automatically bump up the version number of your application from a
-      snapshot version used during development (such as 1.0.1-SNAPSHOT) to a
-      release (1.0.1), bundles up and deploys a release of your application
-      with this version number, and then moves the version on to the next
-      snapshot number (e.g., 1.0.2-SNAPSHOT) for ongoing development. During
-      this <phrase role="keep-together">process</phrase> Maven takes care of
-      many SCM bookkeeping tasks, such as committing the source code with the
-      release version number and creating a tag for the released version of
-      your application, and then committing the source code with the new
-      snapshot version <phrase role="keep-together">number</phrase>.</para>
-      <para>Now suppose you have a special build job for generating a new
-      release using this <phrase role="keep-together">process</phrase>. The
-      many commits generated by the Maven Release Plugin would normally
-      trigger off build jobs in Jenkins. However, since the release build job
-      is already compiling and testing this version of your application, you
-      don’t need Jenkins to do it again in a separate build job. To ensure
-      that Jenkins does not trigger a build for this case, you can use the
-      Excluded Commit Messages field with the following value:</para>
+      <para>De manière alternative, vous pouvez spécifier uniquement 
+      les Régions Incluses, si vous n'êtes intéressé que par les 
+      changements d'une partie de votre arbre de code source. Vous 
+      pouvez même combiner les champs Régions exclues et Régions 
+      Incluses — dans ce cas, un fichier modifié ne déclenchera 
+      un build que s'il est inclus dans les Régions Incluses mais 
+      pas dans les Régions Exclues.</para>
+      <para>Vous <indexterm id="I_indexterm5_d1e5375" significance="normal"><primary>tâches de build free-style</primary><secondary>Subversion utilisé avec</secondary><tertiary>exclure des utilisateurs du déclenchement</tertiary></indexterm><indexterm id="I_indexterm5_d1e5382" significance="normal"><primary>utilisateurs</primary><secondary>exclure pour le déclenchement de build</secondary></indexterm><indexterm id="I_indexterm5_d1e5387" significance="normal"><primary>Subversion</primary><secondary>exclure des utilisateurs du déclenchement de builds</secondary></indexterm>pouvez également ignorer les changements provenant 
+      de certains utilisateurs (Utilisateurs Exclus), ou pour certains <indexterm id="I_indexterm5_d1e5393" significance="normal"><primary>messages de commit, exclure du déclenchement de tâches 
+      de build</primary></indexterm><indexterm id="I_indexterm5_d1e5396" significance="normal"><primary>tâches de build free-style</primary><secondary>Subversion utilisé avec</secondary><tertiary>exclure des messages de commit du déclenchement</tertiary></indexterm><indexterm id="I_indexterm5_d1e5403" significance="normal"><primary>Subversion</primary><secondary>exclure des messages de commit du déclenchement de 
+      builds</secondary></indexterm>messages de commit en particulier (Excluded Commit Messages).
+      Par exemple, si votre projet utilise Maven, vous pourrez être amené à 
+      utiliser le plugin Maven Release Plugin pour promouvoir votre application 
+      d'une version snapshot<indexterm id="I_indexterm5_d1e5409" significance="normal"><primary>versions SNAPSHOT</primary></indexterm><indexterm id="I_indexterm5_d1e5412" significance="normal"><primary>Apache Maven</primary><secondary>versions SNAPSHOT</secondary></indexterm> vers une version release officielle. Ce plugin 
+      poussera automatiquement le numéro de version de votre application 
+      depuis sa version snapshot utilisée pendant le développement (comme par 
+      exemple 1.0.1-SNAPSHOT) vers une version release (1.0.1), empaquettera, 
+      déploiera votre application avec ce numéro de version et le mettra 
+      à jour avec le prochain numéro de version snapshot (par exemple 1.0.2-SNAPSHOT) 
+      pour les développements futurs. Pendant cette <phrase role="keep-together">procédure</phrase>, Apache Maven 
+      s'occupe de multiples étapes comptables comme d'effectuer le commit 
+      du nouveau numéro de version, de créer la nouvelle étiquette pour la 
+      livraison de votre application et enfin faire l'opération de commit 
+      pour le nouveau <phrase role="keep-together">numéro</phrase> de version 
+      snapshot.</para>
+      <para>Supposez maintenant que vous avez une tâche de build spécifique 
+      pour effectuer une nouvelle livraison utilisant cette <phrase role="keep-together">procédure</phrase>. 
+      Les différentes opérations de commits générées par le plugin Maven Release 
+      Plugin devraient normalement déclencher des tâches de build dans Jenkins. 
+      Cependant, comme votre tache de build de livraison est déjà en train de 
+      compiler et tester cette version de votre application, vous n'avez pas 
+      besoin que Jenkins le fasse à nouveau dans une autre tâche de build. Pour 
+      s'assurer que Jenkins ne déclenche pas un autre build dans ce cas, vous 
+      pouvez utiliser le champ Excluded Commit Messages avec la valeur suivante :</para>
       <programlisting id="I_programlisting5_d1e5430" format="linespecific">[maven-release-plugin] prepare release.*</programlisting>
-      <para>This will ensure that Jenkins skips the changes corresponding to
-      the new release version, but not those corresponding to the next
-      <indexterm id="I_indexterm5_d1e5434" class="endofrange" startref="ch05-sub1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e5436" class="endofrange" startref="ch05-sub2" significance="normal"><primary/></indexterm>snapshot version.</para>
+      <para>Cela vous assurera que Jenkins sautera les changements correspondant
+      à des nouvelles versions de release mais pas ceux correspondant à la 
+      prochaine <indexterm id="I_indexterm5_d1e5434" class="endofrange" startref="ch05-sub1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e5436" class="endofrange" startref="ch05-sub2" significance="normal"><primary/></indexterm>version snapshot.</para>
     </sect2>
     <sect2 id="git-plugin">
-      <title>Working with Git</title>
+      <title>Travailler avec Git</title>
       <para>
-        <emphasis>Contributed by Matthew McCullough</emphasis>
+        <emphasis>Contribué par Matthew McCullough</emphasis>
       </para>
-      <para><ulink url="http://git-scm.com/">Git</ulink> is <indexterm class="startofrange" id="ch05-git1" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary></indexterm><indexterm class="startofrange" id="ch05-git2" significance="normal"><primary>Git</primary><secondary sortas="free-style">with freestyle build jobs</secondary></indexterm>a popular distributed version control system that is a
-      logical successor to <ulink url="http://subversion.tigris.org/">Subversion</ulink> and a mind-share
-      competitor to <ulink url="http://mercurial.selenic.com/">Mercurial</ulink>. Git support in
-      Jenkins is both mature and full-featured. There are a number of plugins
-      that can contribute to the overall story of Git in Jenkins. We will
-      begin by looking at the Git plugin, which provides core Git support in
-      Jenkins. We’ll discuss the supplemental plugins shortly.</para>
+      <para><ulink url="http://git-scm.com/">Git</ulink> est <indexterm class="startofrange" id="ch05-git1" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary></indexterm><indexterm class="startofrange" id="ch05-git2" significance="normal"><primary>Git</primary><secondary sortas="free-style">avec des tâches de build free-style</secondary></indexterm>un système de gestion de version distribué qui est le
+          successeur logique de <ulink url="http://subversion.tigris.org/">Subversion</ulink> et un concurrent
+          à <ulink url="http://mercurial.selenic.com/">Mercurial</ulink> partageant le même esprit. Le support de Git dans
+          Jenkins est mature et complet. Il y a également plusieurs plugins
+          qui peuvent contribuer au workflow général de Git dans Jenkins. Nous
+          commencerons par nous intéresser au plugin Git qui apporte le support
+          des fonctions principales de Git. Nous aborderons le sujet des plugins
+          supplémentaires brièvement.</para>
       <sect3 id="installing-the-plugin">
-        <title>Installing the plugin</title>
-        <para>The Git plugin <indexterm class="startofrange" id="ch05-gitinstall1" significance="normal"><primary>Git plugin</primary></indexterm><indexterm class="startofrange" id="ch05-gitinstall2" significance="normal"><primary>plugins</primary><secondary>Git</secondary></indexterm>is available in the Jenkins Plugin Manager and is
-        documented on its own <ulink url="http://wiki.hudson-ci.org/display/HUDSON/Git+Plugin">wiki
-        page</ulink>. The plugin assumes that Git (version 1.3.3 or later) has
-        already been installed on your build server, so you will need to make
-        sure that this is the case. You can do this by running the following
-        command on your build server:</para>
+        <title>Installation du plugin</title>
+        <para>Le plugin Git <indexterm class="startofrange" id="ch05-gitinstall1" significance="normal"><primary>plugin Git</primary></indexterm><indexterm class="startofrange" id="ch05-gitinstall2" significance="normal"><primary>plugins</primary><secondary>Git</secondary></indexterm>est disponible dans le Gestionnaire de Plugins Jenkins et
+            est documenté sur sa propre <ulink url="http://wiki.hudson-ci.org/display/HUDSON/Git+Plugin">page de
+            wiki</ulink>. Le plugin suppose que Git (version 1.3.3 ou ultérieure) a
+            été installé sur le serveur de build. Vous devrez donc vous en assurer
+            préalablement. Vous pouvez vous en assurer en exécutant la commande suivante
+            sur votre serveur de build :</para>
         <screen format="linespecific">$ <userinput moreinfo="none">git --version</userinput>
 git version 1.7.1</screen>
-        <para>Next, go back to Jenkins, check the corresponding check box in
-        the Jenkins Plugin Manager page and click the Install button.</para>
+        <para>Revenez ensuite à Jenkins et cochez la case correspondante dans le
+            gestionnaire de plugins Jenkins et cliquez sur le bouton d'installation.</para>
         <sect4 id="system-wide-configuration-of-the-plugin">
-          <title>System-wide configuration of the plugin</title>
-          <para>After installing the Git plugin, a small new set of
-          configuration options will be available on the Manage Jenkins<phrase role="unicode">→</phrase>Configure System page (see <xref linkend="I_figure1_id2245320"/>). In particular, you need to
-          provide the path to your Git executable. If Git is already installed
-          on the system path, just put “git” here.</para>
+          <title>Configuration système du plugin</title>
+          <para>Après l'installation du plugin Git, une nouvelle
+              section de configuration est disponible dans la page Administrer Jenkins<phrase role="unicode">→</phrase>Configurer le système (voir <xref linkend="I_figure1_id2245320"/>). Vous devez en particulier
+              fournir le chemin vers l'exécutable de Git. Si Git est déjà installé
+              sur votre système, entrez simplement “git” dans le champ.</para>
           <figure float="0" id="I_figure1_id2245320">
-            <title>System-wide configuration of the Git plugin</title>
+            <title>Configuration système du plugin Git</title>
             <mediaobject id="I_mediaobject5_d1e5503">
               <imageobject role="print">
                 <imagedata fileref="figs/print/jtdg_0508.pdf" format="PDF"/>
@@ -425,57 +449,59 @@ git version 1.7.1</screen>
           </figure>
         </sect4>
         <sect4 id="ssh-key-setup">
-          <title>SSH key setup</title>
-          <para>If the <indexterm id="I_indexterm5_d1e5513" significance="normal"><primary>SSH keys</primary></indexterm><indexterm id="I_indexterm5_d1e5516" significance="normal"><primary>Git</primary><secondary>SSH keys</secondary></indexterm><indexterm id="I_indexterm5_d1e5521" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>SSH keys</tertiary></indexterm>Git repository you are accessing uses SSH
-          passphrase-less <phrase role="keep-together">authentication—</phrase>for example, if the
-          access address is similar to <literal moreinfo="none">git@github.com:matthewmccullough/some-repo.git</literal>—you’ll
-          need to provide the private half of the key as file <literal moreinfo="none">~/.ssh/id_rsa</literal> where <literal moreinfo="none">~</literal> is the home directory of the user
-          account under which Jenkins is <phrase role="keep-together">running</phrase>.</para>
-          <para>The fingerprint of the remote server will additionally need to
-          be placed in <literal moreinfo="none">~/.ssh/known_hosts</literal>
-          to prevent Jenkins from invisibly prompting for authorization to
-          access this Git server for the first time.</para>
-          <para>Alternatively, if logging-in is enabled for the <literal moreinfo="none">jenkins</literal> user, SSH into the Jenkins machine
-          as <literal moreinfo="none">jenkins</literal> and manually attempt
-          to Git clone a remote repository. This will test your private key
-          setup and establish the <literal moreinfo="none">known_hosts</literal> file in the <literal moreinfo="none">~/.ssh</literal> directory. This is probably the
-          simplest option for users unfamiliar with the intricacies of SSH
-          <phrase role="keep-together">configuration</phrase>.<indexterm id="I_indexterm5_d1e5568" class="endofrange" startref="ch05-gitinstall1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e5570" class="endofrange" startref="ch05-gitinstall2" significance="normal"><primary/></indexterm></para>
+          <title>Configuration de la clé SSH</title>
+          <para>Si le <indexterm id="I_indexterm5_d1e5513" significance="normal"><primary>clés SSH</primary></indexterm><indexterm id="I_indexterm5_d1e5516" significance="normal"><primary>Git</primary><secondary>clés SSH</secondary></indexterm><indexterm id="I_indexterm5_d1e5521" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>clés SSH</tertiary></indexterm>dépôt Git auquel vous accédez utilise SSH
+              sans mot de passe comme moyen d'<phrase role="keep-together">authentification—</phrase>par exemple si
+              l'adresse d'accès ressemble à <literal moreinfo="none">git@github.com:matthewmccullough/some-repo.git</literal>—vous devrez
+              fournir la partie privée de la clé sous forme de fichier <literal moreinfo="none">~/.ssh/id_rsa</literal> où <literal moreinfo="none">~</literal> est le répertoire racine du compte
+              utilisateur <phrase role="keep-together">exécutant</phrase> Jenkins.</para>
+          <para>L'empreinte du serveur distant devra additionnellement être
+              ajoutée dans <literal moreinfo="none">~/.ssh/known_hosts</literal>
+              pour éviter que Jenkins ne vous invite à accepter l'autorisation
+              vers le serveur Git lors du premier accès alors que la console sera
+              non interactive.</para>
+          <para>Alternativement, si vous avez la possibilité de vous connecter avec l'utilisateur <literal moreinfo="none">jenkins</literal>, accédez par SSH à la machine Jenkins
+              en tant que <literal moreinfo="none">jenkins</literal> et faites une tentative manuelle
+              de cloner un dépôt Git distant. Cela testera la configuration de
+              votre clé privée et remplira le fichier <literal moreinfo="none">known_hosts</literal> dans le répertoire <literal moreinfo="none">~/.ssh</literal>. C'est probablement la
+              solution la plus simple de vous familiariser avec les subtilités
+              de la <phrase role="keep-together">configuration</phrase> SSH.<indexterm id="I_indexterm5_d1e5568" class="endofrange" startref="ch05-gitinstall1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e5570" class="endofrange" startref="ch05-gitinstall2" significance="normal"><primary/></indexterm></para>
         </sect4>
       </sect3>
       <sect3 id="using-the-plugin">
-        <title>Using the plugin</title>
-        <para>On <indexterm id="I_indexterm5_d1e5577" significance="normal"><primary>Git</primary><secondary>repository address</secondary></indexterm><indexterm id="I_indexterm5_d1e5582" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>repository address</tertiary></indexterm>either an existing or a new Jenkins project, a new
-        Source Code Management option for Git will be displayed. From here,
-        you can configure one or more repository addresses (see <xref linkend="I_figure1_id2245479"/>). One repository is usually enough
-        for most projects: adding a second repository can be useful in more
-        complicated cases, and lets you specify distinct named locations for
-        <literal moreinfo="none">pull</literal> and <literal moreinfo="none">push</literal> operations.</para>
+        <title>Utilisation du plugin</title>
+        <para>Que <indexterm id="I_indexterm5_d1e5577" significance="normal"><primary>Git</primary><secondary>adresse du dépôt</secondary></indexterm><indexterm id="I_indexterm5_d1e5582" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>adresse du dépôt</tertiary></indexterm>cela soit dans un nouveau projet Jenkins ou dans un projet existant, une nouvelle
+            option de Gestion du Code Source pour Git sera affichée. Dès lors,
+            vous pouvez configurer une ou plusieurs adresses de dépôts (voir <xref linkend="I_figure1_id2245479"/>). Un seul dépôt est utilisé dans la
+            majorité des projets. Ajouter un second dépôt peut être utile dans
+            des cas plus compliqués et vous permet de spécifier des cibles
+            distinctes pour les opérations de <literal moreinfo="none">pull</literal> et de <literal moreinfo="none">push</literal>.</para>
         <sect4 id="advanced-per-project-source-code-management-configuration">
-          <title>Advanced per-project source code management
-          configuration</title>
-          <para>In most cases, the URL of the Git repository you are using
-          should be enough. However, if you need more options, click on the
-          Advanced button (see <xref linkend="I_figure1_id2245574"/>). This
-          provides more precise control of the <literal moreinfo="none">pull</literal> behavior.</para>
-          <para>The <emphasis>Name of repository</emphasis> is a shorthand
-          title (a.k.a. <literal moreinfo="none">remote</literal> in Git
-          parlance) for a given repository, that you can refer to later on in
-          the merge action configuration.</para>
-          <para>The <emphasis>Refspec</emphasis> is a Git-specific <ulink url="http://progit.org/book/ch9-5.html">language</ulink> for
-          controlling precisely what is retrieved from remote servers and
-          under what namespace it is stored locally.</para>
+          <title>Configuration avancée par projet de la gestion du code source</title>
+          <para>Dans la plupart des cas, l'URL du dépôt Git que vous utilisez
+              devrait être suffisante. Cependant, si vous avez besoin de plus
+              d'options, cliquez sur le bouton Avancé (voir <xref linkend="I_figure1_id2245574"/>).
+              Cela apporte un un contrôle plus précis sur le comportement du
+              <literal moreinfo="none">pull</literal>.</para>
+          <para>Le <emphasis>Nom du dépôt</emphasis> est un titre raccourci
+              (ou <literal moreinfo="none">remote</literal> en langage Git)
+              pour un dépôt donné auquel vous pouvez vous reporter plus
+              tard dans la configuration de l'action de merge.</para>
+          <para>La <emphasis>Refspec</emphasis> est un <ulink url="http://progit.org/book/ch9-5.html">terme</ulink> spécifique
+              du langage Git pour contrôler précisément ce qui est récupéré
+              depuis les serveurs distants et sous quel espace de nom c'est
+              stocké localement.</para>
         </sect4>
         <sect4 id="branches-to-build">
-          <title>Branches to build</title>
-          <para>The <indexterm id="I_indexterm5_d1e5629" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>branches to build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5636" significance="normal"><primary>Git</primary><secondary>branches to build</secondary></indexterm>branch specifier (<xref linkend="I_figure1_id2245638"/>) is the wildcard pattern or
-          specific branch name that should be built by Jenkins. If left blank,
-          all branches will be built. At the time of this writing, after the
-          first time saving a job with a blank <emphasis>branches to
-          build</emphasis> setting, it is populated with <literal moreinfo="none">**,</literal> which means “build all
-          branches.”</para>
+          <title>Branches à construire</title>
+          <para>Le champ <indexterm id="I_indexterm5_d1e5629" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>branches à construire</tertiary></indexterm><indexterm id="I_indexterm5_d1e5636" significance="normal"><primary>Git</primary><secondary>branches à construire</secondary></indexterm>Branch Specifier (<xref linkend="I_figure1_id2245638"/>) peut être utilisé à l'aide d'un caractère générique  
+          ou en spécifiant le nom d'une branche à construire par Jenkins. Si le 
+          champ est laissé vide, toutes les branches seront construites. Pour 
+          le moment, lorsque vous sauvegardez votre tâche pour la première fois 
+          et qu'elle est configurée avec <emphasis>ce champ</emphasis> vide, il est alors rempli 
+          avec <literal moreinfo="none">**</literal>, ce qui signifie "construire toutes les branches".</para>
           <figure float="none" id="I_figure1_id2245479">
-            <title>Entering a Git repo URL</title>
+            <title>Remplir une URL de dépôt Git</title>
             <mediaobject id="I_mediaobject5_d1e5653">
               <imageobject role="print">
                 <imagedata fileref="figs/print/jtdg_0509.pdf" format="PDF"/>
@@ -486,7 +512,7 @@ git version 1.7.1</screen>
             </mediaobject>
           </figure>
           <figure float="none" id="I_figure1_id2245574">
-            <title>Advanced configuration of a Git repo URL</title>
+            <title>Configuration avancée d'une URL de dépôt Git</title>
             <mediaobject id="I_mediaobject5_d1e5661">
               <imageobject role="print">
                 <imagedata fileref="figs/print/jtdg_0510.pdf" format="PDF"/>
@@ -497,7 +523,7 @@ git version 1.7.1</screen>
             </mediaobject>
           </figure>
           <figure float="0" id="I_figure1_id2245638">
-            <title>Advanced configuration of the Git branches to build</title>
+            <title>Configuration avancée des branches Git à construire</title>
             <mediaobject id="I_mediaobject5_d1e5669">
               <imageobject role="print">
                 <imagedata fileref="figs/print/jtdg_0511.pdf" format="PDF"/>
@@ -509,15 +535,15 @@ git version 1.7.1</screen>
           </figure>
         </sect4>
         <sect4 id="excluded-regions">
-          <title>Excluded regions</title>
-          <para>Regions (seen in <xref linkend="I_figure1_id2245692"/>)
-          <indexterm id="I_indexterm5_d1e5681" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>excluding regions from triggering</tertiary></indexterm><indexterm id="I_indexterm5_d1e5688" significance="normal"><primary>Git</primary><secondary>excluding regions from triggering builds</secondary></indexterm>are named specific or wildcard paths in the codebase
-          that, even when changed, should not trigger a build. Commonly these
-          are noncompiled files such as localization bundles or images, which,
-          understandably might not have an effect on unit or integration
-          tests.</para>
+          <title>Régions exclues</title>
+          <para>Les régions (vues dans<xref linkend="I_figure1_id2245692"/>)
+          <indexterm id="I_indexterm5_d1e5681" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>exclure certaines régions du déclenchement</tertiary></indexterm><indexterm id="I_indexterm5_d1e5688" significance="normal"><primary>Git</primary><secondary>exclure certaines régions du déclenchement de builds</secondary></indexterm>sont des chemins nommés spécifiquement ou génériques de votre 
+          code source qui, même une fois modifiés, ne doivent pas déclencher 
+          de build. Il s'agit généralement de fichiers non compilés tels que 
+          les archives de locales ou d'images qui n'ont à priori pas d'effet 
+          sur les tests unitaires ou d'intégration.</para>
           <figure float="0" id="I_figure1_id2245692">
-            <title>Branches and regions</title>
+            <title>Branches et régions</title>
             <mediaobject id="I_mediaobject5_d1e5697">
               <imageobject role="print">
                 <imagedata fileref="figs/print/jtdg_0512.pdf" format="PDF"/>
@@ -529,96 +555,100 @@ git version 1.7.1</screen>
           </figure>
         </sect4>
         <sect4 id="excluded-users">
-          <title>Excluded users</title>
-          <para>The <indexterm id="I_indexterm5_d1e5707" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>excluding users from triggering</tertiary></indexterm><indexterm id="I_indexterm5_d1e5714" significance="normal"><primary>users</primary><secondary>excluding from triggering builds</secondary></indexterm><indexterm id="I_indexterm5_d1e5719" significance="normal"><primary>Git</primary><secondary>excluding users from triggering builds</secondary></indexterm>Git plugin also lets you ignore certain users, even if
-          they make changes to the codebase that would typically trigger a
-          build.</para>
-          <para>This is not as spiteful as it sounds: excluded users are
-          typically automated users, not human developers, that happen to have
-          distinct accounts with commit rights in the source control system.
-          These automated users often are performing small numeric changes
-          such as bumping up version numbers in a <filename moreinfo="none">pom.xml</filename> file, rather than making actual
-          logic changes. If you want to exclude several users, just place them
-          on separate lines.</para>
+          <title>Utilisateurs Exclus</title>
+          <para>Le plugin <indexterm id="I_indexterm5_d1e5707" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>exclure des utilisateurs du déclenchement</tertiary></indexterm><indexterm id="I_indexterm5_d1e5714" significance="normal"><primary>utilisateurs</primary><secondary>exclure du déclenchement de builds</secondary></indexterm><indexterm id="I_indexterm5_d1e5719" significance="normal"><primary>Git</primary><secondary>exclure des utilisateurs du déclenchement de builds</secondary></indexterm>Git vous permet également d'ignorer certains utilisateurs 
+          même s'ils effectuent des changements du code source qui auraient 
+          dû normalement déclencher un build.</para>
+          <para>Cette action n'est pas aussi méchante qu'elle peut paraitre : 
+          les utilisateyrs exclus sont généralement des utilisateurs 
+          automatisés ou des développeurs non humains, qui ont des 
+          comptes distincts avec des droits de commit sur le gestionnaire 
+          de code source. Ces utilisateurs automatisés font généralement 
+          de petites opérations comme incrémenter la version d'un fichier 
+          <filename moreinfo="none">pom.xml</filename> plutôt que de véritables changements dans la logique de votre 
+          application. Si vous souhaitez exclure plusieurs utilisateurs, 
+          ajoutez les simplement sur des lignes séparées.</para>
         </sect4>
         <sect4 id="checkoutmerge-to-local-branch">
-          <title>Checkout/merge to local branch</title>
-          <para>There <indexterm id="I_indexterm5_d1e5735" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>checking out to local branch</tertiary></indexterm><indexterm id="I_indexterm5_d1e5742" significance="normal"><primary>Git</primary><secondary>checking out to local branch</secondary></indexterm>are times when you may want to create a local branch
-          from the tree you’ve specified, rather than just using a direct
-          <emphasis>detached HEAD</emphasis> checkout of the commit’s hash. In
-          this case, just specify your local branch in the “Checkout/merge to
-          a local branch” field.</para>
-          <para>This is a little easier to illustrate with an example. Without
-          specifying a local branch, the plugin would do something like
-          this:</para>
+          <title>Récupérer/fusionner sur une branche locale</title>
+          <para>Parfois <indexterm id="I_indexterm5_d1e5735" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>récupérer sur une branche locale</tertiary></indexterm><indexterm id="I_indexterm5_d1e5742" significance="normal"><primary>Git</primary><secondary>récupérer sur une branche locale</secondary></indexterm>vous aurez le besoin de récupérer directement 
+          le <emphasis>HEAD de manière séparée</emphasis> dans une branche au travers du 
+          hash d'un commit. Dans ce cas, spécifiez votre branche locale 
+          dans le champ “Checkout/merge to a local branch”.</para>
+          <para>Il est plus simple de l'illustrer par un exemple. Sans 
+          spécifier de branche locale, le plugin ferait quelque chose
+          comme cela : </para>
           <screen format="linespecific">git checkout 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
-          <para>On the other hand, if you use a local branch named <literal moreinfo="none">mylocalbranch</literal>, Jenkins would do the
-          following:</para>
-          <screen format="linespecific">git branch -D mylocalbranch
-git checkout -b mylocalbranch 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
+          <para>Autrement, si vous utilisiez une branche nommée <literal moreinfo="none">maBranche</literal>, Jenkins ferait la chose 
+          suivante : </para>
+          <screen format="linespecific">git branch -D maBranche
+git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
         </sect4>
         <sect4 id="local-subdirectory-for-repo">
-          <title>Local subdirectory for repo</title>
-          <para>By <indexterm id="I_indexterm5_d1e5767" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>workspace location, overriding</tertiary></indexterm><indexterm id="I_indexterm5_d1e5774" significance="normal"><primary>Git</primary><secondary>workspace location, overriding</secondary></indexterm>default, Jenkins will clone the Git repository
-          directly into the build job workspace. If you prefer to use a
-          different directory, you can specify it here. Note that the
-          directory you specify is relative to the build job workspace.</para>
+          <title>Dépôt dans un sous-répertoire local</title>
+          <para>Par <indexterm id="I_indexterm5_d1e5767" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>localisation de l'espace de travail, ecraser</tertiary></indexterm><indexterm id="I_indexterm5_d1e5774" significance="normal"><primary>Git</primary><secondary>localisation de l'espace de travail, ecraser</secondary></indexterm>défaut, Jenkins clonera le dépôt Git 
+          directement dans l'espace de travail de votre tâche de build. 
+          Si vous préférez utiliser un répertoire différent, vous pouvez 
+          le spécifier ici. Notez que ce répertoire est relatif à l'espace 
+          de travail de votre tâche de build.</para>
         </sect4>
         <sect4 id="merge-before-build">
-          <title>Merge before build</title>
-          <para>The <indexterm id="I_indexterm5_d1e5785" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>merging before build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5792" significance="normal"><primary>Git</primary><secondary>merging before build</secondary></indexterm>typical recipe for using this option is to fold an
-          integration branch into a branch more similar to <literal moreinfo="none">master</literal>. Keep in mind that only
-          conflict-less merges will happen automatically. More complex merges
-          that require manual intervention will fail the build.</para>
-          <para>The resultant merged branch will not automatically be pushed
-          to another repository unless the later <literal moreinfo="none">push</literal>
-          post-build action is enabled.</para>
+          <title>Fusionner avant le build</title>
+          <para>Le <indexterm id="I_indexterm5_d1e5785" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>fusionner avant le build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5792" significance="normal"><primary>Git</primary><secondary>fusionner avant le build</secondary></indexterm>cas typique d'utilisation de cette option est le remplissage 
+          d'une branche d'intégration proche de la branche <literal moreinfo="none">master</literal>. N'oubliez pas que 
+          seulement les fusions ne présentant pas de conflit seront 
+          effectuées automatiquement. Les fusions plus complexes qui 
+          requièrent une intervention manuelle feront échouer le build.</para>
+          <para>La branche fusionnée qui en résulte ne sera pas poussée 
+          automatiquement à moins que l'action de <literal moreinfo="none">push</literal> 
+          ne soit activée dans les actions post-build.</para>
         </sect4>
         <sect4 id="prune-remote-branches-before-build">
-          <title>Prune remote branches before build</title>
-          <para>Pruning <indexterm id="I_indexterm5_d1e5811" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>pruning branches before build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5818" significance="normal"><primary>Git</primary><secondary>pruning branches before build</secondary></indexterm>removes local copies of remote branches that exist as
-          a remnant of the previous clone, but are no longer present on the
-          remote. In short, this is cleaning the local clone to be in perfect
-          sync with its remote siblings.</para>
+          <title>Tailler les branches distantes avant le build</title>
+          <para>Tailler <indexterm id="I_indexterm5_d1e5811" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>tailler les branches distantes avant le build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5818" significance="normal"><primary>Git</primary><secondary>tailler les branches distantes avant le build</secondary></indexterm> supprime les copies locales de branches distantes qui proviennent 
+          d'un clone précédent mais qui ne sont plus présentent sur le dépôt 
+          distant. En résumé, il s'agit du nettoyage du clone local pour qu'il 
+          soit parfaitement synchronisé avec son jumeau distant.</para>
         </sect4>
         <sect4 id="clean-after-checkout">
-          <title>Clean after checkout</title>
-          <para>Activate <indexterm id="I_indexterm5_d1e5829" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>cleaning after checkout</tertiary></indexterm><indexterm id="I_indexterm5_d1e5836" significance="normal"><primary>Git</primary><secondary>cleaning after checkout</secondary></indexterm>Git’s facilities for purging any untracked files or
-          folders, returning your working copy to a pristine state.</para>
+          <title>Nettoyer après récupération</title>
+          <para>Active <indexterm id="I_indexterm5_d1e5829" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>nettoyer après récupération</tertiary></indexterm><indexterm id="I_indexterm5_d1e5836" significance="normal"><primary>Git</primary><secondary>nettoyer après récupération</secondary></indexterm> la purge de tout fichier ou répertoire non 
+          versionné, ramenant le votre copie de travail à son étât vierge.</para>
         </sect4>
         <sect4 id="recursively-update-submodules">
-          <title>Recursively update submodules</title>
-          <para>If <indexterm id="I_indexterm5_d1e5848" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>recursively update submodules</tertiary></indexterm><indexterm id="I_indexterm5_d1e5855" significance="normal"><primary>Git</primary><secondary>recursively update submodules</secondary></indexterm>you are using Git’s submodule facilities in the
-          project, this option lets you ensure that every submodule is
-          up-to-date with an explicit call to <literal moreinfo="none">update</literal>, even if submodules are nested
-          within other submodules.</para>
+          <title>Mise à jour récursive des sous-modules</title>
+          <para>Si <indexterm id="I_indexterm5_d1e5848" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>mise à jour récursive des sous-modules</tertiary></indexterm><indexterm id="I_indexterm5_d1e5855" significance="normal"><primary>Git</primary><secondary>mise à jour récursive des sous-modules</secondary></indexterm> vous utilisez les fonctionnalités de sous-modules de Git dans 
+          votre projet, cette option vous assure que chaque sous-module 
+          est à jour grâce à un appel explicite à la commande <literal moreinfo="none">update</literal>, même si les sous-modules 
+          sont imbriqués dans d'autres sous-modules.</para>
         </sect4>
         <sect4 id="use-commit-author-in-changelog">
-          <title>Use commit author in changelog</title>
-          <para>Jenkins<indexterm id="I_indexterm5_d1e5869" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>commit author, including in changelog</tertiary></indexterm><indexterm id="I_indexterm5_d1e5876" significance="normal"><primary>Git</primary><secondary>commit author, including in changelog</secondary></indexterm> tracks and displays the author of changed code in a
-          summarized view. Git tracks both the committer and author of code
-          distinctly, and this option lets you toggle which of those two
-          usernames is displayed in the changelog.</para>
+          <title>Utiliser l'auteur du commit dans changelog</title>
+          <para>Jenkins<indexterm id="I_indexterm5_d1e5869" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>auteur du commit, inclure dans le changelog</tertiary></indexterm><indexterm id="I_indexterm5_d1e5876" significance="normal"><primary>Git</primary><secondary>auteur du commit, inclure dans le changelog</secondary></indexterm> note et affiche l'auteur du changement de code dans une 
+          vue synthétique. Git note l'auteur et le commiter du code
+          distinctement, et cette option vous permet de choisir lequel 
+          apparaîtra dans le changelog.</para>
         </sect4>
         <sect4 id="wipe-out-workspace">
-          <title>Wipe out workspace</title>
-          <para>Typically<indexterm id="I_indexterm5_d1e5887" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>workspace, wiping out before build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5894" significance="normal"><primary>Git</primary><secondary>workspace, wiping out before build</secondary></indexterm> Jenkins will reuse the workspace, merely freshening
-          the checkout as necessary and, if you activated the “Clean after
-          checkout” option, cleaning up untracked files. However, if you
-          prefer to have a completely clean workspace, you can use the “Wipe
-          out workspace” option to delete and rebuild the workspace from the
-          ground up. Bear in mind that this may significantly lengthen the
-          time it takes to initialize and build the project.</para>
+          <title>Effacer l'espace de travail</title>
+          <para>Typiquement<indexterm id="I_indexterm5_d1e5887" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>espace de travail, effacer avant le build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5894" significance="normal"><primary>Git</primary><secondary>espace de travail, effacer avant le build</secondary></indexterm> Jenkins réutilisera l'espace de travail, le rafraîchissant simplement 
+          si nécessaire et si vous avez activé l'option “Clean after
+          checkout”, nettoiera les fichiers non versionnés. Cependant, si vous 
+          préférez avec un espace de travail complétement propre, vous pouvez
+          utiliser l'option “Wipe out workspace” pour supprimer et 
+          reconstruire l'espace de travail de zéro. Gardez à l'esprit 
+          que cela allongera significativement le temps d'initialisation 
+          et de construiction du projet.</para>
         </sect4>
         <sect4 id="choosing-strategy">
-          <title>Choosing strategy</title>
-          <para>Jenkins <indexterm id="I_indexterm5_d1e5905" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>branches to build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5912" significance="normal"><primary>Git</primary><secondary>branches to build</secondary></indexterm>decides which branches to build based on a
-          <emphasis>strategy</emphasis> (see <xref linkend="I_figure1_id2245980"/>). Users can influence this
-          branch-search process. The default choice is to search for all
-          branch HEADs. If the Gerrit plugin is installed, additional options
-          for building all Gerrit-notified commits are displayed.</para>
+          <title>Choix de la stratégie</title>
+          <para>Jenkins <indexterm id="I_indexterm5_d1e5905" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>branches à construire</tertiary></indexterm><indexterm id="I_indexterm5_d1e5912" significance="normal"><primary>Git</primary><secondary>branches à construire</secondary></indexterm>decide quelle branches il doit construire en se basant sur 
+          une certaine <emphasis>stratégie</emphasis> (voir <xref linkend="I_figure1_id2245980"/>). Les utilisateurs peuvent influencer 
+          cette procédure de recherche de branche. Le choix par défaut est de rechercher tous les 
+          HEADs de branche. Si le plugin Gerrit est installé, d'autres options 
+          pour construire tous les commits notifiés par Gerrit seront affichées.</para>
           <figure float="none" id="I_figure1_id2245980">
-            <title>Choosing strategy</title>
+            <title>Choix de la stratégie</title>
             <mediaobject id="I_mediaobject5_d1e5926">
               <imageobject role="print">
                 <imagedata fileref="figs/print/jtdg_0513.pdf" format="PDF"/>
@@ -630,15 +660,16 @@ git checkout -b mylocalbranch 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
           </figure>
         </sect4>
         <sect4 id="git-executable">
-          <title>Git executable</title>
-          <para>In the <indexterm id="I_indexterm5_d1e5936" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>Git executable, specifying</tertiary></indexterm>global options of Jenkins (see <xref linkend="I_figure1_id2246035"/>), different Git executables can be
-          set up and used on a per-build basis. This is infrequently used, and
-          only when the clone or other Git operations are highly sensitive to
-          a particular version of Git. Git tends to be very version-flexible;
-          slightly older repositories can easily be cloned with a newer
-          version of Git and vice-versa.</para>
+          <title>Exécutable Git</title>
+          <para>Dans les <indexterm id="I_indexterm5_d1e5936" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>exécutable Git, spécifier</tertiary></indexterm>options globales de Jenkins (voir <xref linkend="I_figure1_id2246035"/>), plusieurs exécutables Git 
+          peuvent être configurés et utilisés build par build. Cela est peu 
+          régulièrement utilisé et seulement lorsqu'un clone ou d'autres opérations 
+          Git sont spécifiques à une version particulière de Git. Git tend à  
+          être très flexible quant à ses numéro de version ; les dépôts légèrement 
+          anciens peuvent être clonés très facilement avec une nouvelle version 
+          de Git et inversement.</para>
           <figure float="0" id="I_figure1_id2246035">
-            <title>Git executable global setup</title>
+            <title>Configuration globale de l'exécutable de Git</title>
             <mediaobject id="I_mediaobject5_d1e5949">
               <imageobject role="print">
                 <imagedata fileref="figs/print/jtdg_0514.pdf" format="PDF"/>
@@ -650,14 +681,15 @@ git checkout -b mylocalbranch 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
           </figure>
         </sect4>
         <sect4 id="repository-browser">
-          <title>Repository browser</title>
-          <para>Like <indexterm id="I_indexterm5_d1e5959" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>source code browsers for</tertiary></indexterm><indexterm id="I_indexterm5_d1e5966" significance="normal"><primary>Git</primary><secondary>source code browsers for</secondary></indexterm><indexterm id="I_indexterm5_d1e5971" significance="normal"><primary>source code browsers</primary><secondary sortas="Git">with Git</secondary></indexterm>Subversion, Git has several source code browsers that
-          you can use. The most common ones are Gitorious, Git Web, or
-          <indexterm id="I_indexterm5_d1e5977" significance="normal"><primary>GitHub repository</primary></indexterm>GitHub. If you provide the URL to the corresponding
-          repository browser, Jenkins will be able to display a link to the
-          source code changes that triggered a build (see <xref linkend="I_figure1_id2246089"/>).</para>
+          <title>Navigateur de dépôt</title>
+          <para>Tout comme <indexterm id="I_indexterm5_d1e5959" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>navigateurs de code source pour</tertiary></indexterm><indexterm id="I_indexterm5_d1e5966" significance="normal"><primary>Git</primary><secondary>navigateurs de code source pour</secondary></indexterm><indexterm id="I_indexterm5_d1e5971" significance="normal"><primary>navigateurs de code source</primary><secondary sortas="Git">avec Git</secondary></indexterm>Subversion, Git a plusieurs navigateurs de source qu'il 
+          peut utiliser. Les plus couramment utilisés sont Gitorious, Git Web, ou
+          <indexterm id="I_indexterm5_d1e5977" significance="normal"><primary>Dépôt GitHub</primary></indexterm>GitHub. Si vous fournissez l'URL 
+          correspondante à votre navigateur de dépôt, Jenkins pourra alors 
+          afficher un lien direct vers les changements de votre code source 
+          qui ont déclenché le build (voir <xref linkend="I_figure1_id2246089"/>).</para>
           <figure float="0" id="I_figure1_id2246089">
-            <title>Repository browser</title>
+            <title>Navigateur de dépôt</title>
             <mediaobject id="I_mediaobject5_d1e5986">
               <imageobject role="print">
                 <imagedata fileref="figs/print/jtdg_0515.pdf" format="PDF"/>
@@ -670,17 +702,19 @@ git checkout -b mylocalbranch 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
         </sect4>
       </sect3>
       <sect3 id="build-triggers">
-        <title>Build triggers</title>
-        <para>The <indexterm class="startofrange" id="ch05-gittrigger1" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>build triggers</tertiary></indexterm><indexterm class="startofrange" id="ch05-gittrigger2" significance="normal"><primary>Git</primary><secondary>build triggers</secondary></indexterm>basic Git plugin offers the ability to <emphasis>Poll
-        SCM</emphasis> on a timed basis, looking for changes since the last
-        inquiry. If changes are found, a build is started. The polling log
-        (shown in <xref linkend="I_figure1_id2246150"/>) is accessible via a
-        link on the left hand side of the page in the navigation bar when
-        viewing a specific job. It offers information on the last time the
-        repository was polled and if it replied with a list of changes (see
+        <title>Déclencheurs de build</title>
+        <para>Le <indexterm class="startofrange" id="ch05-gittrigger1" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>déclencheurs de build</tertiary></indexterm><indexterm class="startofrange" id="ch05-gittrigger2" significance="normal"><primary>Git</primary><secondary>déclencheurs de build</secondary></indexterm>plugin Git de base offre la possibilité de 
+        <emphasis>scruter l'outil de gestion de version</emphasis> régulièrement 
+        et de vérifier si de nouveau changements ont eu lieu depuis la dernière 
+        requête. Si des changements sont présents, un build est alors lancé. Le 
+        journal de scrutation (montré dans <xref linkend="I_figure1_id2246150"/>) est accessible 
+        par un lien dans la partie gauche de la page dans la barre de navigation 
+        lorsque vous visitez une tâche spécifique. Vous y trouverez les 
+        informations sur la dernière fois que le dépôt a été scruté et s'il a 
+        renvoyé une liste de changements (voir
         <xref linkend="I_figure1_id2246192"/>).</para>
         <figure float="0" id="I_figure1_id2246150">
-          <title>Polling log</title>
+          <title>Journal de scrutation</title>
           <mediaobject id="I_mediaobject5_d1e6019">
             <imageobject role="print">
               <imagedata fileref="figs/print/jtdg_0516.pdf" format="PDF"/>
@@ -690,11 +724,12 @@ git checkout -b mylocalbranch 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
             </imageobject>
           </mediaobject>
         </figure>
-        <para>The Git polling is distilled into a more developer-useful format
-        that shows commit comments as well as hyperlinking usernames and
-        changed files to more detailed views of each.</para>
+        <para>La scrutation de Git est dilluée dans un format plus orienté 
+          développeur qui montre les commentaires de commit ainsi que des 
+          hyperliens qui vers une vue plus détaillée des utilisateurs et des 
+          fichiers modifiés.</para>
         <figure float="0" id="I_figure1_id2246192">
-          <title>Results of Git polling</title>
+          <title>Résultats de la scrutation de Git</title>
           <mediaobject id="I_mediaobject5_d1e6029">
             <imageobject role="print">
               <imagedata fileref="figs/print/jtdg_0517.pdf" format="PDF"/>
@@ -704,28 +739,27 @@ git checkout -b mylocalbranch 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
             </imageobject>
           </mediaobject>
         </figure>
-        <para>Installing the <emphasis>Gerrit Build Trigger</emphasis> adds a
-        <emphasis>Gerrit event</emphasis> option that can be more efficient
-        and precise than simply polling the repository.</para>
+        <para>Installer le <emphasis>Gerrit Build Trigger</emphasis> ajoute une option 
+        <emphasis>Gerrit event</emphasis> qui peut être plus efficace et 
+        précise que de simplement scruter le dépôt.</para>
         <sect4 id="gerrit-trigger">
-          <title>Gerrit Trigger</title>
+          <title>Déclenchement par Gerrit</title>
           <para><ulink url="http://code.google.com/p/gerrit/">Gerrit</ulink>
-          is<indexterm id="I_indexterm5_d1e6049" significance="normal"><primary>Gerrit Trigger plugin</primary></indexterm><indexterm id="I_indexterm5_d1e6052" significance="normal"><primary>plugins</primary><secondary>Gerrit Trigger</secondary></indexterm> an open source web application that facilitates
-          <ulink url="https://review.source.android.com/#q,status:open,n,z">code
-          reviews</ulink> for project source hosted on a Git version control
-          system. It reads a traditional Git repository, and provides a
-          side-by-side comparison of changes. As the code is reviewed, Gerrit
-          provides a location to comment and move the patch to an
-          <emphasis>open</emphasis>, <emphasis>merged</emphasis>, or
-          <emphasis>abandoned</emphasis> status.</para>
-          <para>The <ulink url="http://wiki.hudson-ci.org/display/HUDSON/Gerrit+Trigger">Gerrit
-          Trigger</ulink> is a Jenkins plugin that can trigger a Jenkins build
-          of the code when any user-specified activity happens in a
-          user-specified project in the Git repository (see <xref linkend="I_figure1_id2246304"/>). It is a alternative to the more
-          typically-used <emphasis>Build periodically</emphasis> or
-          <emphasis>Poll SCM</emphasis>.</para>
+          est<indexterm id="I_indexterm5_d1e6049" significance="normal"><primary>Gerrit Trigger plugin</primary></indexterm><indexterm id="I_indexterm5_d1e6052" significance="normal"><primary>plugins</primary><secondary>Gerrit Trigger</secondary></indexterm> une application web open source qui 
+          facilite les <ulink url="https://review.source.android.com/#q,status:open,n,z">revues de 
+          code</ulink> pour les projets dont les sources sont gérées par Git. Il 
+          lit le dépôt Git traditionnel et apporte une comparaison côte-à-côte 
+          des changements. Lorsque le code est revu, Gerrit apporte alors un 
+          lieu pour commenter et déplacer le patch dans un état <emphasis>ouvert</emphasis>, 
+          <emphasis>fusionné</emphasis> ou <emphasis>abandonné</emphasis>.</para>
+          <para>Le <ulink url="http://wiki.hudson-ci.org/display/HUDSON/Gerrit+Trigger">Gerrit
+          Trigger</ulink> est un plugin Jenkins qui peut déclencher un build Jenkins 
+          sur du code quand n'importe quelle activité liée à un utilisateur spécifique 
+          survient dans le projet d'un utilisateur défini du dépôt Git (voir <xref linkend="I_figure1_id2246304"/>). Il s'agit d'une alternative aux options 
+          plus régulièrement utilisées comme la <emphasis>construction périodique</emphasis> ou la 
+          <emphasis>scrutation de l'outil de gestion de version</emphasis>.</para>
           <figure float="0" id="I_figure1_id2246304">
-            <title>Gerrit Trigger</title>
+            <title>Déclenchement par Gerrit</title>
             <mediaobject id="I_mediaobject5_d1e6087">
               <imageobject role="print">
                 <imagedata fileref="figs/print/jtdg_0518.pdf" format="PDF"/>
@@ -735,24 +769,24 @@ git checkout -b mylocalbranch 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
               </imageobject>
             </mediaobject>
           </figure>
-          <para>The configuration for this plugin is minimal and focused on
-          the <emphasis>Project Type</emphasis> and
-          <emphasis>Pattern</emphasis> and <emphasis>Branch Type</emphasis>
-          and <emphasis>Pattern</emphasis>. In each pair, the
-          <emphasis>type</emphasis> can be <emphasis>Plain</emphasis>,
-          <emphasis>Path</emphasis>, or <phrase role="keep-together"><emphasis>RegExp</emphasis>—</phrase>pattern
-          flavors of what to watch—and then the value
-          (<emphasis>pattern</emphasis>) to evaluate using the
-          <emphasis>type</emphasis> as<indexterm id="I_indexterm5_d1e6127" class="endofrange" startref="ch05-gittrigger1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6130" class="endofrange" startref="ch05-gittrigger2" significance="normal"><primary/></indexterm> the guide.</para>
+          <para>La configuration de ce plugin est minimale et focalisée sur 
+          le <emphasis>Type du Projet</emphasis> et son <emphasis>Pattern</emphasis> 
+          ainsi que le <emphasis>Type de Branches</emphasis>
+          et leur <emphasis>Pattern</emphasis>. Dans chaque paire, le
+          <emphasis>type</emphasis> peut être <emphasis>Plain</emphasis>,
+          <emphasis>Path</emphasis>ou bien <phrase role="keep-together"><emphasis>RegExp</emphasis> — </phrase>descriptif 
+          de ce qu'il faut observer — et la valeur
+          (<emphasis>pattern</emphasis>) à évaluer en utilisant le type
+          <emphasis>type</emphasis> comme<indexterm id="I_indexterm5_d1e6127" class="endofrange" startref="ch05-gittrigger1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6130" class="endofrange" startref="ch05-gittrigger2" significance="normal"><primary/></indexterm> guide.</para>
         </sect4>
       </sect3>
       <sect3 id="post-build-actions">
-        <title>Post-build actions</title>
-        <para>The<indexterm class="startofrange" id="ch05-postbuild1" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>post-build merging and pushing actions</tertiary></indexterm><indexterm class="startofrange" id="ch05-postbuild2" significance="normal"><primary>Git</primary><secondary>post-build merging and pushing actions</secondary></indexterm> Git plugin for Jenkins adds Git-specific capabilities
-        to the post-processing of the build artifacts. Specifically, the Git
-        Publisher (shown in <xref linkend="I_figure1_id2246534"/>) offers
-        merging and pushing actions. Check the Git Publisher checkbox to
-        display four options.</para>
+        <title>Actions post-build</title>
+        <para>Le<indexterm class="startofrange" id="ch05-postbuild1" significance="normal"><primary>freestyle build jobs</primary><secondary>Git used with</secondary><tertiary>post-build merging and pushing actions</tertiary></indexterm><indexterm class="startofrange" id="ch05-postbuild2" significance="normal"><primary>Git</primary><secondary>post-build merging and pushing actions</secondary></indexterm> plugin Git pour Jenkins ajoute des capacités spécifiques à Git 
+        au post-traitement des artefacts du build. Plus spécifiquement, le Git
+        Publisher (montré dans <xref linkend="I_figure1_id2246534"/>) permet les
+        actions de merge et de push. Cochez la case du Git Publisher pour afficher
+        ses quatres options.</para>
         <figure float="none" id="I_figure1_id2246534">
           <title>Git Publisher</title>
           <mediaobject id="I_mediaobject5_d1e6156">
@@ -765,17 +799,18 @@ git checkout -b mylocalbranch 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
           </mediaobject>
         </figure>
         <sect4 id="push-only-if-build-succeeds">
-          <title>Push only if build succeeds</title>
-          <para>If a merge or other commit-creating action has been taken
-          during the Jenkins build, it can be enabled to push to a
-          remote.</para>
+          <title>Pousser seulement si le build est réussi</title>
+          <para>Si une fusion ou tout autre action entraînant la 
+          création d'un commit a été faite pendant le build Jenkins, 
+          cette option peut alors être activée pour pousser les
+          changements dans le dépôt distant.</para>
         </sect4>
         <sect4 id="merge-results">
-          <title>Merge results</title>
-          <para>If prebuild merging is configured, push the merge-resultant
-          branch to its origin (see <xref linkend="I_figure1_id2246482"/>).</para>
+          <title>Fusionner les résultats</title>
+          <para>Si une fusion au début du build a été configurée, la 
+          branche résultante est alors pousser vers son origine (voir <xref linkend="I_figure1_id2246482"/>).</para>
           <figure float="none" id="I_figure1_id2246482">
-            <title>Merge results</title>
+            <title>Fusionner les résultats</title>
             <mediaobject id="I_mediaobject5_d1e6176">
               <imageobject role="print">
                 <imagedata fileref="figs/print/jtdg_0519.pdf" format="PDF"/>
@@ -787,37 +822,38 @@ git checkout -b mylocalbranch 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
           </figure>
         </sect4>
         <sect4 id="tags">
-          <title>Tags</title>
-          <para>When pushing tags, each tag can be named and chosen to be
-          created if it does not exist (which fails if it does already exist).
-          Environment variables can be embedded in the tag name. Examples
-          include the process ID such as <literal moreinfo="none">HUDSON_BUILD_$PPID</literal> or even a build number,
-          if that is provided by a Jenkins plugin, such as <literal moreinfo="none">$HUDSON_AUTOTAG_$BUILDNUM</literal>. Tags can be
-          targeted to a specific remote such as <literal moreinfo="none">origin</literal> or <literal moreinfo="none">integrationrepo</literal>.</para>
+          <title>Étiquettes</title>
+          <para>Lorsque vous poussez des étiquettes, chacune d'elle peut être 
+          nommée et choisie d'être créée si elle n'existe pas (ce qui échoue si 
+          elle existe déjà). Les variables d'environnement peuvent être 
+          utilisées dans le nom des étiquettes. Par exemple vous pouvez 
+          utiliser l'ID du process avec <literal moreinfo="none">HUDSON_BUILD_$PPID</literal> ou même le numéro de build 
+          s'il est fourni par un plugin Jenkins avec <literal moreinfo="none">$HUDSON_AUTOTAG_$BUILDNUM</literal>. Les étiquettes 
+          peuvent être ciblées sur un dépôt distant spécifique comme <literal moreinfo="none">origin</literal> ou <literal moreinfo="none">integrationrepo</literal>.</para>
         </sect4>
         <sect4 id="branches">
           <title>Branches</title>
-          <para>The current HEAD used in the Jenkins build of the application
-          can be pushed to other remotes as an after-step of the build. You
-          only need to provide the destination branch name and remote
-          name.</para>
-          <para>Names of remotes are validated against the earlier
-          configuration of the plugin. If the remote doesn’t exist, a warning
-          is <indexterm id="I_indexterm5_d1e6205" class="endofrange" startref="ch05-postbuild1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6207" class="endofrange" startref="ch05-postbuild2" significance="normal"><primary/></indexterm>displayed.</para>
+          <para>Le HEAD courant utilisé dans le build Jenkins d'une application 
+          peut être poussé dans d'autres dépôts distants lors d'une étape suivant 
+          le build. Vous n'avez à spécifier que la branche de destination et le 
+          nom du dépôt distant.</para>
+          <para>Les noms des dépôts distants sont validés en comparaison à la 
+          configuration précédemment faite du plugin. Si le dépôt n'existe pas, 
+          un avertissement est <indexterm id="I_indexterm5_d1e6205" class="endofrange" startref="ch05-postbuild1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6207" class="endofrange" startref="ch05-postbuild2" significance="normal"><primary/></indexterm>affiché.</para>
         </sect4>
       </sect3>
       <sect3 id="github-plugin">
-        <title>GitHub plugin</title>
-        <para>The <indexterm id="I_indexterm5_d1e6215" significance="normal"><primary>GitHub plugin</primary></indexterm><indexterm id="I_indexterm5_d1e6218" significance="normal"><primary>plugins</primary><secondary>GitHub</secondary></indexterm>GitHub plugin offers two integration points. First, it
-        offers an optional link to the project’s GitHub home page. Just enter
-        the URL for the project (without the tree/master or tree/branch part).
-        For example, <literal moreinfo="none">http://github.com/matthewmccullough/git-workshop</literal>.</para>
-        <para>Secondly, <indexterm id="I_indexterm5_d1e6229" significance="normal"><primary>GitHub repository</primary></indexterm>the GitHub plugin offers per-file-changed links that are
-        wired via the <emphasis>Repository browser</emphasis> section of a
-        job’s <emphasis>Source Code Management</emphasis> configuration (see
+        <title>Plugin GitHub</title>
+        <para>Le <indexterm id="I_indexterm5_d1e6215" significance="normal"><primary>Plugin GitHub</primary></indexterm><indexterm id="I_indexterm5_d1e6218" significance="normal"><primary>plugins</primary><secondary>GitHub</secondary></indexterm>plugin GitHub offre deux points d'intégration. Premièrement, il
+        apporte un lien optionnel vers la page de démarrage du projet sur GitHub. 
+        Entrez simplement l'URL du projet (sans la partie tree/master ou tree/branch).
+        Par exemple, <literal moreinfo="none">http://github.com/matthewmccullough/git-workshop</literal>.</para>
+        <para>Ensuite, <indexterm id="I_indexterm5_d1e6229" significance="normal"><primary>Dépôt GitHub</primary></indexterm>le plugin GitHub plugin permet d'obtenir 
+        un lien par fichier modifié qui sera relié directement au <emphasis>navigateur de dépôt</emphasis> 
+        via la section de <emphasis>gestion du code source</emphasis> (voir
         <xref linkend="I_figure1_id2246641"/>).</para>
         <figure float="0" id="I_figure1_id2246641">
-          <title>GitHub repository browser</title>
+          <title>Navigateur de dépôt GitHub</title>
           <mediaobject id="I_mediaobject5_d1e6244">
             <imageobject role="print">
               <imagedata fileref="figs/print/jtdg_0521.pdf" format="PDF"/>
@@ -827,11 +863,11 @@ git checkout -b mylocalbranch 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
             </imageobject>
           </mediaobject>
         </figure>
-        <para>With the <literal moreinfo="none">githubweb</literal> repository
-        browser chosen, all changed-detected files will be linked to the
-        appropriate GitHub source-viewing <indexterm id="I_indexterm5_d1e6254" class="endofrange" startref="ch05-git1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6256" class="endofrange" startref="ch05-git2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6258" class="endofrange" startref="ch05-scm" significance="normal"><primary/></indexterm>web page (<xref linkend="I_figure1_id2246688"/>).</para>
+        <para>Avec le choix de <literal moreinfo="none">githubweb</literal> comme
+        navigateur de dépôt, tout fichier sur lequel des changements auront été 
+        détectés sera lié à la page web de visualisation du source appropriée sur <indexterm id="I_indexterm5_d1e6254" class="endofrange" startref="ch05-git1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6256" class="endofrange" startref="ch05-git2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6258" class="endofrange" startref="ch05-scm" significance="normal"><primary/></indexterm>GitHub (<xref linkend="I_figure1_id2246688"/>).</para>
         <figure float="none" id="I_figure1_id2246688">
-          <title>GitHub repository browser</title>
+          <title>Navigateur de dépôt GitHub</title>
           <mediaobject id="I_mediaobject5_d1e6266">
             <imageobject role="print">
               <imagedata fileref="figs/print/jtdg_0522.pdf" format="PDF"/>
