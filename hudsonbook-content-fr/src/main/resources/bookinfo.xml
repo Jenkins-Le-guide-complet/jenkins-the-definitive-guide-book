@@ -24,38 +24,38 @@
     </address>
   </publisher>
   <legalnotice role="printlocation">
-    <para>Printed in the United States of America.</para>
+    <para>Imprimé aux États-Unis d’Amérique.</para>
   </legalnotice>
   <legalnotice role="printer">
     <para>[LSI]</para>
   </legalnotice>
   <legalnotice role="use">
-    <para>O’Reilly books may be purchased for educational, business, or sales
-    promotional use. Online editions are also available for most titles
+    <para>Les livres O’Reilly peuvent être achetés à des fins éducatives, commerciales ou de vente
+    à usage promotionnel. Des éditions en ligne sont également disponibles pour la plupart des titres
     (<ulink role="orm:hideurl:ital" url="http://my.safaribooksonline.com/?portal=oreilly">http://my.safaribooksonline.com</ulink>).
-    For more information, contact our corporate/institutional sales
-    department: (800) 998-9938 or <email>corporate@oreilly.com</email>.</para>
+    Pour plus d’informations, contactez notre département entreprises/institutions
+    : (800) 998-9938 ou <email>corporate@oreilly.com</email>.</para>
   </legalnotice>
   <legalnotice role="trademarks">
-    <para>Nutshell Handbook, the Nutshell Handbook logo, and the O’Reilly logo
-    are registered trademarks of O’Reilly Media, Inc. <emphasis>Jenkins: The
-    Definitive Guide</emphasis>, the image of an ornate chorus frog, and
-    related trade dress are trademarks of O’Reilly Media, Inc.</para>
-    <para>Many of the designations used by manufacturers and sellers to
-    distinguish their products are claimed as trademarks. Where those
-    designations appear in this book, and O’Reilly Media, Inc., was aware of a
-    trademark claim, the designations have been printed in caps or initial
-    caps.</para>
-    <para><emphasis>Jenkins: The Definitive Guide</emphasis> is available
-    under the <ulink url="http://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">Creative
+    <para>Nutshell Handbook, le logo de Nutshell Handbook, et le logo de O’Reilly
+    sont des marques déposées de O’Reilly Media, Inc. <emphasis>Jenkins : Le
+    guide complet</emphasis>, l’image d’une grenouille faux-grillon ornée, et
+    l’habillage commercial lié sont des marques déposées de O’Reilly Media, Inc.</para>
+    <para>Beaucoup d’appellations utilisées par les fabricants et les vendeurs pour
+    distinguer leurs produits sont des marques déposées. Lorsque ces appellations
+    apparaissent dans ce livre, et que O’Reilly Media, Inc., était au courant d’une
+    marque déposée, les désignations ont été inscrites en majuscules ou avec des
+    initiales en majuscule.</para>
+    <para><emphasis>Jenkins : Le guide complet</emphasis> est disponible
+    sous la licence <ulink url="http://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode">Creative
     Commons Attribution-Noncommercial-No Derivative Works 3.0 United States
-    License</ulink>.</para>
+    </ulink>.</para>
   </legalnotice>
   <legalnotice role="damages">
-    <para>While every precaution has been taken in the preparation of this
-    book, the publisher and author assume no responsibility for errors or
-    omissions, or for damages resulting from the use of the information
-    contained herein.</para>
+    <para>Bien que toutes les précautions aient été prises lors de la préparation de ce
+    livre, l’éditeur et l’auteur n’assument aucune responsabilité pour les erreurs ou
+    omissions, ou pour les dommages résultant de l’utilisation de l’information
+    contenue dans ce document.</para>
   </legalnotice>
   <isbn>9781449305352</isbn>
   <edition>1</edition>
@@ -63,18 +63,18 @@
     <firstname>John Ferguson</firstname>
     <surname>Smart</surname>
     <authorblurb>
-      <para><emphasis role="bold">John Ferguson Smart</emphasis> is a
-      well-known international consultant, trainer, author, and speaker in
-      open source and agile Java development and testing practices. He
-      specializes in helping <phrase role="keep-together">development</phrase>
-      teams improve their game with techniques such as Test-Driven Development
-      (including BDD and ATDD), Automated Acceptance Tests, Continuous
-      Integration, Build Automation, and Clean Coding practices. He provides
-      training and mentoring in open source technologies, SDLC tools, and
-      agile development processes.</para>
-      <para>John is the director of <ulink url="http://www.wakaleo.com">Wakaleo Consulting</ulink>, a company that
-      provides consulting, training, and mentoring services in open source and
-      agile Java development practices.</para>
+      <para><emphasis role="bold">John Ferguson Smart</emphasis> est un
+      consultant mondialement connu, formateur, auteur et conférencier en
+      développement Java open source et agile, et en pratiques de test. Il
+      est spécialisé dans l’aide aux équipes de <phrase role="keep-together">développement</phrase>
+      pour améliorer leur travail avec des techniques telles que le Test-Driven Development
+      (incluant BDD et ATDD), les tests d’acceptance automatisés, l’intégration
+      continue, l’automatisation du build, et les pratiques de code propre. Il fournit
+      de la formation et l’encadrement dans les technologies open source, les outils du cycle de développement,
+      et les processus de développement agiles.</para>
+      <para>John est le directeur de <ulink url="http://www.wakaleo.com">Wakaleo Consulting</ulink>, une société qui
+      fournit des services de conseil, de formation et d’accompagnement en open source et
+      pratiques de développement Java agile.</para>
     </authorblurb>
   </author>
   <editor>
@@ -103,8 +103,8 @@
   </othercredit>
   <printhistory>
     <formalpara>
-      <title>First Edition</title>
-      <para>July, 2011</para>
+      <title>Première édition</title>
+      <para>Juillet 2011</para>
     </formalpara>
   </printhistory>
   <legalnotice role="perfect">
