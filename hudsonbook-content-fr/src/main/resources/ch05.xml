@@ -1167,36 +1167,22 @@ UUID=`svnlook uuid $REPOS`
     <para>Une tâche de build peut avoir une étape, ou plusieurs. Il peut éventuellement n’en avoir aucune. Dans un build Freestyle, vous pouvez ajouter autant d’étapes de build que vous le souhaitez dans la section Build de la configuration de votre projet (voir Figure..). Dans une installation Jenkins basique, vous serez capable d’ajouter des étapes pour invoquer Maven et Ant, aussi bien que lancer des commandes shell spécifique à l’OS ou des batchs Windows. Et en installant des plugins additionnels, vous pouvez aussi intégrer d’autres outils, comme Groovy, Gradle, Grailes, Jython, MSBuild, Phing, Python, Rake, et Ruby, juste pour nommer certains des outils les plus connus.</para>
     <para>Dans le reste de cette section, nous allons plonger dans quelques-uns des types d’étapes de build les plus communs.</para>
     <sect2>
-      <title>Maven Build Steps</title>
+      <title>Les étapes de build Maven</title>
       <para>Jenkins <indexterm class="startofrange" id="ch05-mavenstep1" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>Maven build steps</tertiary></indexterm><indexterm class="startofrange" id="ch05-mavenstep2" significance="normal"><primary>Maven</primary><secondary sortas="build steps">build steps in freestyle build
-          jobs</secondary></indexterm>has excellent Maven support, and Maven build steps are
-      easy to configure and very flexible. Just pick “Invoke top-level Maven
-      targets” from the build step lists, pick a version of Maven to run (if
-      you have multiple versions installed), and enter the Maven goals you
-      want to run. Jenkins freestyle build jobs work fine with both Maven 2
-      and Maven 3.</para>
-      <para>Just like on the command line, you can specify as many individual
-      goals as you want. You can also provide command-line options. A few
-      useful Maven options in a CI context are:</para>
+          jobs</secondary></indexterm>a un support excellent de Maven, et les étapes de build Maven sont faciles à configurer et très flexibles. Il suffit de choisir « Invoquer les cibles Maven de haut niveau » depuis la liste des étapes de build, choisir une version de Maven à lancer (si vous avez plusieurs versions installées), et entrer les goals Maven que vous souhaitez lancer. Les tâches de build Freestyle de Jenkins fonctionnent biens avec Maven 2 et Maven 3.</para>
+      <para>Tout comme en ligne de commande, vous pouvez spécifier autant de goals individuels que vous le souhaitez. Vous pouvez aussi fournir des options en ligne de commande. Quelques options utiles de Maven dans un contexte IC sont :</para>
       <variablelist>
         <varlistentry>
           <term><literal moreinfo="none">-B</literal>, <literal moreinfo="none">--batch-mode</literal></term>
           <listitem>
-            <para>This option tells Maven not to prompt for any input from the
-            user, just using the default values if any are required. If Maven
-            does prompt for any input during the Jenkins build, the build will
-            get stuck indefinitely.</para>
+            <para>Cette option indique à Maven de ne pas demander d’entrée à l’utilisateur, en utilisant les valeurs par défaut si nécessaire. Si Maven demande n’importe quelle entrée durant un build Jenkins, le build sera bloqué indéfiniment.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term><literal moreinfo="none">-U</literal>,
           <literal moreinfo="none">--update-snapshots</literal></term>
           <listitem>
-            <para>Forces <indexterm id="I_indexterm5_d1e6645" significance="normal"><primary>Maven</primary><secondary>SNAPSHOT dependencies</secondary></indexterm><indexterm id="I_indexterm5_d1e6650" significance="normal"><primary>SNAPSHOT dependencies</primary></indexterm>Maven to check for updated releases and snapshot
-            dependencies on the remote repository. This makes sure you are
-            building with the latest and greatest snapshot dependencies, and
-            not just using older local copies which may not by in sync with
-            the latest version of the source code.</para>
+            <para>Force <indexterm id="I_indexterm5_d1e6645" significance="normal"><primary>Maven</primary><secondary>SNAPSHOT dependencies</secondary></indexterm><indexterm id="I_indexterm5_d1e6650" significance="normal"><primary>SNAPSHOT dependencies</primary></indexterm>Maven à vérifier les mises à jour des dépendances de type release ou snapshot sur le dépôt distant. Cela vous permet d’être sûr que vous êtes en train de construire avec les dernières et les plus grandes dépendances snapshot, et pas uniquement les vieilles copies locales qui ne sont pas forcément synchronisées avec le code source.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1204,17 +1190,12 @@ UUID=`svnlook uuid $REPOS`
             <literal moreinfo="none">-Dsurefire.useFile=false</literal>
           </term>
           <listitem>
-            <para>This option forces Maven to write JUnit output to the
-            console, rather than to text files in the target directory as it
-            normally would. This way, any test failure details are directly
-            visible in the build job console output. The XML files that
-            Jenkins needs for its test reporting will still be
-            generated.</para>
+            <para>Cette option force Maven à écrire la sorte JUnit dans la console, au lieu de le faire des les fichiers textes dans le répertoire target comme c’est fait d’habitude. Avec ceci, n’importe quels détails de test en échec seront visibles directement dans sortie console de la tâche de build. Les fichiers XML dont Jenkins a besoin pour ses rapports de test seront toujours générés.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       <figure float="none" id="fig-hudson-build-steps">
-        <title>Adding a build step to a freestyle build job</title>
+        <title>Ajouter une étape de build à une tâche de build Freestyle</title>
         <mediaobject id="I_mediaobject5_d1e6664">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0526.pdf" format="PDF"/>
@@ -1224,44 +1205,21 @@ UUID=`svnlook uuid $REPOS`
           </imageobject>
         </mediaobject>
       </figure>
-      <para>The advanced options are also worth investigating (click on the
-      Advanced button).</para>
-      <para>The optional <command moreinfo="none">POM</command> field lets you
-      override the default location of the Maven <filename moreinfo="none">pom.xml</filename> file. This is the equivalent of
-      running Maven from the command line <phrase role="keep-together">with
-      the</phrase> <literal moreinfo="none">-f</literal> or <phrase role="keep-together"><literal moreinfo="none">--file</literal> option</phrase>. This is
-      useful for some multimodule Maven projects where the aggregate <filename moreinfo="none">pom.xml</filename> file (the one containing the
-      <literal moreinfo="none">&lt;modules&gt;</literal> section) is located in a subdirectory
-      rather than at the top level.</para>
+      <para>Les options avancées sont également utiles (cliquez sur le bouton Avancé).</para>
+      <para>Le champ optionnel <command moreinfo="none">POM</command> permet de surcharger l’emplacement par défaut du fichier <filename moreinfo="none">pom.xml</filename>. C’est l’équivalent de lancer Maven en ligne de commande <phrase role="keep-together"> avec l’option </phrase> <literal moreinfo="none">-f</literal> ou <phrase role="keep-together"><literal moreinfo="none">--file</literal></phrase>. 
+       C’est utile pour certains projets multi modules où le fichier agrégé <filename moreinfo="none">pom.xml</filename> (celui contenant les sections
+      <literal moreinfo="none">&lt;modules&gt;</literal>) est situé dans un sous répertoire et non au niveau supérieur.</para>
       <?dbfo-need height=”1in”?>
-      <para>The Properties field lets you set property values that will be
-      passed into the Maven build process, using the standard property file
-      format illustrated here:</para>
+      <para>Le champ Properties vous permet de spécifier des valeurs de propriété qui seront passées au processus de build Maven, en utilisant le format standard de fichier illustré ici :</para>
       <programlisting id="I_programlisting5_d1e6700" format="linespecific"># Selenium test configuration
 selenium.host=testserver.acme.com
 selenium.port=8080
 selenium.broswer=firefox</programlisting>
-      <para>These properties are passed to Maven as command-line options, as
-      shown here:</para>
+      <para>Ces propriétés sont passées à Maven en tant qu’options de ligne de commande, comme montré ici :</para>
       <programlisting id="I_programlisting5_d1e6705" format="linespecific">$ <userinput moreinfo="none">mvn verify -Dselenium.host=testserver.acme.com ...</userinput></programlisting>
-      <para>The JVM Options field lets you set any of the standard Java
-      Virtual Machine options for your build job. So if your build process is
-      particularly memory intensive, you might add some extra heap space with
-      the <literal moreinfo="none">-Xmx</literal> option (for example,
-      <literal moreinfo="none">-Xmx512m</literal> would set the maximum heap size to 512
-      MB).</para>
-      <para>The final option lets you configure a private Maven repository for
-      this build job. <phrase role="keep-together">Normally</phrase>, Maven
-      will just use the default Maven repository (usually in the <filename moreinfo="none">.m2/repository</filename> folder in the user’s home
-      directory). Occasionally, this can lead to build jobs interfering with
-      each other, or use inconsistent snapshot versions from one build to
-      another. To be sure that your build is run in clean laboratory
-      conditions, you can activate this option. Your build job will get its
-      own private repository, reserved for its own exclusive use. On the
-      downside, the first time the build job runs a build, this may take some
-      time to download all of the Maven artifacts, and private repositories
-      can take up a lot of space. However, it is the best way of guaranteeing
-      that your build is run in a truly<indexterm id="I_indexterm5_d1e6725" class="endofrange" startref="ch05-mavenstep1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6727" class="endofrange" startref="ch05-mavenstep2" significance="normal"><primary/></indexterm> isolated environment.</para>
+      <para>Le champ JVM Options vous permet de spécifier des options standards de la machine virtuelle Java pour votre tâche de build. Donc, si votre processus de build est particulièrement consommateur de mémoire, vous pourriez ajouter plus d’espace pour la heap avec l’option <literal moreinfo="none">-Xmx</literal> (par exemple, 
+      <literal moreinfo="none">-Xmx512m</literal> peut spécifier la taille maximum de la heap à 512 Mo).</para>
+      <para>La dernière option que vous pouvez configurer est un dépôt privé Maven pour cette tâche de build. <phrase role="keep-together">Normalement</phrase>, Maven utilisera le dépôt Maven par défaut (usuellement le dossier <filename moreinfo="none">.m2/repository</filename> dans le répertoire personnel de l’utilisateur). Parfois, cela peut mener à des interférences entre tâches de build, ou utiliser des versions snapshot inconsistantes d’un build à un autre. Pour être sûr que votre build est lancé dans des conditions de laboratoire, vous pouvez activer cette option. Votre tâche de build aura son propre dépôt privé, réservé pour son utilisation exclusive. Sur le plan négatif, la première fois que la tâche de build lancera un build, cela prendra du temps pour télécharger tous les artefacts Maven, et les dépôts privés peuvent prendre beaucoup de place. Cependant, c’est la meilleure façon de garantir que votre build est lancé dans un environnement<indexterm id="I_indexterm5_d1e6725" class="endofrange" startref="ch05-mavenstep1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6727" class="endofrange" startref="ch05-mavenstep2" significance="normal"><primary/></indexterm> vraiment isolé.</para>
     </sect2>
     <sect2>
       <title>Ant Build Steps</title>
