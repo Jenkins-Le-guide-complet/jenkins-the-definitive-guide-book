@@ -1162,23 +1162,10 @@ UUID=`svnlook uuid $REPOS`
     </sect2>
   </sect1>
   <sect1 id="I_sect15_d1e6584">
-    <title>Build Steps</title>
-    <para>Now <indexterm class="startofrange" id="ch05-step" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary></indexterm>Jenkins should know where and how often to obtain the
-    project source code. The next thing you need to explain to Jenkins is what
-    it what to do with the source code. In a freestyle build, you do this by
-    defining build steps. Build steps are the basic building blocks for the
-    Jenkins freestyle build process. They are what let you tell Jenkins
-    exactly <emphasis>how</emphasis> you want your project built.</para>
-    <para>A build job may have one step, or more. It may even occasionally
-    have none. In a freestyle build, you can add as many build steps as you
-    want to the Build section of your project configuration (see <xref linkend="fig-hudson-build-steps"/>). In a basic Jenkins installation, you
-    will be able to add steps to invoke Maven and Ant, as well as running
-    OS-specific shell or Windows batch commands. And by installing additional
-    plugins, you can also integrate other build tools, such as Groovy, Gradle,
-    Grails, Jython, MSBuild, Phing, Python, Rake, and Ruby, just to name some
-    of the more well-known tools.</para>
-    <para>In the remainder of this section, we will delve into some of the
-    more common types of build steps.</para>
+    <title>Les étapes de builds</title>
+    <para>Maintenant, <indexterm class="startofrange" id="ch05-step" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary></indexterm>Jenkins sait où à quelle fréquence obtenir le code source du projet. La prochaine chose que vous devez expliquer à Jenkins est qu’est ce qu’il doit faire avec le code source. Dans un build Freestyle, vous pouvez faire ceci en définissant des étapes de build. Les étapes de build sont des bloques basiques de construction pour le processus de build Freestyle de Jenkins. C’est ce qui permet de dire exactement  à Jenkins <emphasis>comment</emphasis> vous voulez que votre projet soit construit.</para>
+    <para>Une tâche de build peut avoir une étape, ou plusieurs. Il peut éventuellement n’en avoir aucune. Dans un build Freestyle, vous pouvez ajouter autant d’étapes de build que vous le souhaitez dans la section Build de la configuration de votre projet (voir Figure..). Dans une installation Jenkins basique, vous serez capable d’ajouter des étapes pour invoquer Maven et Ant, aussi bien que lancer des commandes shell spécifique à l’OS ou des batchs Windows. Et en installant des plugins additionnels, vous pouvez aussi intégrer d’autres outils, comme Groovy, Gradle, Grailes, Jython, MSBuild, Phing, Python, Rake, et Ruby, juste pour nommer certains des outils les plus connus.</para>
+    <para>Dans le reste de cette section, nous allons plonger dans quelques-uns des types d’étapes de build les plus communs.</para>
     <sect2>
       <title>Maven Build Steps</title>
       <para>Jenkins <indexterm class="startofrange" id="ch05-mavenstep1" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>Maven build steps</tertiary></indexterm><indexterm class="startofrange" id="ch05-mavenstep2" significance="normal"><primary>Maven</primary><secondary sortas="build steps">build steps in freestyle build
