@@ -1222,21 +1222,13 @@ selenium.broswer=firefox</programlisting>
       <para>La dernière option que vous pouvez configurer est un dépôt privé Maven pour cette tâche de build. <phrase role="keep-together">Normalement</phrase>, Maven utilisera le dépôt Maven par défaut (usuellement le dossier <filename moreinfo="none">.m2/repository</filename> dans le répertoire personnel de l’utilisateur). Parfois, cela peut mener à des interférences entre tâches de build, ou utiliser des versions snapshot inconsistantes d’un build à un autre. Pour être sûr que votre build est lancé dans des conditions de laboratoire, vous pouvez activer cette option. Votre tâche de build aura son propre dépôt privé, réservé pour son utilisation exclusive. Sur le plan négatif, la première fois que la tâche de build lancera un build, cela prendra du temps pour télécharger tous les artefacts Maven, et les dépôts privés peuvent prendre beaucoup de place. Cependant, c’est la meilleure façon de garantir que votre build est lancé dans un environnement<indexterm id="I_indexterm5_d1e6725" class="endofrange" startref="ch05-mavenstep1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6727" class="endofrange" startref="ch05-mavenstep2" significance="normal"><primary/></indexterm> vraiment isolé.</para>
     </sect2>
     <sect2>
-      <title>Ant Build Steps</title>
-      <para>Freestyle <indexterm class="startofrange" id="ch05-antstep1" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>Ant build scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-antstep2" significance="normal"><primary>Ant</primary><secondary>in freestyle build steps</secondary></indexterm><indexterm id="I_indexterm5_d1e6747" significance="normal"><primary>scripts</primary><seealso>Ant; Maven</seealso></indexterm>build jobs work equally well with Ant. <ulink url="http://ant.apache.org/">Apache Ant</ulink> is a widely-used and
-      very well-known Java build scripting tool. Indeed, a very large number
-      of Java projects out there rely on Ant build scripts.</para>
-      <para>Ant is not only used as a primary build scripting tool—even if
-      your project uses Maven, you may resort to calling Ant scripts to do
-      more specific tasks. There are Ant libraries available for many
-      development tools and low-level tasks, such as using SSH, or working
-      with proprietary application servers.</para>
-      <para>In its most basic form, configuring an Ant build step very is
-      simple indeed—you just provide the version of Ant you want to use and
-      the name of the target you want to invoke. In <xref linkend="fig-hudson-build-ant-step"/>, for example, we are invoking an
+      <title>Les étapes de build Ant</title>
+      <para>Les tâches <indexterm class="startofrange" id="ch05-antstep1" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>Ant build scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-antstep2" significance="normal"><primary>Ant</primary><secondary>in freestyle build steps</secondary></indexterm><indexterm id="I_indexterm5_d1e6747" significance="normal"><primary>scripts</primary><seealso>Ant; Maven</seealso></indexterm>de build Freestyle fonctionnent également biens avec Ant. <ulink url="http://ant.apache.org/">Apache Ant</ulink> est un outil de scripting de build Java largement utilisé et bien connu. En effet, un nombre important de projets Java sont liés à des scripts de build Ant.</para>
+      <para>Ant n’est pas seulement utilisé comme un outil de build principal —même si votre projet utilise Maven, vous pouvez recourir à l’appel de scripts ANt pour faire des tâches spécifiques. Il y a des librairies Ant disponibles  pour beaucoup d’outils de développement et des tâches bas niveau, comme utiliser SSH, ou travailler avec des serveurs d’application propriétaires.</para>
+      <para>Dans da forme la plus basique, configurer une étape de build Ant est très simple en effet,  il vous suffit de fournir la version de Ant que vous souhaitez utiliser et le nom de la target que vous voulez invoquer. Dans la figure <xref linkend="fig-hudson-build-ant-step"/>, for example, we are invoking an
       Ant script to run a JMeter test script.</para>
       <figure float="0" id="fig-hudson-build-ant-step">
-        <title>Configuring an Ant build step</title>
+        <title>Configurer une étape de build Ant</title>
         <mediaobject id="I_mediaobject5_d1e6765">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0527.pdf" format="PDF"/>
@@ -1246,12 +1238,8 @@ selenium.broswer=firefox</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>As with the Maven build step, the “Advanced...” button provides
-      you with more detailed options, such as specifying a different build
-      script, or a build script in a different directory (the default will be
-      <filename moreinfo="none">build.xml</filename> in the root directory).
-      You can also specify properties and JVM options, just as you can
-      for<indexterm id="I_indexterm5_d1e6775" class="endofrange" startref="ch05-antstep1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6777" class="endofrange" startref="ch05-antstep2" significance="normal"><primary/></indexterm> Maven.</para>
+      <para>Comme dans une étape de build Maven, le bouton « Avancé… » vous fournit plus d’options détaillées, comme spécifier un script de build different, ou un script de build dans un répertoire différent (le défaut sera <filename moreinfo="none">build.xml</filename> dans le répertoire racine).
+      Vous pouvez aussi spécifier des propriétés et des options de la JVM, comme vous pouvez le faire pour<indexterm id="I_indexterm5_d1e6775" class="endofrange" startref="ch05-antstep1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6777" class="endofrange" startref="ch05-antstep2" significance="normal"><primary/></indexterm> Maven.</para>
     </sect2>
     <sect2>
       <title>Executing a Shell or Windows Batch Command</title>
