@@ -1242,18 +1242,11 @@ selenium.broswer=firefox</programlisting>
       Vous pouvez aussi spécifier des propriétés et des options de la JVM, comme vous pouvez le faire pour<indexterm id="I_indexterm5_d1e6775" class="endofrange" startref="ch05-antstep1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6777" class="endofrange" startref="ch05-antstep2" significance="normal"><primary/></indexterm> Maven.</para>
     </sect2>
     <sect2>
-      <title>Executing a Shell or Windows Batch Command</title>
-      <para>Occasionally <indexterm class="startofrange" id="ch05-script1" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>shell scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-script2" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>batch scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-script3" significance="normal"><primary>shell scripts</primary></indexterm><indexterm class="startofrange" id="ch05-script4" significance="normal"><primary>batch scripts</primary></indexterm><indexterm class="startofrange" id="ch05-script5" significance="normal"><primary>scripts</primary><secondary>shell scripts</secondary></indexterm><indexterm class="startofrange" id="ch05-script6" significance="normal"><primary>scripts</primary><secondary>batch scripts</secondary></indexterm>you may need to execute a command directly at the
-      Operating System level. Some legacy build processes rely on OS-specific
-      scripts, for example. In other cases, you may need to perform a
-      low-level operation that is most easily done with an OS-level
-      command.</para>
-      <para>You can do this in Jenkins with the <literal moreinfo="none">Execute
-      Shell</literal> (for Unix) or <literal moreinfo="none">Execute Windows Batch</literal>
-      command (for Windows). As an example, in <xref linkend="fig-hudson-build-shell-step"/> we have added a step to execute
-      the Unix <literal moreinfo="none">ls</literal> command.</para>
+      <title>Exécuter une commande Batch Shell ou Windows</title>
+      <para>Occasionnellement, <indexterm class="startofrange" id="ch05-script1" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>shell scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-script2" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>batch scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-script3" significance="normal"><primary>shell scripts</primary></indexterm><indexterm class="startofrange" id="ch05-script4" significance="normal"><primary>batch scripts</primary></indexterm><indexterm class="startofrange" id="ch05-script5" significance="normal"><primary>scripts</primary><secondary>shell scripts</secondary></indexterm><indexterm class="startofrange" id="ch05-script6" significance="normal"><primary>scripts</primary><secondary>batch scripts</secondary></indexterm>vous pouvez avoir besoin d’exécuter une commande directement au niveau du système d’exploitation. Certains processus de build ancien sont liés à des scripts spécifiques à l’OS, par exeple. Dans d’autres cas, vous pourriez avoir besoin d’effectuer un opérateur bas niveau qui serait plus facilement faite avec une commande au niveau OS.</para>
+      <para>Vous pouvez faire ceci avec Jenkins avec une commande <literal moreinfo="none">Exécuter un script shell</literal> (pour Unix) ou <literal moreinfo="none">Exécuter une ligne de commande batch Windows </literal>(pour Windows). Par exemple, dans la Figure <xref linkend="fig-hudson-build-shell-step"/>, nous avons ajouté une étape pour exécuter la commande Unix <literal moreinfo="none">ls</literal>.</para>
       <figure float="none" id="fig-hudson-build-shell-step">
-        <title>Configuring an Execute Shell step</title>
+        <title>Configurer une étape Exécuter un script Shell</title>
         <mediaobject id="I_mediaobject5_d1e6832">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0528.pdf" format="PDF"/>
@@ -1263,7 +1256,7 @@ selenium.broswer=firefox</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>The output from this build step is shown here:</para>
+      <para>La sortie de l’étape de build est montrée ici :</para>
       <programlisting id="I_programlisting5_d1e6839" format="linespecific">[workspace] $ /bin/sh -xe /var/folders/.../jenkins2542160238803334344.s
 + ls -al
 total 64
@@ -1281,32 +1274,14 @@ drwxr-xr-x   9 johnsmart  staff   306 30 Oct 15:21 .svn
 drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 src
 drwxr-xr-x   3 johnsmart  staff   102 22 Sep 01:40 target
 drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
-      <para>You can either execute an OS-specific command (e.g.,
-      <literal moreinfo="none">ls</literal>), or store a more complicated script as a file in
-      your version control system, and execute this script. If you are
-      executing a script, you just need to refer to the name of your script
-      relative to the work directory.</para>
-      <para>Shell scripts are executed using the <literal moreinfo="none">-ex</literal>
-      option—the commands are printed to the console, as is the resulting
-      output. If any of the executed commands return a nonzero value, the
-      build will fail.</para>
-      <para>When Jenkins executes a script, it sets a number of environment
-      variables that you can use within the script. We discuss these variable
-      in more detail in the next section.</para>
-      <para>In fact, there are some very good reasons why you should avoid
-      using OS-level scripts in your build jobs if you can possibly avoid it.
-      In particular, it makes your build job in the best of cases OS-specific,
-      and at worst dependant on the precise machine configuration. One more
-      portable alternative to executing OS scripts include writing an
-      equivalent script in a more portable scripting language, such
-      as<indexterm id="I_indexterm5_d1e6855" class="endofrange" startref="ch05-script1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6857" class="endofrange" startref="ch05-script2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6859" class="endofrange" startref="ch05-script3" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6861" class="endofrange" startref="ch05-script4" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6863" class="endofrange" startref="ch05-script5" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6865" class="endofrange" startref="ch05-script6" significance="normal"><primary/></indexterm> Groovy or Gant.</para>
+      <para>Vous pouvez soit exécuter une commande spécifique à l’OS (ex : <literal moreinfo="none">ls</literal>), soit stocker un script plus compliqué comme un fichier dans votre gestionnaire de contrôle de version, et exécuter ce script. Si vous exécutez un script, vous n’avez juste qu’à faire référence au nom de votre script relativement par rapport au répertoire de travail.</para>
+      <para>Les scripts Shell sont exécutés en utilisant l’option <literal moreinfo="none">-ex</literal> — les commandes sont affichées dans la console, comme si c’était la sortie. Si n’importe laquelle des commandes exécutées retourne une valeur différente de zéro, le build échouera.</para>
+      <para> Lorsque Jenkins exécute un script, il spécifie un nombre en tant que variable d’environnement que vous pouvez utiliser à l’intérieur de votre script. Nous discutons de ces variables plus en détail dans le prochaine section.</para>
+      <para>En réalité, il y a beaucoup de bonnes raisons pour lesquelles vous devriez éviter d’utiliser des scripts de niveau OS dans vos tâches de build si vous pouvez les éviter. En particulier, il rend votre tâche de build au meilleur des cas, spécifique à l’OS, et dans le pire dépendant de la configuration précise de la machine. Une alternative plus portable pour exécuter des scripts spécifiques à l’OS est d’écrire un script équivalent dans un langage de script plus portable, comme <indexterm id="I_indexterm5_d1e6855" class="endofrange" startref="ch05-script1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6857" class="endofrange" startref="ch05-script2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6859" class="endofrange" startref="ch05-script3" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6861" class="endofrange" startref="ch05-script4" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6863" class="endofrange" startref="ch05-script5" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6865" class="endofrange" startref="ch05-script6" significance="normal"><primary/></indexterm> Groovy ou Gant.</para>
     </sect2>
     <sect2 id="sect-hudson-environment-variables">
-      <title>Using Jenkins Environment Variables in Your Builds</title>
-      <para>One<indexterm class="startofrange" id="ch05-env1" significance="normal"><primary>environment variables</primary><secondary>using in build steps</secondary></indexterm><indexterm class="startofrange" id="ch05-env2" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>environment variables in</tertiary></indexterm><indexterm id="I_indexterm5_d1e6885" significance="normal"><primary>environment variables</primary><seealso>specific environment variables</seealso></indexterm> useful trick that can be used in virtually any build step
-      is to obtain information from Jenkins about the current build job. In
-      fact, when Jenkins starts a build step, it makes the following
-      environment variables available to the build script:</para>
+      <title>Utiliser les variables d’environnement Jenkins dans vos builds</title>
+      <para>Une <indexterm class="startofrange" id="ch05-env1" significance="normal"><primary>environment variables</primary><secondary>using in build steps</secondary></indexterm><indexterm class="startofrange" id="ch05-env2" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>environment variables in</tertiary></indexterm><indexterm id="I_indexterm5_d1e6885" significance="normal"><primary>environment variables</primary><seealso>astuce utile qui peut être utilisée dans pratiquement n’importe quelle étape de build est d’obtenir des informations de la part de Jenkins sur la tâche de build courante. En réalité, lorsque Jenkins démarre une étape de build, il met à disposition les variables d’environnement suivantes dans le script de build :</para>
       <variablelist>
         <varlistentry>
           <term>
@@ -1316,7 +1291,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>The current build number, such as “153”.</para>
+            <para>Le numéro du build courant, comme “153”.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1327,8 +1302,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>A timestamp for the current build id, in the format
-            YYYY-MM-DD_hh-mm-ss.</para>
+            <para>Un horodatage pour identifier le build courant, sous le format YYYY-MM-DD_hh-mm-ss.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1339,8 +1313,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>The name of the job, such as
-            <emphasis>game-of-life</emphasis>.</para>
+            <para>Le nom du job, comme <emphasis>game-of-life</emphasis>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1351,10 +1324,9 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>A convenient way to identify the current build job, in the
-            form of
+            <para>Un moyen commode d’identifier la tâche de build courante, sous la forme
             <literal moreinfo="none">jenkins-${<replaceable>JOB_NAME</replaceable>}-${<replaceable>BUILD_NUMBER</replaceable>}</literal>
-            (e.g.,
+            (ex :
             <literal moreinfo="none">jenkins-game-of-life-2010-10-30_23-59-59</literal>).</para>
           </listitem>
         </varlistentry>
@@ -1366,10 +1338,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>A number identifying the executor running this build among
-            the executors of the same machine. This is the number you see in
-            the “build executor status”, except that the number starts from 0,
-            not 1.</para>
+            <para>Un nombre identifiant l’exécuteur ayant démarré cette construction parmi les exécuteurs sur la même machine. C’est le nombre que vous voyez dans « Etat du lanceur de construction », à l’exception que ce nombre commence de 0, pas 1.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1380,8 +1349,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>The name of the slave if the build is running on a slave, or
-            <literal moreinfo="none">""</literal> if the build is running on master.</para>
+            <para>Le nom de l’esclave si ce build est en train d’être lancé sur un esclave, ou <literal moreinfo="none">""</literal> si le build est en train d’être lancé sur le maître.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1392,8 +1360,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>The list of labels associated with the node that this build
-            is running on.</para>
+            <para>La liste des libellés  associés au nœud sur lequel le build est démarré.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1404,10 +1371,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>If your job is configured to use a specific JDK, this
-            variable is set to the <literal moreinfo="none">JAVA_HOME</literal> of the
-            specified JDK. When this variable is set, <literal moreinfo="none">PATH</literal>
-            is also updated to have <filename moreinfo="none">$JAVA_HOME/bin</filename>.</para>
+            <para>Si votre tâche est configurée pour utiliser une version spécifique de JDK, cette variable contient la valeur du <literal moreinfo="none">JAVA_HOME</literal> correspondant au JDK spécifié. Lorsque cette variable est fixée, la variable <literal moreinfo="none">PATH</literal> est aussi mise à jour pour avoir <filename moreinfo="none">$JAVA_HOME/bin</filename>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1418,7 +1382,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>The absolute path of the workspace.</para>
+            <para>Le chemin absolu du répertoire de travail.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1429,7 +1393,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>The full URL of the Jenkins server, for example <filename moreinfo="none">http://ci.acme.com:8080/jenkins/</filename>.</para>
+            <para>L’URL complète du serveur Jenkins, par exemple <filename moreinfo="none">http://ci.acme.com:8080/jenkins/</filename>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1440,7 +1404,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>The full URL for this build job, for example <filename moreinfo="none">http://ci.acme.com:8080/jenkins/game-of-life</filename>.</para>
+            <para>L’URL complète pour cette tâche de build, par exemple <filename moreinfo="none">http://ci.acme.com:8080/jenkins/game-of-life</filename>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1451,7 +1415,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>The full URL for this build, for example <filename moreinfo="none">http://ci.acme.com:8080/jenkins/game-of-life/20</filename>.</para>
+            <para>L’URL complète de ce build, par exemple <filename moreinfo="none">http://ci.acme.com:8080/jenkins/game-of-life/20</filename>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1462,8 +1426,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>For Subversion-based projects, this variable contains the
-            current revision number.</para>
+            <para>Pour les projets basés sur Subversion, cette variable contient le numéro de la révision courante.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1474,24 +1437,16 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
             </indexterm>
           </term>
           <listitem>
-            <para>For CVS-based projects, this variable contains the branch of
-            the module. If CVS is configured to check out the trunk, this
-            environment variable will not be set.</para>
+            <para>Pour les projets basés sur CVS, cette variable contient la branche du module. Si CVS est configuré pour consulter le trunk, cette variable d’environnement ne sera pas spécifiée.</para>
           </listitem>
         </varlistentry>
       </variablelist>
-      <para>These <indexterm id="I_indexterm5_d1e7071" significance="normal"><primary>Ant</primary><secondary>environment variables, accessing from</secondary></indexterm>variables are easy to access. In an Ant script, you can
-      access them using the <literal moreinfo="none">&lt;property&gt;</literal> tag as shown
-      here:</para>
+      <para>Ces <indexterm id="I_indexterm5_d1e7071" significance="normal"><primary>Ant</primary><secondary>environment variables, accessing from</secondary></indexterm>variables sont faciles à utiliser. Dans un script Ant, vous pouvez y accéder avec le tag <literal moreinfo="none">&lt;property&gt;</literal> comme montré ici :</para>
       <programlisting id="I_programlisting5_d1e7080" format="linespecific">&lt;target name="printinfo"&gt;
   &lt;property environment="env" /&gt;
   &lt;echo message="${env.BUILD_TAG}"/&gt;
 &lt;/target&gt;</programlisting>
-      <para>In Maven, <indexterm id="I_indexterm5_d1e7084" significance="normal"><primary>Maven</primary><secondary>environment variables in</secondary></indexterm>you can access the variables either in the same way (using
-      the “env.” prefix), or directly using the Jenkins environment variable.
-      For example, in the following <emphasis>pom.xml</emphasis> file, the
-      project URL will point to the Jenkins build job that ran the
-      <literal moreinfo="none">mvn site</literal> build:</para>
+      <para>Dans Maven, <indexterm id="I_indexterm5_d1e7084" significance="normal"><primary>Maven</primary><secondary>environment variables in</secondary></indexterm>vous pouvez accéder au variables soit de la même manière (en utilisant le prefix « env. »), soit directement en utilisant la variable d’environnement Jenkins. Par exemple, dans le fichier <emphasis>pom.xml</emphasis>, l’URL du projet pointera sur la tâche de build Jenkins qui a lancé le build <literal moreinfo="none">mvn site</literal> :</para>
       <programlisting id="I_programlisting5_d1e7096" format="linespecific">&lt;project...&gt;
   ...
   &lt;groupId&gt;com.wakaleo.gameoflife&lt;/groupId&gt;
@@ -1499,9 +1454,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
   &lt;version&gt;0.0.55-SNAPSHOT&lt;/version&gt;
   &lt;name&gt;gameoflife-core&lt;/name&gt;
   &lt;url&gt;${JOB_URL}&lt;/url&gt;</programlisting>
-      <para>Alternatively, if you are building a web application, you can also
-      use the <filename moreinfo="none">maven-war-plugin</filename> to insert
-      the build job number into the web application manifest, e.g.:</para>
+      <para>Alternativement, si vous construises une application web, vous pouvez aussi utiliser <filename moreinfo="none">maven-war-plugin</filename> pour insérer le numéro de la tâche de build dans le manifest de l’application web, ex :</para>
       <programlisting id="I_programlisting5_d1e7103" format="linespecific">&lt;project&gt;
   ...
   &lt;build&gt;
@@ -1527,8 +1480,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
   &lt;/build&gt;
   ...
 &lt;/project&gt;</programlisting>
-      <para>This will produce a <filename moreinfo="none">MANIFEST.MF</filename> file along the following
-      lines:</para>
+      <para>Cela produire un fichier <filename moreinfo="none">MANIFEST.MF</filename> avec les lignes suivantes :</para>
       <programlisting id="I_programlisting5_d1e7110" format="linespecific">Manifest-Version: 1.0
 Archiver-Version: Plexus Archiver
 Created-By: Apache Maven
@@ -1540,13 +1492,13 @@ Jenkins-Version: 1.382
 Implementation-Version: jenkins-game-of-life-63
 Specification-Title: gameoflife-web
 Specification-Version: 0.0.55-SNAPSHOT</programlisting>
-      <para>And in a <indexterm id="I_indexterm5_d1e7115" significance="normal"><primary>Groovy scripts</primary><secondary>environment variables in</secondary></indexterm>Groovy script, they can be obtained via the
-      <literal moreinfo="none">System.getenv()</literal> method:</para>
+      <para>Dans un <indexterm id="I_indexterm5_d1e7115" significance="normal"><primary>Groovy scripts</primary><secondary>environment variables in</secondary></indexterm>script Groovy, elles peuvent être accéder via la méthode 
+      <literal moreinfo="none">System.getenv()</literal> :</para>
       <programlisting id="I_programlisting5_d1e7124" format="linespecific">def env = System.getenv()
 env.each {
     println it
 }</programlisting>
-      <para><indexterm id="I_indexterm5_d1e7127" class="endofrange" startref="ch05-env1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7129" class="endofrange" startref="ch05-env2" significance="normal"><primary/></indexterm>or:</para>
+      <para><indexterm id="I_indexterm5_d1e7127" class="endofrange" startref="ch05-env1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7129" class="endofrange" startref="ch05-env2" significance="normal"><primary/></indexterm>ou :</para>
       <programlisting id="I_programlisting5_d1e7132" format="linespecific">def env = System.getenv()
 println env['BUILD_NUMBER']</programlisting>
     </sect2>
