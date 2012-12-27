@@ -1906,20 +1906,11 @@ println env['BUILD_NUMBER']</programlisting>
       <para>Cliquer sur l’un des modules vous permettra d’afficher la page de build pour ce module. A partir de la, vous pouvez voir les résultats détaillés des builds pour chaque module, déclencher un build pour un module isolé, et si nécessaire, affiner la configuration d’un module, surchargeant ainsi la configuration global du projet.</para>
     </sect2>
     <sect2>
-      <title>Extra Build Steps in Your Maven Build Jobs</title>
-      <para>By <indexterm id="I_indexterm5_d1e8054" significance="normal"><primary>Maven build jobs</primary><secondary>build steps in</secondary></indexterm>default, the Maven build job only allows for a single
-      Maven goal. There are times when this is a little limiting, and you
-      would like to add some extra steps before or after the main build. You
-      can do this with the<indexterm id="I_indexterm5_d1e8060" significance="normal"><primary>plugins</primary><secondary>Jenkins M2 Extra Steps</secondary></indexterm><indexterm id="I_indexterm5_d1e8065" significance="normal"><primary>Jenkins M2 Extra Steps plugin</primary></indexterm> Jenkins M2 Extra Steps Plugin. This plugin lets you add
-      normal build steps before and after the main Maven goal, giving you the
-      flexibility of a freestyle build while still having the convenience of
-      the Maven build job configuration.</para>
-      <para>Install this plugin and go to the Build Environment section of
-      your build job. Tick the “Configure Extra M2 Build Steps” option. You
-      should now be able to add build steps that will be executed before
-      and/or after your main Maven goal<indexterm id="I_indexterm5_d1e8071" class="endofrange" startref="ch05-mavenjob" significance="normal"><primary/></indexterm> is executed (see <xref linkend="fig-m2-extra-steps"/>).</para>
+      <title>Les étapes de build supplémentaires dans votre tâche de build Maven</title>
+      <para>Par <indexterm id="I_indexterm5_d1e8054" significance="normal"><primary>Maven build jobs</primary><secondary>build steps in</secondary></indexterm>Par défaut, une tâche de build Maven ne permet qu’un seul goal Maven. Il y a des fois ou c’est assez limitatif, et vous voudriez ajouter des étapes supplémentaires avant ou après la build principal. Vous pouvez faire ceci avec le plugin <indexterm id="I_indexterm5_d1e8060" significance="normal"><primary>plugins</primary><secondary>Jenkins M2 Extra Steps</secondary></indexterm><indexterm id="I_indexterm5_d1e8065" significance="normal"><primary>Jenkins M2 Extra Steps plugin</primary></indexterm> M2 Extra Steps de Jenkins. Ce plugin vous permet d’ajouter des étapes de builds normales avant et après le goal Maven principal, vous donnant la flexibilité d’une tâche de build Freestyle tout en gardant l’avantage de la configuration d’une tâche de build Maven.</para>
+      <para>Installez le plugin et allez dans la section Environnements de Build de votre tâche de build. Cochez l’option « Configure M2 Extra Build Steps ». Vous devriez pouvoir maintenant ajouter des étapes de build qui seront ajoutées avant et/ou après que votre goal Maven principal <indexterm id="I_indexterm5_d1e8071" class="endofrange" startref="ch05-mavenjob" significance="normal"><primary/></indexterm> soit exécuté (voir la figure <xref linkend="fig-m2-extra-steps"/>).</para>
       <figure float="none" id="fig-m2-extra-steps">
-        <title>Configuring extra Maven build steps</title>
+        <title>Configurer des étapes de build Maven supplémentaires</title>
         <mediaobject id="I_mediaobject5_d1e8079">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0558.pdf" format="PDF"/>
