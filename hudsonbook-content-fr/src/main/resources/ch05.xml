@@ -2134,10 +2134,6 @@ require 'ci/reporter/rake/test_unit' # use this if you're using Test::Unit</prog
   </sect1>
   <sect1 id="sect-build-jobs-conclusion">
     <title>Conclusion</title>
-    <para>In this chapter we have covered the basics of creating new build
-    jobs for the most common cases you are likely to encounter. Later on in
-    the book, we will build on these foundations to discuss more advanced
-    options such as parameterized builds, matrix builds, and build promotion
-    strategies.</para>
+    <para>Dans ce chapitre, nous avons couvert les bases sur la création de tâches de build pour les cas les plus communs que vous pouvez rencontrer. Plus tard dans ce livre, nous allons utiliser ces fondamentaux pour discuter sur des options plus avancées comme les builds paramétrés, les builds matriciels, et les stratégies de promotion de build.</para>
   </sect1>
 </chapter>
