@@ -1780,30 +1780,12 @@ println env['BUILD_NUMBER']</programlisting>
       <para>Beaucoup des autres actions à la suite du build sont similaires à ceux que nous avons <phrase role="keep-together">vus</phrase> dans une tâche de build Freestyle.</para>
     </sect2>
     <sect2 id="sect-builds-deploy-enterprise-repository">
-      <title>Deploying to an Enterprise Repository Manager</title>
-      <para>One <indexterm class="startofrange" id="ch05-erm1" significance="normal"><primary>Maven build jobs</primary><secondary>deploying artifacts to Enterprise Repository
-          Manager</secondary></indexterm><indexterm class="startofrange" id="ch05-erm2" significance="normal"><primary>Enterprise Repository Manager</primary></indexterm><indexterm class="startofrange" id="ch05-erm3" significance="normal"><primary>archives of binary artifacts</primary><secondary>deploying to Enterprise Repository Manager</secondary></indexterm><indexterm class="startofrange" id="ch05-erm4" significance="normal"><primary>binary artifacts</primary><secondary>archiving</secondary><tertiary>deploying to Enterprise Repository Manager</tertiary></indexterm>extra option does appear in the Maven build jobs is the
-      ability to deploy your artifacts to a Maven repository (see <xref linkend="fig-hudson-maven2-deploy"/>). An Enterprise Repository Manager
-      is a server that acts as both a proxy/cache for public Maven artifacts,
-      and as a central storage server for your own internal artifacts. Open
-      Source Enterprise Repository Managers like Nexus (from Sonatype) and
-      Artifactory (from JFrog) provide powerful maintenance and administration
-      features that make configuring and maintaining your Maven repositories a
-      lot simpler. Both these products have commercial versions, with
-      additional features aimed at more sophisticated or high-end build
-      infrastructures.</para>
-      <para>The advantage of getting Jenkins to deploy your artifacts (as
-      opposed to simply running <literal moreinfo="none">mvn deploy</literal>) is that, if you
-      have a multimodule Maven build, the artifacts will only be deployed once
-      the entire build has finished successfully. For example, suppose you
-      have a multimodule Maven project with five modules. If you run
-      <literal moreinfo="none">mvn deploy</literal>, and the build fails after three modules,
-      the first two modules will have been deployed to your repository, but
-      not the last three, which leaves your repository in an instable state.
-      Getting Jenkins to do the deploy ensures that the artifacts are only
-      deployed as a group once the build has successfully finished.</para>
+      <title>Déployer vers un gestionnaire de dépôt d’entreprise</title>
+      <para>Une <indexterm class="startofrange" id="ch05-erm1" significance="normal"><primary>Maven build jobs</primary><secondary>deploying artifacts to Enterprise Repository
+          Manager</secondary></indexterm><indexterm class="startofrange" id="ch05-erm2" significance="normal"><primary>Enterprise Repository Manager</primary></indexterm><indexterm class="startofrange" id="ch05-erm3" significance="normal"><primary>archives of binary artifacts</primary><secondary>deploying to Enterprise Repository Manager</secondary></indexterm><indexterm class="startofrange" id="ch05-erm4" significance="normal"><primary>binary artifacts</primary><secondary>archiving</secondary><tertiary>deploying to Enterprise Repository Manager</tertiary></indexterm>option supplémentaire qui apparait dans les tâches de build Maven est la capacité de déployer vos artefacts vers un dépôt Maven (voir la figure <xref linkend="fig-hudson-maven2-deploy"/>). Un gestionnaire de dépôt d’entreprise est un serveur qui agit à la fois comme un proxy/cache pour des artefacts publics de Maven, et comme un serveur de stockage centralisé pour vos propres artefacts internes. Des gestionnaires de dépôt d’entreprise open source comme Nexus (de Sonatype) et Artifactory (de JFrog) fournissent des fonctionnalités de maintenance et d’administration puissantes qui permettent de configurer et maintenir vos dépôts Maven très simplement. Ces deux produits ont des versions commerciales, avec des fonctionnalités additionnelles  visant à construire des infrastructures plus sophistiquées ou haut de gamme.</para>
+      <para>L’avantage d’avoir Jenkins qui déploie vos artefacts (à l’opposé de simplement faire <literal moreinfo="none">mvn deploy</literal>) est que, si vous avez un build Maven multi module, les artefacts seront déployés uniquement lorsque le build entier a fini avec succès. Par exemple, supposons que vous ayez un projet Maven multi module avec cinq modules. Si vous lancez <literal moreinfo="none">mvn deploy</literal>, et que le build échoue après trois modules, les deux premiers modules vont avoir été déployés vers votre dépôt, mais pas les trois premiers, qui laissent votre dépôt dans un état instable. Faire en sorte que Jenkins faire le déploiement assure que les artefacts sont déployés comme un groupe une fois que le build a terminé avec succès.</para>
       <figure float="0" id="fig-hudson-maven2-deploy">
-        <title>Deploying artifacts to a Maven repository</title>
+        <title>Déployer des artefacts vers un dépôt Maven</title>
         <mediaobject id="I_mediaobject5_d1e7878">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0550.pdf" format="PDF"/>
@@ -1813,15 +1795,8 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>To do this, just tick the “Deploy artifacts to Maven repository”
-      option in the “Post-Build actions”. You will need to specify the URL of
-      the repository you want to deploy to. This needs to be the full URL to
-      the repository (e.g.,
-      <emphasis>http://nexus.acme.com/nexus/content/repositories/snapshots</emphasis>,
-      and not just <emphasis>http://nexus.acme.com/nexus</emphasis>)</para>
-      <para>Most repositories need you to authenticate before letting you
-      deploy artifacts to them. The standard Maven way to do this is to place
-      a <literal moreinfo="none">&lt;server&gt;</literal> entry in your local <filename moreinfo="none">settings.xml</filename> file, as shown here:</para>
+      <para>Pour faire cela,  il suffit de cocher l’option « Déployer les artefacts dans le repository Maven » dans les actions à la suite du build. Vous aurez besoin de spécifier l’URL du dépôt sur lequel vous voulez déployer. Il faut que cela soit l’URL complète vers le dépôt (ex : <emphasis>http://nexus.acme.com/nexus/content/repositories/snapshots</emphasis>, et pas juste <emphasis>http://nexus.acme.com/nexus</emphasis>)</para>
+      <para>La plupart des dépôts ont besoin de vous authentifier avant de vous laisser déployer des artefacts. La manière standard de Maven pour faire cela est de placer <literal moreinfo="none">&lt;server&gt;</literal> dans votre fichier <filename moreinfo="none">settings.xml</filename> local, comme montré ici :</para>
       <programlisting id="I_programlisting5_d1e7899" format="linespecific">&lt;settings...&gt;
   &lt;servers&gt;
     &lt;server&gt;
@@ -1836,16 +1811,10 @@ println env['BUILD_NUMBER']</programlisting>
     &lt;/server&gt;
   &lt;/servers&gt;
 &lt;/settings&gt;</programlisting>
-      <para>For the more security-minded, you can also encrypt these passwords
-      if required.</para>
-      <para>Then, enter the corresponding ID value in the Repository ID field
-      in Jenkins. Jenkins will then be able to look up the right username and
-      password, and deploy your artifacts. Once the build is finished, your
-      artifacts should be available in your Maven Enterprise Repository (see
-      <xref linkend="fig-nexus-artifact-deployed"/>).</para>
+      <para>Pour les personnes qui souhaitent plus de sécurité, vous pouvez aussi encrypter ces mots de passe si besoin est.</para>
+      <para>Ensuite, entrez l’identifiant correspondant dans le champ Identifiant du repository de Jenkins. Jenkins sera alors capable de retrouver le bon nom d’utilisateur et mot de passe, et de déployer vos artefacts. Une fois que le build sera terminé, vos artefacts devraient être disponibles sur votre dépôt d’entreprise Maven (voir la figure <xref linkend="fig-nexus-artifact-deployed"/>).</para>
       <figure float="0" id="fig-nexus-artifact-deployed">
-        <title>After deployment the artifact should be available on your
-        Enterprise Repository Manager</title>
+        <title>Après déploiement, l’artefact devrait être disponible sur votre gestionnaire de dépôt d’entreprise</title>
         <mediaobject id="I_mediaobject5_d1e7910">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0551.pdf" format="PDF"/>
@@ -1855,18 +1824,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Using this option, you always don’t have to deploy straight
-      away—you can always come back and deploy the artifacts from a previous
-      build later. Just click on the “Redeploy Artifacts” menu on the left and
-      specify the repository URL you want to deploy your artifact to (see
-      <xref linkend="fig-hudson-redeploy-artifact"/>). As in the previous
-      example, the Advanced button lets you provide the ID for the
-      <literal moreinfo="none">&lt;server&gt;</literal> entry in your local <filename moreinfo="none">settings.xml</filename> file. As we will see later on in
-      the book, you can also use this deployment as part of a build promotion
-      process, configuring an automatic deployment to a different repository
-      when certain quality metrics have been satisfied, for example.</para>
+      <para>En utilisant cette option, vous n’avez pas toujours besoin de déployer tout de suite — vous pouvez toujours revenir en arrière et redéployer des artefacts d’une version précédente. Il suffit de cliquer sur le menu « Redéployer les artefacts » à gauche et spécifier l’URL du dépôt sur lequel vous voulez redéployer votre artefact (voir la figure <xref linkend="fig-hudson-redeploy-artifact"/>). Comme dans l’exemple précédent, le bouton Avancé vous permet de spécifier l’identifiant pour le tag <literal moreinfo="none">&lt;server&gt;</literal>dans votre fichier <filename moreinfo="none">settings.xml</filename> local. Comme vous pourrez voir plus loin dans ce livre, vous pour aussi utiliser ce déploiement dans le cadre d’un processus de promotion de buid en configurant un déploiement automatique vers un dépôt différent lorsque certaines métriques de qualité sont satisfaites, par exemple.</para>
       <figure float="0" id="fig-hudson-redeploy-artifact">
-        <title>Redeploying an artifact</title>
+        <title>Redéployer un artefact</title>
         <mediaobject id="I_mediaobject5_d1e7929">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0552.pdf" format="PDF"/>
@@ -1876,20 +1836,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>This approach will work fine for any Enterprise Repository
-      manager. However, if you are using <indexterm id="I_indexterm5_d1e7936" significance="normal"><primary>Artifactory</primary><secondary>Enterprise Repository Manager</secondary></indexterm><indexterm id="I_indexterm5_d1e7941" significance="normal"><primary>plugins</primary><secondary>Artifactory</secondary></indexterm>Artifactory, you may prefer to install the Jenkins <ulink url="http://wiki.jenkins-ci.org/display/JENKINS/Artifactory+Plugin">Artifactory
-      Plugin</ulink>, which provides tighter two-way integration with the
-      Artifactory Enterprise Repository Manager. It works by sending
-      additional information to the Artifactory server during the deployment,
-      allowing the server to refer back to the precise build that generated a
-      given artifact. Once you have installed the plugin, you can activate it
-      in your Maven build job by ticking the “Deploy artifacts to Artifactory”
-      option in the Post-build Actions. Then you choose what repositories your
-      project should deploy to from a list of repositories on the server,
-      along with the username and password required to perform the deployment
-      (see <xref linkend="fig-maven2-artifactory"/>).</para>
+      <para>Cette approche fonctionnera bien pour n’importe quel gestionnaire de dépôt d’entreprise. Cependant, si vous utilisez <indexterm id="I_indexterm5_d1e7936" significance="normal"><primary>Artifactory</primary><secondary>Enterprise Repository Manager</secondary></indexterm><indexterm id="I_indexterm5_d1e7941" significance="normal"><primary>plugins</primary><secondary>Artifactory</secondary></indexterm>Artifactory, vous pourriez préférer installer le <ulink url="http://wiki.jenkins-ci.org/display/JENKINS/Artifactory+Plugin">plugin Artifactory</ulink> de Jenkins, qui fournit une intégration bidirectionnelle vers le gestionnaire de dépôt d’entreprise Artifactory. Il fonctionne en envoyant des informations supplémentaires au serveur Artifactory durant le déploiement, permettant au serveur d’avoir un lien vers le build qui a généré un artefact donné. Une fois que vous avez installé le plugin, vous pouvez l’activer dans votre tâche de build Maven en cochant l’option « Deploy artifacts to Artifactory » dans les actions à la suite du build. Ensuite vous choisissez sur quel dépôt votre projet doit déployer dans une liste de dépôt sur le serveur, avec le nom d’utilisateur et le mot de passe requis pour faire le déploiement (voir la figure <xref linkend="fig-maven2-artifactory"/>).</para>
       <figure float="none" id="fig-maven2-artifactory">
-        <title>Deploying to Artifactory from Jenkins</title>
+        <title>Déployer vers Artifactory depuis Jenkins</title>
         <mediaobject id="I_mediaobject5_d1e7955">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0553.pdf" format="PDF"/>
@@ -1899,12 +1848,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Your build job will now automatically deploy to Artifactory. In
-      addition, a link to the artifact on the server will now be displayed on
-      the build job home and build results pages (see <xref linkend="fig-maven2-artifactory-link"/>).</para>
+      <para>Votre tâche de build déploiera automatiquement vers Artifactory. En supplément, un lien vers l’artefact sur le serveur sera maintenant affiché sur la page d’accueil de la tâche de build et la page de résultat des builds (voir la figure <xref linkend="fig-maven2-artifactory-link"/>).</para>
       <figure float="none" id="fig-maven2-artifactory-link">
-        <title>Jenkins displays a link to the corresponding Artifactory
-        repository</title>
+        <title>Jenkins affiche un lien vers le dépôt Artifactory correspondant</title>
         <mediaobject id="I_mediaobject5_d1e7967">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0554.pdf" format="PDF"/>
@@ -1914,12 +1860,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>This link takes you to a page on the Artifactory server containing
-      the deployed artifact (see <xref linkend="fig-artifactory-artifact"/>).
-      From this page, there is also a link that takes you back to the build
-      that built the artifact.</para>
+      <para>Ce lien vous emmène sur une page sur le serveur Artifactory contenant  les artefacts déployés (voir la figure <xref linkend="fig-artifactory-artifact"/>). Depuis cette page, il y a aussi un lien pour vous ramener vers la page du build qui a construit cet artefact.</para>
       <figure float="0" id="fig-artifactory-artifact">
-        <title>Viewing the deployed artifact in Artifactory</title>
+        <title>Voir l’artefact déployé sur Artifactory</title>
         <mediaobject id="I_mediaobject5_d1e7979">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0555.pdf" format="PDF"/>
