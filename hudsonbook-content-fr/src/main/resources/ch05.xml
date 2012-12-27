@@ -2076,23 +2076,12 @@ uploadArchives {
       </figure>
     </sect2>
     <sect2>
-      <title>Building Projects with NAnt</title>
-      <para>Another<indexterm id="I_indexterm5_d1e8354" significance="normal"><primary>NAnt build scripts</primary></indexterm><indexterm id="I_indexterm5_d1e8357" significance="normal"><primary>freestyle build jobs</primary><secondary>NAnt build scripts in</secondary></indexterm> way to build your .NET projects is to use NAnt. NAnt is a
-      .NET version of the Ant build scripting tool widely used in the Java
-      world. NAnt build scripts are XML files (typically with a <filename moreinfo="none">.build</filename> extension), with a very similar format
-      to Ant build scripts.</para>
-      <para>To build with NAnt in Jenkins, you need to install the Jenkins
-      <indexterm id="I_indexterm5_d1e8368" significance="normal"><primary>NAnt plugin</primary></indexterm><indexterm id="I_indexterm5_d1e8371" significance="normal"><primary>plugins</primary><secondary>NAnt</secondary></indexterm><ulink url="http://wiki.jenkins-ci.org/display/HUDSON/NAnt+Plugin">NAnt
-      plugin</ulink>. Once you have installed the plugin and restarted
-      Jenkins, go to the Configure System page and specify the NAnt
-      installation directory in the Nant Builders section (see <xref linkend="fig-hudson-msbuild-config"/>).</para>
-      <para>Now go to the Build section of your freestyle project and choose
-      “Execute NAnt build” (see <xref linkend="fig-hudson-nant-step"/>). Here
-      you specify your build script and the target you want to invoke. If you
-      click on the “Advanced...” option, you can also set property values to
-      be passed into the NAnt script.</para>
+      <title>Construire des projets avec NAnt</title>
+      <para>Un autre<indexterm id="I_indexterm5_d1e8354" significance="normal"><primary>NAnt build scripts</primary></indexterm><indexterm id="I_indexterm5_d1e8357" significance="normal"><primary>freestyle build jobs</primary><secondary>NAnt build scripts in</secondary></indexterm> moyen de construire vos applications .NET est d’utiliser NAnt. NAnt est la version .NET de l’outil de scripting de build largement utilisé dans le monde Java. Les scripts de build NAnt sont des fichiers XML (typiquement avec une extension <filename moreinfo="none">.build</filename>), avec un format très similaire au script de build Ant.</para>
+      <para>Pour construire avec NAnt dans Jenkins, il vous faut installer le <indexterm id="I_indexterm5_d1e8368" significance="normal"><primary>NAnt plugin</primary></indexterm><indexterm id="I_indexterm5_d1e8371" significance="normal"><primary>plugins</primary><secondary>NAnt</secondary></indexterm><ulink url="http://wiki.jenkins-ci.org/display/HUDSON/NAnt+Plugin">plugin NAnt</ulink> de Jenkins. Une fois que vous l’avez installé et redémarré Jenkins, allez dans la page de configuration du système et spécifiez un répertoire d’installation NAnt dans la section NAnt Builder (voir la figure <xref linkend="fig-hudson-msbuild-config"/>).</para>
+      <para>Maintenant, allez dans la section Build de votre projet Freestyle et choisissez « Execute NAnt build » (voir la figure <xref linkend="fig-hudson-nant-step"/>). Ici, vous spécifiez le script de build et la target que vous voulez invoquer. Si vous cliquez sur l’option « Avancée… », vous pouvez aussi spécifier des valeurs de propriété pour les passer dans le script NAnt.</para>
       <figure float="none" id="fig-hudson-nant-step">
-        <title>A build step using NAnt</title>
+        <title>Une étape de build utilisant NAnt</title>
         <mediaobject id="I_mediaobject5_d1e8388">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0544.pdf" format="PDF"/>
