@@ -1739,16 +1739,10 @@ println env['BUILD_NUMBER']</programlisting>
       <para>Dans votre serveur Jenkins, vous avez configuré des tâches de build Maven à la fois pour l’application <emphasis>cooltools</emphasis> et <emphasis>game-of-life</emphasis>. Comme votre projet <emphasis>game-of-life</emphasis> a besoin de la dernière version SNAPSHOT de <emphasis>cooltools</emphasis>, vous cochez l’option « Lance un build à chaque fois qu'une dépendance SNAPSHOT est construite ». Comme cela, dès lors que le projet <emphasis>cooltools</emphasis> est reconstruit, le projet <emphasis>game-of-life</emphasis> sera aussi <indexterm id="I_indexterm5_d1e7695" class="endofrange" startref="ch05-mavtrigger1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7697" class="endofrange" startref="ch05-mavtrigger2" significance="normal"><primary/></indexterm>automatiquement reconstruit.</para>
     </sect2>
     <sect2>
-      <title>Configuring the Maven Build</title>
-      <para>The <indexterm id="I_indexterm5_d1e7705" significance="normal"><primary>Maven build jobs</primary><secondary>build steps in</secondary></indexterm>next area where you will notice a change is in the Build
-      section. In a Maven build job, the build section is entirely devoted to
-      running a single Maven goal (see <xref linkend="fig-hudson-build-job-maven2"/>). In this section, you specify
-      the version of Maven you want to execute (remember, at the time of
-      Maven, this will only work with Maven), the location of the <filename moreinfo="none">pom.xml</filename> file, and the Maven goal (or goals)
-      to invoke. You can also add any command-line options you need
-      here.</para>
+      <title>Configurer un build Maven</title>
+      <para>La <indexterm id="I_indexterm5_d1e7705" significance="normal"><primary>Maven build jobs</primary><secondary>build steps in</secondary></indexterm>prochaine section où vous noterez un changement est la section Build. Dans une tâche de build Maven, la section Build est entièrement dévoué au lancement d’un seul goal Maven (voir la figure <xref linkend="fig-hudson-build-job-maven2"/>). Dans cette section, vous spécifiez la version de Maven que vous voulez exécuter (rappelez-vous, en tant que job Maven, cela ne fonctionnera qu’avec Maven), la position du fichier <filename moreinfo="none">pom.xml</filename>, et le goal Maven (ou les goals) à invoquer. Vous pouvez aussi ajouter n’importe quelles options de ligne de commande que vous voulez ici.</para>
       <figure float="none" id="fig-hudson-build-job-maven2">
-        <title>Specifying the Maven goals</title>
+        <title>Spécifier les goals Maven</title>
         <mediaobject id="I_mediaobject5_d1e7719">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0548.pdf" format="PDF"/>
@@ -1758,11 +1752,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>In many cases, this is all you need to get your Maven build job
-      configured. However, if you click on the “Advanced...” button, you can
-      take your pick of some more advanced features (<xref linkend="fig-hudson-build-job-maven2-advanced"/>).</para>
+      <para>Dans beaucoup de cas, c’est tout ce que vous aurez besoin de faire pour configurer une tâche de build Maven. Cependant, si vous cliques sur le bouton « Avancé… », vous pouvez cocher certaines fonctionnalités avancées (<xref linkend="fig-hudson-build-job-maven2-advanced"/>).</para>
       <figure float="0" id="fig-hudson-build-job-maven2-advanced">
-        <title>Maven build jobs—advanced options</title>
+        <title>Les tâches de build Maven — les options avancées</title>
         <mediaobject id="I_mediaobject5_d1e7731">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0549.pdf" format="PDF"/>
@@ -1772,55 +1764,15 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>The Incremental Build option<indexterm id="I_indexterm5_d1e7738" significance="normal"><primary>Maven build jobs</primary><secondary>incremental builds</secondary></indexterm> comes in very handy for large, multimodule Maven builds.
-      If you tick this option, when a change is made to one of the project
-      modules, Jenkins will only rebuild that module and any modules that use
-      the changed module. It performs this magic by using some new Maven
-      features introduced in Maven 2.1 (so it won’t work if you are using
-      Maven 2.0.x). Jenkins detects which modules have been changed, and then
-      uses the <literal moreinfo="none">-pl</literal> (<literal moreinfo="none">--project-list</literal>)
-      option to build only the updated modules, and the
-      <literal moreinfo="none">-amd</literal> (<literal moreinfo="none">--also-make-dependents</literal>)
-      option to build the modules that use the updated modules. If nothing has
-      been changed in the source code, all of the modules are built.</para>
-      <para>By default, Jenkins<indexterm id="I_indexterm5_d1e7758" significance="normal"><primary>Maven build jobs</primary><secondary>archiving binary artifacts, disabling</secondary></indexterm><indexterm id="I_indexterm5_d1e7763" significance="normal"><primary>archives of binary artifacts</primary><secondary>disabling</secondary></indexterm><indexterm id="I_indexterm5_d1e7768" significance="normal"><primary>binary artifacts</primary><secondary>archiving</secondary><tertiary>disabling</tertiary></indexterm> will archive all of the artifacts generated by a Maven
-      build job. This can come in handy at times, but it can also be very
-      expensive in disk storage. If you want to turn off this option, just
-      tick the “Disable automatic artifact archiving” option. Alternatively,
-      you can always limit the artifacts stored by using the “Discard Old
-      Builds” option at the top of the configuration page.</para>
-      <para>The “Build modules in parallel” option<indexterm id="I_indexterm5_d1e7778" significance="normal"><primary>Maven build jobs</primary><secondary>running modules in parallel</secondary></indexterm> tells Jenkins to run each individual module in parallel
-      as a separate build. In theory, this could speed up your builds quite a
-      bit. In practice, it will only really work if your modules are totally
-      independent (that is, you aren’t using aggregation), which is rarely the
-      case. If you think building your modules in parallel could really speed
-      up your multimodule project, you may want to try a freestyle build with
-      Maven 3 and its new parallel build feature.</para>
-      <para>Another <indexterm id="I_indexterm5_d1e7786" significance="normal"><primary>Maven build jobs</primary><secondary>private repository for</secondary></indexterm>useful option is “Use [a] private Maven repository”.
-      Normally, when Jenkins runs Maven, it will behave in exactly the same
-      way as Maven on the command line: it will store artifacts in, and
-      retrieve artifacts from the local Maven repository (found in <filename moreinfo="none">~/.m2/repository</filename> if you haven’t reconfigured
-      it in the <filename moreinfo="none">settings.xml</filename> file). This
-      is efficient in terms of disk space, but not always ideal for CI builds.
-      Indeed, if several build jobs are working on and with the same snapshot
-      artifacts, the builds may end up interfering with each other.</para>
-      <para>When this option is checked, Jenkins will tell Maven to use
-      <filename moreinfo="none">$WORKSPACE/.repository</filename> as the local Maven
-      repository. This means each job will get its own isolated Maven
-      repository just for itself. It fixes the above problems, at the expense
-      of additional disk space consumption.</para>
-      <para>With this option, Maven will use a dedicated Maven repository for
-      this build job, located in the <filename moreinfo="none">$WORKSPACE/.repository </filename>directory. This takes
-      more disk space, but guarantees a better isolation between build
-      jobs.</para>
-      <para>Another way of addressing this problem is to override the default
-      repository location by using the <literal moreinfo="none">maven.repo.local</literal>
-      property, as shown here:</para>
+      <para>L’option de build incrémental<indexterm id="I_indexterm5_d1e7738" significance="normal"><primary>Maven build jobs</primary><secondary>incremental builds</secondary></indexterm> est très pratique pour les grands builds multi modules Maven. Si vous cochez cette option, lorsqu’un changement est effectué sur l’un des modules du projet, Jenkins reconstruira uniquement ce module et les modules qui utilisent le module modifié. Il fait cette magie en utilisant certaines nouvelles fonctionnalités introduites par Maven 2.1 (donc cela ne fonctionnera pas si vous utilisez Maven 2.0.x). Jenkins détecte quels modules a été modifiés, et utilise l’option <literal moreinfo="none">-pl</literal> (<literal moreinfo="none">--project-list</literal>) pour construire uniquement les modules mis à jour, et l’option <literal moreinfo="none">-amd</literal> (<literal moreinfo="none">--also-make-dependents</literal>) pour construire aussi les modules qui utilises les modules mis à jour. Si rien n’a été modifié dans le code source, tous les modules sont construits.</para>
+      <para>Par défault, Jenkins<indexterm id="I_indexterm5_d1e7758" significance="normal"><primary>Maven build jobs</primary><secondary>archiving binary artifacts, disabling</secondary></indexterm><indexterm id="I_indexterm5_d1e7763" significance="normal"><primary>archives of binary artifacts</primary><secondary>disabling</secondary></indexterm><indexterm id="I_indexterm5_d1e7768" significance="normal"><primary>binary artifacts</primary><secondary>archiving</secondary><tertiary>disabling</tertiary></indexterm> archivera tous les artefacts générés par une tâche de build Maven. Cela peut être utile à certains moments, mais cela peut aussi être très coûteux en place sur le disque. Si vous souhaitez désactiver cette option, il suffit de cocher l’option « Désactive l’archivage automatique des artefacts ». Alternativement, vous pouvez toujours limiter les artefacts stockés en utilisant l’option « Supprimer les anciens builds» tout en haut de la page de configuration.</para>
+      <para>L’option « Construire les modules en parallèle »<indexterm id="I_indexterm5_d1e7778" significance="normal"><primary>Maven build jobs</primary><secondary>running modules in parallel</secondary></indexterm> informe Jenkins qu’il peut démarrer chaque module individuellement en parallèle comme un build séparé. En théorie, cela pourrait rendre un peu plus rapide les constructions. En pratique, cela fonctionnera réellement si vos modules sont totalement indépendants (si vous n’utilisez pas d’agrégation), ce qui est rarement le cas. Si vous pensez que construire vos modules en parallèle peut réellement accélérer votre projet multi module, vous pouvez avoir envie d’utiliser un build freestyle avec Maven 3 et sa nouvelle fonctionnalité de construction parallèle.</para>
+      <para>Une autre <indexterm id="I_indexterm5_d1e7786" significance="normal"><primary>Maven build jobs</primary><secondary>private repository for</secondary></indexterm>option utile est « Utiliser une repository Maven privé ». Normalement, lorsque Jenkins démarre Maven, il se comportera exactement de la même manière que Maven en ligne de commande : il stockera les artefacts et retrouvera les artefacts depuis le dépôt Maven local (dans <filename moreinfo="none">~/.m2/repository</filename> si vous ne l’avez pas configuré dans le fichier <filename moreinfo="none">settings.xml</filename>). Ceci est efficient en terme d’espace disque, mais pas souvent idéal pour des constructions en IC. En effet, si plusieurs tâches de build sont en construction avec les mêmes artefacts en SNAPSHOT, les constructions peuvent finir par se gêner les unes avec les autres.</para>
+      <para>Lorsque cette option est sélectionnée, Jenkins demande à Maven d’utiliser <filename moreinfo="none">$WORKSPACE/.repository</filename>comme dépôt local Maven. Cela signifie que chaque job aura son propre dépôt Maven isolé pour lui tout seul. Cela règle les problèmes ci-dessus, au détriment de la consommation d'espace disque supplémentaire.</para>
+      <para>Avec cette option, Maven utilisera un dépôt Maven dédié pour cette tâche de build, situé dans le répertoire <filename moreinfo="none">$WORKSPACE/.repository </filename>. Ceci prend plous d’espace disque, mais garantie une meilleur isolation pour nos tâches de build.</para>
+      <para>Une autre approche pour ce problème est de redéfinir l’emplacement par défaut du dépôt en utilisant la propriété <literal moreinfo="none">maven.repo.local</literal>, comme montré ici :</para>
       <programlisting id="I_programlisting5_d1e7814" format="linespecific">$ <userinput moreinfo="none">mvn install -Dmaven.repo.local=~/.m2/staging-repository</userinput></programlisting>
-      <para>This approach has the advantage of being able to share a
-      repository across several build jobs, which is useful if you need to do
-      a series of related builds. It will also work with freestyle
-      jobs.</para>
+      <para>Cette approche à l’avantage d’être capable de partager un dépôt entre certaines tâches de builds, ce qui est utile si vous souhaitez faire une série de builds liés. Cela fonctionnera aussi avec des tâches Freestyle.</para>
     </sect2>
     <sect2>
       <title>Post-Build Actions</title>
