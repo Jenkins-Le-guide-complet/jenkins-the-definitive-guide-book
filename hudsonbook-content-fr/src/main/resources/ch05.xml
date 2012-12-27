@@ -1705,28 +1705,14 @@ println env['BUILD_NUMBER']</programlisting>
     <para>Maintenant,<indexterm id="I_indexterm5_d1e7587" significance="normal"><primary>freestyle build jobs</primary><secondary>running</secondary></indexterm> tout ce que vous devez faire est sauver votre nouveau job de construction. Vous pouvez alors déclencher le premier build manuellement, ou juste en attendant que celui-ci se déclenche de lui-même. Une fois que le build est terminé, vous pouvez cliquer sur le numéro du build pour voir les résultats de votre travail.</para>
   </sect1>
   <sect1 id="sect-build-jobs-maven">
-    <title>Working with Maven Build Jobs</title>
-    <para>In <indexterm class="startofrange" id="ch05-mavenjob" significance="normal"><primary>Maven build jobs</primary></indexterm>this section, we will have a look at the other most commonly
-    used build job: Maven 2/3 build jobs.</para>
-    <para>Maven build jobs are specifically adapted to Maven 2 and Maven 3
-    builds. Creating a Maven build job requires considerably less work than
-    configuring the equivalent <phrase role="keep-together">freestyle</phrase>
-    build job. Maven build jobs support advanced Maven-related features such
-    as incremental builds on multimodule projects and triggering builds from
-    changes in snapshot dependencies, and make configuration and reporting
-    much simpler.</para>
-    <para>However, there is a catch: Maven 2/3 build jobs are less flexible
-    than freestyle build jobs, and don’t support multiple build steps within
-    the same build job. Some users also report that large Maven projects tend
-    to run more slowly and use more memory when configured as Maven build jobs
-    rather than as Freestyle ones.</para>
-    <para>In this section, we will investigate how to configure Maven 2/3
-    builds, when you can use them, as well as their advantages and
-    limitations.</para>
-    <para>To <indexterm id="I_indexterm5_d1e7613" significance="normal"><primary>Maven build jobs</primary><secondary>creating</secondary></indexterm>create a new Maven build job, just choose the “”Build a
-    maven2/3 project” option in the New Job page (see <xref linkend="fig-hudson-build-job-new-mvn2"/>).</para>
+    <title>Travailler avec des tâches de build Maven</title>
+    <para>Dans <indexterm class="startofrange" id="ch05-mavenjob" significance="normal"><primary>Maven build jobs</primary></indexterm>cette section, nous allons avoir un aperçu de l’autre type de tâche de build communément utilisé : les tâches de build Maven 2/3.</para>
+    <para>Les tâches de build Maven sont spécifiquement adaptées pour les builds Maven 2 et Maven 3. Créer une tâche de build Maven nécessite considérablement moins de travail que son équivalent en tâche de build <phrase role="keep-together">Freestyle</phrase>. Les tâches de build Maven supportent les fonctionnalités avancées liées à Maven comme les builds incrémentaux sur les projets multi-modules et les builds déclenchés par des changements sur des dépendances en snapshot, et permettent une configuration et des rapports plus simples.</para>
+    <para>Cependant, il y a un hic : les tâches de build Maven 2/3 sont moins flexibles que les tâches de build Freestyle, et ne supportent pas des étapes de build multiples dans la même tâche de build. Certains utilisateurs ont aussi signalés que les gros projets Maven tendent à être plus lents et utilisent plus de mémoire lorsqu’ils sont configurés avec des tâches de build Maven au lieu de leur équivalent en Freestyle.</para>
+    <para>Dans cette section, nous allons enquêter pour savoir comment configurer des builds Maven 2/3, quand les utiliser, ainsi que leurs avantages et inconvénients.</para>
+    <para>Pour <indexterm id="I_indexterm5_d1e7613" significance="normal"><primary>Maven build jobs</primary><secondary>creating</secondary></indexterm>créer une nouvelle tâche de build, il suffit de choisir l’option « Construire un projet Maven 2/3 » dans la page Nouveau Job (voir <xref linkend="fig-hudson-build-job-new-mvn2"/>).</para>
     <figure float="none" id="fig-hudson-build-job-new-mvn2">
-      <title>Creating a new Maven build job</title>
+      <title>Créer une nouvelle tâche de build Maven</title>
       <mediaobject id="I_mediaobject5_d1e7624">
         <imageobject role="print">
           <imagedata fileref="figs/print/jtdg_0547.pdf" format="PDF"/>
