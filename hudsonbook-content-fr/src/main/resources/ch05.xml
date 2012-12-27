@@ -1546,13 +1546,8 @@ println env['BUILD_NUMBER']</programlisting>
       </figure>
     </sect2>
     <sect2>
-      <title>Building Projects in Other Languages</title>
-      <para>Jenkins<indexterm id="I_indexterm5_d1e7224" significance="normal"><primary>scripts</primary><secondary>languages supported</secondary></indexterm> is a flexible tool, and it can be used for much more than
-      just Java and Groovy. For example, Jenkins also works well with Grails,
-      .Net, Ruby, Python and PHP, just to name a few. When using other
-      languages, you generally need to install a plugin to support your
-      favorite language, which will add a new build step type for this
-      language. We will look at some <indexterm id="I_indexterm5_d1e7230" class="endofrange" startref="ch05-step" significance="normal"><primary/></indexterm>examples in <xref linkend="using-jenkins-with-other-languages"/>.</para>
+      <title>Construire des projets dans d’autres langages</title>
+      <para>Jenkins<indexterm id="I_indexterm5_d1e7224" significance="normal"><primary>scripts</primary><secondary>languages supported</secondary></indexterm> est un outil flexible, il peut être utilisé avec beaucoup plus de de langage que Java et Groovy. Par exemple, Jenkins fonctionne aussi très bien avec Grails, .Net, Ruby, Python et PHP, juste pour en nommer quelques uns. En utilisant d’autres langages, vous aurez généralement besoin d’installer un plugin supportant votre langage favori, qui ajoutera un nouveau type d’étape de build pour ce langage.Nous regarderons <indexterm id="I_indexterm5_d1e7230" class="endofrange" startref="ch05-step" significance="normal"><primary/></indexterm>d’autres exemples dans la section <xref linkend="using-jenkins-with-other-languages"/>.</para>
     </sect2>
   </sect1>
   <sect1 id="I_sect15_d1e7235">
