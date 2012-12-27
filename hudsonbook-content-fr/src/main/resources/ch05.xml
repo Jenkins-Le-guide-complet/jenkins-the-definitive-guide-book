@@ -1890,13 +1890,10 @@ println env['BUILD_NUMBER']</programlisting>
       </figure>
     </sect2>
     <sect2>
-      <title>Managing Modules</title>
-      <para>When <indexterm id="I_indexterm5_d1e8031" significance="normal"><primary>Maven build jobs</primary><secondary>modules for, managing</secondary></indexterm>using Maven, it is common to split a project into several
-      modules. Maven build jobs have an intrinsic understand of multimodule
-      projects, and adds a Modules menu item that lets you display the
-      structure of the project at a glance (see <xref linkend="fig-maven2-modules"/>).</para>
+      <title>Gérer les modules</title>
+      <para>Lorsque <indexterm id="I_indexterm5_d1e8031" significance="normal"><primary>Maven build jobs</primary><secondary>modules for, managing</secondary></indexterm>vous utilisez Maven, il est habituel de découper le projet en plusieurs modules. Les tâches de build Maven ont un connaissance intrinsèque des projets multi modules, et ajoute un élément Modules au menu qui vous permet d’afficher la structure du projet d’un coup d’œil (voir la figure <xref linkend="fig-maven2-modules"/>).</para>
       <figure float="0" id="fig-maven2-modules">
-        <title>Managing modules in a Maven build job</title>
+        <title>Gérer les modules dans une tâche de build Maven</title>
         <mediaobject id="I_mediaobject5_d1e8042">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0557.pdf" format="PDF"/>
@@ -1906,11 +1903,7 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Clicking on any of the modules will take you to the build page for
-      that module. From here, you can view the detailed build results for each
-      module, trigger a build of that module in isolation, and if necessary
-      fine tune the configuration of individual module, overriding the
-      configuration of the overall project.</para>
+      <para>Cliquer sur l’un des modules vous permettra d’afficher la page de build pour ce module. A partir de la, vous pouvez voir les résultats détaillés des builds pour chaque module, déclencher un build pour un module isolé, et si nécessaire, affiner la configuration d’un module, surchargeant ainsi la configuration global du projet.</para>
     </sect2>
     <sect2>
       <title>Extra Build Steps in Your Maven Build Jobs</title>
