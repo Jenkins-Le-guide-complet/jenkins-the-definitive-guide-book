@@ -2093,41 +2093,22 @@ uploadArchives {
       </figure>
     </sect2>
     <sect2 id="sect-ruby-builds">
-      <title>Building Projects with Ruby and Ruby on Rails</title>
-      <para>Jenkins <indexterm class="startofrange" id="ch05-ruby1" significance="normal"><primary>freestyle build jobs</primary><secondary>Ruby and Ruby on Rails projects in</secondary></indexterm><indexterm class="startofrange" id="ch05-ruby2" significance="normal"><primary>Ruby applications</primary></indexterm><indexterm class="startofrange" id="ch05-ruby3" significance="normal"><primary>Ruby on Rails projects</primary></indexterm>makes an excellent choice when it comes to integrating CI
-      into your Ruby and Ruby on Rails projects. The Rake Plugin lets you add
-      Rake build steps to your build jobs. You can also use the Ruby Plugin
-      lets you run Ruby scripts directly in your build job. Finally, the Ruby
-      Metrics Plugin provides support for Ruby code quality metrics tools such
-      as RCov, Rails stats, and Flog.</para>
-      <para>Another invaluable tool in this area is
-      <literal moreinfo="none">CI:Reporter</literal>. This library is an add-on to
-      <literal moreinfo="none">Test::Unit</literal>, <literal moreinfo="none">RSpec</literal>, and
-      <literal moreinfo="none">Cucumber</literal> that generates JUnit-compatible XML reports
-      for your tests. As we will see, JUnit-compatible test results can be
-      used directly by Jenkins to report on your test results. You would
-      install CI:Reporter using Gem as illustrated here:</para>
+      <title>Construire des projets avec Ruby et Ruby on Rails</title>
+      <para>Jenkins <indexterm class="startofrange" id="ch05-ruby1" significance="normal"><primary>freestyle build jobs</primary><secondary>Ruby and Ruby on Rails projects in</secondary></indexterm><indexterm class="startofrange" id="ch05-ruby2" significance="normal"><primary>Ruby applications</primary></indexterm><indexterm class="startofrange" id="ch05-ruby3" significance="normal"><primary>Ruby on Rails projects</primary></indexterm>est un excellent choix lorsqu’il s’agit de faire de l’IC sur vos projets Ruby et Ruby on Rails. Le plugin Rake vous permet d’ajouter des étapes de build Rake dans vos tâches de build. Vous pouvez aussi utiliser le plugin Ruby qui vous permet de lancer des scripts Ruby directement dans votre tâche de build. Finallement, le plugin Ruby Metrics fournit un support pour les outils de métriques de qualité de code comme RCov, Rails stats, et Flog.</para>
+      <para>Un autre outil précieux dans ce domaine est <literal moreinfo="none">CI:Reporter</literal>.Cette librairie est un add-on de <literal moreinfo="none">Test::Unit</literal>, <literal moreinfo="none">RSpec</literal>, et <literal moreinfo="none">Cucumber</literal> qui génère des rapports compatible avec JUnit de vos  tests. Comme vous allez le voir, les résultats de test compatibles avec JUnit peuvent être utilisés directement par Jenkins pour faire des rapports de vos résultats de test. Vous devez installer CI:Reporter en utilisant Gem comme illustré ici :</para>
       <screen format="linespecific">$ <userinput moreinfo="none">sudo gem install ci_reporter</userinput>
 Successfully installed ci_reporter-1.6.4
 1 gem installed</screen>
-      <para>Next, you will need to set this up in your Rakefile, by adding the
-      following:</para>
+      <para>Ensuite, il vous faudra le configurer dans votre Rakefile, en ajoutant ce qui suit :</para>
       <programlisting id="I_programlisting5_d1e8431" format="linespecific">require 'rubygems'
 gem 'ci_reporter'
 require 'ci/reporter/rake/test_unit' # use this if you're using Test::Unit</programlisting>
-      <para>In <xref linkend="chapter-code-quality"/>, we discuss integrating
-      code quality metrics into your Jenkins builds. Jenkins also provides
-      support for code coverage metrics in Ruby. The Ruby Metrics Plugin
-      supports code coverage metrics using <command moreinfo="none">rcov</command> as well as general code statistics with
-      <command moreinfo="none">Rails stats</command>. To install the <command moreinfo="none">rcov-plugin</command>, you will first need to run
-      something along the following lines:</para>
+      <para>Dans le chapitre <xref linkend="chapter-code-quality"/>, nous discutons de l’intégration des métriques de qualité de code dans vos builds Jenkins. Jenkins fournit aussi un support sur les métriques de couverture de code en Ruby. Le plugin Ruby Metrics supporte les métriques de qualité de code en utilisant <command moreinfo="none">rcov</command> aussi bien que des statistiques de code générales avec <command moreinfo="none">Rails stats</command>. Pour installer le <command moreinfo="none">plugin rcov</command>, vous devez tout d'abord exécuter quelque chose comme les lignes suivantes :</para>
       <screen format="linespecific">$ <userinput moreinfo="none">./script/plugin install http://svn.codahale.com/rails_rcov</userinput></screen>
-      <para>Once this is set up, you will be able to display your test results
-      and test result trend in Jenkins.</para>
-      <para>Finally, you can configure a Rake build simply by using a Rake
-      build step, as illustrated in <xref linkend="fig-hudson-rake-step"/>.</para>
+      <para>Une fois que c’est configuré, vous serez en mesure d’afficher vos résultats de test et la tendance de résultat de test dans Jenkins.</para>
+      <para>Finalement, vous pouvez configurer un build Rake simplement en utilisant une étape de build Rake, comme illustré dans la figure <xref linkend="fig-hudson-rake-step"/>.</para>
       <figure float="none" id="fig-hudson-rake-step">
-        <title>A build step using Rake</title>
+        <title>Une étape de build utilisant Rake</title>
         <mediaobject id="I_mediaobject5_d1e8459">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0545.pdf" format="PDF"/>
@@ -2137,15 +2118,9 @@ require 'ci/reporter/rake/test_unit' # use this if you're using Test::Unit</prog
           </imageobject>
         </mediaobject>
       </figure>
-      <para>You also need to configure Jenkins to report on the test and
-      quality metrics results. You can do this by activating the “Publish
-      JUnit test result report”, “Publish Rails stats report”, and “Public
-      Rcov report” options (see <xref linkend="fig-hudson-rails-metrics"/>).
-      The JUnit XML reports will be found in the <filename moreinfo="none">results</filename> directory (enter
-      <userinput moreinfo="none">results/*.xml</userinput> in the “Test report XMLs” field),
-      and the Rcov date<indexterm id="I_indexterm5_d1e8475" class="endofrange" startref="ch05-ruby1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8477" class="endofrange" startref="ch05-ruby2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8479" class="endofrange" startref="ch05-ruby3" significance="normal"><primary/></indexterm> in the <filename moreinfo="none">coverage/units</filename> directory.</para>
+      <para>Vous devez aussi configurer Jenkins pour faire des rapports sur les résultats des tests et les métriques de qualité. Vous pouvez faire ceci en activant les options « Publish JUnit test result report », « Publish Rails stats report », et « Public Rcov report » (voir la figure <xref linkend="fig-hudson-rails-metrics"/>).Les rapports XML JUnit seront trouvés dans le répertoire <filename moreinfo="none">results</filename> (entrez <userinput moreinfo="none">results/*.xml</userinput> dans le champ “Test report XMLs”), et le rapport <indexterm id="I_indexterm5_d1e8475" class="endofrange" startref="ch05-ruby1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8477" class="endofrange" startref="ch05-ruby2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8479" class="endofrange" startref="ch05-ruby3" significance="normal"><primary/></indexterm> dans le répertoire <filename moreinfo="none">coverage/units</filename>.</para>
       <figure float="none" id="fig-hudson-rails-metrics">
-        <title>Publishing code quality metrics for Ruby and Rails</title>
+        <title>Publier des métriques de qualité de code pour Ruby et Rails</title>
         <mediaobject id="I_mediaobject5_d1e8489">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0546.pdf" format="PDF"/>
