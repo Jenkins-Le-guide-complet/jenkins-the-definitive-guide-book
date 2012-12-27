@@ -1696,16 +1696,8 @@ println env['BUILD_NUMBER']</programlisting>
       <para>Finalement, Jenkins enverra un message lorsque un build précédemment en échec ou instable réussi, pour permettre d’informer tout le monde que le problème a été<indexterm id="I_indexterm5_d1e7550" class="endofrange" startref="ch05-notif1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7552" class="endofrange" startref="ch05-notif2" significance="normal"><primary/></indexterm> résolu.</para>
     </sect2>
     <sect2>
-      <title>Building Other Projects</title>
-      <para>You <indexterm id="I_indexterm5_d1e7560" significance="normal"><primary>freestyle build jobs</primary><secondary>starting other build jobs in</secondary></indexterm>can also start other build jobs in the Post-build Actions,
-      using the “Build other projects” option. This is useful if you want to
-      organize your build process in several, smaller steps, rather than one
-      long build job. Just list the projects you want to start after this one.
-      Normally, these projects will only be triggered if the build was stable,
-      but you can optionally trigger another build job even if the current
-      build is <indexterm id="I_indexterm5_d1e7566" significance="normal"><primary>build jobs</primary><secondary>unstable build from</secondary><tertiary>triggering another build after</tertiary></indexterm><indexterm id="I_indexterm5_d1e7573" significance="normal"><primary>unstable builds</primary><secondary>triggering another build job after</secondary></indexterm>unstable. This might be useful, for example, if you wanted
-      to run a code quality metrics reporting build job after a project’s main
-      build job, even if there are test failures in the main<indexterm id="I_indexterm5_d1e7579" class="endofrange" startref="ch05-post" significance="normal"><primary/></indexterm> build.</para>
+      <title>Construire d’autres projets</title>
+      <para>Vous <indexterm id="I_indexterm5_d1e7560" significance="normal"><primary>freestyle build jobs</primary><secondary>starting other build jobs in</secondary></indexterm>pouvez aussi démarrer d’autres constructions de job dans les actions à la suite du build, en utilisant l’option « Construire d’autres projets (projets en aval) ». Ceci est utile si vous souhaitez organiser votre processus de build en plusieurs, plus petites étapes, à la place d’une seul longue construction de job. Il suffit de lister les projets que vous souhaitez démarrer après celui-ci. Normalement, ces projets seront déclenchés uniquement si le build est stable, mais vous pouvez optionnellement déclencher d’autre construction de job même si le build courant est <indexterm id="I_indexterm5_d1e7566" significance="normal"><primary>build jobs</primary><secondary>unstable build from</secondary><tertiary>triggering another build after</tertiary></indexterm><indexterm id="I_indexterm5_d1e7573" significance="normal"><primary>unstable builds</primary><secondary>triggering another build job after</secondary></indexterm>instable. Cela peut être utile, par exemple, si vous voulez démarrer une construction de job effectuant des rapports sur des mesures de qualité de code après une construction de job principal du projet, même s’il y a des tests en échecs dans le<indexterm id="I_indexterm5_d1e7579" class="endofrange" startref="ch05-post" significance="normal"><primary/></indexterm> build principal.</para>
     </sect2>
   </sect1>
   <sect1 id="I_sect15_d1e7582">
