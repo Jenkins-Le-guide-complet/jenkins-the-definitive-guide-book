@@ -1775,20 +1775,9 @@ println env['BUILD_NUMBER']</programlisting>
       <para>Cette approche à l’avantage d’être capable de partager un dépôt entre certaines tâches de builds, ce qui est utile si vous souhaitez faire une série de builds liés. Cela fonctionnera aussi avec des tâches Freestyle.</para>
     </sect2>
     <sect2>
-      <title>Post-Build Actions</title>
-      <para>The <indexterm id="I_indexterm5_d1e7825" significance="normal"><primary>Maven build jobs</primary><secondary>Post-build Actions</secondary></indexterm>Post-Build actions in a Maven build job are considerably
-      simpler to configure than in a freestyle job. This is simply because,
-      since this is a Maven build, Jenkins knows where to look for a lot of
-      the build output. Artifacts, test reports, Javadoc, and so forth, are
-      all generated in standard directories, which means
-      <emphasis>you</emphasis> don’t have to tell Jenkins where to find
-      things. So Jenkins will find, and report on, JUnit test results
-      automatically, for example. Later on in the book, we will see how the
-      Maven projects also simplify the configuration of many code quality
-      metrics tools and reports.</para>
-      <para>Most of the other Post-build Actions are similar to those we
-      <phrase role="keep-together">saw</phrase> in the freestyle build
-      job.</para>
+      <title>Les actions à la suite du build</title>
+      <para>Les <indexterm id="I_indexterm5_d1e7825" significance="normal"><primary>Maven build jobs</primary><secondary>Post-build Actions</secondary></indexterm>actions à la suite du build dans une tâche de build Maven est considérablement simple à configurer comparé à une tâche Freestyle. C’est simplement parce que, puisque c’est un build Maven, Jenkins sait où chercher un certain nombre de sortie du build. Les artefacts, rapports de test, Javadoc, en ainsi de suite, sont tous générés dans les répertoires standards, ce qui signifie que <emphasis>vous</emphasis> n’avez pas besoin de préciser à Jenkins où trouver ces éléments. Donc Jenkins trouvera, et effectuera automatiquement des rapports sur des résultats de test JUnit, par exemple. Plus loin dans ce livre, nous verrons comment les projets Maven simplifient aussi la configuration de beaucoup d’outils de mesure de qualité de code et de rapports.</para>
+      <para>Beaucoup des autres actions à la suite du build sont similaires à ceux que nous avons <phrase role="keep-together">vus</phrase> dans une tâche de build Freestyle.</para>
     </sect2>
     <sect2 id="sect-builds-deploy-enterprise-repository">
       <title>Deploying to an Enterprise Repository Manager</title>
