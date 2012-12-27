@@ -1572,19 +1572,11 @@ println env['BUILD_NUMBER']</programlisting>
       <para>Nous regarderons les tests automatisés plus<indexterm id="I_indexterm5_d1e7288" class="endofrange" startref="ch05-report1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7290" class="endofrange" startref="ch05-report2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7292" class="endofrange" startref="ch05-report3" significance="normal"><primary/></indexterm> en détail dans le chapitre <xref linkend="chapter-automated-testing"/>.</para>
     </sect2>
     <sect2>
-      <title>Archiving Build Results</title>
-      <para>With <indexterm class="startofrange" id="ch05-archive1" significance="normal"><primary>freestyle build jobs</primary><secondary>archiving binary artifacts</secondary></indexterm><indexterm class="startofrange" id="ch05-archive2" significance="normal"><primary>archives of binary artifacts</primary><secondary sortas="free-style">in freestyle build jobs</secondary></indexterm><indexterm class="startofrange" id="ch05-archive3" significance="normal"><primary>binary artifacts</primary><secondary>archiving</secondary><tertiary sortas="free-style">in freestyle build jobs</tertiary></indexterm>a few exceptions, the principal goal of a build job is
-      generally to build something. In Jenkins, we call this something an
-      artifact. An artifact might be a binary executable (a JAR or WAR file
-      for a Java project, for example), or some other related deliverable,
-      such as documentation or source code. A build job can store one or many
-      different artifacts, keeping only the latest copy or every artifact ever
-      built.</para>
-      <para>Configuring Jenkins to store your artifacts is easy—just tick the
-      “Archive the artifacts” checkbox in the Post-build Actions, and specify
-      which artifacts you want to store (see <xref linkend="fig-hudson-build-job-artifact-configuration"/>).</para>
+      <title>Archiver les résultats de build</title>
+      <para>A <indexterm class="startofrange" id="ch05-archive1" significance="normal"><primary>freestyle build jobs</primary><secondary>archiving binary artifacts</secondary></indexterm><indexterm class="startofrange" id="ch05-archive2" significance="normal"><primary>archives of binary artifacts</primary><secondary sortas="free-style">in freestyle build jobs</secondary></indexterm><indexterm class="startofrange" id="ch05-archive3" significance="normal"><primary>binary artifacts</primary><secondary>archiving</secondary><tertiary sortas="free-style">in freestyle build jobs</tertiary></indexterm>quelques exceptions près, le but principal d’une tâche de build est généralement de construire quelque chose. Dans Jenkins, nous appelons cette chose un artefact. Un artefact pourrait être un exécutable binaire (un fichier JAR ou WAR pour un projet Java, par exemple), ou certains autres livrables liés, comme de la documentation ou du code source. Une tâche de build peut stocker un ou plusieurs différents artefacts, gardant uniquement la dernière copie ou chaque artefact tous les builds.</para>
+      <para>Configurer Jenkins pour stocker vos artefacts est simple — cochez la case à cocher « Archiver les artefacts » dans les Actions à la suite de build, et spécifier quels artefacts vous voulez stocker (voir la figure <xref linkend="fig-hudson-build-job-artifact-configuration"/>).</para>
       <figure float="none" id="fig-hudson-build-job-artifact-configuration">
-        <title>Configuring build artifacts</title>
+        <title>Configurer les artefacts de builds</title>
         <mediaobject id="I_mediaobject5_d1e7327">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0533.pdf" format="PDF"/>
@@ -1594,35 +1586,12 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>In the “Files to archive” field, you can provide the full paths of
-      the files you want to archive (relative to the job workspace), or, use
-      Ant-like wild cards (e.g., <literal moreinfo="none">**/*.jar</literal>, for all the JAR
-      files, anywhere in the workspace). One advantage of using wild cards is
-      that it makes your build less dependent on your version control set up.
-      For example, if you are using Subversion (see <xref linkend="sect-subversion"/>), Jenkins will check out your project
-      either directly in your workspace, or into a subdirectory, depending on
-      how you set it up. If you use a wild card expression like
-      <literal moreinfo="none">**/target/*.war</literal>, Jenkins will find the file no matter
-      what directory the project is located in.</para>
-      <para>As usual, the Advanced button give access to a few extra options.
-      If you are using wild cards to find your artifacts, you might need to
-      exclude certain directories from the search. You can do this by filling
-      in the Excludes field. You enter a pattern to match any files that you
-      <emphasis>don’t</emphasis> want to archive, even if they would normally
-      be included by the “Files to archive” field.</para>
-      <para>Archived artifacts can take a lot of disk space, especially if
-      builds are frequent. For this reason, you may want to only keep the last
-      successful one. To do this, just tick the “Discard all but the last
-      successful/stable artifact” option. Jenkins will keep artifacts from the
-      last stable build (if there where any). It will also keep the artifacts
-      of the latest unstable build following the stable build (if any), and
-      also from the last failed build that happened.</para>
-      <para>Archived build artifacts appear on the build results page (see
-      <xref linkend="fig-hudson-build-artifact"/>). The most recent build
-      artifacts are also displayed on the build job home page.</para>
+      <para>Dans le champ « Fichiers à archiver », vous pouvez spécifier les chemins complets des fichiers que vous souhaitez archiver (relatif au workspace du job), ou, utiliser un caractère générique (ex. : <literal moreinfo="none">**/*.jar</literal>, pour tous les fichiers JAR, n’importe où dans le workspace). L’un des avantages d’utiliser des caractères génériques est qu’il permet de rendre votre build moins dépendant de votre configuration de gestion de version. Par exemple, si vous utilisez Subversion (voir la section <xref linkend="sect-subversion"/>), Jenkins va parcourir votre projet directement depuis le workspace, ou depuis un sous-répertoire, en fonction de votre configuration. Si vous utilisez un caractère générique comme <literal moreinfo="none">**/target/*.war</literal>, Jenkins trouvera le fichier indépendamment du répertoire où est positionné le projet.</para>
+      <para>Comme d’habitude, le bouton Avancé donne accès à quelques options supplémentaires. Si vous utilisez un caractère générique pour trouver vos artefacts, vous pourriez avoir besoin d’exclure certains répertoires dans la recherche. Vous pouvez faire ceci en remplissant le champ Exclusions. Vous entrez un modèle de nom de fichier que vous <emphasis>ne souhaitez pas</emphasis> archiver, même s’ils seraient normalement inclus par le champ "Fichiers à archiver".</para>
+      <para>Les artefacts archivés peuvent prendre beaucoup de place sur le disque, en particulier si les builds sont fréquents. Pour cette raison, vous pouvez vouloir garder uniquement le dernier en succès. Pour faire ceci, il suffit de cocher l’option « Supprime tous les artefacts, à l'exception du dernier artefact stable ou construit avec succès, afin de gagner de l'espace disque ». Jenkins gardera les artefacts des derniers builds stables (s’il y en a). Il gardera aussi les artefacts du dernier build instable construit juste après un build stable (s’il y a), et également du dernier build en échec qui est arrivé.</para>
+      <para>Les artefacts de build archivés apparaissent sur la page des résultats de build (voir la figure <xref linkend="fig-hudson-build-artifact"/>). Les artefacts de build les plus récents sont aussi affichés dans la page d’accueil d’un job.</para>
       <figure float="none" id="fig-hudson-build-artifact">
-        <title>Build artifacts are displayed on the build results page and on
-        the build job home page</title>
+        <title>Les artefacts de build sont affichés sur la page de résultat d’un build et la page d’accueil d’un job</title>
         <mediaobject id="I_mediaobject5_d1e7356">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0534.pdf" format="PDF"/>
@@ -1632,31 +1601,16 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>You can also use permanent URLs to access the most recent build
-      artifacts. This is a great way to reuse the latest artifacts from your
-      builds, either in other Jenkins build jobs or in external scripts, for
-      example. Three URLs are available: last stable build, last successful
-      build and last completed build.</para>
-      <para>Before we look at the URLs, we should discuss the concept of
-      <emphasis>stable</emphasis> and <emphasis>successful</emphasis>
-      builds.</para>
-      <para>A build is <emphasis>successful</emphasis> when the compilation
-      reported no errors.</para>
-      <para>A build is <indexterm id="I_indexterm5_d1e7379" significance="normal"><primary>build jobs</primary><secondary>unstable build from</secondary><tertiary>criteria for</tertiary></indexterm><indexterm id="I_indexterm5_d1e7386" significance="normal"><primary>unstable builds</primary><secondary>criteria for</secondary></indexterm>considered <emphasis>stable</emphasis> if it was built
-      successfully, and no publisher reports it as unstable. For example,
-      depending on your project configuration, unit test failures,
-      insufficient code coverage, or other code quality metrics issues, could
-      cause a build to be marked as unstable. So a stable build is always
-      successful, but the opposite is not necessarily true—a build can be
-      successful without being stable.</para>
-      <para>A <emphasis>completed</emphasis> build is simply a build that has
-      finished, no matter what its result. Note that the archiving step will
-      take place no matter what the outcome of the build was.</para>
-      <para>The format of the artifact URLs is intuitive, and takes the
-      following form:</para>
+      <para>Vous pouvez aussi utiliser les URLs permanentes pour accéder aux artefacts de build les plus récents. Il s'agit d'une excellente façon de réutiliser les derniers artefacts de vos builds, que ce soit depuis des tâches de build Jenkins ou depuis des scripts externes, par exemple. Trois URLs sont disponibles : dernier build stable, dernier build en succès et dernier build construit.</para>
+      <para>Avant que nous regardions les URLs, nous devrions discuter du concept de builds 
+      <emphasis>stables</emphasis> et <emphasis>en succès</emphasis>.</para>
+      <para>Un build est <emphasis>en succès</emphasis> lorsque la compilation n’est pas signalée en erreur.</para>
+      <para>Un build est <indexterm id="I_indexterm5_d1e7379" significance="normal"><primary>build jobs</primary><secondary>unstable build from</secondary><tertiary>criteria for</tertiary></indexterm><indexterm id="I_indexterm5_d1e7386" significance="normal"><primary>unstable builds</primary><secondary>criteria for</secondary></indexterm>considéré <emphasis>stable</emphasis> s’il a été construit avec succès, et qu’aucun éditeur ne l’a signalé comme instable. Par exemple, dépendamment de votre configuration de projet, des échecs de tests unitaires, une couverture de code insuffisante, ou d’autres problèmes de qualité de code, peuvent provoquer la mise à l’état instable d’un build. Donc un build stable est toujours en succès, mais l’inverse n’est pas nécessairement vrai — un build peut être en succès sans être nécessairement stable.</para>
+      <para>Un build <emphasis>complet</emphasis> est simplement un build qui a fini, peu importe son résultat. A noter que l’étape d’archivage aura lieu quel que soit le résultat de la construction.</para>
+      <para>Le format des URLs d’artefact est intuitif, et prend la forme suivante :</para>
       <variablelist>
         <varlistentry>
-          <term>Latest stable build</term>
+          <term>Dernier build stable</term>
           <listitem>
             <para>
               <filename moreinfo="none"><replaceable>&lt;server-url&gt;</replaceable>/job/<replaceable>&lt;build-job&gt;</replaceable>/lastStableBuild/artifact/<replaceable>&lt;path-to-artifact&gt;</replaceable></filename>
@@ -1664,7 +1618,7 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>Latest successful build</term>
+          <term>Dernier build en succès</term>
           <listitem>
             <para>
               <filename moreinfo="none"><replaceable>&lt;server-url&gt;</replaceable>/job/<replaceable>&lt;build-job&gt;</replaceable>/lastSuccessfulBuild/artifact/<replaceable>&lt;path-to-artifact&gt;</replaceable></filename>
@@ -1672,7 +1626,7 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>Latest completed build</term>
+          <term>Dernier build complet</term>
           <listitem>
             <para>
               <filename moreinfo="none"><replaceable>&lt;server-url&gt;</replaceable>/job/<replaceable>&lt;build-job&gt;</replaceable>/lastCompletedBuild/artifact/<replaceable>&lt;path-to-artifact&gt;</replaceable></filename>
@@ -1680,15 +1634,10 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
-      <para>This is best illustrated by some examples. Suppose your Jenkins
-      server is running on <emphasis>http://myserver:8080</emphasis>, your
-      build job is called <filename moreinfo="none">game-of-life</filename>,
-      and you are storing a file called <filename moreinfo="none">gameoflife.war</filename>, which is in the target
-      directory of your workspace. The URLs for this artifact would be the
-      following:</para>
+      <para>C’est mieux illustré par quelques exemples. Supposez que votre serveur Jenkins est démarré sur <emphasis>http://myserver:8080</emphasis>, votre job de construction se nomme <filename moreinfo="none">game-of-life</filename>, et vous stockez un fichier appelé <filename moreinfo="none">gameoflife.war</filename>, qui est dans le répertoire target de votre workspace. Les URLs pour cet artefact seraient les suivantes :</para>
       <variablelist>
         <varlistentry>
-          <term>Latest stable build</term>
+          <term>Dernier build stable</term>
           <listitem>
             <para>
               <filename moreinfo="none">http://myserver:8080/job/gameoflife/lastStableBuild/artifact/target/gameoflife.war</filename>
@@ -1696,7 +1645,7 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>Latest successful build</term>
+          <term>Dernier build en succès</term>
           <listitem>
             <para>
               <filename moreinfo="none">http://myserver:8080/job/gameoflife/lastSuccessfulBuild/artifact/target/gameoflife.war</filename>
@@ -1704,7 +1653,7 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>Latest completed build</term>
+          <term>Dernier build complet</term>
           <listitem>
             <para>
               <filename moreinfo="none">http://myserver:8080/job/gameoflife/lastCompletedBuild/artifact/target/gameoflife.war</filename>
@@ -1712,17 +1661,9 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
-      <para>Artifacts don’t just have to be executable binaries. Imagine, for
-      example, that your build process involves automatically deploying each
-      build to a test server. For convenience, you want to keep a copy of the
-      exact source code associated with each deployed WAR file. One way to do
-      this would be to generate the source code associated with a build, and
-      archive both this file and the WAR file. We could do this by generating
-      a JAR file containing the application source code (for example, by using
-      the Maven Source Plugin for a Maven project), and then including this in
-      the list of artifacts to store (see <xref linkend="fig-hudson-archiving-source"/>).</para>
+      <para>Les  artefacts peuvent ne pas juste être des exécutables binaires. Imaginez, par exemple, que votre processus de build implique de déployer automatiquement tous les builds sur un server de test. Pour plus de commodités, vous voulez garder une copie du code source exact associé à chaque fichier WAR déployé. Une manière de faire cela serait de générer le code source associé à un build, et d’archiver à la fois ce fichier le fichier WAR. Nous pouvons faire ceci en générant le fichier JAR contenant le code source de l’application (par exemple, en utilisant le Maven Source Plugin pour un projet Maven), et ensuite inclure celui-ci dans la liste des artefacts à stocker (voir la figure <xref linkend="fig-hudson-archiving-source"/>).</para>
       <figure float="0" id="fig-hudson-archiving-source">
-        <title>Archiving source code and a binary package</title>
+        <title>Archiver le code source et un paquet binaire</title>
         <mediaobject id="I_mediaobject5_d1e7485">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0535.pdf" format="PDF"/>
@@ -1732,16 +1673,8 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Of course, this example is a tad academic: it would probably be
-      simpler just to use the revision number for this build (which is
-      displayed on the build result page) to retrieve the source code from
-      your version control system. But you get the idea.</para>
-      <para>Note that if you are using an Enterprise Repository Manager such
-      as Nexus or Artifactory to store your binary artifacts, you may not need
-      to keep them on the Jenkins server. You may prefer simply to
-      automatically deploy your artifacts to your Enterprise Repository
-      Manager as part of the build job, and retrieve them from here
-      when<indexterm id="I_indexterm5_d1e7494" class="endofrange" startref="ch05-archive1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7496" class="endofrange" startref="ch05-archive2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7498" class="endofrange" startref="ch05-archive3" significance="normal"><primary/></indexterm> required.</para>
+      <para>Bien sûr, cet exemple est un peu académique : il serait probablement plus simple de juste utiliser le numéro de révision pour ce build (qui est affiché sur la page de résultat du build) pour retrouver le code source depuis votre système de gestion de version. Mais vous voyez l’idée.</para>
+      <para>Notez que si vous utiliser un gestionnaire de dépôt d’entreprise comme Nexus ou Artifcatory pour stocker vos artefacts binaires, vous n’auriez pas besoin de les garder sur le serveur Jenkins. Vous pourriez simplement préférer déployer automatiquement vos artefacts dans votre gestionnaire de dépôt d’entreprise dans le cadre de la construction de votre job, et de les y retrouver lorsque<indexterm id="I_indexterm5_d1e7494" class="endofrange" startref="ch05-archive1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7496" class="endofrange" startref="ch05-archive2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7498" class="endofrange" startref="ch05-archive3" significance="normal"><primary/></indexterm> c’est nécessaire.</para>
     </sect2>
     <sect2>
       <title>Notifications</title>
