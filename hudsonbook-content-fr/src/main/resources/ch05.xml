@@ -2007,31 +2007,19 @@ uploadArchives {
         <para>Dans la figure <xref linkend="fig-gradle-build-job"/>, nous utilisons l’instance « Gradle-0.9RC2 » qui vient d’être configurée pour démarrer un build Gradle. Dans ce cas, nous souhaitons démarrer des tests JUnit et télécharger les artefacts de build vers notre dépôt local Maven. De plus, nous configurons notre tâche pour collecter les résultats de test depuis <filename moreinfo="none">**/build/test-results</filename>, le répertoire par défaut stockant les résultats de test avec Gradle.</para>
       </sect3>
       <sect3 id="incremental-builds">
-        <title>Incremental builds</title>
-        <para>While running a Gradle build job with unchanged sources, Gradle
-        runs its builds incremental. If the output of a Gradle task is still
-        available and the sources haven’t changed since the last build, Gradle
-        is able to skip the task execution and marks the according task as
-        up-to-date. This incremental build feature can decrease the duration
-        of a running build job considerably.</para>
-        <para>If Gradle evaluates the test task as up-to-date even the
-        execution of your unit tests is skipped. This can cause problems when
-        running your Gradle build with Jenkins. In our sample build job above
-        we configured a post build action to publish the JUnit reports of our
-        build. If the test task is skipped by Gradle, the Jenkins job will be
-        marked as failed with the following message:</para>
+        <title>Les builds incrémentaux</title>
+        <para>Lorsqu’on lance une tâche de build Gradle avec des sources non modifiées, Gradle lance ses builds incrémentaux. Si la sortie d’une tâche Gradle est toujours disponible et que les sources n’ont pas changé depuis le dernier build, Gradle est capable de sauter l’exécution de la tâche et de la marquer comme à jour. Cette fonctionnalité de build incrémental peut considérable diminuer le temps d’une tâche de build.</para>
+        <para>Si Gradle évalue qu’une tâche de test est à jour, même l’exécution de vos tests unitaires et sautée. Cela peut poser des problèmes lorsque vous lancer votre build Gradle avec Jenkins. Dans notre tâche de build simple ci-dessus, nous avons configuré une action à la suite du build pour publier les rapports JUnit de votre build. Si la tâche de test est sautée par Gradle, Jenkins marquera la tâche en erreur avec le message suivant :</para>
         <blockquote>
           <para>Test reports were found but none of them are new. Did tests
           run?</para>
         </blockquote>
-        <para>You can easily fix this by invalidating the output and force a
-        re-execution of your tests by adding the following snippet to your
-        Gradle file:</para>
+        <para>Vous pouvez simplement résoudre ceci en invalidant la sortie et forcer une réexécution de vos tests en ajoutant le bout de code suivant dans votre fichier Gradle :</para>
         <screen format="linespecific">test {
     outputs.upToDateWhen { false }
 }</screen>
         <figure float="none" id="fig-gradle-build-job">
-          <title>Setting up a Gradle build job</title>
+          <title>Configurer une tâche de build Gradle</title>
           <mediaobject id="I_mediaobject5_d1e8234">
             <imageobject role="print">
               <imagedata fileref="figs/print/jtdg_0540.pdf" format="PDF"/>
@@ -2041,10 +2029,9 @@ uploadArchives {
             </imageobject>
           </mediaobject>
         </figure>
-        <para>After adding the snippet above to your build file, your job
-        console output should look like the one in <xref linkend="gradle-incremental-build"/>.</para>
+        <para>Après avoir ajouté le bout de code ci-dessus dans votre fichier de build, la sortie console de la tâche devrait ressembler à celle de la figure <xref linkend="gradle-incremental-build"/>.</para>
         <figure float="none" id="gradle-incremental-build">
-          <title>Incremental Gradle job</title>
+          <title>Tâche incrémentale de Gradle</title>
           <mediaobject id="I_mediaobject5_d1e8246">
             <imageobject role="print">
               <imagedata fileref="figs/print/jtdg_0541.pdf" format="PDF"/>
@@ -2054,9 +2041,7 @@ uploadArchives {
             </imageobject>
           </mediaobject>
         </figure>
-        <para>As you can see, all of the tasks except
-        <emphasis>test</emphasis> and <emphasis>uploadArchives</emphasis> have
-        been marked as up-to-date and not<indexterm id="I_indexterm5_d1e8259" class="endofrange" startref="ch05-gradle1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8261" class="endofrange" startref="ch05-gradle2" significance="normal"><primary/></indexterm> executed.</para>
+        <para>Comme vous pouvez le voir, toutes les tâches exceptées <emphasis>test</emphasis> et <emphasis>uploadArchives</emphasis> ont été marquées comme à jour et n’ont pas été<indexterm id="I_indexterm5_d1e8259" class="endofrange" startref="ch05-gradle1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8261" class="endofrange" startref="ch05-gradle2" significance="normal"><primary/></indexterm> exécutées.</para>
       </sect3>
     </sect2>
     <sect2>
