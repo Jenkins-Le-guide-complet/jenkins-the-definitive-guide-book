@@ -1958,22 +1958,12 @@ println env['BUILD_NUMBER']</programlisting>
       <para>Vous pouvez aussi configurer le port du serveur (utile si vous exécutez des tests web), et n’importe quel autre propriété que vous voulez passer<indexterm id="I_indexterm5_d1e8150" class="endofrange" startref="ch05-grails1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8152" class="endofrange" startref="ch05-grails2" significance="normal"><primary/></indexterm> au build.</para>
     </sect2>
     <sect2>
-      <title>Building Projects with Gradle</title>
+      <title>Construire des projets avec Gradle</title>
       <para>
-        <emphasis>Contributed by Rene Groeschke</emphasis>
+        <emphasis>Rédigé par René Groeschke</emphasis>
       </para>
-      <para>In <indexterm class="startofrange" id="ch05-gradle1" significance="normal"><primary>Gradle</primary><secondary>builds in, running with Jenkins</secondary></indexterm><indexterm class="startofrange" id="ch05-gradle2" significance="normal"><primary>freestyle build jobs</primary><secondary>Gradle projects in</secondary></indexterm>comparison to the build tool veterans Ant and Maven,
-      <ulink url="http://gradle.org">Gradle</ulink> is a relatively new open
-      source build tool for the Java Virtual Machine. Build scripts for Gradle
-      are written in a Domain Specific Language (DSL) based on Groovy. Gradle
-      implements convention over configuration, allows direct access to Ant
-      tasks, and uses Maven-like declarative dependency management. The
-      concise nature of Groovy scripting lets you write very expressive build
-      scripts with very little code, albeit at the cost of loosing the IDE
-      support that exists for established tools like Ant and Maven.</para>
-      <para>There are two different ways to run your Gradle builds with
-      Jenkins. You can either use the Gradle plugin for Jenkins or the Gradle
-      wrapper functionality.</para>
+      <para>En <indexterm class="startofrange" id="ch05-gradle1" significance="normal"><primary>Gradle</primary><secondary>builds in, running with Jenkins</secondary></indexterm><indexterm class="startofrange" id="ch05-gradle2" significance="normal"><primary>freestyle build jobs</primary><secondary>Gradle projects in</secondary></indexterm>comparaison des outils de build anciens Ant et Maven, <ulink url="http://gradle.org">Gradle</ulink>est un nouvel outil de build open source pour la machine virtuel Java. Les scripts de build   pour Gradle sont construits dans un Domain Specific Langage (DSL) basé sur Groovy. Gradle implémente la convention avant la configuration, permet un accès direct aux tasks Ant, et utilise une gestion des dépendances déclarative comme Maven La nature concise du scripting Groovy vous permet d’écrire des scripts de build plus expressif avec très peu de code, au prix de la perte du support d’un IDE qui existe pour les outils établis tel que Ant et Maven.</para>
+      <para>Il y a deux manières différentes de lancer des builds Gradle avec Jenkins. Vous pouvez utiliser soit le plugin Gradle pour Jenkins soit la fonctionnalité d’enveloppement (wrapper) de Gradle.</para>
       <sect3 id="the-gradle-plugin-for-hudson">
         <title>The Gradle plugin for Jenkins</title>
         <para>You can install the Gradle plugin in the usual way—just go to
