@@ -1701,11 +1701,8 @@ println env['BUILD_NUMBER']</programlisting>
     </sect2>
   </sect1>
   <sect1 id="I_sect15_d1e7582">
-    <title>Running Your New Build Job</title>
-    <para>Now<indexterm id="I_indexterm5_d1e7587" significance="normal"><primary>freestyle build jobs</primary><secondary>running</secondary></indexterm> all you need to do is save your new build job. You can then
-    trigger the first build manually, or just wait for it to kick off by
-    itself. Once the build is finished, you can click on the build number to
-    see the results of your work.</para>
+    <title>Démarrer votre nouvelle tâche de build</title>
+    <para>Maintenant,<indexterm id="I_indexterm5_d1e7587" significance="normal"><primary>freestyle build jobs</primary><secondary>running</secondary></indexterm> tout ce que vous devez faire est sauver votre nouveau job de construction. Vous pouvez alors déclencher le premier build manuellement, ou juste en attendant que celui-ci se déclenche de lui-même. Une fois que le build est terminé, vous pouvez cliquer sur le numéro du build pour voir les résultats de votre travail.</para>
   </sect1>
   <sect1 id="sect-build-jobs-maven">
     <title>Working with Maven Build Jobs</title>
