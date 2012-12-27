@@ -1874,25 +1874,11 @@ println env['BUILD_NUMBER']</programlisting>
       </figure>
     </sect2>
     <sect2>
-      <title>Deploying to Commercial Enterprise Repository Managers</title>
-      <para>An Enterprise Repository Manager is an essential part of any
-      Maven-based software development infrastructure. They also play a key
-      role for non-Maven projects using tools like Ivy and Gradle, both of
-      which rely on standard Maven repositories.</para>
-      <para>Both of the principal Enterprise Repository Managers, <indexterm id="I_indexterm5_d1e7992" significance="normal"><primary>Nexus</primary><secondary>Enterprise Repository Manager</secondary></indexterm><indexterm id="I_indexterm5_d1e7997" significance="normal"><primary>Artifactory</primary><secondary>Enterprise Repository Manager</secondary></indexterm>Nexus and Artifactory, offer professional versions which
-      come with extra integration features with Jenkins. Later on in the book,
-      we will discuss how you can use advanced features such as Nexus Pro’s
-      staging and release management to implement sophisticated build
-      promotion strategies. On the deployment side of things, the commercial
-      edition of Artifactory (Artifactory Pro Power Pack) extends the two-way
-      integration we saw earlier. When you view an artifact in the repository
-      browser, a “Builds” tab displays details about the <phrase role="keep-together">Jenkins</phrase> build that created the artifact,
-      and a link to the Jenkins build page (see <xref linkend="fig-artifactory-pro-artifact"/>). Artifactory also keeps track
-      of the dependencies that were used in the Jenkins build, and will warn
-      you if you try to delete them from the <indexterm id="I_indexterm5_d1e8008" class="endofrange" startref="ch05-erm1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8010" class="endofrange" startref="ch05-erm2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8012" class="endofrange" startref="ch05-erm3" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8015" class="endofrange" startref="ch05-erm4" significance="normal"><primary/></indexterm>repository.</para>
+      <title>Déployer vers des gestionnaires de dépôt d’entreprise commerciales</title>
+      <para>Un gestionnaire de dépôt d’entreprise  est une partie essentielle de n’importe quelle infrastructure de développement de logiciel basé sur Maven. Ils jouent aussi un rôle clé pour les projets non basés sur Maven utilisant des outils tels que Ivy ou Gradle, chacun d’eux étant liés aux dépôts standards de Maven.</para>
+      <para>Chacun des principaux gestionnaires de dépôt d’entreprise, <indexterm id="I_indexterm5_d1e7992" significance="normal"><primary>Nexus</primary><secondary>Enterprise Repository Manager</secondary></indexterm><indexterm id="I_indexterm5_d1e7997" significance="normal"><primary>Artifactory</primary><secondary>Enterprise Repository Manager</secondary></indexterm>Nexus and Artifactory, propose des versions professionnelles qui fournissent des fonctionnalités supplémentaires avec Jenkins. Plus loin dans ce livre,  nous discuterons comment vous pouvez utiliser des fonctionnalités avancées comme la gestion de release et de staging de Nexus Pro pour implémenter des stratégies sophistiquées de promotion de build. Sur l’aspect déploiement, l’édition commerciale d’Artifactory (Artifactory Pro Power Pack) étend l’intégration bidirectionnelle que nous avons vu plus tôt. Lorsque vous voyez un artefact sur le navigateur du dépôt, un onglet ‘Builds’ affiche les détails sur le build <phrase role="keep-together">Jenkins</phrase> Jenkins qui a créé l’artefact, et un lien vers la page du build sur Jenkins (voir la figure <xref linkend="fig-artifactory-pro-artifact"/>). Artifactory assure également le suivi des dépendances qui ont été utilisées dans le build Jenkins, et vous alertera si vous essayez de les supprimer depuis<indexterm id="I_indexterm5_d1e8008" class="endofrange" startref="ch05-erm1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8010" class="endofrange" startref="ch05-erm2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8012" class="endofrange" startref="ch05-erm3" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8015" class="endofrange" startref="ch05-erm4" significance="normal"><primary/></indexterm> le dépôt.</para>
       <figure float="0" id="fig-artifactory-pro-artifact">
-        <title>Viewing the deployed artifact and the corresponding Jenkins
-        build in Artifactory</title>
+        <title>Voir les artefacts déployés et le build Jenkins correspondant dans Artifactory</title>
         <mediaobject id="I_mediaobject5_d1e8021">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0556.pdf" format="PDF"/>
