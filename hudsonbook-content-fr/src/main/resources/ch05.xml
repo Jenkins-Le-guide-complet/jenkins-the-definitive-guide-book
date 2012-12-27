@@ -1503,16 +1503,11 @@ env.each {
 println env['BUILD_NUMBER']</programlisting>
     </sect2>
     <sect2>
-      <title>Running Groovy Scripts</title>
-      <para>Groovy<indexterm class="startofrange" id="ch05-groovy1" significance="normal"><primary>Groovy scripts</primary><secondary>running in build jobs</secondary></indexterm><indexterm class="startofrange" id="ch05-groovy2" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>Groovy scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-groovy3" significance="normal"><primary>scripts</primary><secondary>Groovy scripts</secondary></indexterm> is not only a popular JVM dynamic language, it is also a
-      convenient language for low-level scripting. The Jenkins <ulink url="http://wiki.jenkins-ci.org//display/HUDSON/Groovy+Plugin">Groovy
-      Plugin</ulink> lets you run arbitrary Groovy commands, or invoke Groovy
-      scripts, as part of your build process.</para>
-      <para>Once you have installed the Groovy plugin in the usual way, you
-      need to add a reference to your Groovy installation in the system
-      configuration page (see <xref linkend="fig-hudson-groovy-installation"/>).</para>
+      <title>Exécuter des scripts Groovy</title>
+      <para>Groovy<indexterm class="startofrange" id="ch05-groovy1" significance="normal"><primary>Groovy scripts</primary><secondary>running in build jobs</secondary></indexterm><indexterm class="startofrange" id="ch05-groovy2" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>Groovy scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-groovy3" significance="normal"><primary>scripts</primary><secondary>Groovy scripts</secondary></indexterm> n’est pas seulement un langage dynamique populaire de la JVM, c’est aussi un langage qui convient pour le scripting de bas niveau. Le <ulink url="http://wiki.jenkins-ci.org//display/HUDSON/Groovy+Plugin">plugin Groovy</ulink> de Jenkins vous permet d’exécuter des commandes Groovy arbitraires, ou invoquer des scripts Groovy, dans le cadre de votre processus de build.</para>
+      <para>Une fois que vous avez installé le plugin Groovy avec la manière habituelle, vous aurez besoin d’ajouter une référence de votre installation Groovy dans la page de configuration du système (voir la figure <xref linkend="fig-hudson-groovy-installation"/>).</para>
       <figure float="none" id="fig-hudson-groovy-installation">
-        <title>Adding a Groovy installation to Jenkins</title>
+        <title>Ajouter une installation Groovy à Jenkins</title>
         <mediaobject id="I_mediaobject5_d1e7167">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0529.pdf" format="PDF"/>
@@ -1522,23 +1517,11 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Now you can add some Groovy scripting to your build job. When you
-      click on “Add build step”, you will see two new entries in the drop-down
-      menu: “Execute Groovy script” and “Execute system Groovy script”. The
-      first option is generally what you <phrase role="keep-together">want—</phrase>this will simply execute a Groovy
-      script in a separate JVM, as if you were invoking Groovy from the
-      command line. The second option runs Groovy commands within Jenkins’s
-      own JVM, with full access to Jenkins’s internals, and is mainly used to
-      manipulate the Jenkins build jobs or build process itself. This is a
-      more advanced topic that we will discuss later on in the book.</para>
-      <para>A Groovy build step can take one of two forms. For simple cases,
-      you can just add a small snippet of Groovy, as shown in <xref linkend="fig-hudson-groovy-build-step"/>. For more involved or
-      complicated cases, you would probably write a Groovy script and place it
-      under version control. Once your script is safely in your SCM, you can
-      run it by selecting the “Groovy script file” option and providing the
-      path to your script (relative to your build job workspace).</para>
+      <para>Maintenant, vous pouvez ajouter du script Groovy dans votre tâche de build. Lorsque vous cliquez sur ‘Ajouter une étape de build’, vous verrez deux nouvelles entrées dans le menu déroulant : « Exécuter un script Groovy » et « Exécuter un script Groovy Système ».
+      La première option est généralement celle que vous <phrase role="keep-together">souhaitez — </phrase>cela exécutera simplement un script Groovy dans une JVM séparée, comme si vous l’invoquiez depuis la ligne de commande. La deuxième option lance des commandes Groovy depuis la JVM de Jenkins, avec un accès interne complet à Jenkins, et est principalement utilisé pour manipuler les tâches de build de Jenkins ou le processus de build lui-même. C’est un sujet plus avancé dont nous discuterons plus loin dans ce livre.</para>
+      <para>Une étape de build Groovy peut prendre une forme sur deux. Pour les cas simples, vous pouvez juste ajouter un petit bout de Groovy, comme montré dans la figure <xref linkend="fig-hudson-groovy-build-step"/>. Pour les cas plus complexes ou compliqués, vous pouvez probablement écrire un script Groovy et le placer sous un système de contrôle de version. Une fois que votre script est en sûreté dans votre SCM, vous pouvez le démarrer en sélectionnant l’option « Fichier de script Groovy » et fournir le chemin de votre script (relatif au workspace de la tâche de build).</para>
       <figure float="none" id="fig-hudson-groovy-build-step">
-        <title>Running Groovy commands as part of a build job</title>
+        <title>Lancer des commandes Groovy dans le cadre d’une tâche de build</title>
         <mediaobject id="I_mediaobject5_d1e7184">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0530.pdf" format="PDF"/>
@@ -1549,19 +1532,9 @@ println env['BUILD_NUMBER']</programlisting>
         </mediaobject>
       </figure>
       <?dbfo-need height=”1in”?>
-      <para>In <xref linkend="fig-hudson-groovy-fitnesse-build-step"/>, you
-      can see a slightly more complicated example. Here we are running a
-      Groovy script called <filename moreinfo="none">run-fitness-tests.groovy</filename>, which can be found
-      in the <filename moreinfo="none">scripts</filename> directory. This
-      script takes the test suites to be executed as its parameters—we provide
-      these in the Script parameters field. If we want to provide any options
-      for Groovy itself, we can put these in the Groovy Parameters field.
-      Alternatively, we can also provide command-line properties in the
-      Properties field—this is simply a more convenient way of using the
-      <literal moreinfo="none">-D</literal> command-line option to pass property values to
-      the<indexterm id="I_indexterm5_d1e7203" class="endofrange" startref="ch05-groovy1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7205" class="endofrange" startref="ch05-groovy2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7208" class="endofrange" startref="ch05-groovy3" significance="normal"><primary/></indexterm> Groovy script.</para>
+      <para>Dans la figure <xref linkend="fig-hudson-groovy-fitnesse-build-step"/>, vous pouvez voir un exemple légèrement plus compliqué. Ici nous lançons un script Groovy appelé <filename moreinfo="none">run-fitness-tests.groovy</filename>, qui peut être trouvé dans le répertoire <filename moreinfo="none">scripts</filename>. Ce script prend des suites de test pour être exécutés comme ses paramètres — nous pouvons les mettre dans le champ Paramètres Groovy. Sinon vous pouvez aussi fournir des propriétés en ligne de commande dans le champ Propriétés — c’est simplement un moyen plus pratique d’utiliser l’option <literal moreinfo="none">-D</literal> en ligne de commande pour passer des valeurs de propriétés <indexterm id="I_indexterm5_d1e7203" class="endofrange" startref="ch05-groovy1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7205" class="endofrange" startref="ch05-groovy2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7208" class="endofrange" startref="ch05-groovy3" significance="normal"><primary/></indexterm> au script Groovy.</para>
       <figure float="none" id="fig-hudson-groovy-fitnesse-build-step">
-        <title>Running Groovy scripts as part of a build job</title>
+        <title>Lancer des scripts Groovy dans le cadre d’une tâche de build</title>
         <mediaobject id="I_mediaobject5_d1e7214">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0531.pdf" format="PDF"/>
