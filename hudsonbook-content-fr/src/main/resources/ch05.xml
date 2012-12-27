@@ -1723,31 +1723,10 @@ println env['BUILD_NUMBER']</programlisting>
       </mediaobject>
     </figure>
     <sect2>
-      <title>Building Whenever a SNAPSHOT Dependency Is Built</title>
-      <para>At first <indexterm class="startofrange" id="ch05-mavtrigger1" significance="normal"><primary>Maven</primary><secondary>SNAPSHOT dependencies</secondary></indexterm><indexterm class="startofrange" id="ch05-mavtrigger2" significance="normal"><primary>SNAPSHOT dependencies</primary></indexterm>glance, the Maven 2/3 build job configuration screen is
-      very similar to the one we saw for freestyle builds in the previous
-      section. The first difference you may notice is in the Build Triggers
-      section. In this section, an extra option is available: “Build whenever
-      a SNAPSHOT dependency is built”. If you select this option, Jenkins will
-      examine your <filename moreinfo="none">pom.xml</filename> file (or
-      files) to see if any SNAPSHOT dependencies are being built by other
-      build jobs. If any other build jobs update a SNAPSHOT dependency that
-      your project uses, Jenkins will build your project as well.</para>
-      <para>Typically in Maven, SNAPSHOT dependencies are used to share the
-      latest bleeding-edge version of a library with other projects within the
-      same team. Since they are by definition unstable, it is not recommended
-      practice to rely on SNAPSHOT dependencies from other teams or from
-      external sources.</para>
-      <para>For example, imagine that you are working on a new
-      <emphasis>game-of-life</emphasis> web application. You are using Maven
-      for this project, so you can use a Maven build job in Jenkins. Your team
-      is also working on a reusable library called
-      <emphasis>cooltools</emphasis>. Since these two projects are being
-      developed by the same team, you are using some of the latest
-      <emphasis>cooltools</emphasis> features in the
-      <emphasis>game-of-life</emphasis> web application. So you have a
-      SNAPSHOT dependency in the <code>&lt;dependencies&gt;</code> section of
-      your <emphasis>game-of-life</emphasis> <filename moreinfo="none">pom.xml</filename> file:</para>
+      <title>Construire dès lors qu’une dépendance SNAPSHOT est construite</title>
+      <para>A première <indexterm class="startofrange" id="ch05-mavtrigger1" significance="normal"><primary>Maven</primary><secondary>SNAPSHOT dependencies</secondary></indexterm><indexterm class="startofrange" id="ch05-mavtrigger2" significance="normal"><primary>SNAPSHOT dependencies</primary></indexterm>vue, l’écran de configuration d’une tâche de build Maven 2/3 est très similaire à celle que nous avions vu pour les tâches de build dans la section précédente. La première différence que vous pouvez noter est dans la section Ce qui déclenche le build. Dans cette section, une option supplémentaire est disponible « Lance un build à chaque fois qu'une dépendance SNAPSHOT est construite ». Si vous sélectionnez cette option, Jenkins examinera votre fichier <filename moreinfo="none">pom.xml</filename> (ou les fichiers)pour regarder si aucunes dépendances SNAPSHOT sont en train d’être construire par d’autres tâches de build. Si n’importe laquelle des tâches de build met à jour une dépendance SNAPSHOT que votre projet utilise, Jenkins construira aussi votre projet.</para>
+      <para>Typiquement dans Maven, les dépendances SNAPSHOT sont utilisées pour partager la toute dernière version d’une librairie avec d’autres projets de la même équipe. Comme elles sont par définition instables, ce n’est pas une pratique recommandée de lier des dépendances SNAPSHOT avec d’autres équipes ou depuis des sources externes.</para>
+      <para>Par exemple, imaginiez que vous êtes en train de travailler sur une nouvelle application web <emphasis>game-of-life</emphasis>. Vous utilisez Maven pour votre projet, donc vous pouvez utiliser une tâche de build Maven dans Jenkins. Votre équipe travaille aussi sur une librairie réutilisable appelée <emphasis>cooltools</emphasis>. Comme ces deux projets sont développés par la même équipe, vous utilisez certaines des dernières fonctionnalités de <emphasis>cooltools</emphasis> dans l’application <emphasis>game-of-life</emphasis>. vous avez une dépendance SNAPSHOT dans la section <code>&lt;dependencies&gt;</code> du fichier <filename moreinfo="none">pom.xml</filename> de <emphasis>game-of-life</emphasis> :</para>
       <programlisting id="I_programlisting5_d1e7672" format="linespecific">    &lt;dependencies&gt;
         &lt;dependency&gt;
             &lt;groupId&gt;com.acme.common&lt;/groupId&gt;
@@ -1757,15 +1736,7 @@ println env['BUILD_NUMBER']</programlisting>
         &lt;/dependency&gt;
         ...
     &lt;/dependencies&gt;</programlisting>
-      <para>On your Jenkins server, you have set up Maven build jobs for both
-      the <emphasis>cooltools</emphasis> and the
-      <emphasis>game-of-life</emphasis> applications. Since your
-      <emphasis>game-of-life</emphasis> project needs the latest
-      <emphasis>cooltools</emphasis> SNAPSHOT version, you tick the “Build
-      whenever a SNAPSHOT dependency is built” option. This way, whenever the
-      <emphasis>cooltools</emphasis> project is rebuilt, the
-      <emphasis>game-of-life</emphasis> project will automatically
-      be<indexterm id="I_indexterm5_d1e7695" class="endofrange" startref="ch05-mavtrigger1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7697" class="endofrange" startref="ch05-mavtrigger2" significance="normal"><primary/></indexterm> rebuilt as well.</para>
+      <para>Dans votre serveur Jenkins, vous avez configuré des tâches de build Maven à la fois pour l’application <emphasis>cooltools</emphasis> et <emphasis>game-of-life</emphasis>. Comme votre projet <emphasis>game-of-life</emphasis> a besoin de la dernière version SNAPSHOT de <emphasis>cooltools</emphasis>, vous cochez l’option « Lance un build à chaque fois qu'une dépendance SNAPSHOT est construite ». Comme cela, dès lors que le projet <emphasis>cooltools</emphasis> est reconstruit, le projet <emphasis>game-of-life</emphasis> sera aussi <indexterm id="I_indexterm5_d1e7695" class="endofrange" startref="ch05-mavtrigger1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7697" class="endofrange" startref="ch05-mavtrigger2" significance="normal"><primary/></indexterm>automatiquement reconstruit.</para>
     </sect2>
     <sect2>
       <title>Configuring the Maven Build</title>
