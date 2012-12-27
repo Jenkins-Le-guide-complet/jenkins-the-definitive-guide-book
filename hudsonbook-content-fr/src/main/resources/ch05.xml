@@ -1923,10 +1923,8 @@ println env['BUILD_NUMBER']</programlisting>
     </sect2>
   </sect1>
   <sect1 id="using-jenkins-with-other-languages">
-    <title>Using Jenkins with Other Languages</title>
-    <para>As we mentioned earlier, Jenkins provides excellent support for
-    other languages. In this section, we will look at how to use Jenkins with
-    a few of the more common ones.</para>
+    <title>Utiliser Jenkins avec d’autres langages</title>
+    <para>Comme mentionné plus tôt, Jenkins fournit un excellent support pour d’autres langages. Dans cette section, nous allons voir comment utiliser Jenkins avec certains des plus communément utilisés.</para>
     <sect2>
       <title>Building Projects with Grails</title>
       <para>Grails<indexterm class="startofrange" id="ch05-grails1" significance="normal"><primary>Grails</primary><secondary>builds in, running with Jenkins</secondary></indexterm><indexterm class="startofrange" id="ch05-grails2" significance="normal"><primary>freestyle build jobs</primary><secondary>Grails projects in</secondary></indexterm> is an open source dynamic web application framework built
