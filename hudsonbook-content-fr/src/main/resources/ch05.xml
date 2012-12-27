@@ -1551,12 +1551,8 @@ println env['BUILD_NUMBER']</programlisting>
     </sect2>
   </sect1>
   <sect1 id="I_sect15_d1e7235">
-    <title>Post-Build Actions</title>
-    <para>Once<indexterm class="startofrange" id="ch05-post" significance="normal"><primary>freestyle build jobs</primary><secondary>post-build actions</secondary></indexterm> the build is completed, there are still a few things you
-    need to look after. You might want to archive some of the generated
-    artifacts, to report on test results, and to notify people about the
-    results. In this section, we look at some of the more common tasks you
-    need to configure after the build is done.</para>
+    <title>Les actions à la suite du build</title>
+    <para>Une fois<indexterm class="startofrange" id="ch05-post" significance="normal"><primary>freestyle build jobs</primary><secondary>post-build actions</secondary></indexterm> qu’un build est terminé, il y a toujours des petites choses à voir après. Vous pourriez avoir besoin d’archiver certains artefacts générés, faire des rapports sur les résultats des tests, et notifier des personnes sur les résultats. Dans cette section, nous allons regarder certaines des tâches les plus courantes que vous aurez besoin de configurer après que le build est effectué.</para>
     <sect2>
       <title>Reporting on Test Results</title>
       <para>One<indexterm class="startofrange" id="ch05-report1" significance="normal"><primary>freestyle build jobs</primary><secondary>reporting on test results</secondary></indexterm><indexterm class="startofrange" id="ch05-report2" significance="normal"><primary>tests</primary><secondary>reports from</secondary><tertiary>JUnit reports</tertiary></indexterm><indexterm class="startofrange" id="ch05-report3" significance="normal"><primary>reporting</primary><secondary>test results</secondary><tertiary>JUnit reports</tertiary></indexterm> of the most obvious requirements of a build job is to
