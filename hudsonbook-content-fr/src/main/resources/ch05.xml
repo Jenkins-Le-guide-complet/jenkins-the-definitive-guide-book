@@ -1965,26 +1965,11 @@ println env['BUILD_NUMBER']</programlisting>
       <para>En <indexterm class="startofrange" id="ch05-gradle1" significance="normal"><primary>Gradle</primary><secondary>builds in, running with Jenkins</secondary></indexterm><indexterm class="startofrange" id="ch05-gradle2" significance="normal"><primary>freestyle build jobs</primary><secondary>Gradle projects in</secondary></indexterm>comparaison des outils de build anciens Ant et Maven, <ulink url="http://gradle.org">Gradle</ulink>est un nouvel outil de build open source pour la machine virtuel Java. Les scripts de build   pour Gradle sont construits dans un Domain Specific Langage (DSL) basé sur Groovy. Gradle implémente la convention avant la configuration, permet un accès direct aux tasks Ant, et utilise une gestion des dépendances déclarative comme Maven La nature concise du scripting Groovy vous permet d’écrire des scripts de build plus expressif avec très peu de code, au prix de la perte du support d’un IDE qui existe pour les outils établis tel que Ant et Maven.</para>
       <para>Il y a deux manières différentes de lancer des builds Gradle avec Jenkins. Vous pouvez utiliser soit le plugin Gradle pour Jenkins soit la fonctionnalité d’enveloppement (wrapper) de Gradle.</para>
       <sect3 id="the-gradle-plugin-for-hudson">
-        <title>The Gradle plugin for Jenkins</title>
-        <para>You can install the Gradle plugin in the usual way—just go to
-        the Manage Plugins screen and select the Jenkins Gradle plugin. Click
-        Install and restart your Jenkins <phrase role="keep-together">instance</phrase>.</para>
-        <para>Once Jenkins has restarted, you will need to configure your new
-        Gradle plugin. You should now find a new Gradle section in your
-        Configure System screen. Here you will need to add the Gradle
-        installation you want to use. The process is similar to that used for
-        the other tool installations. First, click the Add Gradle button to
-        add a new Gradle installation, and enter an appropriate name (see
-        <xref linkend="fig-gradle-plugin"/>). If Gradle has already been
-        installed on your build server, you can point to the local Gradle home
-        directory. Alternatively, you can use the “Install automatically”
-        feature to download a Gradle installation, in the form of a ZIP or
-        GZipped TAR file, directly from a URL. You can use a public URL (see
-        <ulink url="http://gradle.org/downloads.html"/>), or may prefer
-        to make these installations available on a local server
-        instead.</para>
+        <title>Le plugin Gradle de Jenkins</title>
+        <para>Vous pouvez installer le plugin Gradle avec la façon habituel — il suffit d’aller sur l’écran du gestionnaire de plugin et de sélectionner le plugin Gradle. Cliquez sur installer et redémarrez l'<phrase role="keep-together">instance</phrase> de Jenkins.</para>
+        <para>Une fois que Jenkins a redémarré, il vous faut configurer vous nouveau plugin Gradle.  Vous trouverez maintenant une nouvelle section Gradle dans la page de configuration du système. Ici, il vous faudra ajouter une installation de Gradle que vous souhaitez utiliser. Le processus est similaire que pour les autres installations d’outil utilisé. Premièrement, cliquez sur le bouton Ajouter Gradle pour ajouter une nouvelle installation Gradle, et entrez un nom approprié (voir la figure <xref linkend="fig-gradle-plugin"/>). Si Gradle a déjà été installé sur votre serveur de build, vous pouvez pointer vers le répertoire local de Gradle. Sinon, vous pouvez utiliser la fonctionnalité « Installer automatiquement » pour télécharger une installation de Gradle, sous le forme d’un fichier ZIP ou GZipped TAR, directement à partir d’une URL. Vous pouvez utiliser une URL publique (voir <ulink url="http://gradle.org/downloads.html"/>), ou vous pourriez préférer de mettre ces installations disponibles sur le serveur local uniquement.</para>
         <figure float="none" id="fig-gradle-plugin">
-          <title>Configuring the Gradle plugin</title>
+          <title>Configurer le plugin Gradle</title>
           <mediaobject id="I_mediaobject5_d1e8196">
             <imageobject role="print">
               <imagedata fileref="figs/print/jtdg_0539.pdf" format="PDF"/>
@@ -1994,15 +1979,8 @@ println env['BUILD_NUMBER']</programlisting>
             </imageobject>
           </mediaobject>
         </figure>
-        <para>You typically use Freestyle build jobs to configure your Gradle
-        builds. When you add a build step to a Freestyle build job, you will
-        now have a new option called “Invoke Gradle script”, which lets you
-        add Gradle specific settings to your build job.</para>
-        <para>As an example, here is a very simple Gradle build script. It is
-        a simple Java project that uses a Maven directory structure and a
-        Maven repository manager. There is a customizable task, called
-        <emphasis>uploadArchives</emphasis>, to deploy the generated archive
-        to the local Enterprise repository manager:</para>
+        <para>Vous utilisez typiquement des tâches de build Freestyle pour configurer vos builds Gradle. Lorsque vous ajouter une étape de build a une tâche de build Freestyle, vous aurez maintenant une nouvelle option appelée « Invoque Gradle script », qui vous permet d’ajouter des options spécifiques de Gradle à votre tâche de build.</para>
+        <para>Par exemple, voici un script Gradle très simple. C’est un projet simple Java qui utilise une structure de répertoire Maven et un gestionnaire de dépôt Maven. Il y a une tâche paramétrable, appelée <emphasis>uploadArchives</emphasis>, pour déployer l’archive générée vers un gestionnaire local de dépôt d’entreprise :</para>
         <programlisting id="I_programlisting5_d1e8208" format="linespecific">apply plugin:'java'
 apply plugin:'maven'
 
@@ -2026,13 +2004,7 @@ uploadArchives {
      }
   }
 }</programlisting>
-        <para>In <xref linkend="fig-gradle-build-job"/>, we use the just
-        configured “Gradle-0.9RC2” instance to run this Gradle build. In this
-        case, we want to run the JUnit tests and upload the build artifacts to
-        our local Maven repository. Furthermore we configure our job to
-        collect the test results from
-        <filename moreinfo="none">**/build/test-results</filename>, the default directory for
-        storing test results in Gradle.</para>
+        <para>Dans la figure <xref linkend="fig-gradle-build-job"/>, nous utilisons l’instance « Gradle-0.9RC2 » qui vient d’être configurée pour démarrer un build Gradle. Dans ce cas, nous souhaitons démarrer des tests JUnit et télécharger les artefacts de build vers notre dépôt local Maven. De plus, nous configurons notre tâche pour collecter les résultats de test depuis <filename moreinfo="none">**/build/test-results</filename>, le répertoire par défaut stockant les résultats de test avec Gradle.</para>
       </sect3>
       <sect3 id="incremental-builds">
         <title>Incremental builds</title>
