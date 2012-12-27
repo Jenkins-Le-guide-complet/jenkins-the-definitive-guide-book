@@ -1926,17 +1926,11 @@ println env['BUILD_NUMBER']</programlisting>
     <title>Utiliser Jenkins avec d’autres langages</title>
     <para>Comme mentionné plus tôt, Jenkins fournit un excellent support pour d’autres langages. Dans cette section, nous allons voir comment utiliser Jenkins avec certains des plus communément utilisés.</para>
     <sect2>
-      <title>Building Projects with Grails</title>
-      <para>Grails<indexterm class="startofrange" id="ch05-grails1" significance="normal"><primary>Grails</primary><secondary>builds in, running with Jenkins</secondary></indexterm><indexterm class="startofrange" id="ch05-grails2" significance="normal"><primary>freestyle build jobs</primary><secondary>Grails projects in</secondary></indexterm> is an open source dynamic web application framework built
-      on Groovy and many well-established open source Java frameworks such as
-      Spring and Hibernate.</para>
-      <para>Jenkins provides excellent support for Grails builds. First, you
-      need to install the Jenkins <ulink url="http://wiki.jenkins-ci.org/display/HUDSON/Grails+Plugin">Grails
-      plugin</ulink>. Once you have installed this and restarted Jenkins, you
-      will need to provide at least one version of Grails for Jenkins to use
-      in the Grails Builder section of the Configure System screen (see <xref linkend="fig-hudson-build-job-grails-builder"/>).</para>
+      <title>Construire des projets avec Grails</title>
+      <para>Grails<indexterm class="startofrange" id="ch05-grails1" significance="normal"><primary>Grails</primary><secondary>builds in, running with Jenkins</secondary></indexterm><indexterm class="startofrange" id="ch05-grails2" significance="normal"><primary>freestyle build jobs</primary><secondary>Grails projects in</secondary></indexterm> est un framework d’application web dynamique open-source construit avec Groovy et beaucoup d’autres frameworks Java open-source bien établis tel que Spring ou Hibernate.</para>
+      <para>Jenkins fournit un excellent support pour les builds Grails. Premièrement, vous devez installer le <ulink url="http://wiki.jenkins-ci.org/display/HUDSON/Grails+Plugin">plugin Grails</ulink>.Une fois que vous l’avez installé et redémarré Jenkins, vous devrez fournir au moins une version de Grails pour Jenkins dans la section Grails de l’écran de configuration du système (voir la figure <xref linkend="fig-hudson-build-job-grails-builder"/>).</para>
       <figure float="0" id="fig-hudson-build-job-grails-builder">
-        <title>Adding a Grails installation to Jenkins</title>
+        <title>Ajouter une installation Grails à Jenkins</title>
         <mediaobject id="I_mediaobject5_d1e8115">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0537.pdf" format="PDF"/>
@@ -1946,20 +1940,11 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Now you can set up a freestyle build job to build your Grails
-      project. The Grails plugin adds the “Build with Grails” build step,
-      which you can use to build your Grails application (see <xref linkend="fig-hudson-build-job-grails"/>). Here, you provide the Grails
-      target, or targets, you want to execute. Unlike the command line, you
-      can execute several targets in the same command. However, if you need to
-      pass any arguments to a particular target, you should enclose the target
-      and its arguments in double quotes. In <xref linkend="fig-hudson-build-job-grails"/>, for example, we run
-      <literal moreinfo="none">grails clean</literal>, followed by <literal moreinfo="none">grails test-app
-      -unit -non-interactive</literal>. To get this to work properly, we
-      enclose the options of the second command in quotes, which gives us
-      <literal moreinfo="none">grails clean "test-app -unit
+      <para>Maintenant vous pouvez configurer une tâche de build Freestyle pour construire un projet Grails. Le plugin Grails ajoute l’étape de build « Build with Grails », que vous pouvez utiliser pour construire un application Grails (voir la figure <xref linkend="fig-hudson-build-job-grails"/>). Ici, vous fournissez la target Grails, ou les targets, que vous voulez exécuter. A la différence de la ligne de commande, vous pouvez exécuter plusieurs targets dans la même ligne de commande. Cependant, si vous souhaitez passer des arguments sur une target particulier, vous devez placer la target et ses arguments entre guillement. Dans la figure <xref linkend="fig-hudson-build-job-grails"/>, par exemple, nous lançons <literal moreinfo="none">grails clean</literal>, suivi de <literal moreinfo="none">grails test-app
+      -unit -non-interactive</literal>. ur que cela fonctionne correctement, il faut mettre les options de la seconde commande entre guillemet, ce qui nous donne <literal moreinfo="none">grails clean "test-app -unit
       -non-interactive"</literal>.</para>
       <figure float="0" id="fig-hudson-build-job-grails">
-        <title>Configuring a Grails build step</title>
+        <title>Configurer une étape de build Grails</title>
         <mediaobject id="I_mediaobject5_d1e8138">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0538.pdf" format="PDF"/>
@@ -1969,14 +1954,8 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>The Grails build step takes many optional parameters. For example,
-      Grails is finicky about versions—if your project was created by an older
-      version, Grails will ask you to upgrade it. To be on the safe side, for
-      example, you may want to tick the Force Upgrade checkbox, which makes
-      sure that runs a <literal moreinfo="none">grails upgrade --non-interactive</literal>
-      before it runs the main targets.</para>
-      <para>You can also specify the server port (useful if you are executing
-      web tests), and any other properties you want to pass<indexterm id="I_indexterm5_d1e8150" class="endofrange" startref="ch05-grails1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8152" class="endofrange" startref="ch05-grails2" significance="normal"><primary/></indexterm> to the build.</para>
+      <para>L’étape de build Grails peut prendre beaucoup de paramètres optionnels. Par exemple, Grails est minutieux avec les versions — si vous projet a été créé avec une version plus ancienne, Grails vous demandera de la mettre à jour. Pour jouer la sécurité, par exemple, vous pourriez cocher la case à cocher Forge Upgrade, qui assure de lancer un <literal moreinfo="none">grails upgrade --non-interactive</literal> avant de démarrer les targets principales.</para>
+      <para>Vous pouvez aussi configurer le port du serveur (utile si vous exécutez des tests web), et n’importe quel autre propriété que vous voulez passer<indexterm id="I_indexterm5_d1e8150" class="endofrange" startref="ch05-grails1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8152" class="endofrange" startref="ch05-grails2" significance="normal"><primary/></indexterm> au build.</para>
     </sect2>
     <sect2>
       <title>Building Projects with Gradle</title>
