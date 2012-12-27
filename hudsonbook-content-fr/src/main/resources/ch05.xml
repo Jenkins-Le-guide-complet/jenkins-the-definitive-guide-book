@@ -1554,22 +1554,12 @@ println env['BUILD_NUMBER']</programlisting>
     <title>Les actions à la suite du build</title>
     <para>Une fois<indexterm class="startofrange" id="ch05-post" significance="normal"><primary>freestyle build jobs</primary><secondary>post-build actions</secondary></indexterm> qu’un build est terminé, il y a toujours des petites choses à voir après. Vous pourriez avoir besoin d’archiver certains artefacts générés, faire des rapports sur les résultats des tests, et notifier des personnes sur les résultats. Dans cette section, nous allons regarder certaines des tâches les plus courantes que vous aurez besoin de configurer après que le build est effectué.</para>
     <sect2>
-      <title>Reporting on Test Results</title>
-      <para>One<indexterm class="startofrange" id="ch05-report1" significance="normal"><primary>freestyle build jobs</primary><secondary>reporting on test results</secondary></indexterm><indexterm class="startofrange" id="ch05-report2" significance="normal"><primary>tests</primary><secondary>reports from</secondary><tertiary>JUnit reports</tertiary></indexterm><indexterm class="startofrange" id="ch05-report3" significance="normal"><primary>reporting</primary><secondary>test results</secondary><tertiary>JUnit reports</tertiary></indexterm> of the most obvious requirements of a build job is to
-      report on test results. Not only whether there are any test failures,
-      but also how many tests were executed, how long they took to execute,
-      and so on. In the Java world, JUnit is the most commonly-used testing
-      library around, and the JUnit XML format for test results is widely used
-      and understood by other tools as well.</para>
-      <para>Jenkins provides great support for test reporting. In a freestyle
-      build job, you need to tick the “Publish JUnit test result report”
-      option, and provide a path to your JUnit report files (see <xref linkend="fig-hudson-build-job-junit"/>). You can use a wildcard
-      expression (such as <literal moreinfo="none">**/target/surefire-reports/*.xml</literal>
-      in a Maven project) to include JUnit reports from a number of different
-      directories—Jenkins will aggregate the results into a single
-      report.</para>
+      <title>Rapport sur les résultats de tests</title>
+      <para>L'une<indexterm class="startofrange" id="ch05-report1" significance="normal"><primary>freestyle build jobs</primary><secondary>reporting on test results</secondary></indexterm><indexterm class="startofrange" id="ch05-report2" significance="normal"><primary>tests</primary><secondary>reports from</secondary><tertiary>JUnit reports</tertiary></indexterm><indexterm class="startofrange" id="ch05-report3" significance="normal"><primary>reporting</primary><secondary>test results</secondary><tertiary>JUnit reports</tertiary></indexterm> des exigences les plus évidentes sur une tâche de build est de faire des rapports sur les résultats des tests. Non seulement s’il y a des échecs aux tests, mais aussi combien de tests sont exécutés, en combien de temps, et ainsi de suite. Dans le monde Java, JUnit est la librairie de test la plus couramment utilisée, et le format XML JUnit pour les résultats de test est très utilisé et aussi bien compris par les autres outils.</para>
+      <para>Jenkins fournit un grand support pour les rapports de test. Dans une tâche de build freestyle, vous devez cocher l’option « Publier le rapport des résultats de tests JUnit », et fournir un chemin vers vos fichiers de rapport JUnit (voir <xref linkend="fig-hudson-build-job-junit"/>). Vous pouvez utiliser une expression générique (comme <literal moreinfo="none">**/target/surefire-reports/*.xml</literal>
+      dans un projet Maven) pour inclure les rapports JUnit depuis un grand nombre de répertoires différents — Jenkins agrégera les résultats dans un seul rapport.</para>
       <figure float="none" id="fig-hudson-build-job-junit">
-        <title>Reporting on test results</title>
+        <title>Rapport sur les résultats de tests</title>
         <mediaobject id="I_mediaobject5_d1e7281">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0532.pdf" format="PDF"/>
@@ -1579,7 +1569,7 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>We look at automated tests in much more<indexterm id="I_indexterm5_d1e7288" class="endofrange" startref="ch05-report1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7290" class="endofrange" startref="ch05-report2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7292" class="endofrange" startref="ch05-report3" significance="normal"><primary/></indexterm> detail in <xref linkend="chapter-automated-testing"/>.</para>
+      <para>Nous regarderons les tests automatisés plus<indexterm id="I_indexterm5_d1e7288" class="endofrange" startref="ch05-report1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7290" class="endofrange" startref="ch05-report2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7292" class="endofrange" startref="ch05-report3" significance="normal"><primary/></indexterm> en détail dans le chapitre <xref linkend="chapter-automated-testing"/>.</para>
     </sect2>
     <sect2>
       <title>Archiving Build Results</title>
