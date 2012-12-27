@@ -1678,16 +1678,10 @@ println env['BUILD_NUMBER']</programlisting>
     </sect2>
     <sect2>
       <title>Notifications</title>
-      <para>The <indexterm class="startofrange" id="ch05-notif1" significance="normal"><primary>freestyle build jobs</primary><secondary>notifications sent after</secondary></indexterm><indexterm class="startofrange" id="ch05-notif2" significance="normal"><primary>notifications</primary><secondary sortas="free-style">from freestyle build job</secondary></indexterm>point of a CI server is to let people know when a build
-      breaks. In Jenkins, this comes under the heading of Notification.</para>
-      <para>Out of the box, Jenkins provides support for email notification.
-      You can activate this by ticking the “E-mail Notification” checkbox in
-      the Post-build Actions (see <xref linkend="fig-hudson-build-job-email"/>). Then enter the email addresses
-      of the team members who will need to know when the build breaks. When
-      the build does break, Jenkins will send a friendly email message to the
-      users in this list containing a link to the broken build.</para>
+      <para>Le <indexterm class="startofrange" id="ch05-notif1" significance="normal"><primary>freestyle build jobs</primary><secondary>notifications sent after</secondary></indexterm><indexterm class="startofrange" id="ch05-notif2" significance="normal"><primary>notifications</primary><secondary sortas="free-style">from freestyle build job</secondary></indexterm>but d’un serveur IC est de permettre d’informer les gens lorsqu’un build est rompu. Dans Jenkins, cela se passe dans la rubrique Notification.</para>
+      <para>Jenkins fournit le support des notifications par email. Vous pouvez l’activer en cochant la case à cocher « Notifier par email »dans les actions à la suite du build (voir <xref linkend="fig-hudson-build-job-email"/>). Ensuite, entrez les adresses emails des membres de l’équipe qui doivent savoir lorsqu’un build est rompu. Lorsqu’un build est rompu, Jenkins enverra un message amical aux utilisateurs dans la liste contenant un lien vers les builds rompus.</para>
       <figure float="0" id="fig-hudson-build-job-email">
-        <title>Email notification</title>
+        <title>Notification par email</title>
         <mediaobject id="I_mediaobject5_d1e7524">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0536.pdf" format="PDF"/>
@@ -1697,17 +1691,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>You can also opt to send a separate email to the user who’s commit
-      (presumably) broke the build. For this to work, you need to have
-      activated Security on your Jenkins server (see <xref linkend="chapter-security"/>).</para>
-      <para>Normally, Jenkins will send an email notification out whenever a
-      build fails (for example, because of a compilation error). It will also
-      send out a notification when the build becomes <indexterm id="I_indexterm5_d1e7535" significance="normal"><primary>build jobs</primary><secondary>unstable build from</secondary><tertiary>notifications for</tertiary></indexterm><indexterm id="I_indexterm5_d1e7542" significance="normal"><primary>unstable builds</primary><secondary>notifications for</secondary></indexterm>unstable for the first time (for example, if there are
-      unit test failures). Unless you configure it to do so, Jenkins will not
-      send emails for every unstable build, but only for the first one.</para>
-      <para>Finally, Jenkins will send a message when a previously failing or
-      unstable build succeeds, to let everyone know that the problem has
-      been<indexterm id="I_indexterm5_d1e7550" class="endofrange" startref="ch05-notif1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7552" class="endofrange" startref="ch05-notif2" significance="normal"><primary/></indexterm> resolved.</para>
+      <para>Vous pouvez aussi opter pour envoyer un email séparé à l’utilisateur dont le commit à (probablement) rompu le build. Pour que cela fonctionne, vous devez avoir activé la sécurité dans votre serveur Jenkins (voir la figure <xref linkend="chapter-security"/>).</para>
+      <para>Normalement, Jenkins enverra une notification par email à chaque fois qu’un build échouera (par exemple, à cause d’une erreur de compilation). Il enverra aussi une notification lorsque le build devient <indexterm id="I_indexterm5_d1e7535" significance="normal"><primary>build jobs</primary><secondary>unstable build from</secondary><tertiary>notifications for</tertiary></indexterm><indexterm id="I_indexterm5_d1e7542" significance="normal"><primary>unstable builds</primary><secondary>notifications for</secondary></indexterm>instable pour la première fois (par exemple, s’il y a des tests en échecs). A moins que vous le configurer pour faire ça, Jenkins n’enverra pas d’emails pour chaque build instable, mais uniquement pour le premier.</para>
+      <para>Finalement, Jenkins enverra un message lorsque un build précédemment en échec ou instable réussi, pour permettre d’informer tout le monde que le problème a été<indexterm id="I_indexterm5_d1e7550" class="endofrange" startref="ch05-notif1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7552" class="endofrange" startref="ch05-notif2" significance="normal"><primary/></indexterm> résolu.</para>
     </sect2>
     <sect2>
       <title>Building Other Projects</title>
