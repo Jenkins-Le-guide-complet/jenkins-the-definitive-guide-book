@@ -2045,20 +2045,13 @@ uploadArchives {
       </sect3>
     </sect2>
     <sect2>
-      <title>Building Projects with Visual Studio MSBuild</title>
-      <para>Jenkins<indexterm class="startofrange" id="ch05-net1" significance="normal"><primary>freestyle build jobs</primary><secondary sortas="NET projects">.NET projects in</secondary></indexterm><indexterm class="startofrange" id="ch05-net2" significance="normal"><primary sortas="NET projects">.NET projects</primary></indexterm><indexterm class="startofrange" id="ch05-net3" significance="normal"><primary>Visual Studio MSBuild</primary></indexterm> is a Java application, but it also provides excellent
-      support for .NET projects.</para>
-      <para>To build .NET projects in Jenkins, you need to install the
-      <indexterm id="I_indexterm5_d1e8283" significance="normal"><primary>plugins</primary><secondary>MSBuild</secondary></indexterm><indexterm id="I_indexterm5_d1e8288" significance="normal"><primary>MSBuild plugin</primary></indexterm><ulink url="http://wiki.jenkins-ci.org/display/HUDSON/MSBuild+Plugin">MSBuild
-      plugin</ulink>.</para>
-      <para>You may also want to install the <indexterm id="I_indexterm5_d1e8296" significance="normal"><primary>MSTest plugin</primary></indexterm><indexterm id="I_indexterm5_d1e8299" significance="normal"><primary>plugins</primary><secondary>MSTest</secondary></indexterm><ulink url="http://wiki.jenkins-ci.org//display/HUDSON/MSTest+Plugin">MSTest
-      plugin</ulink> and the <ulink url="http://wiki.jenkins-ci.org//display/HUDSON/NUnit+Plugin">NUnit
-      plugin</ulink>, to display your test results.</para>
-      <para>Once you have installed the .NET plugins and restarted Jenkins,
-      you need to configure your .NET build tools. Go to the Configure System
-      page and specify the path of the MSBuild executable (see <xref linkend="fig-hudson-msbuild-config"/>).</para>
+      <title>Construire des projets avec Visual Studio MSBuild</title>
+      <para>Jenkins<indexterm class="startofrange" id="ch05-net1" significance="normal"><primary>freestyle build jobs</primary><secondary sortas="NET projects">.NET projects in</secondary></indexterm><indexterm class="startofrange" id="ch05-net2" significance="normal"><primary sortas="NET projects">.NET projects</primary></indexterm><indexterm class="startofrange" id="ch05-net3" significance="normal"><primary>Visual Studio MSBuild</primary></indexterm> est une application Java, mais il fournit aussi un excellent support pour les applications .NET.</para>
+      <para>Pour construire des projets .NET dans Jenkins, vous devez installer le <indexterm id="I_indexterm5_d1e8283" significance="normal"><primary>plugins</primary><secondary>MSBuild</secondary></indexterm><indexterm id="I_indexterm5_d1e8288" significance="normal"><primary>MSBuild plugin</primary></indexterm><ulink url="http://wiki.jenkins-ci.org/display/HUDSON/MSBuild+Plugin">plugin MSBuild</ulink>.</para>
+      <para>Vous pourriez aussi vouloir installer le <indexterm id="I_indexterm5_d1e8296" significance="normal"><primary>MSTest plugin</primary></indexterm><indexterm id="I_indexterm5_d1e8299" significance="normal"><primary>plugins</primary><secondary>MSTest</secondary></indexterm><ulink url="http://wiki.jenkins-ci.org//display/HUDSON/MSTest+Plugin">plugin MSTest</ulink> et le <ulink url="http://wiki.jenkins-ci.org//display/HUDSON/NUnit+Plugin">plugin NUnit</ulink>, pour afficher vos résultats de test.</para>
+      <para>Une fois que vous avez installé les plugins .NET et redémarré Jenkins, vous devez configurer vos outils de build .NET. Allez dans la page de configuration du système et spécifiez le chemin vers l’exécutable MSBuild (voir la figure <xref linkend="fig-hudson-msbuild-config"/>).</para>
       <figure float="none" id="fig-hudson-msbuild-config">
-        <title>Configuring .NET build tools in Jenkins</title>
+        <title>Configurer les outils de build .NET avec Jenkins</title>
         <mediaobject id="I_mediaobject5_d1e8317">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0542.pdf" format="PDF"/>
@@ -2068,14 +2061,10 @@ uploadArchives {
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Once you have this set up, you can return to your freestyle
-      project and add your .NET build step configuration.</para>
-      <para>Go to the Build section and choose “Build a Visual project or
-      solution using MSBuild” option in the Add Build Step menu. Then enter
-      the path to your MSBuild build script (a <filename moreinfo="none">.proj</filename> or <filename moreinfo="none">.sln</filename> file), along with any command-line
-      options your build <indexterm id="I_indexterm5_d1e8332" class="endofrange" startref="ch05-net1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8334" class="endofrange" startref="ch05-net2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8336" class="endofrange" startref="ch05-net3" significance="normal"><primary/></indexterm>requires (see <xref linkend="fig-hudson-msbuild-step"/>).</para>
+      <para>Une fois que vous l’avez configuré, vous pouvez retourner dans votre projet Freestyle et ajouter une étape de build .NET à la configuration.</para>
+      <para>Allez dans la section Build et choisissez l’option « Build a Visual project or solution using MSBuild » dans le menu Ajouter une étape de build. Ensuite, entrez le chemin vers votre script de build MSBuild (un fichier <filename moreinfo="none">.proj</filename> ou <filename moreinfo="none">.sln</filename>), avec n’importe quelle option de ligne de commande que votre script de build <indexterm id="I_indexterm5_d1e8332" class="endofrange" startref="ch05-net1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8334" class="endofrange" startref="ch05-net2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8336" class="endofrange" startref="ch05-net3" significance="normal"><primary/></indexterm>a besoin (voir la figure <xref linkend="fig-hudson-msbuild-step"/>).</para>
       <figure float="none" id="fig-hudson-msbuild-step">
-        <title>A build step using MSBuild</title>
+        <title>Une étape de build utilisant MSBuild</title>
         <mediaobject id="I_mediaobject5_d1e8344">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0543.pdf" format="PDF"/>
