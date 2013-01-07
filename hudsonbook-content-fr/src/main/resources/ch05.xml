@@ -353,8 +353,8 @@
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Jenkins<indexterm id="I_indexterm5_d1e5352" significance="normal"><primary>tâches de build freestyle</primary><secondary>Subversion utilisé avec</secondary><tertiary>exclure des régions du déclenchement</tertiary></indexterm><indexterm id="I_indexterm5_d1e5359" significance="normal"><primary>Subversion</primary><secondary>exclure des régions du déclenchement de builds</secondary></indexterm> vous permet également d'affiner la sélection des 
-      changements qui déclencherons un build. Dans la section avancée, 
+      <para>Jenkins<indexterm id="I_indexterm5_d1e5352" significance="normal"><primary>tâches de build free-style</primary><secondary>Subversion utilisé avec</secondary><tertiary>exclure des régions du déclenchement</tertiary></indexterm><indexterm id="I_indexterm5_d1e5359" significance="normal"><primary>Subversion</primary><secondary>exclure des régions du déclenchement de builds</secondary></indexterm> vous permet également d'affiner la sélection des 
+      changements qui déclencheront un build. Dans la section avancée, 
       vous pouvez utiliser le champ Régions exclues pour dire à Jenkins 
       de ne pas déclencher de build si certains fichiers sont modifiés. 
       Ce champ prend en compte une liste d'expressions régulières qui 
@@ -881,26 +881,26 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
     </sect2>
   </sect1>
   <sect1 id="sect-build-triggers">
-    <title>Build Triggers</title>
-    <para>Once<indexterm class="startofrange" id="ch05-trigger1" significance="normal"><primary>freestyle build jobs</primary><secondary>build triggers for</secondary></indexterm><indexterm class="startofrange" id="ch05-trigger2" significance="normal"><primary>build triggers</primary><secondary sortas="free-style">for freestyle build jobs</secondary></indexterm> you have configured your version control system, you need
-    to tell Jenkins when to kick off a build. You set this up in the Build
-    Triggers section.</para>
-    <para>In a Freestyle build, there are three basic ways a build job can be
-    triggered (see <xref linkend="fig-hudson-new-job-triggers"/>):</para>
+    <title>Déclencheurs de build</title>
+    <para>Une fois que<indexterm class="startofrange" id="ch05-trigger1" significance="normal"><primary>tâches de build free-style</primary><secondary>déclencheurs de build pour</secondary></indexterm><indexterm class="startofrange" id="ch05-trigger2" significance="normal"><primary>déclencheurs de build</primary><secondary sortas="free-style">pour les tâches de build free-style</secondary></indexterm> vous avez configuré votre système de gestion de version, vous devez
+    dire à Jenkins quand démarrer un build. Vous pouvez configurer cela dans
+    la section Ce qui déclenche le build.</para>
+    <para>Dans un build free-style, il y a trois manières basiques de déclencher
+    une tâche de build (voir <xref linkend="fig-hudson-new-job-triggers"/>):</para>
     <itemizedlist>
       <listitem>
-        <para>Start a build job once another build job has completed</para>
+        <para>Démarrer une tâche de build une fois qu'une autre s'est terminée</para>
       </listitem>
       <listitem>
-        <para>Kick off builds at periodical intervals</para>
+        <para>Lancer des builds à des intervalles périodiques</para>
       </listitem>
       <listitem>
-        <para>Poll the SCM for changes</para>
+        <para>Scruter les changements sur le SCM</para>
       </listitem>
     </itemizedlist>
     <figure float="none" id="fig-hudson-new-job-triggers">
-      <title>There are many ways that you can configure Jenkins to start a
-      build job</title>
+      <title>Il y a de multiples manières de configurer Jenkins pour le 
+      démarrage d'une tâche de build</title>
       <mediaobject id="I_mediaobject5_d1e6304">
         <imageobject role="print">
           <imagedata fileref="figs/print/jtdg_0523.pdf" format="PDF"/>
@@ -911,29 +911,30 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
       </mediaobject>
     </figure>
     <sect2>
-      <title>Triggering a Build Job Once Another Build Job Has
-      Finished</title>
-      <para>The <indexterm id="I_indexterm5_d1e6314" significance="normal"><primary>build triggers</primary><secondary>when another build has finished</secondary></indexterm>first option lets you set up a build that will be run
-      whenever another build has finished. This is an easy way to set up a
-      build pipeline. For example, you might set up an initial build job to
-      run unit and integration tests, followed by another separate build job
-      to run more CPU-intensive code quality metrics. You simply enter the
-      name of the preceding build job in this field. If the build job can be
-      triggered by several other build jobs, just list their names here,
-      separated by commas. In this case, the build job will be triggered once
-      <emphasis>any</emphasis> of the build jobs in the list finish.</para>
-      <para>There is a symmetrical field in the Post-build actions section of
-      the preceding build job called (appropriately enough) “Build other
-      projects”. This field will be automatically updated in the corresponding
-      build jobs whenever you modify the “Build after other projects are
-      built” field. However, unlike the “Build after other projects are built”
-      field, this field gives you the option to trigger a build even if the
-      build is <indexterm id="I_indexterm5_d1e6325" significance="normal"><primary>build jobs</primary><secondary>unstable build from</secondary><tertiary>triggering another build after</tertiary></indexterm><indexterm id="I_indexterm5_d1e6332" significance="normal"><primary>unstable builds</primary><secondary>triggering another build job after</secondary></indexterm>unstable (see <xref linkend="fig-hudson-new-job-trigger-build-after"/>). This is useful,
-      for example, if you want to run a code quality metrics build job even if
-      there are unit test failures in the default build job.</para>
+      <title>Déclencher une tâche de build lorsqu'une autre tâche de build
+      se termine</title>
+      <para>La <indexterm id="I_indexterm5_d1e6314" significance="normal"><primary>déclencheurs de build</primary><secondary>quand un autre build se termine</secondary></indexterm>première option vous permet de configurer un build qui
+      qui le lancera à chaque fois qu'un autre build se terminera. C'est une 
+      manière facile de construire un séquenceur de build. Par exemple, vous 
+      pourriez configurer une tâche de build initiale qui lancera des tests 
+      unitaires et des tests d'intégration, suivie d'une autre tâche de build 
+      séparée qui lancera de l'analyse statique de code, plus gourmande en CPU. 
+      Vous remplissez simplement le nom du job précédent dans ce champ. Si la 
+      tâche de build peut être lancée par plusieurs autres tâches de build, 
+      listez simplement leurs noms ici en les séparant par des virgules. Dans 
+      ce cas là, la tâche de build sera déclenchée à <emphasis>chaque</emphasis> fois que des tâches 
+      de build présentes dans la liste se termineront.</para>
+      <para>Il y a un champ symétrique dans la section des Actions à la suite 
+      du build appelée “Construire d'autres projets”. Ce champ sera mis à jour 
+      automatiquement dans les tâches de build correspondantes en cohérence 
+      avec ce que vous aurez rempli ici. Cependant, au contraire de “Construire 
+      à la suite d'autres projets”, vous avez la possibilité de déclencher une 
+      autre tâche de build même si le build est <indexterm id="I_indexterm5_d1e6325" significance="normal"><primary>tâches de build</primary><secondary>build instable de</secondary><tertiary>déclencher un autre build à la suite de</tertiary></indexterm><indexterm id="I_indexterm5_d1e6332" significance="normal"><primary>builds instables</primary><secondary>déclencher une autre tâche de build à la suite de</secondary></indexterm>instable (voir <xref linkend="fig-hudson-new-job-trigger-build-after"/>). Cela est utile par exemple si vous voulez exécuter une tâche de build 
+      sur des indicateurs de qualité du code même s'il y a des tests unitaires 
+      qui ont échoué dans la première tâche de build.</para>
       <figure float="none" id="fig-hudson-new-job-trigger-build-after">
-        <title>Triggering another build job even if the current one is
-        unstable</title>
+        <title>Déclencher une autre tâche de build même si celle-ci est 
+        instable.</title>
         <mediaobject id="I_mediaobject5_d1e6343">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0524.pdf" format="PDF"/>
@@ -945,172 +946,184 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
       </figure>
     </sect2>
     <sect2>
-      <title>Scheduled Build Jobs</title>
-      <para>Another<indexterm class="startofrange" id="ch05-regular" significance="normal"><primary>build triggers</primary><secondary sortas="regular">at regular intervals</secondary></indexterm> strategy is simply to trigger your build job at regular
-      intervals. It is important to note that this is not actually Continuous
-      Integration—it is simply scheduled builds, something you could also do,
-      for example, as a Unix cron job. In the early days of automated builds,
-      and even today in many shops, builds are not run in response to changes
-      committed to version control, but simply on a nightly basis. However, to
-      be effective, a Continuous Integration server should provide feedback
-      much more quickly than once a day.</para>
-      <para>There are nevertheless a few cases where scheduled builds do make
-      sense. This includes very long running build jobs, where quick feedback
-      is less critical. For example, intensive load and performance tests
-      which may take several hours to run, or <indexterm id="I_indexterm5_d1e6361" significance="normal"><primary>Sonar</primary><secondary>frequency of builds</secondary></indexterm>Sonar build jobs. Sonar is an excellent way to keep tabs
-      on code quality metrics across your projects and over time, but the
-      Sonar server only stores one set of data per day, so running Sonar
-      builds more frequently than this is not useful.</para>
-      <para>For all scheduling tasks, Jenkins uses a cron-style syntax,
-      consisting of five fields separated by white space in the following
-      format:</para>
+      <title>Tâches de build périodiques</title>
+      <para>Une autre<indexterm class="startofrange" id="ch05-regular" significance="normal"><primary>déclencheurs de builds</primary><secondary sortas="regular">à intervalles régulières</secondary></indexterm> stratégie est simplement de déclencher une tâche de build à intervalles régulières. Il est important 
+      de faire remarquer qu'il ne s'agit plus d'Intégration Continue ; il 
+      s'agit simplement de builds périodiques, chose que vous pourriez tout 
+      aussi bien faire, par exemple, avec une tâche cron sous Unix. Aux débuts 
+      des builds automatisés, et toujours aujourd'hui dans beaucoup 
+      d'entreprises, les builds ne sont pas exécutés en réponse aux 
+      changements commités dans le contrôle de version mais seulement la 
+      nuit (build nocturne journalier). Cependant, pour être efficace, le 
+      serveur d'Intégration Continue doit apporter un retour d'information 
+      beaucoup plus rapidement qu'une seule fois par jour.</para>
+      <para>Il y a toutefois quelques cas où les tâches périodiques auront 
+      une utilité. Cela inclut les très longues tâches de build, lorsqu'un 
+      retour rapide est moins critique. Par exemple, des tests de charge et 
+      de performance intensifs qui prennent plusieurs heures à s'exécuter ou 
+      <indexterm id="I_indexterm5_d1e6361" significance="normal"><primary>Sonar</primary><secondary>fréquence des builds</secondary></indexterm>des tâches de build Sonar. Sonar est une excellente manière de conserver une 
+      vue sur vos indicateurs de qualité du code à travers vos projets et 
+      au fur et à mesure du temps mais il ne permet de conserver qu'un 
+      seul lot de données par jour. Il n'est donc pas nécessaire d'exécuter 
+      des builds Sonar plus fréquemment que cela.</para>
+      <para>Pour toutes les tâches périodiques, Jenkins utilise une 
+      syntaxe ressemblant à celle de cron. Cette syntaxe est constituée 
+      de cinq champs séparés par des espaces blancs au format suivant :</para>
       <simplelist type="vert">
-        <member>MINUTE HOUR DOM MONTH DOW</member>
+        <member>MINUTES HEURES JOURMOIS MOIS JOURSEMAINE</member>
       </simplelist>
-      <para>with the following values possible for each field:</para>
+      <para>Les valeurs suivantes sont possibles pour chaque champ :</para>
       <variablelist>
         <varlistentry>
-          <term>MINUTE</term>
+          <term>MINUTES</term>
           <listitem>
-            <para>Minutes within the hour (0–59)</para>
+            <para>Les minutes dans une heure (0-59)</para>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>HOUR</term>
+          <term>HEURES</term>
           <listitem>
-            <para>The hour of the day (0–23) DOM</para>
+            <para>Les heures dans une journée (0-23)</para>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>DOM</term>
+          <term>JOURMOIS</term>
           <listitem>
-            <para>The day of the month (1–31)</para>
+            <para>Le jour dans un mois (1-31)</para>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>MONTH</term>
+          <term>MOIS</term>
           <listitem>
-            <para>The month (1–12)</para>
+            <para>Le mois (1-12)</para>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>DOW</term>
+          <term>JOURSEMAINE</term>
           <listitem>
-            <para>The day of the week (0–7) where 0 and 7 are Sunday.</para>
+            <para>Le jour de la semaine (0-7) où 0 et 7 représentent le dimanche </para>
           </listitem>
         </varlistentry>
       </variablelist>
-      <para>There are also a few short-cuts:</para>
+      <para>Il existe également quelques raccourcis :</para>
       <itemizedlist>
         <listitem>
-          <para>“*” represents all possible values for a field. For example,
-          “* * * * *” means “once a minute.”</para>
+          <para>“*” représente l'ensemble des valeurs possibles. Par exemple,
+          “* * * * *” signifie “toutes les minutes.”</para>
         </listitem>
         <listitem>
-          <para>You can define ranges using the “M–N” notation. For example
-          “1-5” in the DOW field would mean “Monday to Friday.”</para>
+          <para>Vous pouvez définir des espaces en utilisant la notation “M–N”. Par exemple
+          “1-5” dans le champ JOURSEMAINE signifie “lundi à vendredi.”</para>
         </listitem>
         <listitem>
-          <para>You can use the slash notation to defined skips through a
-          range. For example, “*/5” in the MINUTE field would mean “every five
+          <para>Vous pouvez utiliser la notation slash pour définir des sauts dans un espace. 
+          Par exemple, “*/5” dans le champ MINUTES signifie “toutes les cinq
           minutes.”</para>
         </listitem>
         <listitem>
-          <para>A comma-separated list indicates a list of valid values. For
-          example, “15,45” in the MINUTE field would mean “at 15 and 45
-          minutes past every hour.”</para>
+          <para>Une liste dont les éléments sont séparés par des virgules indique 
+          une liste de valeur prises en compte. Par exemple, “15,45” dans le champ 
+          MINUTES signifie “aux minutes 15 et 45 de chaque heure.”</para>
         </listitem>
         <listitem>
-          <para>You can also use the shorthand values of “@yearly”,
-          “@annually”, “@monthly”, “@weekly”, “@daily”, “@midnight”, and
+          <para>Vous pouvez aussi utiliser les raccourcis suivants : “@yearly”,
+          “@annually”, “@monthly”, “@weekly”, “@daily”, “@midnight”, et
           “@hourly”.</para>
         </listitem>
       </itemizedlist>
-      <para>Typically, you will only have one line in this field, but for more
-      complicated scheduling setups, you may need<indexterm id="I_indexterm5_d1e6425" class="endofrange" startref="ch05-regular" significance="normal"><primary/></indexterm> multiple lines.</para>
+      <para>Généralement vous n'aurez besoin que d'une seule ligne dans ce champ mais 
+      pour des configurations de périodicité plus compliquées, vous aurez peut-être 
+      besoin de<indexterm id="I_indexterm5_d1e6425" class="endofrange" startref="ch05-regular" significance="normal"><primary/></indexterm> plusieurs lignes.</para>
     </sect2>
     <sect2>
-      <title>Polling the SCM</title>
-      <para>As <indexterm id="I_indexterm5_d1e6433" significance="normal"><primary>build triggers</primary><secondary>polling SCM for version control changes</secondary></indexterm><indexterm id="I_indexterm5_d1e6438" significance="normal"><primary>version control systems</primary><secondary>polling for changes to trigger build</secondary></indexterm>we have seen, scheduled build jobs are usually not the
-      best strategy for most <phrase role="keep-together">CI build</phrase>
-      jobs. The value of any feedback is proportional to the speed in which
-      you receive that feedback, and Continuous Integration is no exception.
-      That is why polling the SCM is generally a better option.</para>
-      <para>Polling involves asking the version control server at regular
-      intervals if any changes have been committed. If any changes have been
-      made to the source code in the project, Jenkins kicks off a build.
-      Polling is usually a relatively cheap operation, so you can poll
-      frequently to ensure that a build kicks off rapidly after changes have
-      been committed. The more frequent the polling is, the faster the build
-      jobs will start, and the more accurate the feedback about what change
-      broke the build will be.</para>
-      <para>In Jenkins, SCM polling is easy to configure, and uses the same
-      cron syntax we discussed previously.</para>
-      <para>The natural temptation for SCM polling is to poll as often as
-      possible (for example, using “* * * * *”, or once every minute). Since
-      Jenkins simply queries the version control system, and only kicks off a
-      build if the source code has been modified, this approach is often
-      reasonable for small projects. It shows its limits if there are a very
-      large number of build jobs, as this may saturate the SCM server and the
-      network with queries, many of them unnecessary. In this case, a more
-      precise approach is better, where the Jenkins build job is triggered by
-      the SCM when it receives a change. We discuss this option in <xref linkend="sect-build-trigger-remote"/>.</para>
-      <para>If updates are frequently committed to the version control system,
-      across many projects, this may cause many build jobs to be queued, which
-      can in turn slow down feedback times further. You can reduce the build
-      queue to some extent by polling less frequently, but at the cost of less
-      precise feedback.</para>
-      <para>If you are using <indexterm id="I_indexterm5_d1e6459" significance="normal"><primary>CVS</primary><secondary>polling with</secondary></indexterm>CVS, polling may not be a good option. When CVS checks for
-      changes in a project, it checks each file one by one, which is a slow
-      and tedious process. The best solution here is to migrate to a modern
-      version control system such as Git or Subversion. The second-best
-      solution is to use polling at very sparse intervals (for example, every
-      30 minutes).</para>
+      <title>Scruter le SCM</title>
+      <para>Comme <indexterm id="I_indexterm5_d1e6433" significance="normal"><primary>déclencheurs de build</primary><secondary>scruter le SCM pour des changements dans le contrôle de version</secondary></indexterm><indexterm id="I_indexterm5_d1e6438" significance="normal"><primary>systèmes de contrôle de version</primary><secondary>scruter les changements pour déclencher un build</secondary></indexterm>nous avons pu le voir, les tâches de build périodiques ne sont généralement pas
+      la meilleure stratégie pour la plupart des tâches de <phrase role="keep-together">build d'Intégration Continue</phrase>.
+      La valeur du retour d'information est proportionnelle à la vitesse à 
+      laquelle vous recevez ce retour et il n'y a pas d'exception en ce qui 
+      concerne l'Intégration Continue. C'est pour cette raison que de scruter 
+      le SCM est généralement une bien meilleure option.</para>
+      <para>La scrutation implique l'interrogation à intervalles réguliers 
+      du serveur de contrôle de version pour savoir si des changements ont 
+      été ajoutés. Si des changements ont été faits dans le source code du 
+      projet, Jenkins lance alors un build. Scruter est habituellement une 
+      opération peu coûteuse, vous pouvez donc le faire fréquemment pour vous 
+      assurer qu'un build sera lancé rapidement après tout commit de code 
+      source. Plus vous scruterez fréquemment, plus votre tâche 
+      démarrera rapidement et plus précis sera le retour d'information lié aux 
+      changements effectués dans le cas où le build échoue.</para>
+      <para>Dans Jenkins, la scrutation du SCM est très facile à configurer et 
+      utilise la même syntaxe cron discutée précédemment.</para>
+      <para>Naturellement vous aurez l'envie de scruter le SCM le plus souvent 
+      possible (par exemple en utilisant “* * * * *” pour chaque minute). 
+      Comme Jenkins n'utilise que des requêtes simples et ne lance de build 
+      que lorsque le source code a été modifié, cette approche est souvent 
+      raisonnable pour de petits projets. Cela montre cependant des limites 
+      quand il y a un grand nombre de tâches de build car cela pourrait 
+      saturer le serveur SCM et le réseau avec les requêtes dont beaucoup 
+      sont inutiles. Dans ce cas, une approche plus précise sera plus 
+      appropriée avec le déclenchement de la tâche de build fait directement 
+      par le SCM lorsqu'il reçoit un changement. Cette option est discutée dans <xref linkend="sect-build-trigger-remote"/>.</para>
+      <para>Si des changements sont commités très fréquemment et dans un 
+      grand nombre de projets, cela peut causer la création d'une longue liste 
+      d'attente de tâches de build et ainsi retarder le retour d'information 
+      par la suite. Vous pouvez donc partiellement réduire la file d'attente 
+      de builds en scrutant moins régulièrement le SCM mais au prix d'un retour 
+      d'information moins précis.</para>
+      <para>Si vous utilisez <indexterm id="I_indexterm5_d1e6459" significance="normal"><primary>CVS</primary><secondary>scruter avec</secondary></indexterm>CVS, scruter 
+      n'est peut être pas une bonne option. Lorsque CVS vérifie les nouveaux 
+      changements d'un projet, il vérifie chaque fichier un par un ce qui 
+      une procédure lente et fastidieuse. La meilleure solution est de migrer 
+      vers un système de contrôle de version plus moderne tel que Git ou 
+      Subversion. La deuxième meilleure solution sera de scruter à des intervalles 
+      beaucoup plus espacés (toutes les 30 minutes par exemple).</para>
     </sect2>
     <sect2 id="sect-build-trigger-remote">
-      <title>Triggering Builds Remotely</title>
-      <para>Polling <indexterm class="startofrange" id="ch05-remote1" significance="normal"><primary>build triggers</primary><secondary>remotely triggering from version control
-          system</secondary></indexterm><indexterm class="startofrange" id="ch05-remote2" significance="normal"><primary>version control systems</primary><secondary>remotely triggering builds from</secondary></indexterm>can be an effective strategy for smaller projects, but it
-      does not scale particularly well—with large numbers of build jobs, it is
-      wasteful of network resources, and there is always a small delay between
-      the code change being committed and the build job starting. A more
-      precise strategy is to get the SCM system to trigger the Jenkins build
-      whenever a change is committed.</para>
-      <para>It is easy to start a Jenkins build job remotely. You simply
-      invoke a URL of the following form:</para>
+      <title>Déclencher des builds à distance</title>
+      <para>Scruter <indexterm class="startofrange" id="ch05-remote1" significance="normal"><primary>déclencheurs de builds</primary><secondary>déclencher à distance depuis le système de gestion de version</secondary></indexterm><indexterm class="startofrange" id="ch05-remote2" significance="normal"><primary>systèmes de contrôle de version</primary><secondary>déclencher des builds à distance depuis</secondary></indexterm>peut être une stratégie efficace pour des petits projets projects mais 
+      cela ne s'adapte pas très bien à un grand nombre de jobs. Cela utilise 
+      inutilement beaucoup de ressources réseau et il y a toujours un court 
+      délai entre le commit de nouveau code et le démarrage 
+      de la tâche de build. La stratégie sera donc de déléguer à votre système 
+      de gestion de version le déclenchement du build dans Jenkins dès qu'un 
+      changement est commité.</para>
+      <para>Il est facile de démarrer une tâche de build Jenkins à distance. 
+      Vous devez simplement invoquer une URL de la forme suivante :</para>
       <simplelist type="vert">
         <member>
           <emphasis>http://SERVER/jenkins/job/PROJECTNAME/build</emphasis>
         </member>
       </simplelist>
-      <para>For example, if my Jenkins server was running on
-      <emphasis>http://myserver:8080/jenkins</emphasis>, I could start the
-      <emphasis>gameoflife</emphasis> build job by invoking the following URL
-      using a tool like <literal moreinfo="none">wget</literal> or
-      <literal moreinfo="none">curl</literal>:</para>
+      <para>Par exemple, si mon serveur Jenkins est accessible à
+      <emphasis>http://myserver:8080/jenkins</emphasis>, je pourrais démarrer la tâche de build 
+      <emphasis>gameoflife</emphasis> en invoquant l'URL suivante 
+      en utilisant un outil tel que <literal moreinfo="none">wget</literal> ou 
+      <literal moreinfo="none">curl</literal> :</para>
       <screen format="linespecific">$ <userinput moreinfo="none">wget http://myserver:8080/jenkins/job/gameoflife/build</userinput></screen>
-      <para>The trick, then, is to get your version control server to do this
-      whenever a change is committed. The details of how to do this are
-      different for each version control system. In Subversion, for example,
-      you would need to write a post-commit hook script, which would trigger a
-      build. You could, for example, write a Subversion hook script that
-      parses the repository URL to extract the project name, and performs a
-      <literal moreinfo="none">wget</literal> operation on the URL of the corresponding build
-      job:</para>
+      <para>L'astuce alors est de faire faire cette invocation directement 
+      par votre serveur de contrôle de version dès qu'un changement est commité. 
+      Les détails dans la manière de faire sont différent pour chaque système 
+      de contrôle de version. Dans Subversion, par exemple, vous devrez écrire 
+      un script exécuté automatiquement après la soumission de code pour faire 
+      déclencher le build. Votre script pourrait par exemple parcourir l'URL 
+      de votre dépôt, en extraire le nom du projet et ensuite effectuer une 
+      opération de <literal moreinfo="none">wget</literal> sur l'URL correspondante à la tâche de 
+      build :</para>
       <programlisting id="I_programlisting5_d1e6510" format="linespecific">JENKINS_SERVER=http://myserver:8080/jenkins
 REPOS="$1"
-PROJECT=<emphasis>&lt;Regular Expression Processing Goes Here&gt;</emphasis><co id="svn-hook-1"/>
+PROJECT=<emphasis>&lt;Expression Régulière de Traitement ici&gt;</emphasis><co id="svn-hook-1"/>
 /usr/bin/wget $JENKINS_SERVER/job/${PROJECT}/build</programlisting>
       <calloutlist>
         <callout arearefs="svn-hook-1">
-          <para>Use regular expression processing here to extract your project
-          name from the Subversion repository URL.</para>
+          <para>Utilisez une expression régulière pour extraire le nom de votre projet
+          de l'URL de votre dépôt Subversion.</para>
         </callout>
       </calloutlist>
-      <para>However, this approach will only trigger one particular build, and
-      relies on a convention that the default build job is based on the
-      repository name in Subversion. A more flexible approach with Subversion
-      is to use the Jenkins Subversion API directly, as shown here:</para>
+      <para>Cette approche ne déclenchera cependant qu'un build en particulier et 
+      se repose sur une convention de nommage qui veut que la tâche de build par 
+      défaut se base sur le nom de votre dépôt Subversion. Vous pouvez opter 
+      pour une approche plus flexible avec Subversion en utilisant directement 
+      l'API Subversion de Jenkins comme cela est démontré ici :</para>
       <programlisting id="I_programlisting5_d1e6522" format="linespecific">JENKINS_SERVER=http://myserver:8080/jenkins
 REPOS="$1"
 REV="$2"
@@ -1121,19 +1134,20 @@ UUID=`svnlook uuid $REPOS`
   --output-document "-" \
   --timeout=2 \
   $JENKINS_SERVER/subversion/${UUID}/notifyCommit?rev=$REV</programlisting>
-      <para>This would automatically start any Jenkins build jobs monitoring
-      this Subversion <phrase role="keep-together">repository</phrase>.</para>
-      <para>If you have activated Jenkins security, things become a little
-      more complicated. In the simplest case (where any user can do anything),
-      you need to activate the “Trigger builds remotely” option (see <xref linkend="fig-hudson-builds-tokens"/>), and provide a special string
-      that can be used in the URL:</para>
+      <para>Cela déclenchera automatiquement n'importe quelle tâche de build 
+      Jenkins qui surveille ce <phrase role="keep-together">dépôt</phrase> Subversion.</para>
+      <para>Si vous avez activé la sécurité dans Jenkins, les choses peuvent 
+      devenir un peu plus compliquées. Dans le plus simple des cas (où 
+      n'importe quel utilisateur peut faire ce qu'il veut), vous n'avez 
+      qu'à activer l'option “Déclencher les builds à distance” (voir <xref linkend="fig-hudson-builds-tokens"/>), et fournir une chaîne de caractères 
+      spécifique qui pourra être utilisée dans l'URL :</para>
       <simplelist type="vert">
         <member>
           <emphasis>http://SERVER/jenkins/job/PROJECTNAME/build?token=DOIT</emphasis>
         </member>
       </simplelist>
       <figure float="none" id="fig-hudson-builds-tokens">
-        <title>Triggering a build via a URL using a token</title>
+        <title>Déclencher un build via une URL en utilisant un jeton</title>
         <mediaobject id="I_mediaobject5_d1e6541">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0525.pdf" format="PDF"/>
@@ -1143,22 +1157,24 @@ UUID=`svnlook uuid $REPOS`
           </imageobject>
         </mediaobject>
       </figure>
-      <para>This won’t work if users need to be logged on to trigger a build
-      (for example, if you are using matrix or project-based security). In
-      this case, you will need to provide a user name and password, as shown
-      in the following example:</para>
+      <para>Cela ne fonctionnera pas si les utilisateurs ont besoin d'être authentifiés pour déclencher un build 
+      (par exemple si vous utilisez une sécurité par projet ou basée sur une matrice). 
+      Dans ce cas, vous aurez besoin de fournir un nom d'utilisateur et un 
+      mot de passe, comme montré dans l'exemple suivant :</para>
       <?dbfo-need height=”1in”?>
       <screen format="linespecific">$ <userinput moreinfo="none">wget http://scott:tiger@myserver:8080/jenkins/job/gameoflife/build</userinput></screen>
-      <para><indexterm id="I_indexterm5_d1e6554" class="endofrange" startref="ch05-remote1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6556" class="endofrange" startref="ch05-remote2" significance="normal"><primary/></indexterm>or:</para>
+      <para><indexterm id="I_indexterm5_d1e6554" class="endofrange" startref="ch05-remote1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6556" class="endofrange" startref="ch05-remote2" significance="normal"><primary/></indexterm>ou :</para>
       <screen format="linespecific">$ <userinput moreinfo="none">curl -u scott:tiger http://scott:tiger@myserver:8080/jenkins/job/gameoflife/build</userinput></screen>
     </sect2>
     <sect2>
-      <title>Manual Build Jobs</title>
-      <para>A <indexterm id="I_indexterm5_d1e6568" significance="normal"><primary>build triggers</primary><secondary>manual</secondary></indexterm><indexterm id="I_indexterm5_d1e6573" significance="normal"><primary>build jobs</primary><secondary>triggering manually</secondary></indexterm>build does not have to be triggered automatically. Some
-      build jobs should only be started manually, by human intervention. For
-      example, you may want to set up an automated deployment to a UAT
-      environment, that should only be started on the request of the QA folks.
-      In this case, you can simply leave the Build Triggers section<indexterm id="I_indexterm5_d1e6579" class="endofrange" startref="ch05-trigger1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6581" class="endofrange" startref="ch05-trigger2" significance="normal"><primary/></indexterm> empty.</para>
+      <title>Construction manuelle de tâches</title>
+      <para>Une <indexterm id="I_indexterm5_d1e6568" significance="normal"><primary>déclencheurs de build</primary><secondary>manuel</secondary></indexterm><indexterm id="I_indexterm5_d1e6573" significance="normal"><primary>tâches de build</primary><secondary>déclencher manuellement</secondary></indexterm>construction ne doit pas forcément être déclenchée automatiquement. Certaines tâches de build 
+      doivent seulement être démarrées manuellement, par une intervention 
+      humaine. Par exemple, vous pourriez avoir besoin de configurer un 
+      déploiement automatique dans un environnement de test de validation 
+      (UAT), qui ne devra être démarré qu'à la demande de vos collègues de 
+      la validation (QA). Dans ce cas, laissez simplement la section 
+      Ce qui déclenche le build<indexterm id="I_indexterm5_d1e6579" class="endofrange" startref="ch05-trigger1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6581" class="endofrange" startref="ch05-trigger2" significance="normal"><primary/></indexterm> vide.</para>
     </sect2>
   </sect1>
   <sect1 id="I_sect15_d1e6584">
