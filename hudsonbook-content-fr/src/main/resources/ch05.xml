@@ -1178,54 +1178,26 @@ UUID=`svnlook uuid $REPOS`
     </sect2>
   </sect1>
   <sect1 id="I_sect15_d1e6584">
-    <title>Build Steps</title>
-    <para>Now <indexterm class="startofrange" id="ch05-step" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary></indexterm>Jenkins should know where and how often to obtain the
-    project source code. The next thing you need to explain to Jenkins is what
-    it what to do with the source code. In a freestyle build, you do this by
-    defining build steps. Build steps are the basic building blocks for the
-    Jenkins freestyle build process. They are what let you tell Jenkins
-    exactly <emphasis>how</emphasis> you want your project built.</para>
-    <para>A build job may have one step, or more. It may even occasionally
-    have none. In a freestyle build, you can add as many build steps as you
-    want to the Build section of your project configuration (see <xref linkend="fig-hudson-build-steps"/>). In a basic Jenkins installation, you
-    will be able to add steps to invoke Maven and Ant, as well as running
-    OS-specific shell or Windows batch commands. And by installing additional
-    plugins, you can also integrate other build tools, such as Groovy, Gradle,
-    Grails, Jython, MSBuild, Phing, Python, Rake, and Ruby, just to name some
-    of the more well-known tools.</para>
-    <para>In the remainder of this section, we will delve into some of the
-    more common types of build steps.</para>
+    <title>Les étapes de builds</title>
+    <para>Maintenant, <indexterm class="startofrange" id="ch05-step" significance="normal"><primary>tâches de build Freestyle</primary><secondary>les étapes de build dans</secondary></indexterm>Jenkins sait où et à quelle fréquence obtenir le code source du projet. La prochaine chose que vous devez expliquer à Jenkins est qu’est ce qu’il doit faire avec le code source. Dans un build Freestyle, vous pouvez faire ceci en définissant des étapes de build. Les étapes de build sont des blocs basiques de construction pour le processus de build Freestyle de Jenkins. C’est ce qui permet de dire à Jenkins exactement <emphasis>comment</emphasis> vous voulez que votre projet soit construit.</para>
+    <para>Une tâche de build peut avoir une étape, ou plusieurs. Il peut éventuellement n’en avoir aucune. Dans un build Freestyle, vous pouvez ajouter autant d’étapes de build que vous le souhaitez dans la section Build de la configuration de votre projet (voir la figure <xref linkend="fig-hudson-build-steps"/>). Dans une installation Jenkins basique, vous serez capable d’ajouter des étapes pour invoquer Maven et Ant, aussi bien que lancer des commandes shell spécifique à l’OS ou des batchs Windows. Et en installant des plugins additionnels, vous pouvez aussi intégrer d’autres outils, comme Groovy, Gradle, Grailes, Jython, MSBuild, Phing, Python, Rake, et Ruby, juste pour nommer certains des outils les plus connus.</para>
+    <para>Dans le reste de cette section, nous allons plonger dans quelques-uns des types d’étapes de build les plus communs.</para>
     <sect2>
-      <title>Maven Build Steps</title>
-      <para>Jenkins <indexterm class="startofrange" id="ch05-mavenstep1" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>Maven build steps</tertiary></indexterm><indexterm class="startofrange" id="ch05-mavenstep2" significance="normal"><primary>Maven</primary><secondary sortas="build steps">build steps in freestyle build
-          jobs</secondary></indexterm>has excellent Maven support, and Maven build steps are
-      easy to configure and very flexible. Just pick “Invoke top-level Maven
-      targets” from the build step lists, pick a version of Maven to run (if
-      you have multiple versions installed), and enter the Maven goals you
-      want to run. Jenkins freestyle build jobs work fine with both Maven 2
-      and Maven 3.</para>
-      <para>Just like on the command line, you can specify as many individual
-      goals as you want. You can also provide command-line options. A few
-      useful Maven options in a CI context are:</para>
+      <title>Les étapes de build Maven</title>
+      <para>Jenkins <indexterm class="startofrange" id="ch05-mavenstep1" significance="normal"><primary>tâches de build Freestyle</primary><secondary>les étapes de build dans</secondary><tertiary>Les étapes de build Maven</tertiary></indexterm><indexterm class="startofrange" id="ch05-mavenstep2" significance="normal"><primary>Maven</primary><secondary sortas="build steps">les étapes de build dans les tâches de build Freestyle</secondary></indexterm>a un excellent support de Maven, et les étapes de build Maven sont faciles à configurer et très flexibles. Il suffit de choisir « Invoquer les cibles Maven de haut niveau » depuis la liste des étapes de build, choisir une version de Maven à lancer (si vous avez plusieurs versions installées), et entrer les goals Maven que vous souhaitez lancer. Les tâches de build Freestyle de Jenkins fonctionnent biens avec Maven 2 et Maven 3.</para>
+      <para>Tout comme en ligne de commande, vous pouvez spécifier autant de goals individuels que vous le souhaitez. Vous pouvez aussi fournir des options en ligne de commande. Quelques options utiles de Maven dans un contexte IC sont :</para>
       <variablelist>
         <varlistentry>
           <term><literal moreinfo="none">-B</literal>, <literal moreinfo="none">--batch-mode</literal></term>
           <listitem>
-            <para>This option tells Maven not to prompt for any input from the
-            user, just using the default values if any are required. If Maven
-            does prompt for any input during the Jenkins build, the build will
-            get stuck indefinitely.</para>
+            <para>Cette option indique à Maven de ne pas demander d’entrée à l’utilisateur, en utilisant les valeurs par défaut si nécessaire. Si Maven demande n’importe quelle entrée durant un build Jenkins, le build sera bloqué indéfiniment.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term><literal moreinfo="none">-U</literal>,
           <literal moreinfo="none">--update-snapshots</literal></term>
           <listitem>
-            <para>Forces <indexterm id="I_indexterm5_d1e6645" significance="normal"><primary>Maven</primary><secondary>SNAPSHOT dependencies</secondary></indexterm><indexterm id="I_indexterm5_d1e6650" significance="normal"><primary>SNAPSHOT dependencies</primary></indexterm>Maven to check for updated releases and snapshot
-            dependencies on the remote repository. This makes sure you are
-            building with the latest and greatest snapshot dependencies, and
-            not just using older local copies which may not by in sync with
-            the latest version of the source code.</para>
+            <para>Force <indexterm id="I_indexterm5_d1e6645" significance="normal"><primary>Maven</primary><secondary>dépendances SNAPSHOT</secondary></indexterm><indexterm id="I_indexterm5_d1e6650" significance="normal"><primary>dépendances SNAPSHOT</primary></indexterm>Maven à vérifier les mises à jour des dépendances de type release ou snapshot sur le dépôt distant. Cela vous permet d’être sûr que vous êtes en train de construire avec les dernières et les plus grandes dépendances snapshot, et pas uniquement les vieilles copies locales qui ne sont pas forcément synchronisées avec le code source.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1233,17 +1205,12 @@ UUID=`svnlook uuid $REPOS`
             <literal moreinfo="none">-Dsurefire.useFile=false</literal>
           </term>
           <listitem>
-            <para>This option forces Maven to write JUnit output to the
-            console, rather than to text files in the target directory as it
-            normally would. This way, any test failure details are directly
-            visible in the build job console output. The XML files that
-            Jenkins needs for its test reporting will still be
-            generated.</para>
+            <para>Cette option force Maven à écrire la sortie JUnit dans la console, au lieu de le faire dans des fichiers textes dans le répertoire target comme c’est fait d’habitude. Avec ceci, n’importe quels détails de test en échec seront visibles directement dans la sortie console de la tâche de build. Les fichiers XML dont Jenkins a besoin pour ses rapports de test seront toujours générés.</para>
           </listitem>
         </varlistentry>
       </variablelist>
       <figure float="none" id="fig-hudson-build-steps">
-        <title>Adding a build step to a freestyle build job</title>
+        <title>Ajouter une étape de build à une tâche de build Freestyle</title>
         <mediaobject id="I_mediaobject5_d1e6664">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0526.pdf" format="PDF"/>
@@ -1253,61 +1220,29 @@ UUID=`svnlook uuid $REPOS`
           </imageobject>
         </mediaobject>
       </figure>
-      <para>The advanced options are also worth investigating (click on the
-      Advanced button).</para>
-      <para>The optional <command moreinfo="none">POM</command> field lets you
-      override the default location of the Maven <filename moreinfo="none">pom.xml</filename> file. This is the equivalent of
-      running Maven from the command line <phrase role="keep-together">with
-      the</phrase> <literal moreinfo="none">-f</literal> or <phrase role="keep-together"><literal moreinfo="none">--file</literal> option</phrase>. This is
-      useful for some multimodule Maven projects where the aggregate <filename moreinfo="none">pom.xml</filename> file (the one containing the
-      <literal moreinfo="none">&lt;modules&gt;</literal> section) is located in a subdirectory
-      rather than at the top level.</para>
+      <para>Les options avancées sont également utiles (cliquez sur le bouton Avancé).</para>
+      <para>Le champ optionnel <command moreinfo="none">POM</command> permet de surcharger l’emplacement par défaut du fichier <filename moreinfo="none">pom.xml</filename>. C’est l’équivalent de lancer Maven en ligne de commande <phrase role="keep-together">avec l’option </phrase> <literal moreinfo="none">-f</literal> ou <phrase role="keep-together"><literal moreinfo="none">--file</literal></phrase>. 
+       C’est utile pour certains projets multi modules où le fichier agrégé <filename moreinfo="none">pom.xml</filename> (celui contenant les sections
+      <literal moreinfo="none">&lt;modules&gt;</literal>) est situé dans un sous répertoire et non au niveau supérieur.</para>
       <?dbfo-need height=”1in”?>
-      <para>The Properties field lets you set property values that will be
-      passed into the Maven build process, using the standard property file
-      format illustrated here:</para>
+      <para>Le champ Properties vous permet de spécifier des valeurs de propriété qui seront passées au processus de build Maven, en utilisant le format standard de fichier illustré ici :</para>
       <programlisting id="I_programlisting5_d1e6700" format="linespecific"># Selenium test configuration
 selenium.host=testserver.acme.com
 selenium.port=8080
 selenium.broswer=firefox</programlisting>
-      <para>These properties are passed to Maven as command-line options, as
-      shown here:</para>
+      <para>Ces propriétés sont passées à Maven en tant qu’options de ligne de commande, comme montré ici :</para>
       <programlisting id="I_programlisting5_d1e6705" format="linespecific">$ <userinput moreinfo="none">mvn verify -Dselenium.host=testserver.acme.com ...</userinput></programlisting>
-      <para>The JVM Options field lets you set any of the standard Java
-      Virtual Machine options for your build job. So if your build process is
-      particularly memory intensive, you might add some extra heap space with
-      the <literal moreinfo="none">-Xmx</literal> option (for example,
-      <literal moreinfo="none">-Xmx512m</literal> would set the maximum heap size to 512
-      MB).</para>
-      <para>The final option lets you configure a private Maven repository for
-      this build job. <phrase role="keep-together">Normally</phrase>, Maven
-      will just use the default Maven repository (usually in the <filename moreinfo="none">.m2/repository</filename> folder in the user’s home
-      directory). Occasionally, this can lead to build jobs interfering with
-      each other, or use inconsistent snapshot versions from one build to
-      another. To be sure that your build is run in clean laboratory
-      conditions, you can activate this option. Your build job will get its
-      own private repository, reserved for its own exclusive use. On the
-      downside, the first time the build job runs a build, this may take some
-      time to download all of the Maven artifacts, and private repositories
-      can take up a lot of space. However, it is the best way of guaranteeing
-      that your build is run in a truly<indexterm id="I_indexterm5_d1e6725" class="endofrange" startref="ch05-mavenstep1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6727" class="endofrange" startref="ch05-mavenstep2" significance="normal"><primary/></indexterm> isolated environment.</para>
+      <para>Le champ JVM Options vous permet de spécifier des options standards de la machine virtuelle Java pour votre tâche de build. Donc, si votre processus de build est particulièrement consommateur de mémoire, vous pourriez ajouter plus d’espace pour la heap avec l’option <literal moreinfo="none">-Xmx</literal> (par exemple, 
+      <literal moreinfo="none">-Xmx512m</literal> peut spécifier la taille maximum de la heap à 512 Mo).</para>
+      <para>La dernière option que vous pouvez configurer est un dépôt privé Maven pour cette tâche de build. <phrase role="keep-together">Normalement</phrase>, Maven utilisera le dépôt Maven par défaut (usuellement le dossier <filename moreinfo="none">.m2/repository</filename> dans le répertoire personnel de l’utilisateur). Parfois, cela peut mener à des interférences entre tâches de build, ou utiliser des versions snapshot inconsistantes d’un build à un autre. Pour être sûr que votre build est lancé dans des conditions de laboratoire, vous pouvez activer cette option. Votre tâche de build aura son propre dépôt privé, réservé pour son utilisation exclusive. Sur le plan négatif, la première fois que la tâche de build lancera un build, cela prendra du temps pour télécharger tous les artefacts Maven, et les dépôts privés peuvent prendre beaucoup de place. Cependant, c’est la meilleure façon de garantir que votre build est lancé dans un environnement<indexterm id="I_indexterm5_d1e6725" class="endofrange" startref="ch05-mavenstep1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6727" class="endofrange" startref="ch05-mavenstep2" significance="normal"><primary/></indexterm> vraiment isolé.</para>
     </sect2>
     <sect2>
-      <title>Ant Build Steps</title>
-      <para>Freestyle <indexterm class="startofrange" id="ch05-antstep1" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>Ant build scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-antstep2" significance="normal"><primary>Ant</primary><secondary>in freestyle build steps</secondary></indexterm><indexterm id="I_indexterm5_d1e6747" significance="normal"><primary>scripts</primary><seealso>Ant; Maven</seealso></indexterm>build jobs work equally well with Ant. <ulink url="http://ant.apache.org/">Apache Ant</ulink> is a widely-used and
-      very well-known Java build scripting tool. Indeed, a very large number
-      of Java projects out there rely on Ant build scripts.</para>
-      <para>Ant is not only used as a primary build scripting tool—even if
-      your project uses Maven, you may resort to calling Ant scripts to do
-      more specific tasks. There are Ant libraries available for many
-      development tools and low-level tasks, such as using SSH, or working
-      with proprietary application servers.</para>
-      <para>In its most basic form, configuring an Ant build step very is
-      simple indeed—you just provide the version of Ant you want to use and
-      the name of the target you want to invoke. In <xref linkend="fig-hudson-build-ant-step"/>, for example, we are invoking an
-      Ant script to run a JMeter test script.</para>
+      <title>Les étapes de build Ant</title>
+      <para>Les tâches <indexterm class="startofrange" id="ch05-antstep1" significance="normal"><primary>tâches de build Freestyle</primary><secondary>les étapes de build dans</secondary><tertiary>Les scripts de build Ant</tertiary></indexterm><indexterm class="startofrange" id="ch05-antstep2" significance="normal"><primary>Ant</primary><secondary>dans les étapes de build Freestyle</secondary></indexterm><indexterm id="I_indexterm5_d1e6747" significance="normal"><primary>scripts</primary><seealso>Ant; Maven</seealso></indexterm>de build Freestyle fonctionnent également biens avec Ant. <ulink url="http://ant.apache.org/">Apache Ant</ulink> est un outil de scripting de build Java largement utilisé et bien connu. En effet, un nombre important de projets Java sont liés à des scripts de build Ant.</para>
+      <para>Ant n’est pas seulement utilisé comme un outil de build principal — même si votre projet utilise Maven, vous pouvez recourir à l’appel de scripts Ant pour faire des tâches spécifiques. Il y a des librairies Ant disponibles  pour beaucoup d’outils de développement et des tâches bas niveau, comme utiliser SSH, ou travailler avec des serveurs d’application propriétaires.</para>
+      <para>Dans da forme la plus basique, configurer une étape de build Ant est très simple, en effet, il vous suffit de fournir la version de Ant que vous souhaitez utiliser et le nom de la target que vous voulez invoquer. Dans la <xref linkend="fig-hudson-build-ant-step"/>, par exemple, nous invoquons un script Ant pour démarrer un script de test JMeter.</para>
       <figure float="0" id="fig-hudson-build-ant-step">
-        <title>Configuring an Ant build step</title>
+        <title>Configurer une étape de build Ant</title>
         <mediaobject id="I_mediaobject5_d1e6765">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0527.pdf" format="PDF"/>
@@ -1317,26 +1252,15 @@ selenium.broswer=firefox</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>As with the Maven build step, the “Advanced...” button provides
-      you with more detailed options, such as specifying a different build
-      script, or a build script in a different directory (the default will be
-      <filename moreinfo="none">build.xml</filename> in the root directory).
-      You can also specify properties and JVM options, just as you can
-      for<indexterm id="I_indexterm5_d1e6775" class="endofrange" startref="ch05-antstep1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6777" class="endofrange" startref="ch05-antstep2" significance="normal"><primary/></indexterm> Maven.</para>
+      <para>Comme dans une étape de build Maven, le bouton « Avancé… » vous fournit plus d’options détaillées, comme spécifier un script de build different, ou un script de build dans un répertoire différent (celui par défaut sera <filename moreinfo="none">build.xml</filename> dans le répertoire racine).
+      Vous pouvez aussi spécifier des propriétés et des options de la JVM, comme vous pouvez le faire pour<indexterm id="I_indexterm5_d1e6775" class="endofrange" startref="ch05-antstep1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6777" class="endofrange" startref="ch05-antstep2" significance="normal"><primary/></indexterm> Maven.</para>
     </sect2>
     <sect2>
-      <title>Executing a Shell or Windows Batch Command</title>
-      <para>Occasionally <indexterm class="startofrange" id="ch05-script1" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>shell scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-script2" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>batch scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-script3" significance="normal"><primary>shell scripts</primary></indexterm><indexterm class="startofrange" id="ch05-script4" significance="normal"><primary>batch scripts</primary></indexterm><indexterm class="startofrange" id="ch05-script5" significance="normal"><primary>scripts</primary><secondary>shell scripts</secondary></indexterm><indexterm class="startofrange" id="ch05-script6" significance="normal"><primary>scripts</primary><secondary>batch scripts</secondary></indexterm>you may need to execute a command directly at the
-      Operating System level. Some legacy build processes rely on OS-specific
-      scripts, for example. In other cases, you may need to perform a
-      low-level operation that is most easily done with an OS-level
-      command.</para>
-      <para>You can do this in Jenkins with the <literal moreinfo="none">Execute
-      Shell</literal> (for Unix) or <literal moreinfo="none">Execute Windows Batch</literal>
-      command (for Windows). As an example, in <xref linkend="fig-hudson-build-shell-step"/> we have added a step to execute
-      the Unix <literal moreinfo="none">ls</literal> command.</para>
+      <title>Exécuter une commande Batch Shell ou Windows</title>
+      <para>Occasionnellement, <indexterm class="startofrange" id="ch05-script1" significance="normal"><primary>tâches de build Freestyle</primary><secondary>les étapes de build dans</secondary><tertiary>les scripts shell</tertiary></indexterm><indexterm class="startofrange" id="ch05-script2" significance="normal"><primary>tâches de build Freestyle</primary><secondary>les étapes de build dans</secondary><tertiary>les scripts batch</tertiary></indexterm><indexterm class="startofrange" id="ch05-script3" significance="normal"><primary>les scripts shell</primary></indexterm><indexterm class="startofrange" id="ch05-script4" significance="normal"><primary>les scripts batch</primary></indexterm><indexterm class="startofrange" id="ch05-script5" significance="normal"><primary>scripts</primary><secondary>les scripts shell</secondary></indexterm><indexterm class="startofrange" id="ch05-script6" significance="normal"><primary>scripts</primary><secondary>les scripts batch</secondary></indexterm>vous pouvez avoir besoin d’exécuter une commande directement au niveau du système d’exploitation. Certains processus de build anciens sont liés à des scripts spécifiques à l’OS, par exemple. Dans d’autres cas, vous pourriez avoir besoin d’effectuer un opérateur bas niveau qui serait plus facilement faite avec une commande au niveau OS.</para>
+      <para>Vous pouvez faire ceci avec Jenkins avec une commande <literal moreinfo="none">Exécuter un script shell</literal> (pour Unix) ou <literal moreinfo="none">Exécuter une ligne de commande batch Windows </literal>(pour Windows). Par exemple, dans la <xref linkend="fig-hudson-build-shell-step"/>, nous avons ajouté une étape pour exécuter la commande Unix <literal moreinfo="none">ls</literal>.</para>
       <figure float="none" id="fig-hudson-build-shell-step">
-        <title>Configuring an Execute Shell step</title>
+        <title>Configurer une étape Exécuter un script Shell</title>
         <mediaobject id="I_mediaobject5_d1e6832">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0528.pdf" format="PDF"/>
@@ -1346,7 +1270,7 @@ selenium.broswer=firefox</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>The output from this build step is shown here:</para>
+      <para>La sortie de l’étape de build est montrée ici :</para>
       <programlisting id="I_programlisting5_d1e6839" format="linespecific">[workspace] $ /bin/sh -xe /var/folders/.../jenkins2542160238803334344.s
 + ls -al
 total 64
@@ -1364,80 +1288,59 @@ drwxr-xr-x   9 johnsmart  staff   306 30 Oct 15:21 .svn
 drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 src
 drwxr-xr-x   3 johnsmart  staff   102 22 Sep 01:40 target
 drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
-      <para>You can either execute an OS-specific command (e.g.,
-      <literal moreinfo="none">ls</literal>), or store a more complicated script as a file in
-      your version control system, and execute this script. If you are
-      executing a script, you just need to refer to the name of your script
-      relative to the work directory.</para>
-      <para>Shell scripts are executed using the <literal moreinfo="none">-ex</literal>
-      option—the commands are printed to the console, as is the resulting
-      output. If any of the executed commands return a nonzero value, the
-      build will fail.</para>
-      <para>When Jenkins executes a script, it sets a number of environment
-      variables that you can use within the script. We discuss these variable
-      in more detail in the next section.</para>
-      <para>In fact, there are some very good reasons why you should avoid
-      using OS-level scripts in your build jobs if you can possibly avoid it.
-      In particular, it makes your build job in the best of cases OS-specific,
-      and at worst dependant on the precise machine configuration. One more
-      portable alternative to executing OS scripts include writing an
-      equivalent script in a more portable scripting language, such
-      as<indexterm id="I_indexterm5_d1e6855" class="endofrange" startref="ch05-script1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6857" class="endofrange" startref="ch05-script2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6859" class="endofrange" startref="ch05-script3" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6861" class="endofrange" startref="ch05-script4" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6863" class="endofrange" startref="ch05-script5" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6865" class="endofrange" startref="ch05-script6" significance="normal"><primary/></indexterm> Groovy or Gant.</para>
+      <para>Vous pouvez soit exécuter une commande spécifique à l’OS (ex : <literal moreinfo="none">ls</literal>), soit stocker un script plus compliqué comme un fichier dans votre gestionnaire de contrôle de version, et exécuter ce script. Si vous exécutez un script, vous n’avez juste qu’à faire référence au nom de votre script relativement par rapport au répertoire de travail.</para>
+      <para>Les scripts Shell sont exécutés en utilisant l’option <literal moreinfo="none">-ex</literal> — les commandes sont affichées dans la console, comme si c’était la sortie. Si n’importe laquelle des commandes exécutées retourne une valeur différente de zéro, le build échouera.</para>
+      <para> Lorsque Jenkins exécute un script, il spécifie un nombre en tant que variable d’environnement que vous pouvez utiliser à l’intérieur de votre script. Nous discutons de ces variables plus en détail dans le prochaine section.</para>
+      <para>En réalité, il y a beaucoup de bonnes raisons pour lesquelles vous devriez éviter d’utiliser des scripts de niveau OS dans vos tâches de build si vous pouvez les éviter. En particulier, il rend votre tâche de build au meilleur des cas, spécifique à l’OS, et dans le pire dépendant de la configuration précise de la machine. Une alternative plus portable pour exécuter des scripts spécifiques à l’OS est d’écrire un script équivalent dans un langage de script plus portable, comme <indexterm id="I_indexterm5_d1e6855" class="endofrange" startref="ch05-script1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6857" class="endofrange" startref="ch05-script2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6859" class="endofrange" startref="ch05-script3" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6861" class="endofrange" startref="ch05-script4" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6863" class="endofrange" startref="ch05-script5" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6865" class="endofrange" startref="ch05-script6" significance="normal"><primary/></indexterm> Groovy ou Gant.</para>
     </sect2>
     <sect2 id="sect-hudson-environment-variables">
-      <title>Using Jenkins Environment Variables in Your Builds</title>
-      <para>One<indexterm class="startofrange" id="ch05-env1" significance="normal"><primary>environment variables</primary><secondary>using in build steps</secondary></indexterm><indexterm class="startofrange" id="ch05-env2" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>environment variables in</tertiary></indexterm><indexterm id="I_indexterm5_d1e6885" significance="normal"><primary>environment variables</primary><seealso>specific environment variables</seealso></indexterm> useful trick that can be used in virtually any build step
-      is to obtain information from Jenkins about the current build job. In
-      fact, when Jenkins starts a build step, it makes the following
-      environment variables available to the build script:</para>
+      <title>Utiliser les variables d’environnement Jenkins dans vos builds</title>
+      <para>Une <indexterm class="startofrange" id="ch05-env1" significance="normal"><primary>les variables d'environnement</primary><secondary>utilisées dans les étapes de build</secondary></indexterm><indexterm class="startofrange" id="ch05-env2" significance="normal"><primary>tâches de build Freestyle</primary><secondary>les étapes de build dans</secondary><tertiary>les variables d'environnement dans</tertiary></indexterm><indexterm id="I_indexterm5_d1e6885" significance="normal"><primary>les variables d'environnement</primary><seealso>les variables d'environnement spécifiques</seealso></indexterm>astuce utile qui peut être utilisée dans pratiquement n’importe quelle étape de build est d’obtenir des informations de la part de Jenkins sur la tâche de build courante. En réalité, lorsque Jenkins démarre une étape de build, il met à disposition les variables d’environnement suivantes dans le script de build :</para>
       <variablelist>
         <varlistentry>
           <term>
             <literal moreinfo="none">BUILD_NUMBER</literal>
             <indexterm id="I_indexterm5_d1e6896" significance="normal">
-              <primary>BUILD_NUMBER environment variable</primary>
+              <primary>la variable d'environnement BUILD_NUMBER</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>The current build number, such as “153”.</para>
+            <para>Le numéro du build courant, comme “153”.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">BUILD_ID</literal>
             <indexterm id="I_indexterm5_d1e6906" significance="normal">
-              <primary>BUILD_ID environment variable</primary>
+              <primary>la variable d'environnement BUILD_ID</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>A timestamp for the current build id, in the format
-            YYYY-MM-DD_hh-mm-ss.</para>
+            <para>Un horodatage pour identifier le build courant, sous le format YYYY-MM-DD_hh-mm-ss.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">JOB_NAME</literal>
             <indexterm id="I_indexterm5_d1e6916" significance="normal">
-              <primary>JOB_NAME environment variable</primary>
+              <primary>la variable d'environnement JOB_NAME</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>The name of the job, such as
-            <emphasis>game-of-life</emphasis>.</para>
+            <para>Le nom du job, comme <emphasis>game-of-life</emphasis>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">BUILD_TAG</literal>
             <indexterm id="I_indexterm5_d1e6929" significance="normal">
-              <primary>BUILD_TAG environment variable</primary>
+              <primary>la variable d'environnement BUILD_TAG</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>A convenient way to identify the current build job, in the
-            form of
+            <para>Un moyen commode d’identifier la tâche de build courante, sous la forme
             <literal moreinfo="none">jenkins-${<replaceable>JOB_NAME</replaceable>}-${<replaceable>BUILD_NUMBER</replaceable>}</literal>
-            (e.g.,
+            (ex :
             <literal moreinfo="none">jenkins-game-of-life-2010-10-30_23-59-59</literal>).</para>
           </listitem>
         </varlistentry>
@@ -1445,136 +1348,119 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
           <term>
             <literal moreinfo="none">EXECUTOR_NUMBER</literal>
             <indexterm id="I_indexterm5_d1e6951" significance="normal">
-              <primary>EXECUTOR_NUMBER environment variable</primary>
+              <primary>la variable d'environnement EXECUTOR_NUMBER</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>A number identifying the executor running this build among
-            the executors of the same machine. This is the number you see in
-            the “build executor status”, except that the number starts from 0,
-            not 1.</para>
+            <para>Un nombre identifiant l’exécuteur ayant démarré cette construction parmi les exécuteurs sur la même machine. C’est le nombre que vous voyez dans « Etat du lanceur de construction », à l’exception que ce nombre commence de 0, pas 1.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">NODE_NAME</literal>
             <indexterm id="I_indexterm5_d1e6961" significance="normal">
-              <primary>NODE_NAME environment variable</primary>
+              <primary>la variable d'environnement NODE_NAME</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>The name of the slave if the build is running on a slave, or
-            <literal moreinfo="none">""</literal> if the build is running on master.</para>
+            <para>Le nom de l’esclave si ce build est en train d’être lancé sur un esclave, ou <literal moreinfo="none">""</literal> si le build est en train d’être lancé sur le maître.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">NODE_LABELS</literal>
             <indexterm id="I_indexterm5_d1e6974" significance="normal">
-              <primary>NODE_LABELS environment variable</primary>
+              <primary>la variable d'environnement NODE_LABELS</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>The list of labels associated with the node that this build
-            is running on.</para>
+            <para>La liste des libellés  associés au nœud sur lequel le build est démarré.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">JAVA_HOME</literal>
             <indexterm id="I_indexterm5_d1e6984" significance="normal">
-              <primary>JAVA_HOME environment variable</primary>
+              <primary>la variable d'environnement JAVA_HOME</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>If your job is configured to use a specific JDK, this
-            variable is set to the <literal moreinfo="none">JAVA_HOME</literal> of the
-            specified JDK. When this variable is set, <literal moreinfo="none">PATH</literal>
-            is also updated to have <filename moreinfo="none">$JAVA_HOME/bin</filename>.</para>
+            <para>Si votre tâche est configurée pour utiliser une version spécifique de JDK, cette variable contient la valeur du <literal moreinfo="none">JAVA_HOME</literal> correspondant au JDK spécifié. Lorsque cette variable est fixée, la variable <literal moreinfo="none">PATH</literal> est aussi mise à jour pour avoir <filename moreinfo="none">$JAVA_HOME/bin</filename>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">WORKSPACE</literal>
             <indexterm id="I_indexterm5_d1e7003" significance="normal">
-              <primary>WORKSPACE environment variable</primary>
+              <primary>la variable d'environnement WORKSPACE</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>The absolute path of the workspace.</para>
+            <para>Le chemin absolu du répertoire de travail.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">HUDSON_URL</literal>
             <indexterm id="I_indexterm5_d1e7013" significance="normal">
-              <primary>HUDSON_URL environment variable</primary>
+              <primary>la variable d'environnement HUDSON_URL</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>The full URL of the Jenkins server, for example <filename moreinfo="none">http://ci.acme.com:8080/jenkins/</filename>.</para>
+            <para>L’URL complète du serveur Jenkins, par exemple <filename moreinfo="none">http://ci.acme.com:8080/jenkins/</filename>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">JOB_URL</literal>
             <indexterm id="I_indexterm5_d1e7026" significance="normal">
-              <primary>JOB_URL environment variable</primary>
+              <primary>la variable d'environnement JOB_URL</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>The full URL for this build job, for example <filename moreinfo="none">http://ci.acme.com:8080/jenkins/game-of-life</filename>.</para>
+            <para>L’URL complète pour cette tâche de build, par exemple <filename moreinfo="none">http://ci.acme.com:8080/jenkins/game-of-life</filename>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">BUILD_URL</literal>
             <indexterm id="I_indexterm5_d1e7040" significance="normal">
-              <primary>BUILD_URL environment variable</primary>
+              <primary>la variable d'environnement BUILD_URL</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>The full URL for this build, for example <filename moreinfo="none">http://ci.acme.com:8080/jenkins/game-of-life/20</filename>.</para>
+            <para>L’URL complète de ce build, par exemple <filename moreinfo="none">http://ci.acme.com:8080/jenkins/game-of-life/20</filename>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">SVN_REVISION</literal>
             <indexterm id="I_indexterm5_d1e7053" significance="normal">
-              <primary>SVN_REVISION environment variable</primary>
+              <primary>la variable d'environnement SVN_REVISION</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>For Subversion-based projects, this variable contains the
-            current revision number.</para>
+            <para>Pour les projets basés sur Subversion, cette variable contient le numéro de la révision courante.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>
             <literal moreinfo="none">CVS_BRANCH</literal>
             <indexterm id="I_indexterm5_d1e7063" significance="normal">
-              <primary>CVS_BRANCH environment variable</primary>
+              <primary>la variable d'environnement CVS_BRANCH</primary>
             </indexterm>
           </term>
           <listitem>
-            <para>For CVS-based projects, this variable contains the branch of
-            the module. If CVS is configured to check out the trunk, this
-            environment variable will not be set.</para>
+            <para>Pour les projets basés sur CVS, cette variable contient la branche du module. Si CVS est configuré pour consulter le trunk, cette variable d’environnement ne sera pas spécifiée.</para>
           </listitem>
         </varlistentry>
       </variablelist>
-      <para>These <indexterm id="I_indexterm5_d1e7071" significance="normal"><primary>Ant</primary><secondary>environment variables, accessing from</secondary></indexterm>variables are easy to access. In an Ant script, you can
-      access them using the <literal moreinfo="none">&lt;property&gt;</literal> tag as shown
-      here:</para>
+      <para>Ces <indexterm id="I_indexterm5_d1e7071" significance="normal"><primary>Ant</primary><secondary>les variables d'environnement, accédées depuis</secondary></indexterm>variables sont faciles à utiliser. Dans un script Ant, vous pouvez y accéder avec le tag <literal moreinfo="none">&lt;property&gt;</literal> comme montré ici :</para>
       <programlisting id="I_programlisting5_d1e7080" format="linespecific">&lt;target name="printinfo"&gt;
   &lt;property environment="env" /&gt;
   &lt;echo message="${env.BUILD_TAG}"/&gt;
 &lt;/target&gt;</programlisting>
-      <para>In Maven, <indexterm id="I_indexterm5_d1e7084" significance="normal"><primary>Maven</primary><secondary>environment variables in</secondary></indexterm>you can access the variables either in the same way (using
-      the “env.” prefix), or directly using the Jenkins environment variable.
-      For example, in the following <emphasis>pom.xml</emphasis> file, the
-      project URL will point to the Jenkins build job that ran the
-      <literal moreinfo="none">mvn site</literal> build:</para>
+      <para>Dans Maven, <indexterm id="I_indexterm5_d1e7084" significance="normal"><primary>Maven</primary><secondary>les variables d'environnement dans</secondary></indexterm>vous pouvez accéder au variables soit de la même manière (en utilisant le prefix « env. »), soit directement en utilisant la variable d’environnement Jenkins. Par exemple, dans le fichier <emphasis>pom.xml</emphasis>, l’URL du projet pointera sur la tâche de build Jenkins qui a lancé le build <literal moreinfo="none">mvn site</literal> :</para>
       <programlisting id="I_programlisting5_d1e7096" format="linespecific">&lt;project...&gt;
   ...
   &lt;groupId&gt;com.wakaleo.gameoflife&lt;/groupId&gt;
@@ -1582,9 +1468,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
   &lt;version&gt;0.0.55-SNAPSHOT&lt;/version&gt;
   &lt;name&gt;gameoflife-core&lt;/name&gt;
   &lt;url&gt;${JOB_URL}&lt;/url&gt;</programlisting>
-      <para>Alternatively, if you are building a web application, you can also
-      use the <filename moreinfo="none">maven-war-plugin</filename> to insert
-      the build job number into the web application manifest, e.g.:</para>
+      <para>Alternativement, si vous construises une application web, vous pouvez aussi utiliser <filename moreinfo="none">maven-war-plugin</filename> pour insérer le numéro de la tâche de build dans le manifest de l’application web, ex :</para>
       <programlisting id="I_programlisting5_d1e7103" format="linespecific">&lt;project&gt;
   ...
   &lt;build&gt;
@@ -1610,8 +1494,7 @@ drwxr-xr-x   5 johnsmart  staff   170 22 Sep 01:40 tools</programlisting>
   &lt;/build&gt;
   ...
 &lt;/project&gt;</programlisting>
-      <para>This will produce a <filename moreinfo="none">MANIFEST.MF</filename> file along the following
-      lines:</para>
+      <para>Cela produire un fichier <filename moreinfo="none">MANIFEST.MF</filename> avec les lignes suivantes :</para>
       <programlisting id="I_programlisting5_d1e7110" format="linespecific">Manifest-Version: 1.0
 Archiver-Version: Plexus Archiver
 Created-By: Apache Maven
@@ -1623,27 +1506,22 @@ Jenkins-Version: 1.382
 Implementation-Version: jenkins-game-of-life-63
 Specification-Title: gameoflife-web
 Specification-Version: 0.0.55-SNAPSHOT</programlisting>
-      <para>And in a <indexterm id="I_indexterm5_d1e7115" significance="normal"><primary>Groovy scripts</primary><secondary>environment variables in</secondary></indexterm>Groovy script, they can be obtained via the
-      <literal moreinfo="none">System.getenv()</literal> method:</para>
+      <para>Dans un <indexterm id="I_indexterm5_d1e7115" significance="normal"><primary>les scripts Groovy</primary><secondary>les variables d'environnement dans</secondary></indexterm>script Groovy, elles peuvent être accéder via la méthode 
+      <literal moreinfo="none">System.getenv()</literal> :</para>
       <programlisting id="I_programlisting5_d1e7124" format="linespecific">def env = System.getenv()
 env.each {
     println it
 }</programlisting>
-      <para><indexterm id="I_indexterm5_d1e7127" class="endofrange" startref="ch05-env1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7129" class="endofrange" startref="ch05-env2" significance="normal"><primary/></indexterm>or:</para>
+      <para><indexterm id="I_indexterm5_d1e7127" class="endofrange" startref="ch05-env1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7129" class="endofrange" startref="ch05-env2" significance="normal"><primary/></indexterm>ou :</para>
       <programlisting id="I_programlisting5_d1e7132" format="linespecific">def env = System.getenv()
 println env['BUILD_NUMBER']</programlisting>
     </sect2>
     <sect2>
-      <title>Running Groovy Scripts</title>
-      <para>Groovy<indexterm class="startofrange" id="ch05-groovy1" significance="normal"><primary>Groovy scripts</primary><secondary>running in build jobs</secondary></indexterm><indexterm class="startofrange" id="ch05-groovy2" significance="normal"><primary>freestyle build jobs</primary><secondary>build steps in</secondary><tertiary>Groovy scripts</tertiary></indexterm><indexterm class="startofrange" id="ch05-groovy3" significance="normal"><primary>scripts</primary><secondary>Groovy scripts</secondary></indexterm> is not only a popular JVM dynamic language, it is also a
-      convenient language for low-level scripting. The Jenkins <ulink url="http://wiki.jenkins-ci.org//display/HUDSON/Groovy+Plugin">Groovy
-      Plugin</ulink> lets you run arbitrary Groovy commands, or invoke Groovy
-      scripts, as part of your build process.</para>
-      <para>Once you have installed the Groovy plugin in the usual way, you
-      need to add a reference to your Groovy installation in the system
-      configuration page (see <xref linkend="fig-hudson-groovy-installation"/>).</para>
+      <title>Exécuter des scripts Groovy</title>
+      <para>Groovy<indexterm class="startofrange" id="ch05-groovy1" significance="normal"><primary>les scripts Groovy</primary><secondary>démarrer dans des tâches de build</secondary></indexterm><indexterm class="startofrange" id="ch05-groovy2" significance="normal"><primary>tâches de build Freestyle</primary><secondary>les étapes de build dans</secondary><tertiary>les scripts Groovy</tertiary></indexterm><indexterm class="startofrange" id="ch05-groovy3" significance="normal"><primary>scripts</primary><secondary>les scripts Groovy</secondary></indexterm> n’est pas seulement un langage dynamique populaire de la JVM, c’est aussi un langage qui convient pour le scripting de bas niveau. Le <ulink url="http://wiki.jenkins-ci.org//display/HUDSON/Groovy+Plugin">plugin Groovy</ulink> de Jenkins vous permet d’exécuter des commandes Groovy arbitraires, ou invoquer des scripts Groovy, dans le cadre de votre processus de build.</para>
+      <para>Une fois que vous avez installé le plugin Groovy avec la manière habituelle, vous aurez besoin d’ajouter une référence de votre installation Groovy dans la page de configuration du système (voir la figure <xref linkend="fig-hudson-groovy-installation"/>).</para>
       <figure float="none" id="fig-hudson-groovy-installation">
-        <title>Adding a Groovy installation to Jenkins</title>
+        <title>Ajouter une installation Groovy à Jenkins</title>
         <mediaobject id="I_mediaobject5_d1e7167">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0529.pdf" format="PDF"/>
@@ -1653,23 +1531,11 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Now you can add some Groovy scripting to your build job. When you
-      click on “Add build step”, you will see two new entries in the drop-down
-      menu: “Execute Groovy script” and “Execute system Groovy script”. The
-      first option is generally what you <phrase role="keep-together">want—</phrase>this will simply execute a Groovy
-      script in a separate JVM, as if you were invoking Groovy from the
-      command line. The second option runs Groovy commands within Jenkins’s
-      own JVM, with full access to Jenkins’s internals, and is mainly used to
-      manipulate the Jenkins build jobs or build process itself. This is a
-      more advanced topic that we will discuss later on in the book.</para>
-      <para>A Groovy build step can take one of two forms. For simple cases,
-      you can just add a small snippet of Groovy, as shown in <xref linkend="fig-hudson-groovy-build-step"/>. For more involved or
-      complicated cases, you would probably write a Groovy script and place it
-      under version control. Once your script is safely in your SCM, you can
-      run it by selecting the “Groovy script file” option and providing the
-      path to your script (relative to your build job workspace).</para>
+      <para>Maintenant, vous pouvez ajouter du script Groovy dans votre tâche de build. Lorsque vous cliquez sur ‘Ajouter une étape de build’, vous verrez deux nouvelles entrées dans le menu déroulant : « Exécuter un script Groovy » et « Exécuter un script Groovy Système ».
+      La première option est généralement celle que vous <phrase role="keep-together">souhaitez — </phrase>cela exécutera simplement un script Groovy dans une JVM séparée, comme si vous l’invoquiez depuis la ligne de commande. La deuxième option lance des commandes Groovy depuis la JVM de Jenkins, avec un accès interne complet à Jenkins, et est principalement utilisé pour manipuler les tâches de build de Jenkins ou le processus de build lui-même. C’est un sujet plus avancé dont nous discuterons plus loin dans ce livre.</para>
+      <para>Une étape de build Groovy peut prendre une forme sur deux. Pour les cas simples, vous pouvez juste ajouter un petit bout de Groovy, comme montré dans la <xref linkend="fig-hudson-groovy-build-step"/>. Pour les cas plus complexes ou compliqués, vous pouvez probablement écrire un script Groovy et le placer sous un système de contrôle de version. Une fois que votre script est en sûreté dans votre SCM, vous pouvez le démarrer en sélectionnant l’option « Fichier de script Groovy » et fournir le chemin de votre script (relatif au répertoire de travail de la tâche de build).</para>
       <figure float="none" id="fig-hudson-groovy-build-step">
-        <title>Running Groovy commands as part of a build job</title>
+        <title>Lancer des commandes Groovy dans le cadre d’une tâche de build</title>
         <mediaobject id="I_mediaobject5_d1e7184">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0530.pdf" format="PDF"/>
@@ -1680,19 +1546,9 @@ println env['BUILD_NUMBER']</programlisting>
         </mediaobject>
       </figure>
       <?dbfo-need height=”1in”?>
-      <para>In <xref linkend="fig-hudson-groovy-fitnesse-build-step"/>, you
-      can see a slightly more complicated example. Here we are running a
-      Groovy script called <filename moreinfo="none">run-fitness-tests.groovy</filename>, which can be found
-      in the <filename moreinfo="none">scripts</filename> directory. This
-      script takes the test suites to be executed as its parameters—we provide
-      these in the Script parameters field. If we want to provide any options
-      for Groovy itself, we can put these in the Groovy Parameters field.
-      Alternatively, we can also provide command-line properties in the
-      Properties field—this is simply a more convenient way of using the
-      <literal moreinfo="none">-D</literal> command-line option to pass property values to
-      the<indexterm id="I_indexterm5_d1e7203" class="endofrange" startref="ch05-groovy1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7205" class="endofrange" startref="ch05-groovy2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7208" class="endofrange" startref="ch05-groovy3" significance="normal"><primary/></indexterm> Groovy script.</para>
+      <para>Dans la <xref linkend="fig-hudson-groovy-fitnesse-build-step"/>, vous pouvez voir un exemple légèrement plus compliqué. Ici nous lançons un script Groovy appelé <filename moreinfo="none">run-fitness-tests.groovy</filename>, qui peut être trouvé dans le répertoire <filename moreinfo="none">scripts</filename>. Ce script prend des suites de test pour être exécutés comme ses paramètres — nous pouvons les mettre dans le champ Paramètres Groovy. Sinon vous pouvez aussi fournir des propriétés en ligne de commande dans le champ Propriétés — c’est simplement un moyen plus pratique d’utiliser l’option <literal moreinfo="none">-D</literal> en ligne de commande pour passer des valeurs de propriétés <indexterm id="I_indexterm5_d1e7203" class="endofrange" startref="ch05-groovy1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7205" class="endofrange" startref="ch05-groovy2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7208" class="endofrange" startref="ch05-groovy3" significance="normal"><primary/></indexterm> au script Groovy.</para>
       <figure float="none" id="fig-hudson-groovy-fitnesse-build-step">
-        <title>Running Groovy scripts as part of a build job</title>
+        <title>Lancer des scripts Groovy dans le cadre d’une tâche de build</title>
         <mediaobject id="I_mediaobject5_d1e7214">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0531.pdf" format="PDF"/>
@@ -1704,39 +1560,20 @@ println env['BUILD_NUMBER']</programlisting>
       </figure>
     </sect2>
     <sect2>
-      <title>Building Projects in Other Languages</title>
-      <para>Jenkins<indexterm id="I_indexterm5_d1e7224" significance="normal"><primary>scripts</primary><secondary>languages supported</secondary></indexterm> is a flexible tool, and it can be used for much more than
-      just Java and Groovy. For example, Jenkins also works well with Grails,
-      .Net, Ruby, Python and PHP, just to name a few. When using other
-      languages, you generally need to install a plugin to support your
-      favorite language, which will add a new build step type for this
-      language. We will look at some <indexterm id="I_indexterm5_d1e7230" class="endofrange" startref="ch05-step" significance="normal"><primary/></indexterm>examples in <xref linkend="using-jenkins-with-other-languages"/>.</para>
+      <title>Construire des projets dans d’autres langages</title>
+      <para>Jenkins<indexterm id="I_indexterm5_d1e7224" significance="normal"><primary>scripts</primary><secondary>les langages supportées</secondary></indexterm> est un outil flexible, il peut être utilisé avec beaucoup plus de de langage que Java et Groovy. Par exemple, Jenkins fonctionne aussi très bien avec Grails, .Net, Ruby, Python et PHP, juste pour en nommer quelques uns. En utilisant d’autres langages, vous aurez généralement besoin d’installer un plugin supportant votre langage favori, qui ajoutera un nouveau type d’étape de build pour ce langage.Nous regarderons <indexterm id="I_indexterm5_d1e7230" class="endofrange" startref="ch05-step" significance="normal"><primary/></indexterm>d’autres exemples dans la section <xref linkend="using-jenkins-with-other-languages"/>.</para>
     </sect2>
   </sect1>
   <sect1 id="I_sect15_d1e7235">
-    <title>Post-Build Actions</title>
-    <para>Once<indexterm class="startofrange" id="ch05-post" significance="normal"><primary>freestyle build jobs</primary><secondary>post-build actions</secondary></indexterm> the build is completed, there are still a few things you
-    need to look after. You might want to archive some of the generated
-    artifacts, to report on test results, and to notify people about the
-    results. In this section, we look at some of the more common tasks you
-    need to configure after the build is done.</para>
+    <title>Les actions à la suite du build</title>
+    <para>Une fois<indexterm class="startofrange" id="ch05-post" significance="normal"><primary>les tâches de build Freestyle</primary><secondary>Actions à la suite du build</secondary></indexterm> qu’un build est terminé, il y a toujours des petites choses à voir après. Vous pourriez avoir besoin d’archiver certains artefacts générés, faire des rapports sur les résultats des tests, et notifier des personnes sur les résultats. Dans cette section, nous allons regarder certaines des tâches les plus courantes que vous aurez besoin de configurer après que le build est effectué.</para>
     <sect2>
-      <title>Reporting on Test Results</title>
-      <para>One<indexterm class="startofrange" id="ch05-report1" significance="normal"><primary>freestyle build jobs</primary><secondary>reporting on test results</secondary></indexterm><indexterm class="startofrange" id="ch05-report2" significance="normal"><primary>tests</primary><secondary>reports from</secondary><tertiary>JUnit reports</tertiary></indexterm><indexterm class="startofrange" id="ch05-report3" significance="normal"><primary>reporting</primary><secondary>test results</secondary><tertiary>JUnit reports</tertiary></indexterm> of the most obvious requirements of a build job is to
-      report on test results. Not only whether there are any test failures,
-      but also how many tests were executed, how long they took to execute,
-      and so on. In the Java world, JUnit is the most commonly-used testing
-      library around, and the JUnit XML format for test results is widely used
-      and understood by other tools as well.</para>
-      <para>Jenkins provides great support for test reporting. In a freestyle
-      build job, you need to tick the “Publish JUnit test result report”
-      option, and provide a path to your JUnit report files (see <xref linkend="fig-hudson-build-job-junit"/>). You can use a wildcard
-      expression (such as <literal moreinfo="none">**/target/surefire-reports/*.xml</literal>
-      in a Maven project) to include JUnit reports from a number of different
-      directories—Jenkins will aggregate the results into a single
-      report.</para>
+      <title>Rapport sur les résultats de tests</title>
+      <para>L'une<indexterm class="startofrange" id="ch05-report1" significance="normal"><primary>tâches de build Freestyle</primary><secondary>rapport sur les résultats de test</secondary></indexterm><indexterm class="startofrange" id="ch05-report2" significance="normal"><primary>tests</primary><secondary>rapports depuis</secondary><tertiary>les rapports JUnit</tertiary></indexterm><indexterm class="startofrange" id="ch05-report3" significance="normal"><primary>rapport</primary><secondary>les résultats de test</secondary><tertiary>les rapports JUnit</tertiary></indexterm> des exigences les plus évidentes sur une tâche de build est de faire des rapports sur les résultats des tests. Non seulement s’il y a des échecs aux tests, mais aussi combien de tests sont exécutés, en combien de temps, et ainsi de suite. Dans le monde Java, JUnit est la librairie de test la plus couramment utilisée, et le format XML JUnit pour les résultats de test est très utilisé et aussi bien compris par les autres outils.</para>
+      <para>Jenkins fournit un grand support pour les rapports de test. Dans une tâche de build freestyle, vous devez cocher l’option « Publier le rapport des résultats de tests JUnit », et fournir un chemin vers vos fichiers de rapport JUnit (voir <xref linkend="fig-hudson-build-job-junit"/>). Vous pouvez utiliser une expression générique (comme <literal moreinfo="none">**/target/surefire-reports/*.xml</literal>
+      dans un projet Maven) pour inclure les rapports JUnit depuis un grand nombre de répertoires différents — Jenkins agrégera les résultats dans un seul rapport.</para>
       <figure float="none" id="fig-hudson-build-job-junit">
-        <title>Reporting on test results</title>
+        <title>Rapport sur les résultats de tests</title>
         <mediaobject id="I_mediaobject5_d1e7281">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0532.pdf" format="PDF"/>
@@ -1746,22 +1583,14 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>We look at automated tests in much more<indexterm id="I_indexterm5_d1e7288" class="endofrange" startref="ch05-report1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7290" class="endofrange" startref="ch05-report2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7292" class="endofrange" startref="ch05-report3" significance="normal"><primary/></indexterm> detail in <xref linkend="chapter-automated-testing"/>.</para>
+      <para>Nous regarderons les tests automatisés plus<indexterm id="I_indexterm5_d1e7288" class="endofrange" startref="ch05-report1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7290" class="endofrange" startref="ch05-report2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7292" class="endofrange" startref="ch05-report3" significance="normal"><primary/></indexterm> en détail dans le chapitre <xref linkend="chapter-automated-testing"/>.</para>
     </sect2>
     <sect2>
-      <title>Archiving Build Results</title>
-      <para>With <indexterm class="startofrange" id="ch05-archive1" significance="normal"><primary>freestyle build jobs</primary><secondary>archiving binary artifacts</secondary></indexterm><indexterm class="startofrange" id="ch05-archive2" significance="normal"><primary>archives of binary artifacts</primary><secondary sortas="free-style">in freestyle build jobs</secondary></indexterm><indexterm class="startofrange" id="ch05-archive3" significance="normal"><primary>binary artifacts</primary><secondary>archiving</secondary><tertiary sortas="free-style">in freestyle build jobs</tertiary></indexterm>a few exceptions, the principal goal of a build job is
-      generally to build something. In Jenkins, we call this something an
-      artifact. An artifact might be a binary executable (a JAR or WAR file
-      for a Java project, for example), or some other related deliverable,
-      such as documentation or source code. A build job can store one or many
-      different artifacts, keeping only the latest copy or every artifact ever
-      built.</para>
-      <para>Configuring Jenkins to store your artifacts is easy—just tick the
-      “Archive the artifacts” checkbox in the Post-build Actions, and specify
-      which artifacts you want to store (see <xref linkend="fig-hudson-build-job-artifact-configuration"/>).</para>
+      <title>Archiver les résultats de build</title>
+      <para>A <indexterm class="startofrange" id="ch05-archive1" significance="normal"><primary>tâches de build Freestyle</primary><secondary>Archiver les binaires d'artefacts</secondary></indexterm><indexterm class="startofrange" id="ch05-archive2" significance="normal"><primary>les archives de binaire d'artefacts</primary><secondary sortas="free-style">dans les tâches de build Freestyle</secondary></indexterm><indexterm class="startofrange" id="ch05-archive3" significance="normal"><primary>binaire d'artefacts</primary><secondary>archiver</secondary><tertiary sortas="free-style">dans les tâches de build Freestyle</tertiary></indexterm>quelques exceptions près, le but principal d’une tâche de build est généralement de construire quelque chose. Dans Jenkins, nous appelons cette chose un artefact. Un artefact pourrait être un exécutable binaire (un fichier JAR ou WAR pour un projet Java, par exemple), ou certains autres livrables liés, comme de la documentation ou du code source. Une tâche de build peut stocker un ou plusieurs différents artefacts, gardant uniquement la dernière copie ou chaque artefact tous les builds.</para>
+      <para>Configurer Jenkins pour stocker vos artefacts est simple — cochez la case à cocher « Archiver les artefacts » dans les Actions à la suite de build, et spécifier quels artefacts vous voulez stocker (voir la figure <xref linkend="fig-hudson-build-job-artifact-configuration"/>).</para>
       <figure float="none" id="fig-hudson-build-job-artifact-configuration">
-        <title>Configuring build artifacts</title>
+        <title>Configurer les artefacts de builds</title>
         <mediaobject id="I_mediaobject5_d1e7327">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0533.pdf" format="PDF"/>
@@ -1771,35 +1600,12 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>In the “Files to archive” field, you can provide the full paths of
-      the files you want to archive (relative to the job workspace), or, use
-      Ant-like wild cards (e.g., <literal moreinfo="none">**/*.jar</literal>, for all the JAR
-      files, anywhere in the workspace). One advantage of using wild cards is
-      that it makes your build less dependent on your version control set up.
-      For example, if you are using Subversion (see <xref linkend="sect-subversion"/>), Jenkins will check out your project
-      either directly in your workspace, or into a subdirectory, depending on
-      how you set it up. If you use a wild card expression like
-      <literal moreinfo="none">**/target/*.war</literal>, Jenkins will find the file no matter
-      what directory the project is located in.</para>
-      <para>As usual, the Advanced button give access to a few extra options.
-      If you are using wild cards to find your artifacts, you might need to
-      exclude certain directories from the search. You can do this by filling
-      in the Excludes field. You enter a pattern to match any files that you
-      <emphasis>don’t</emphasis> want to archive, even if they would normally
-      be included by the “Files to archive” field.</para>
-      <para>Archived artifacts can take a lot of disk space, especially if
-      builds are frequent. For this reason, you may want to only keep the last
-      successful one. To do this, just tick the “Discard all but the last
-      successful/stable artifact” option. Jenkins will keep artifacts from the
-      last stable build (if there where any). It will also keep the artifacts
-      of the latest unstable build following the stable build (if any), and
-      also from the last failed build that happened.</para>
-      <para>Archived build artifacts appear on the build results page (see
-      <xref linkend="fig-hudson-build-artifact"/>). The most recent build
-      artifacts are also displayed on the build job home page.</para>
+      <para>Dans le champ « Fichiers à archiver », vous pouvez spécifier les chemins complets des fichiers que vous souhaitez archiver (relatif au répertoire de travail de la tâche de build), ou, utiliser un caractère générique (ex. : <literal moreinfo="none">**/*.jar</literal>, pour tous les fichiers JAR, n’importe où dans le répertoire de travail). L’un des avantages d’utiliser des caractères génériques est qu’il permet de rendre votre build moins dépendant de votre configuration de gestion de version. Par exemple, si vous utilisez Subversion (voir la section <xref linkend="sect-subversion"/>), Jenkins va parcourir votre projet directement depuis le répertoire de travail, ou depuis un sous-répertoire, en fonction de votre configuration. Si vous utilisez un caractère générique comme <literal moreinfo="none">**/target/*.war</literal>, Jenkins trouvera le fichier indépendamment du répertoire où est positionné le projet.</para>
+      <para>Comme d’habitude, le bouton Avancé donne accès à quelques options supplémentaires. Si vous utilisez un caractère générique pour trouver vos artefacts, vous pourriez avoir besoin d’exclure certains répertoires dans la recherche. Vous pouvez faire ceci en remplissant le champ Exclusions. Vous entrez un modèle de nom de fichier que vous <emphasis>ne souhaitez pas</emphasis> archiver, même s’ils seraient normalement inclus par le champ "Fichiers à archiver".</para>
+      <para>Les artefacts archivés peuvent prendre beaucoup de place sur le disque, en particulier si les builds sont fréquents. Pour cette raison, vous pouvez vouloir garder uniquement le dernier en succès. Pour faire ceci, il suffit de cocher l’option « Supprime tous les artefacts, à l'exception du dernier artefact stable ou construit avec succès, afin de gagner de l'espace disque ». Jenkins gardera les artefacts des derniers builds stables (s’il y en a). Il gardera aussi les artefacts du dernier build instable construit juste après un build stable (s’il y a), et également du dernier build en échec qui est arrivé.</para>
+      <para>Les artefacts de build archivés apparaissent sur la page des résultats de build (voir la figure <xref linkend="fig-hudson-build-artifact"/>). Les artefacts de build les plus récents sont aussi affichés dans la page d’accueil d’un job.</para>
       <figure float="none" id="fig-hudson-build-artifact">
-        <title>Build artifacts are displayed on the build results page and on
-        the build job home page</title>
+        <title>Les artefacts de build sont affichés sur la page de résultat d’un build et la page d’accueil d’un job</title>
         <mediaobject id="I_mediaobject5_d1e7356">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0534.pdf" format="PDF"/>
@@ -1809,31 +1615,16 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>You can also use permanent URLs to access the most recent build
-      artifacts. This is a great way to reuse the latest artifacts from your
-      builds, either in other Jenkins build jobs or in external scripts, for
-      example. Three URLs are available: last stable build, last successful
-      build and last completed build.</para>
-      <para>Before we look at the URLs, we should discuss the concept of
-      <emphasis>stable</emphasis> and <emphasis>successful</emphasis>
-      builds.</para>
-      <para>A build is <emphasis>successful</emphasis> when the compilation
-      reported no errors.</para>
-      <para>A build is <indexterm id="I_indexterm5_d1e7379" significance="normal"><primary>build jobs</primary><secondary>unstable build from</secondary><tertiary>criteria for</tertiary></indexterm><indexterm id="I_indexterm5_d1e7386" significance="normal"><primary>unstable builds</primary><secondary>criteria for</secondary></indexterm>considered <emphasis>stable</emphasis> if it was built
-      successfully, and no publisher reports it as unstable. For example,
-      depending on your project configuration, unit test failures,
-      insufficient code coverage, or other code quality metrics issues, could
-      cause a build to be marked as unstable. So a stable build is always
-      successful, but the opposite is not necessarily true—a build can be
-      successful without being stable.</para>
-      <para>A <emphasis>completed</emphasis> build is simply a build that has
-      finished, no matter what its result. Note that the archiving step will
-      take place no matter what the outcome of the build was.</para>
-      <para>The format of the artifact URLs is intuitive, and takes the
-      following form:</para>
+      <para>Vous pouvez aussi utiliser les URLs permanentes pour accéder aux artefacts de build les plus récents. Il s'agit d'une excellente façon de réutiliser les derniers artefacts de vos builds, que ce soit depuis des tâches de build Jenkins ou depuis des scripts externes, par exemple. Trois URLs sont disponibles : dernier build stable, dernier build en succès et dernier build construit.</para>
+      <para>Avant que nous regardions les URLs, nous devrions discuter du concept de builds 
+      <emphasis>stables</emphasis> et <emphasis>en succès</emphasis>.</para>
+      <para>Un build est <emphasis>en succès</emphasis> lorsque la compilation n’est pas signalée en erreur.</para>
+      <para>Un build est <indexterm id="I_indexterm5_d1e7379" significance="normal"><primary>les tâches de build</primary><secondary>build instable</secondary><tertiary>critère pour</tertiary></indexterm><indexterm id="I_indexterm5_d1e7386" significance="normal"><primary>builds instables</primary><secondary>critère pour</secondary></indexterm>considéré <emphasis>stable</emphasis> s’il a été construit avec succès, et qu’aucun éditeur ne l’a signalé comme instable. Par exemple, dépendamment de votre configuration de projet, des échecs de tests unitaires, une couverture de code insuffisante, ou d’autres problèmes de qualité de code, peuvent provoquer la mise à l’état instable d’un build. Donc un build stable est toujours en succès, mais l’inverse n’est pas nécessairement vrai — un build peut être en succès sans être nécessairement stable.</para>
+      <para>Un build <emphasis>complet</emphasis> est simplement un build qui a fini, peu importe son résultat. A noter que l’étape d’archivage aura lieu quel que soit le résultat de la construction.</para>
+      <para>Le format des URLs d’artefact est intuitif, et prend la forme suivante :</para>
       <variablelist>
         <varlistentry>
-          <term>Latest stable build</term>
+          <term>Dernier build stable</term>
           <listitem>
             <para>
               <filename moreinfo="none"><replaceable>&lt;server-url&gt;</replaceable>/job/<replaceable>&lt;build-job&gt;</replaceable>/lastStableBuild/artifact/<replaceable>&lt;path-to-artifact&gt;</replaceable></filename>
@@ -1841,7 +1632,7 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>Latest successful build</term>
+          <term>Dernier build en succès</term>
           <listitem>
             <para>
               <filename moreinfo="none"><replaceable>&lt;server-url&gt;</replaceable>/job/<replaceable>&lt;build-job&gt;</replaceable>/lastSuccessfulBuild/artifact/<replaceable>&lt;path-to-artifact&gt;</replaceable></filename>
@@ -1849,7 +1640,7 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>Latest completed build</term>
+          <term>Dernier build complet</term>
           <listitem>
             <para>
               <filename moreinfo="none"><replaceable>&lt;server-url&gt;</replaceable>/job/<replaceable>&lt;build-job&gt;</replaceable>/lastCompletedBuild/artifact/<replaceable>&lt;path-to-artifact&gt;</replaceable></filename>
@@ -1857,15 +1648,10 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
-      <para>This is best illustrated by some examples. Suppose your Jenkins
-      server is running on <emphasis>http://myserver:8080</emphasis>, your
-      build job is called <filename moreinfo="none">game-of-life</filename>,
-      and you are storing a file called <filename moreinfo="none">gameoflife.war</filename>, which is in the target
-      directory of your workspace. The URLs for this artifact would be the
-      following:</para>
+      <para>C’est mieux illustré par quelques exemples. Supposez que votre serveur Jenkins est démarré sur <emphasis>http://myserver:8080</emphasis>, votre job de construction se nomme <filename moreinfo="none">game-of-life</filename>, et vous stockez un fichier appelé <filename moreinfo="none">gameoflife.war</filename>, qui est dans le répertoire target de votre répertoire de travail. Les URLs pour cet artefact seraient les suivantes :</para>
       <variablelist>
         <varlistentry>
-          <term>Latest stable build</term>
+          <term>Dernier build stable</term>
           <listitem>
             <para>
               <filename moreinfo="none">http://myserver:8080/job/gameoflife/lastStableBuild/artifact/target/gameoflife.war</filename>
@@ -1873,7 +1659,7 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>Latest successful build</term>
+          <term>Dernier build en succès</term>
           <listitem>
             <para>
               <filename moreinfo="none">http://myserver:8080/job/gameoflife/lastSuccessfulBuild/artifact/target/gameoflife.war</filename>
@@ -1881,7 +1667,7 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>Latest completed build</term>
+          <term>Dernier build complet</term>
           <listitem>
             <para>
               <filename moreinfo="none">http://myserver:8080/job/gameoflife/lastCompletedBuild/artifact/target/gameoflife.war</filename>
@@ -1889,17 +1675,9 @@ println env['BUILD_NUMBER']</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
-      <para>Artifacts don’t just have to be executable binaries. Imagine, for
-      example, that your build process involves automatically deploying each
-      build to a test server. For convenience, you want to keep a copy of the
-      exact source code associated with each deployed WAR file. One way to do
-      this would be to generate the source code associated with a build, and
-      archive both this file and the WAR file. We could do this by generating
-      a JAR file containing the application source code (for example, by using
-      the Maven Source Plugin for a Maven project), and then including this in
-      the list of artifacts to store (see <xref linkend="fig-hudson-archiving-source"/>).</para>
+      <para>Les  artefacts peuvent ne pas juste être des exécutables binaires. Imaginez, par exemple, que votre processus de build implique de déployer automatiquement tous les builds sur un server de test. Pour plus de commodités, vous voulez garder une copie du code source exact associé à chaque fichier WAR déployé. Une manière de faire cela serait de générer le code source associé à un build, et d’archiver à la fois ce fichier le fichier WAR. Nous pouvons faire ceci en générant le fichier JAR contenant le code source de l’application (par exemple, en utilisant le Maven Source Plugin pour un projet Maven), et ensuite inclure celui-ci dans la liste des artefacts à stocker (voir la figure <xref linkend="fig-hudson-archiving-source"/>).</para>
       <figure float="0" id="fig-hudson-archiving-source">
-        <title>Archiving source code and a binary package</title>
+        <title>Archiver le code source et un paquet binaire</title>
         <mediaobject id="I_mediaobject5_d1e7485">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0535.pdf" format="PDF"/>
@@ -1909,29 +1687,15 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Of course, this example is a tad academic: it would probably be
-      simpler just to use the revision number for this build (which is
-      displayed on the build result page) to retrieve the source code from
-      your version control system. But you get the idea.</para>
-      <para>Note that if you are using an Enterprise Repository Manager such
-      as Nexus or Artifactory to store your binary artifacts, you may not need
-      to keep them on the Jenkins server. You may prefer simply to
-      automatically deploy your artifacts to your Enterprise Repository
-      Manager as part of the build job, and retrieve them from here
-      when<indexterm id="I_indexterm5_d1e7494" class="endofrange" startref="ch05-archive1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7496" class="endofrange" startref="ch05-archive2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7498" class="endofrange" startref="ch05-archive3" significance="normal"><primary/></indexterm> required.</para>
+      <para>Bien sûr, cet exemple est un peu académique : il serait probablement plus simple de juste utiliser le numéro de révision pour ce build (qui est affiché sur la page de résultat du build) pour retrouver le code source depuis votre système de gestion de version. Mais vous voyez l’idée.</para>
+      <para>Notez que si vous utiliser un gestionnaire de dépôt d’entreprise comme Nexus ou Artifcatory pour stocker vos artefacts binaires, vous n’auriez pas besoin de les garder sur le serveur Jenkins. Vous pourriez simplement préférer déployer automatiquement vos artefacts dans votre gestionnaire de dépôt d’entreprise dans le cadre de la construction de votre job, et de les y retrouver lorsque<indexterm id="I_indexterm5_d1e7494" class="endofrange" startref="ch05-archive1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7496" class="endofrange" startref="ch05-archive2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7498" class="endofrange" startref="ch05-archive3" significance="normal"><primary/></indexterm> c’est nécessaire.</para>
     </sect2>
     <sect2>
       <title>Notifications</title>
-      <para>The <indexterm class="startofrange" id="ch05-notif1" significance="normal"><primary>freestyle build jobs</primary><secondary>notifications sent after</secondary></indexterm><indexterm class="startofrange" id="ch05-notif2" significance="normal"><primary>notifications</primary><secondary sortas="free-style">from freestyle build job</secondary></indexterm>point of a CI server is to let people know when a build
-      breaks. In Jenkins, this comes under the heading of Notification.</para>
-      <para>Out of the box, Jenkins provides support for email notification.
-      You can activate this by ticking the “E-mail Notification” checkbox in
-      the Post-build Actions (see <xref linkend="fig-hudson-build-job-email"/>). Then enter the email addresses
-      of the team members who will need to know when the build breaks. When
-      the build does break, Jenkins will send a friendly email message to the
-      users in this list containing a link to the broken build.</para>
+      <para>Le <indexterm class="startofrange" id="ch05-notif1" significance="normal"><primary>tâches de build Freestyle</primary><secondary>notifications envoyées après</secondary></indexterm><indexterm class="startofrange" id="ch05-notif2" significance="normal"><primary>notifications</primary><secondary sortas="free-style">depuis une tâche de build Freestyle</secondary></indexterm>but d’un serveur IC est de permettre d’informer les gens lorsqu’un build est rompu. Dans Jenkins, cela se passe dans la rubrique Notification.</para>
+      <para>Jenkins fournit le support des notifications par email. Vous pouvez l’activer en cochant la case à cocher « Notifier par email »dans les actions à la suite du build (voir <xref linkend="fig-hudson-build-job-email"/>). Ensuite, entrez les adresses emails des membres de l’équipe qui doivent savoir lorsqu’un build est rompu. Lorsqu’un build est rompu, Jenkins enverra un message amical aux utilisateurs dans la liste contenant un lien vers les builds rompus.</para>
       <figure float="0" id="fig-hudson-build-job-email">
-        <title>Email notification</title>
+        <title>Notification par email</title>
         <mediaobject id="I_mediaobject5_d1e7524">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0536.pdf" format="PDF"/>
@@ -1941,61 +1705,28 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>You can also opt to send a separate email to the user who’s commit
-      (presumably) broke the build. For this to work, you need to have
-      activated Security on your Jenkins server (see <xref linkend="chapter-security"/>).</para>
-      <para>Normally, Jenkins will send an email notification out whenever a
-      build fails (for example, because of a compilation error). It will also
-      send out a notification when the build becomes <indexterm id="I_indexterm5_d1e7535" significance="normal"><primary>build jobs</primary><secondary>unstable build from</secondary><tertiary>notifications for</tertiary></indexterm><indexterm id="I_indexterm5_d1e7542" significance="normal"><primary>unstable builds</primary><secondary>notifications for</secondary></indexterm>unstable for the first time (for example, if there are
-      unit test failures). Unless you configure it to do so, Jenkins will not
-      send emails for every unstable build, but only for the first one.</para>
-      <para>Finally, Jenkins will send a message when a previously failing or
-      unstable build succeeds, to let everyone know that the problem has
-      been<indexterm id="I_indexterm5_d1e7550" class="endofrange" startref="ch05-notif1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7552" class="endofrange" startref="ch05-notif2" significance="normal"><primary/></indexterm> resolved.</para>
+      <para>Vous pouvez aussi opter pour envoyer un email séparé à l’utilisateur dont le commit à (probablement) rompu le build. Pour que cela fonctionne, vous devez avoir activé la sécurité dans votre serveur Jenkins (voir la figure <xref linkend="chapter-security"/>).</para>
+      <para>Normalement, Jenkins enverra une notification par email à chaque fois qu’un build échouera (par exemple, à cause d’une erreur de compilation). Il enverra aussi une notification lorsque le build devient <indexterm id="I_indexterm5_d1e7535" significance="normal"><primary>build jobs</primary><secondary>build instable depuis</secondary><tertiary>notifications pour</tertiary></indexterm><indexterm id="I_indexterm5_d1e7542" significance="normal"><primary>builds instables</primary><secondary>notifications pour</secondary></indexterm>instable pour la première fois (par exemple, s’il y a des tests en échecs). A moins que vous le configurer pour faire ça, Jenkins n’enverra pas d’emails pour chaque build instable, mais uniquement pour le premier.</para>
+      <para>Finalement, Jenkins enverra un message lorsque un build précédemment en échec ou instable réussi, pour permettre d’informer tout le monde que le problème a été<indexterm id="I_indexterm5_d1e7550" class="endofrange" startref="ch05-notif1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7552" class="endofrange" startref="ch05-notif2" significance="normal"><primary/></indexterm> résolu.</para>
     </sect2>
     <sect2>
-      <title>Building Other Projects</title>
-      <para>You <indexterm id="I_indexterm5_d1e7560" significance="normal"><primary>freestyle build jobs</primary><secondary>starting other build jobs in</secondary></indexterm>can also start other build jobs in the Post-build Actions,
-      using the “Build other projects” option. This is useful if you want to
-      organize your build process in several, smaller steps, rather than one
-      long build job. Just list the projects you want to start after this one.
-      Normally, these projects will only be triggered if the build was stable,
-      but you can optionally trigger another build job even if the current
-      build is <indexterm id="I_indexterm5_d1e7566" significance="normal"><primary>build jobs</primary><secondary>unstable build from</secondary><tertiary>triggering another build after</tertiary></indexterm><indexterm id="I_indexterm5_d1e7573" significance="normal"><primary>unstable builds</primary><secondary>triggering another build job after</secondary></indexterm>unstable. This might be useful, for example, if you wanted
-      to run a code quality metrics reporting build job after a project’s main
-      build job, even if there are test failures in the main<indexterm id="I_indexterm5_d1e7579" class="endofrange" startref="ch05-post" significance="normal"><primary/></indexterm> build.</para>
+      <title>Construire d’autres projets</title>
+      <para>Vous <indexterm id="I_indexterm5_d1e7560" significance="normal"><primary>tâches de build Freestyle</primary><secondary>démarrer d'autres tâches de build depuis</secondary></indexterm>pouvez aussi démarrer d’autres constructions de job dans les actions à la suite du build, en utilisant l’option « Construire d’autres projets (projets en aval) ». Ceci est utile si vous souhaitez organiser votre processus de build en plusieurs, plus petites étapes, à la place d’une seul longue construction de job. Il suffit de lister les projets que vous souhaitez démarrer après celui-ci. Normalement, ces projets seront déclenchés uniquement si le build est stable, mais vous pouvez optionnellement déclencher d’autre construction de job même si le build courant est <indexterm id="I_indexterm5_d1e7566" significance="normal"><primary>tâche de build</primary><secondary>build instable depuis</secondary><tertiary>déclenchéer d'autre build après</tertiary></indexterm><indexterm id="I_indexterm5_d1e7573" significance="normal"><primary>builds instables</primary><secondary>déclencher d'autre build après</secondary></indexterm>instable. Cela peut être utile, par exemple, si vous voulez démarrer une construction de job effectuant des rapports sur des mesures de qualité de code après une construction de job principal du projet, même s’il y a des tests en échecs dans le<indexterm id="I_indexterm5_d1e7579" class="endofrange" startref="ch05-post" significance="normal"><primary/></indexterm> build principal.</para>
     </sect2>
   </sect1>
   <sect1 id="I_sect15_d1e7582">
-    <title>Running Your New Build Job</title>
-    <para>Now<indexterm id="I_indexterm5_d1e7587" significance="normal"><primary>freestyle build jobs</primary><secondary>running</secondary></indexterm> all you need to do is save your new build job. You can then
-    trigger the first build manually, or just wait for it to kick off by
-    itself. Once the build is finished, you can click on the build number to
-    see the results of your work.</para>
+    <title>Démarrer votre nouvelle tâche de build</title>
+    <para>Maintenant,<indexterm id="I_indexterm5_d1e7587" significance="normal"><primary>tâches de build Freestyle</primary><secondary>démarrer</secondary></indexterm> tout ce que vous devez faire est sauver votre nouveau job de construction. Vous pouvez alors déclencher le premier build manuellement, ou juste en attendant que celui-ci se déclenche de lui-même. Une fois que le build est terminé, vous pouvez cliquer sur le numéro du build pour voir les résultats de votre travail.</para>
   </sect1>
   <sect1 id="sect-build-jobs-maven">
-    <title>Working with Maven Build Jobs</title>
-    <para>In <indexterm class="startofrange" id="ch05-mavenjob" significance="normal"><primary>Maven build jobs</primary></indexterm>this section, we will have a look at the other most commonly
-    used build job: Maven 2/3 build jobs.</para>
-    <para>Maven build jobs are specifically adapted to Maven 2 and Maven 3
-    builds. Creating a Maven build job requires considerably less work than
-    configuring the equivalent <phrase role="keep-together">freestyle</phrase>
-    build job. Maven build jobs support advanced Maven-related features such
-    as incremental builds on multimodule projects and triggering builds from
-    changes in snapshot dependencies, and make configuration and reporting
-    much simpler.</para>
-    <para>However, there is a catch: Maven 2/3 build jobs are less flexible
-    than freestyle build jobs, and don’t support multiple build steps within
-    the same build job. Some users also report that large Maven projects tend
-    to run more slowly and use more memory when configured as Maven build jobs
-    rather than as Freestyle ones.</para>
-    <para>In this section, we will investigate how to configure Maven 2/3
-    builds, when you can use them, as well as their advantages and
-    limitations.</para>
-    <para>To <indexterm id="I_indexterm5_d1e7613" significance="normal"><primary>Maven build jobs</primary><secondary>creating</secondary></indexterm>create a new Maven build job, just choose the “”Build a
-    maven2/3 project” option in the New Job page (see <xref linkend="fig-hudson-build-job-new-mvn2"/>).</para>
+    <title>Travailler avec des tâches de build Maven</title>
+    <para>Dans <indexterm class="startofrange" id="ch05-mavenjob" significance="normal"><primary>tâches de build Maven</primary></indexterm>cette section, nous allons avoir un aperçu de l’autre type de tâche de build communément utilisé : les tâches de build Maven 2/3.</para>
+    <para>Les tâches de build Maven sont spécifiquement adaptées pour les builds Maven 2 et Maven 3. Créer une tâche de build Maven nécessite considérablement moins de travail que son équivalent en tâche de build <phrase role="keep-together">Freestyle</phrase>. Les tâches de build Maven supportent les fonctionnalités avancées liées à Maven comme les builds incrémentaux sur les projets multi-modules et les builds déclenchés par des changements sur des dépendances en snapshot, et permettent une configuration et des rapports plus simples.</para>
+    <para>Cependant, il y a un hic : les tâches de build Maven 2/3 sont moins flexibles que les tâches de build Freestyle, et ne supportent pas des étapes de build multiples dans la même tâche de build. Certains utilisateurs ont aussi signalés que les gros projets Maven tendent à être plus lents et utilisent plus de mémoire lorsqu’ils sont configurés avec des tâches de build Maven au lieu de leur équivalent en Freestyle.</para>
+    <para>Dans cette section, nous allons étudier pour savoir comment configurer des builds Maven 2/3, quand les utiliser, ainsi que leurs avantages et inconvénients.</para>
+    <para>Pour <indexterm id="I_indexterm5_d1e7613" significance="normal"><primary>tâches de build Maven</primary><secondary>créer</secondary></indexterm>créer une nouvelle tâche de build, il suffit de choisir l’option « Construire un projet Maven 2/3 » dans la page Nouveau Job (voir <xref linkend="fig-hudson-build-job-new-mvn2"/>).</para>
     <figure float="none" id="fig-hudson-build-job-new-mvn2">
-      <title>Creating a new Maven build job</title>
+      <title>Créer une nouvelle tâche de build Maven</title>
       <mediaobject id="I_mediaobject5_d1e7624">
         <imageobject role="print">
           <imagedata fileref="figs/print/jtdg_0547.pdf" format="PDF"/>
@@ -2006,31 +1737,10 @@ println env['BUILD_NUMBER']</programlisting>
       </mediaobject>
     </figure>
     <sect2>
-      <title>Building Whenever a SNAPSHOT Dependency Is Built</title>
-      <para>At first <indexterm class="startofrange" id="ch05-mavtrigger1" significance="normal"><primary>Maven</primary><secondary>SNAPSHOT dependencies</secondary></indexterm><indexterm class="startofrange" id="ch05-mavtrigger2" significance="normal"><primary>SNAPSHOT dependencies</primary></indexterm>glance, the Maven 2/3 build job configuration screen is
-      very similar to the one we saw for freestyle builds in the previous
-      section. The first difference you may notice is in the Build Triggers
-      section. In this section, an extra option is available: “Build whenever
-      a SNAPSHOT dependency is built”. If you select this option, Jenkins will
-      examine your <filename moreinfo="none">pom.xml</filename> file (or
-      files) to see if any SNAPSHOT dependencies are being built by other
-      build jobs. If any other build jobs update a SNAPSHOT dependency that
-      your project uses, Jenkins will build your project as well.</para>
-      <para>Typically in Maven, SNAPSHOT dependencies are used to share the
-      latest bleeding-edge version of a library with other projects within the
-      same team. Since they are by definition unstable, it is not recommended
-      practice to rely on SNAPSHOT dependencies from other teams or from
-      external sources.</para>
-      <para>For example, imagine that you are working on a new
-      <emphasis>game-of-life</emphasis> web application. You are using Maven
-      for this project, so you can use a Maven build job in Jenkins. Your team
-      is also working on a reusable library called
-      <emphasis>cooltools</emphasis>. Since these two projects are being
-      developed by the same team, you are using some of the latest
-      <emphasis>cooltools</emphasis> features in the
-      <emphasis>game-of-life</emphasis> web application. So you have a
-      SNAPSHOT dependency in the <code>&lt;dependencies&gt;</code> section of
-      your <emphasis>game-of-life</emphasis> <filename moreinfo="none">pom.xml</filename> file:</para>
+      <title>Construire dès lors qu’une dépendance SNAPSHOT est construite</title>
+      <para>A première <indexterm class="startofrange" id="ch05-mavtrigger1" significance="normal"><primary>Maven</primary><secondary>dépendances SNAPSHOT</secondary></indexterm><indexterm class="startofrange" id="ch05-mavtrigger2" significance="normal"><primary>dépendances SNAPSHOT</primary></indexterm>vue, l’écran de configuration d’une tâche de build Maven 2/3 est très similaire à celle que nous avions vu pour les tâches de build dans la section précédente. La première différence que vous pouvez noter est dans la section Déclencheurs de build. Dans cette section, une option supplémentaire est disponible « Lance un build à chaque fois qu'une dépendance SNAPSHOT est construite ». Si vous sélectionnez cette option, Jenkins examinera votre fichier <filename moreinfo="none">pom.xml</filename> (ou les fichiers)pour regarder si aucunes dépendances SNAPSHOT sont en train d’être construire par d’autres tâches de build. Si n’importe laquelle des tâches de build met à jour une dépendance SNAPSHOT que votre projet utilise, Jenkins construira aussi votre projet.</para>
+      <para>Typiquement dans Maven, les dépendances SNAPSHOT sont utilisées pour partager la toute dernière version d’une librairie avec d’autres projets de la même équipe. Comme elles sont par définition instables, ce n’est pas une pratique recommandée de lier des dépendances SNAPSHOT avec d’autres équipes ou depuis des sources externes.</para>
+      <para>Par exemple, imaginiez que vous êtes en train de travailler sur une nouvelle application web <emphasis>game-of-life</emphasis>. Vous utilisez Maven pour votre projet, donc vous pouvez utiliser une tâche de build Maven dans Jenkins. Votre équipe travaille aussi sur une librairie réutilisable appelée <emphasis>cooltools</emphasis>. Comme ces deux projets sont développés par la même équipe, vous utilisez certaines des dernières fonctionnalités de <emphasis>cooltools</emphasis> dans l’application <emphasis>game-of-life</emphasis>. vous avez une dépendance SNAPSHOT dans la section <code>&lt;dependencies&gt;</code> du fichier <filename moreinfo="none">pom.xml</filename> de <emphasis>game-of-life</emphasis> :</para>
       <programlisting id="I_programlisting5_d1e7672" format="linespecific">    &lt;dependencies&gt;
         &lt;dependency&gt;
             &lt;groupId&gt;com.acme.common&lt;/groupId&gt;
@@ -2040,27 +1750,13 @@ println env['BUILD_NUMBER']</programlisting>
         &lt;/dependency&gt;
         ...
     &lt;/dependencies&gt;</programlisting>
-      <para>On your Jenkins server, you have set up Maven build jobs for both
-      the <emphasis>cooltools</emphasis> and the
-      <emphasis>game-of-life</emphasis> applications. Since your
-      <emphasis>game-of-life</emphasis> project needs the latest
-      <emphasis>cooltools</emphasis> SNAPSHOT version, you tick the “Build
-      whenever a SNAPSHOT dependency is built” option. This way, whenever the
-      <emphasis>cooltools</emphasis> project is rebuilt, the
-      <emphasis>game-of-life</emphasis> project will automatically
-      be<indexterm id="I_indexterm5_d1e7695" class="endofrange" startref="ch05-mavtrigger1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7697" class="endofrange" startref="ch05-mavtrigger2" significance="normal"><primary/></indexterm> rebuilt as well.</para>
+      <para>Dans votre serveur Jenkins, vous avez configuré des tâches de build Maven à la fois pour l’application <emphasis>cooltools</emphasis> et <emphasis>game-of-life</emphasis>. Comme votre projet <emphasis>game-of-life</emphasis> a besoin de la dernière version SNAPSHOT de <emphasis>cooltools</emphasis>, vous cochez l’option « Lance un build à chaque fois qu'une dépendance SNAPSHOT est construite ». Comme cela, dès lors que le projet <emphasis>cooltools</emphasis> est reconstruit, le projet <emphasis>game-of-life</emphasis> sera aussi <indexterm id="I_indexterm5_d1e7695" class="endofrange" startref="ch05-mavtrigger1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e7697" class="endofrange" startref="ch05-mavtrigger2" significance="normal"><primary/></indexterm>automatiquement reconstruit.</para>
     </sect2>
     <sect2>
-      <title>Configuring the Maven Build</title>
-      <para>The <indexterm id="I_indexterm5_d1e7705" significance="normal"><primary>Maven build jobs</primary><secondary>build steps in</secondary></indexterm>next area where you will notice a change is in the Build
-      section. In a Maven build job, the build section is entirely devoted to
-      running a single Maven goal (see <xref linkend="fig-hudson-build-job-maven2"/>). In this section, you specify
-      the version of Maven you want to execute (remember, at the time of
-      Maven, this will only work with Maven), the location of the <filename moreinfo="none">pom.xml</filename> file, and the Maven goal (or goals)
-      to invoke. You can also add any command-line options you need
-      here.</para>
+      <title>Configurer un build Maven</title>
+      <para>La <indexterm id="I_indexterm5_d1e7705" significance="normal"><primary>tâches de build Maven</primary><secondary>les étapes de build dans</secondary></indexterm>prochaine section où vous noterez un changement est la section Build. Dans une tâche de build Maven, la section Build est entièrement dévoué au lancement d’un seul goal Maven (voir la figure <xref linkend="fig-hudson-build-job-maven2"/>). Dans cette section, vous spécifiez la version de Maven que vous voulez exécuter (rappelez-vous, en tant que job Maven, cela ne fonctionnera qu’avec Maven), la position du fichier <filename moreinfo="none">pom.xml</filename>, et le goal Maven (ou les goals) à invoquer. Vous pouvez aussi ajouter n’importe quelles options de ligne de commande que vous voulez ici.</para>
       <figure float="none" id="fig-hudson-build-job-maven2">
-        <title>Specifying the Maven goals</title>
+        <title>Spécifier les goals Maven</title>
         <mediaobject id="I_mediaobject5_d1e7719">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0548.pdf" format="PDF"/>
@@ -2070,11 +1766,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>In many cases, this is all you need to get your Maven build job
-      configured. However, if you click on the “Advanced...” button, you can
-      take your pick of some more advanced features (<xref linkend="fig-hudson-build-job-maven2-advanced"/>).</para>
+      <para>Dans beaucoup de cas, c’est tout ce que vous aurez besoin de faire pour configurer une tâche de build Maven. Cependant, si vous cliques sur le bouton « Avancé… », vous pouvez cocher certaines fonctionnalités avancées (<xref linkend="fig-hudson-build-job-maven2-advanced"/>).</para>
       <figure float="0" id="fig-hudson-build-job-maven2-advanced">
-        <title>Maven build jobs—advanced options</title>
+        <title>Les tâches de build Maven — les options avancées</title>
         <mediaobject id="I_mediaobject5_d1e7731">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0549.pdf" format="PDF"/>
@@ -2084,97 +1778,27 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>The Incremental Build option<indexterm id="I_indexterm5_d1e7738" significance="normal"><primary>Maven build jobs</primary><secondary>incremental builds</secondary></indexterm> comes in very handy for large, multimodule Maven builds.
-      If you tick this option, when a change is made to one of the project
-      modules, Jenkins will only rebuild that module and any modules that use
-      the changed module. It performs this magic by using some new Maven
-      features introduced in Maven 2.1 (so it won’t work if you are using
-      Maven 2.0.x). Jenkins detects which modules have been changed, and then
-      uses the <literal moreinfo="none">-pl</literal> (<literal moreinfo="none">--project-list</literal>)
-      option to build only the updated modules, and the
-      <literal moreinfo="none">-amd</literal> (<literal moreinfo="none">--also-make-dependents</literal>)
-      option to build the modules that use the updated modules. If nothing has
-      been changed in the source code, all of the modules are built.</para>
-      <para>By default, Jenkins<indexterm id="I_indexterm5_d1e7758" significance="normal"><primary>Maven build jobs</primary><secondary>archiving binary artifacts, disabling</secondary></indexterm><indexterm id="I_indexterm5_d1e7763" significance="normal"><primary>archives of binary artifacts</primary><secondary>disabling</secondary></indexterm><indexterm id="I_indexterm5_d1e7768" significance="normal"><primary>binary artifacts</primary><secondary>archiving</secondary><tertiary>disabling</tertiary></indexterm> will archive all of the artifacts generated by a Maven
-      build job. This can come in handy at times, but it can also be very
-      expensive in disk storage. If you want to turn off this option, just
-      tick the “Disable automatic artifact archiving” option. Alternatively,
-      you can always limit the artifacts stored by using the “Discard Old
-      Builds” option at the top of the configuration page.</para>
-      <para>The “Build modules in parallel” option<indexterm id="I_indexterm5_d1e7778" significance="normal"><primary>Maven build jobs</primary><secondary>running modules in parallel</secondary></indexterm> tells Jenkins to run each individual module in parallel
-      as a separate build. In theory, this could speed up your builds quite a
-      bit. In practice, it will only really work if your modules are totally
-      independent (that is, you aren’t using aggregation), which is rarely the
-      case. If you think building your modules in parallel could really speed
-      up your multimodule project, you may want to try a freestyle build with
-      Maven 3 and its new parallel build feature.</para>
-      <para>Another <indexterm id="I_indexterm5_d1e7786" significance="normal"><primary>Maven build jobs</primary><secondary>private repository for</secondary></indexterm>useful option is “Use [a] private Maven repository”.
-      Normally, when Jenkins runs Maven, it will behave in exactly the same
-      way as Maven on the command line: it will store artifacts in, and
-      retrieve artifacts from the local Maven repository (found in <filename moreinfo="none">~/.m2/repository</filename> if you haven’t reconfigured
-      it in the <filename moreinfo="none">settings.xml</filename> file). This
-      is efficient in terms of disk space, but not always ideal for CI builds.
-      Indeed, if several build jobs are working on and with the same snapshot
-      artifacts, the builds may end up interfering with each other.</para>
-      <para>When this option is checked, Jenkins will tell Maven to use
-      <filename moreinfo="none">$WORKSPACE/.repository</filename> as the local Maven
-      repository. This means each job will get its own isolated Maven
-      repository just for itself. It fixes the above problems, at the expense
-      of additional disk space consumption.</para>
-      <para>With this option, Maven will use a dedicated Maven repository for
-      this build job, located in the <filename moreinfo="none">$WORKSPACE/.repository </filename>directory. This takes
-      more disk space, but guarantees a better isolation between build
-      jobs.</para>
-      <para>Another way of addressing this problem is to override the default
-      repository location by using the <literal moreinfo="none">maven.repo.local</literal>
-      property, as shown here:</para>
+      <para>L’option de build incrémental<indexterm id="I_indexterm5_d1e7738" significance="normal"><primary>tâches de build Maven</primary><secondary>builds incrémentals</secondary></indexterm> est très pratique pour les grands builds multi modules Maven. Si vous cochez cette option, lorsqu’un changement est effectué sur l’un des modules du projet, Jenkins reconstruira uniquement ce module et les modules qui utilisent le module modifié. Il fait cette magie en utilisant certaines nouvelles fonctionnalités introduites par Maven 2.1 (donc cela ne fonctionnera pas si vous utilisez Maven 2.0.x). Jenkins détecte quels modules a été modifiés, et utilise l’option <literal moreinfo="none">-pl</literal> (<literal moreinfo="none">--project-list</literal>) pour construire uniquement les modules mis à jour, et l’option <literal moreinfo="none">-amd</literal> (<literal moreinfo="none">--also-make-dependents</literal>) pour construire aussi les modules qui utilises les modules mis à jour. Si rien n’a été modifié dans le code source, tous les modules sont construits.</para>
+      <para>Par défault, Jenkins<indexterm id="I_indexterm5_d1e7758" significance="normal"><primary>tâches de build Maven</primary><secondary>archiver les binaires d'artefact, désactiver</secondary></indexterm><indexterm id="I_indexterm5_d1e7763" significance="normal"><primary>archives d'artefact de binaire</primary><secondary>désactiver</secondary></indexterm><indexterm id="I_indexterm5_d1e7768" significance="normal"><primary> binaire d'artefacts</primary><secondary>archiver</secondary><tertiary>désactiver</tertiary></indexterm> archivera tous les artefacts générés par une tâche de build Maven. Cela peut être utile à certains moments, mais cela peut aussi être très coûteux en place sur le disque. Si vous souhaitez désactiver cette option, il suffit de cocher l’option « Désactive l’archivage automatique des artefacts ». Alternativement, vous pouvez toujours limiter les artefacts stockés en utilisant l’option « Supprimer les anciens builds» tout en haut de la page de configuration.</para>
+      <para>L’option « Construire les modules en parallèle »<indexterm id="I_indexterm5_d1e7778" significance="normal"><primary>tâches de build Maven</primary><secondary>démarrer des modules en parralèle</secondary></indexterm> informe Jenkins qu’il peut démarrer chaque module individuellement en parallèle comme un build séparé. En théorie, cela pourrait rendre un peu plus rapide les constructions. En pratique, cela fonctionnera réellement si vos modules sont totalement indépendants (si vous n’utilisez pas d’agrégation), ce qui est rarement le cas. Si vous pensez que construire vos modules en parallèle peut réellement accélérer votre projet multi module, vous pouvez avoir envie d’utiliser un build freestyle avec Maven 3 et sa nouvelle fonctionnalité de construction parallèle.</para>
+      <para>Une autre <indexterm id="I_indexterm5_d1e7786" significance="normal"><primary>tâches de build Maven</primary><secondary>dépôt privé pour</secondary></indexterm>option utile est « Utiliser une repository Maven privé ». Normalement, lorsque Jenkins démarre Maven, il se comportera exactement de la même manière que Maven en ligne de commande : il stockera les artefacts et retrouvera les artefacts depuis le dépôt Maven local (dans <filename moreinfo="none">~/.m2/repository</filename> si vous ne l’avez pas configuré dans le fichier <filename moreinfo="none">settings.xml</filename>). Ceci est efficient en terme d’espace disque, mais pas souvent idéal pour des constructions en IC. En effet, si plusieurs tâches de build sont en construction avec les mêmes artefacts en SNAPSHOT, les constructions peuvent finir par se gêner les unes avec les autres.</para>
+      <para>Lorsque cette option est sélectionnée, Jenkins demande à Maven d’utiliser <filename moreinfo="none">$WORKSPACE/.repository</filename>comme dépôt local Maven. Cela signifie que chaque job aura son propre dépôt Maven isolé pour lui tout seul. Cela règle les problèmes ci-dessus, au détriment de la consommation d'espace disque supplémentaire.</para>
+      <para>Avec cette option, Maven utilisera un dépôt Maven dédié pour cette tâche de build, situé dans le répertoire <filename moreinfo="none">$WORKSPACE/.repository </filename>. Ceci prend plous d’espace disque, mais garantie une meilleur isolation pour nos tâches de build.</para>
+      <para>Une autre approche pour ce problème est de redéfinir l’emplacement par défaut du dépôt en utilisant la propriété <literal moreinfo="none">maven.repo.local</literal>, comme montré ici :</para>
       <programlisting id="I_programlisting5_d1e7814" format="linespecific">$ <userinput moreinfo="none">mvn install -Dmaven.repo.local=~/.m2/staging-repository</userinput></programlisting>
-      <para>This approach has the advantage of being able to share a
-      repository across several build jobs, which is useful if you need to do
-      a series of related builds. It will also work with freestyle
-      jobs.</para>
+      <para>Cette approche à l’avantage d’être capable de partager un dépôt entre certaines tâches de builds, ce qui est utile si vous souhaitez faire une série de builds liés. Cela fonctionnera aussi avec des tâches Freestyle.</para>
     </sect2>
     <sect2>
-      <title>Post-Build Actions</title>
-      <para>The <indexterm id="I_indexterm5_d1e7825" significance="normal"><primary>Maven build jobs</primary><secondary>Post-build Actions</secondary></indexterm>Post-Build actions in a Maven build job are considerably
-      simpler to configure than in a freestyle job. This is simply because,
-      since this is a Maven build, Jenkins knows where to look for a lot of
-      the build output. Artifacts, test reports, Javadoc, and so forth, are
-      all generated in standard directories, which means
-      <emphasis>you</emphasis> don’t have to tell Jenkins where to find
-      things. So Jenkins will find, and report on, JUnit test results
-      automatically, for example. Later on in the book, we will see how the
-      Maven projects also simplify the configuration of many code quality
-      metrics tools and reports.</para>
-      <para>Most of the other Post-build Actions are similar to those we
-      <phrase role="keep-together">saw</phrase> in the freestyle build
-      job.</para>
+      <title>Les actions à la suite du build</title>
+      <para>Les <indexterm id="I_indexterm5_d1e7825" significance="normal"><primary>tâches de build Maven</primary><secondary>Actions à la suite du build</secondary></indexterm>actions à la suite du build dans une tâche de build Maven est considérablement simple à configurer comparé à une tâche Freestyle. C’est simplement parce que, puisque c’est un build Maven, Jenkins sait où chercher un certain nombre de sortie du build. Les artefacts, rapports de test, Javadoc, en ainsi de suite, sont tous générés dans les répertoires standards, ce qui signifie que <emphasis>vous</emphasis> n’avez pas besoin de préciser à Jenkins où trouver ces éléments. Donc Jenkins trouvera, et effectuera automatiquement des rapports sur des résultats de test JUnit, par exemple. Plus loin dans ce livre, nous verrons comment les projets Maven simplifient aussi la configuration de beaucoup d’outils de mesure de qualité de code et de rapports.</para>
+      <para>Beaucoup des autres actions à la suite du build sont similaires à ceux que nous avons <phrase role="keep-together">vus</phrase> dans une tâche de build Freestyle.</para>
     </sect2>
     <sect2 id="sect-builds-deploy-enterprise-repository">
-      <title>Deploying to an Enterprise Repository Manager</title>
-      <para>One <indexterm class="startofrange" id="ch05-erm1" significance="normal"><primary>Maven build jobs</primary><secondary>deploying artifacts to Enterprise Repository
-          Manager</secondary></indexterm><indexterm class="startofrange" id="ch05-erm2" significance="normal"><primary>Enterprise Repository Manager</primary></indexterm><indexterm class="startofrange" id="ch05-erm3" significance="normal"><primary>archives of binary artifacts</primary><secondary>deploying to Enterprise Repository Manager</secondary></indexterm><indexterm class="startofrange" id="ch05-erm4" significance="normal"><primary>binary artifacts</primary><secondary>archiving</secondary><tertiary>deploying to Enterprise Repository Manager</tertiary></indexterm>extra option does appear in the Maven build jobs is the
-      ability to deploy your artifacts to a Maven repository (see <xref linkend="fig-hudson-maven2-deploy"/>). An Enterprise Repository Manager
-      is a server that acts as both a proxy/cache for public Maven artifacts,
-      and as a central storage server for your own internal artifacts. Open
-      Source Enterprise Repository Managers like Nexus (from Sonatype) and
-      Artifactory (from JFrog) provide powerful maintenance and administration
-      features that make configuring and maintaining your Maven repositories a
-      lot simpler. Both these products have commercial versions, with
-      additional features aimed at more sophisticated or high-end build
-      infrastructures.</para>
-      <para>The advantage of getting Jenkins to deploy your artifacts (as
-      opposed to simply running <literal moreinfo="none">mvn deploy</literal>) is that, if you
-      have a multimodule Maven build, the artifacts will only be deployed once
-      the entire build has finished successfully. For example, suppose you
-      have a multimodule Maven project with five modules. If you run
-      <literal moreinfo="none">mvn deploy</literal>, and the build fails after three modules,
-      the first two modules will have been deployed to your repository, but
-      not the last three, which leaves your repository in an instable state.
-      Getting Jenkins to do the deploy ensures that the artifacts are only
-      deployed as a group once the build has successfully finished.</para>
+      <title>Déployer vers un gestionnaire de dépôt d’entreprise</title>
+      <para>Une <indexterm class="startofrange" id="ch05-erm1" significance="normal"><primary>tâches de build Maven</primary><secondary>déployer les artefacts vers un gestionnaire de dépôt d'artefact</secondary></indexterm><indexterm class="startofrange" id="ch05-erm2" significance="normal"><primary>gestionnaire de dépôt d'artefact</primary></indexterm><indexterm class="startofrange" id="ch05-erm3" significance="normal"><primary>archiver les binaires d'artefact</primary><secondary>déployer vers un gestionnaire de dépôt d'entreprise</secondary></indexterm><indexterm class="startofrange" id="ch05-erm4" significance="normal"><primary>binaire d'artfacts</primary><secondary>archiver</secondary><tertiary>déployer vers un gestionnaire de dépôt d'entreprise</tertiary></indexterm>option supplémentaire qui apparait dans les tâches de build Maven est la capacité de déployer vos artefacts vers un dépôt Maven (voir la figure <xref linkend="fig-hudson-maven2-deploy"/>). Un gestionnaire de dépôt d’entreprise est un serveur qui agit à la fois comme un proxy/cache pour des artefacts publics de Maven, et comme un serveur de stockage centralisé pour vos propres artefacts internes. Des gestionnaires de dépôt d’entreprise open source comme Nexus (de Sonatype) et Artifactory (de JFrog) fournissent des fonctionnalités de maintenance et d’administration puissantes qui permettent de configurer et maintenir vos dépôts Maven très simplement. Ces deux produits ont des versions commerciales, avec des fonctionnalités additionnelles  visant à construire des infrastructures plus sophistiquées ou haut de gamme.</para>
+      <para>L’avantage d’avoir Jenkins qui déploie vos artefacts (à l’opposé de simplement faire <literal moreinfo="none">mvn deploy</literal>) est que, si vous avez un build Maven multi module, les artefacts seront déployés uniquement lorsque le build entier a fini avec succès. Par exemple, supposons que vous ayez un projet Maven multi module avec cinq modules. Si vous lancez <literal moreinfo="none">mvn deploy</literal>, et que le build échoue après trois modules, les deux premiers modules vont avoir été déployés vers votre dépôt, mais pas les trois premiers, qui laissent votre dépôt dans un état instable. Faire en sorte que Jenkins faire le déploiement assure que les artefacts sont déployés comme un groupe une fois que le build a terminé avec succès.</para>
       <figure float="0" id="fig-hudson-maven2-deploy">
-        <title>Deploying artifacts to a Maven repository</title>
+        <title>Déployer des artefacts vers un dépôt Maven</title>
         <mediaobject id="I_mediaobject5_d1e7878">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0550.pdf" format="PDF"/>
@@ -2184,15 +1808,8 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>To do this, just tick the “Deploy artifacts to Maven repository”
-      option in the “Post-Build actions”. You will need to specify the URL of
-      the repository you want to deploy to. This needs to be the full URL to
-      the repository (e.g.,
-      <emphasis>http://nexus.acme.com/nexus/content/repositories/snapshots</emphasis>,
-      and not just <emphasis>http://nexus.acme.com/nexus</emphasis>)</para>
-      <para>Most repositories need you to authenticate before letting you
-      deploy artifacts to them. The standard Maven way to do this is to place
-      a <literal moreinfo="none">&lt;server&gt;</literal> entry in your local <filename moreinfo="none">settings.xml</filename> file, as shown here:</para>
+      <para>Pour faire cela,  il suffit de cocher l’option « Déployer les artefacts dans le repository Maven » dans les actions à la suite du build. Vous aurez besoin de spécifier l’URL du dépôt sur lequel vous voulez déployer. Il faut que cela soit l’URL complète vers le dépôt (ex : <emphasis>http://nexus.acme.com/nexus/content/repositories/snapshots</emphasis>, et pas juste <emphasis>http://nexus.acme.com/nexus</emphasis>)</para>
+      <para>La plupart des dépôts ont besoin de vous authentifier avant de vous laisser déployer des artefacts. La manière standard de Maven pour faire cela est de placer <literal moreinfo="none">&lt;server&gt;</literal> dans votre fichier <filename moreinfo="none">settings.xml</filename> local, comme montré ici :</para>
       <programlisting id="I_programlisting5_d1e7899" format="linespecific">&lt;settings...&gt;
   &lt;servers&gt;
     &lt;server&gt;
@@ -2207,16 +1824,10 @@ println env['BUILD_NUMBER']</programlisting>
     &lt;/server&gt;
   &lt;/servers&gt;
 &lt;/settings&gt;</programlisting>
-      <para>For the more security-minded, you can also encrypt these passwords
-      if required.</para>
-      <para>Then, enter the corresponding ID value in the Repository ID field
-      in Jenkins. Jenkins will then be able to look up the right username and
-      password, and deploy your artifacts. Once the build is finished, your
-      artifacts should be available in your Maven Enterprise Repository (see
-      <xref linkend="fig-nexus-artifact-deployed"/>).</para>
+      <para>Pour les personnes qui souhaitent plus de sécurité, vous pouvez aussi encrypter ces mots de passe si besoin est.</para>
+      <para>Ensuite, entrez l’identifiant correspondant dans le champ Identifiant du repository de Jenkins. Jenkins sera alors capable de retrouver le bon nom d’utilisateur et mot de passe, et de déployer vos artefacts. Une fois que le build sera terminé, vos artefacts devraient être disponibles sur votre dépôt d’entreprise Maven (voir la figure <xref linkend="fig-nexus-artifact-deployed"/>).</para>
       <figure float="0" id="fig-nexus-artifact-deployed">
-        <title>After deployment the artifact should be available on your
-        Enterprise Repository Manager</title>
+        <title>Après déploiement, l’artefact devrait être disponible sur votre gestionnaire de dépôt d’entreprise</title>
         <mediaobject id="I_mediaobject5_d1e7910">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0551.pdf" format="PDF"/>
@@ -2226,18 +1837,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Using this option, you always don’t have to deploy straight
-      away—you can always come back and deploy the artifacts from a previous
-      build later. Just click on the “Redeploy Artifacts” menu on the left and
-      specify the repository URL you want to deploy your artifact to (see
-      <xref linkend="fig-hudson-redeploy-artifact"/>). As in the previous
-      example, the Advanced button lets you provide the ID for the
-      <literal moreinfo="none">&lt;server&gt;</literal> entry in your local <filename moreinfo="none">settings.xml</filename> file. As we will see later on in
-      the book, you can also use this deployment as part of a build promotion
-      process, configuring an automatic deployment to a different repository
-      when certain quality metrics have been satisfied, for example.</para>
+      <para>En utilisant cette option, vous n’avez pas toujours besoin de déployer tout de suite — vous pouvez toujours revenir en arrière et redéployer des artefacts d’une version précédente. Il suffit de cliquer sur le menu « Redéployer les artefacts » à gauche et spécifier l’URL du dépôt sur lequel vous voulez redéployer votre artefact (voir la figure <xref linkend="fig-hudson-redeploy-artifact"/>). Comme dans l’exemple précédent, le bouton Avancé vous permet de spécifier l’identifiant pour le tag <literal moreinfo="none">&lt;server&gt;</literal>dans votre fichier <filename moreinfo="none">settings.xml</filename> local. Comme vous pourrez voir plus loin dans ce livre, vous pour aussi utiliser ce déploiement dans le cadre d’un processus de promotion de buid en configurant un déploiement automatique vers un dépôt différent lorsque certaines métriques de qualité sont satisfaites, par exemple.</para>
       <figure float="0" id="fig-hudson-redeploy-artifact">
-        <title>Redeploying an artifact</title>
+        <title>Redéployer un artefact</title>
         <mediaobject id="I_mediaobject5_d1e7929">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0552.pdf" format="PDF"/>
@@ -2247,20 +1849,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>This approach will work fine for any Enterprise Repository
-      manager. However, if you are using <indexterm id="I_indexterm5_d1e7936" significance="normal"><primary>Artifactory</primary><secondary>Enterprise Repository Manager</secondary></indexterm><indexterm id="I_indexterm5_d1e7941" significance="normal"><primary>plugins</primary><secondary>Artifactory</secondary></indexterm>Artifactory, you may prefer to install the Jenkins <ulink url="http://wiki.jenkins-ci.org/display/JENKINS/Artifactory+Plugin">Artifactory
-      Plugin</ulink>, which provides tighter two-way integration with the
-      Artifactory Enterprise Repository Manager. It works by sending
-      additional information to the Artifactory server during the deployment,
-      allowing the server to refer back to the precise build that generated a
-      given artifact. Once you have installed the plugin, you can activate it
-      in your Maven build job by ticking the “Deploy artifacts to Artifactory”
-      option in the Post-build Actions. Then you choose what repositories your
-      project should deploy to from a list of repositories on the server,
-      along with the username and password required to perform the deployment
-      (see <xref linkend="fig-maven2-artifactory"/>).</para>
+      <para>Cette approche fonctionnera bien pour n’importe quel gestionnaire de dépôt d’entreprise. Cependant, si vous utilisez <indexterm id="I_indexterm5_d1e7936" significance="normal"><primary>Artifactory</primary><secondary>Gestionnaire de dépôt d'entreprise</secondary></indexterm><indexterm id="I_indexterm5_d1e7941" significance="normal"><primary>plugins</primary><secondary>Artifactory</secondary></indexterm>Artifactory, vous pourriez préférer installer le <ulink url="http://wiki.jenkins-ci.org/display/JENKINS/Artifactory+Plugin">plugin Artifactory</ulink> de Jenkins, qui fournit une intégration bidirectionnelle vers le gestionnaire de dépôt d’entreprise Artifactory. Il fonctionne en envoyant des informations supplémentaires au serveur Artifactory durant le déploiement, permettant au serveur d’avoir un lien vers le build qui a généré un artefact donné. Une fois que vous avez installé le plugin, vous pouvez l’activer dans votre tâche de build Maven en cochant l’option « Deploy artifacts to Artifactory » dans les actions à la suite du build. Ensuite vous choisissez sur quel dépôt votre projet doit déployer dans une liste de dépôt sur le serveur, avec le nom d’utilisateur et le mot de passe requis pour faire le déploiement (voir la figure <xref linkend="fig-maven2-artifactory"/>).</para>
       <figure float="none" id="fig-maven2-artifactory">
-        <title>Deploying to Artifactory from Jenkins</title>
+        <title>Déployer vers Artifactory depuis Jenkins</title>
         <mediaobject id="I_mediaobject5_d1e7955">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0553.pdf" format="PDF"/>
@@ -2270,12 +1861,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Your build job will now automatically deploy to Artifactory. In
-      addition, a link to the artifact on the server will now be displayed on
-      the build job home and build results pages (see <xref linkend="fig-maven2-artifactory-link"/>).</para>
+      <para>Votre tâche de build déploiera automatiquement vers Artifactory. En supplément, un lien vers l’artefact sur le serveur sera maintenant affiché sur la page d’accueil de la tâche de build et la page de résultat des builds (voir la figure <xref linkend="fig-maven2-artifactory-link"/>).</para>
       <figure float="none" id="fig-maven2-artifactory-link">
-        <title>Jenkins displays a link to the corresponding Artifactory
-        repository</title>
+        <title>Jenkins affiche un lien vers le dépôt Artifactory correspondant</title>
         <mediaobject id="I_mediaobject5_d1e7967">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0554.pdf" format="PDF"/>
@@ -2285,12 +1873,9 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>This link takes you to a page on the Artifactory server containing
-      the deployed artifact (see <xref linkend="fig-artifactory-artifact"/>).
-      From this page, there is also a link that takes you back to the build
-      that built the artifact.</para>
+      <para>Ce lien vous emmène sur une page sur le serveur Artifactory contenant  les artefacts déployés (voir la figure <xref linkend="fig-artifactory-artifact"/>). Depuis cette page, il y a aussi un lien pour vous ramener vers la page du build qui a construit cet artefact.</para>
       <figure float="0" id="fig-artifactory-artifact">
-        <title>Viewing the deployed artifact in Artifactory</title>
+        <title>Voir l’artefact déployé sur Artifactory</title>
         <mediaobject id="I_mediaobject5_d1e7979">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0555.pdf" format="PDF"/>
@@ -2302,25 +1887,11 @@ println env['BUILD_NUMBER']</programlisting>
       </figure>
     </sect2>
     <sect2>
-      <title>Deploying to Commercial Enterprise Repository Managers</title>
-      <para>An Enterprise Repository Manager is an essential part of any
-      Maven-based software development infrastructure. They also play a key
-      role for non-Maven projects using tools like Ivy and Gradle, both of
-      which rely on standard Maven repositories.</para>
-      <para>Both of the principal Enterprise Repository Managers, <indexterm id="I_indexterm5_d1e7992" significance="normal"><primary>Nexus</primary><secondary>Enterprise Repository Manager</secondary></indexterm><indexterm id="I_indexterm5_d1e7997" significance="normal"><primary>Artifactory</primary><secondary>Enterprise Repository Manager</secondary></indexterm>Nexus and Artifactory, offer professional versions which
-      come with extra integration features with Jenkins. Later on in the book,
-      we will discuss how you can use advanced features such as Nexus Pro’s
-      staging and release management to implement sophisticated build
-      promotion strategies. On the deployment side of things, the commercial
-      edition of Artifactory (Artifactory Pro Power Pack) extends the two-way
-      integration we saw earlier. When you view an artifact in the repository
-      browser, a “Builds” tab displays details about the <phrase role="keep-together">Jenkins</phrase> build that created the artifact,
-      and a link to the Jenkins build page (see <xref linkend="fig-artifactory-pro-artifact"/>). Artifactory also keeps track
-      of the dependencies that were used in the Jenkins build, and will warn
-      you if you try to delete them from the <indexterm id="I_indexterm5_d1e8008" class="endofrange" startref="ch05-erm1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8010" class="endofrange" startref="ch05-erm2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8012" class="endofrange" startref="ch05-erm3" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8015" class="endofrange" startref="ch05-erm4" significance="normal"><primary/></indexterm>repository.</para>
+      <title>Déployer vers des gestionnaires de dépôt d’entreprise commerciales</title>
+      <para>Un gestionnaire de dépôt d’entreprise  est une partie essentielle de n’importe quelle infrastructure de développement de logiciel basé sur Maven. Ils jouent aussi un rôle clé pour les projets non basés sur Maven utilisant des outils tels que Ivy ou Gradle, chacun d’eux étant liés aux dépôts standards de Maven.</para>
+      <para>Chacun des principaux gestionnaires de dépôt d’entreprise, <indexterm id="I_indexterm5_d1e7992" significance="normal"><primary>Nexus</primary><secondary>Gestionnaire de dépôt d'entreprise</secondary></indexterm><indexterm id="I_indexterm5_d1e7997" significance="normal"><primary>Artifactory</primary><secondary>Gestionnaire de dépôt d'entreprise</secondary></indexterm>Nexus and Artifactory, propose des versions professionnelles qui fournissent des fonctionnalités supplémentaires avec Jenkins. Plus loin dans ce livre,  nous discuterons comment vous pouvez utiliser des fonctionnalités avancées comme la gestion de release et de staging de Nexus Pro pour implémenter des stratégies sophistiquées de promotion de build. Sur l’aspect déploiement, l’édition commerciale d’Artifactory (Artifactory Pro Power Pack) étend l’intégration bidirectionnelle que nous avons vu plus tôt. Lorsque vous voyez un artefact sur le navigateur du dépôt, un onglet ‘Builds’ affiche les détails sur le build <phrase role="keep-together">Jenkins</phrase> Jenkins qui a créé l’artefact, et un lien vers la page du build sur Jenkins (voir la figure <xref linkend="fig-artifactory-pro-artifact"/>). Artifactory assure également le suivi des dépendances qui ont été utilisées dans le build Jenkins, et vous alertera si vous essayez de les supprimer depuis<indexterm id="I_indexterm5_d1e8008" class="endofrange" startref="ch05-erm1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8010" class="endofrange" startref="ch05-erm2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8012" class="endofrange" startref="ch05-erm3" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8015" class="endofrange" startref="ch05-erm4" significance="normal"><primary/></indexterm> le dépôt.</para>
       <figure float="0" id="fig-artifactory-pro-artifact">
-        <title>Viewing the deployed artifact and the corresponding Jenkins
-        build in Artifactory</title>
+        <title>Voir les artefacts déployés et le build Jenkins correspondant dans Artifactory</title>
         <mediaobject id="I_mediaobject5_d1e8021">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0556.pdf" format="PDF"/>
@@ -2332,13 +1903,10 @@ println env['BUILD_NUMBER']</programlisting>
       </figure>
     </sect2>
     <sect2>
-      <title>Managing Modules</title>
-      <para>When <indexterm id="I_indexterm5_d1e8031" significance="normal"><primary>Maven build jobs</primary><secondary>modules for, managing</secondary></indexterm>using Maven, it is common to split a project into several
-      modules. Maven build jobs have an intrinsic understand of multimodule
-      projects, and adds a Modules menu item that lets you display the
-      structure of the project at a glance (see <xref linkend="fig-maven2-modules"/>).</para>
+      <title>Gérer les modules</title>
+      <para>Lorsque <indexterm id="I_indexterm5_d1e8031" significance="normal"><primary>tâches de build Maven</primary><secondary>modules for, managing</secondary></indexterm>vous utilisez Maven, il est habituel de découper le projet en plusieurs modules. Les tâches de build Maven ont un connaissance intrinsèque des projets multi modules, et ajoute un élément Modules au menu qui vous permet d’afficher la structure du projet d’un coup d’œil (voir la figure <xref linkend="fig-maven2-modules"/>).</para>
       <figure float="0" id="fig-maven2-modules">
-        <title>Managing modules in a Maven build job</title>
+        <title>Gérer les modules dans une tâche de build Maven</title>
         <mediaobject id="I_mediaobject5_d1e8042">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0557.pdf" format="PDF"/>
@@ -2348,27 +1916,14 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Clicking on any of the modules will take you to the build page for
-      that module. From here, you can view the detailed build results for each
-      module, trigger a build of that module in isolation, and if necessary
-      fine tune the configuration of individual module, overriding the
-      configuration of the overall project.</para>
+      <para>Cliquer sur l’un des modules vous permettra d’afficher la page de build pour ce module. A partir de la, vous pouvez voir les résultats détaillés des builds pour chaque module, déclencher un build pour un module isolé, et si nécessaire, affiner la configuration d’un module, surchargeant ainsi la configuration global du projet.</para>
     </sect2>
     <sect2>
-      <title>Extra Build Steps in Your Maven Build Jobs</title>
-      <para>By <indexterm id="I_indexterm5_d1e8054" significance="normal"><primary>Maven build jobs</primary><secondary>build steps in</secondary></indexterm>default, the Maven build job only allows for a single
-      Maven goal. There are times when this is a little limiting, and you
-      would like to add some extra steps before or after the main build. You
-      can do this with the<indexterm id="I_indexterm5_d1e8060" significance="normal"><primary>plugins</primary><secondary>Jenkins M2 Extra Steps</secondary></indexterm><indexterm id="I_indexterm5_d1e8065" significance="normal"><primary>Jenkins M2 Extra Steps plugin</primary></indexterm> Jenkins M2 Extra Steps Plugin. This plugin lets you add
-      normal build steps before and after the main Maven goal, giving you the
-      flexibility of a freestyle build while still having the convenience of
-      the Maven build job configuration.</para>
-      <para>Install this plugin and go to the Build Environment section of
-      your build job. Tick the “Configure Extra M2 Build Steps” option. You
-      should now be able to add build steps that will be executed before
-      and/or after your main Maven goal<indexterm id="I_indexterm5_d1e8071" class="endofrange" startref="ch05-mavenjob" significance="normal"><primary/></indexterm> is executed (see <xref linkend="fig-m2-extra-steps"/>).</para>
+      <title>Les étapes de build supplémentaires dans votre tâche de build Maven</title>
+      <para>Par <indexterm id="I_indexterm5_d1e8054" significance="normal"><primary>tâches de build Maven</primary><secondary>les étapes de build dans</secondary></indexterm>Par défaut, une tâche de build Maven ne permet qu’un seul goal Maven. Il y a des fois ou c’est assez limitatif, et vous voudriez ajouter des étapes supplémentaires avant ou après la build principal. Vous pouvez faire ceci avec le plugin <indexterm id="I_indexterm5_d1e8060" significance="normal"><primary>plugins</primary><secondary>Jenkins M2 Extra Steps</secondary></indexterm><indexterm id="I_indexterm5_d1e8065" significance="normal"><primary>Jenkins M2 Extra Steps plugin</primary></indexterm> M2 Extra Steps de Jenkins. Ce plugin vous permet d’ajouter des étapes de builds normales avant et après le goal Maven principal, vous donnant la flexibilité d’une tâche de build Freestyle tout en gardant l’avantage de la configuration d’une tâche de build Maven.</para>
+      <para>Installez le plugin et allez dans la section Environnements de Build de votre tâche de build. Cochez l’option « Configure M2 Extra Build Steps ». Vous devriez pouvoir maintenant ajouter des étapes de build qui seront ajoutées avant et/ou après que votre goal Maven principal <indexterm id="I_indexterm5_d1e8071" class="endofrange" startref="ch05-mavenjob" significance="normal"><primary/></indexterm> soit exécuté (voir la figure <xref linkend="fig-m2-extra-steps"/>).</para>
       <figure float="none" id="fig-m2-extra-steps">
-        <title>Configuring extra Maven build steps</title>
+        <title>Configurer des étapes de build Maven supplémentaires</title>
         <mediaobject id="I_mediaobject5_d1e8079">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0558.pdf" format="PDF"/>
@@ -2381,22 +1936,14 @@ println env['BUILD_NUMBER']</programlisting>
     </sect2>
   </sect1>
   <sect1 id="using-jenkins-with-other-languages">
-    <title>Using Jenkins with Other Languages</title>
-    <para>As we mentioned earlier, Jenkins provides excellent support for
-    other languages. In this section, we will look at how to use Jenkins with
-    a few of the more common ones.</para>
+    <title>Utiliser Jenkins avec d’autres langages</title>
+    <para>Comme mentionné plus tôt, Jenkins fournit un excellent support pour d’autres langages. Dans cette section, nous allons voir comment utiliser Jenkins avec certains des plus communément utilisés.</para>
     <sect2>
-      <title>Building Projects with Grails</title>
-      <para>Grails<indexterm class="startofrange" id="ch05-grails1" significance="normal"><primary>Grails</primary><secondary>builds in, running with Jenkins</secondary></indexterm><indexterm class="startofrange" id="ch05-grails2" significance="normal"><primary>freestyle build jobs</primary><secondary>Grails projects in</secondary></indexterm> is an open source dynamic web application framework built
-      on Groovy and many well-established open source Java frameworks such as
-      Spring and Hibernate.</para>
-      <para>Jenkins provides excellent support for Grails builds. First, you
-      need to install the Jenkins <ulink url="http://wiki.jenkins-ci.org/display/HUDSON/Grails+Plugin">Grails
-      plugin</ulink>. Once you have installed this and restarted Jenkins, you
-      will need to provide at least one version of Grails for Jenkins to use
-      in the Grails Builder section of the Configure System screen (see <xref linkend="fig-hudson-build-job-grails-builder"/>).</para>
+      <title>Construire des projets avec Grails</title>
+      <para>Grails<indexterm class="startofrange" id="ch05-grails1" significance="normal"><primary>Grails</primary><secondary>construit dans, démarrer dans Jenkins</secondary></indexterm><indexterm class="startofrange" id="ch05-grails2" significance="normal"><primary>tâches de build Freestyle</primary><secondary>projets Grails dans</secondary></indexterm> est un framework d’application web dynamique open-source construit avec Groovy et beaucoup d’autres frameworks Java open-source bien établis tel que Spring ou Hibernate.</para>
+      <para>Jenkins fournit un excellent support pour les builds Grails. Premièrement, vous devez installer le <ulink url="http://wiki.jenkins-ci.org/display/HUDSON/Grails+Plugin">plugin Grails</ulink>.Une fois que vous l’avez installé et redémarré Jenkins, vous devrez fournir au moins une version de Grails pour Jenkins dans la section Grails de l’écran de configuration du système (voir la figure <xref linkend="fig-hudson-build-job-grails-builder"/>).</para>
       <figure float="0" id="fig-hudson-build-job-grails-builder">
-        <title>Adding a Grails installation to Jenkins</title>
+        <title>Ajouter une installation Grails à Jenkins</title>
         <mediaobject id="I_mediaobject5_d1e8115">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0537.pdf" format="PDF"/>
@@ -2406,20 +1953,11 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Now you can set up a freestyle build job to build your Grails
-      project. The Grails plugin adds the “Build with Grails” build step,
-      which you can use to build your Grails application (see <xref linkend="fig-hudson-build-job-grails"/>). Here, you provide the Grails
-      target, or targets, you want to execute. Unlike the command line, you
-      can execute several targets in the same command. However, if you need to
-      pass any arguments to a particular target, you should enclose the target
-      and its arguments in double quotes. In <xref linkend="fig-hudson-build-job-grails"/>, for example, we run
-      <literal moreinfo="none">grails clean</literal>, followed by <literal moreinfo="none">grails test-app
-      -unit -non-interactive</literal>. To get this to work properly, we
-      enclose the options of the second command in quotes, which gives us
-      <literal moreinfo="none">grails clean "test-app -unit
+      <para>Maintenant vous pouvez configurer une tâche de build Freestyle pour construire un projet Grails. Le plugin Grails ajoute l’étape de build « Build with Grails », que vous pouvez utiliser pour construire un application Grails (voir la figure <xref linkend="fig-hudson-build-job-grails"/>). Ici, vous fournissez la target Grails, ou les targets, que vous voulez exécuter. A la différence de la ligne de commande, vous pouvez exécuter plusieurs targets dans la même ligne de commande. Cependant, si vous souhaitez passer des arguments sur une target particulier, vous devez placer la target et ses arguments entre guillement. Dans la <xref linkend="fig-hudson-build-job-grails"/>, par exemple, nous lançons <literal moreinfo="none">grails clean</literal>, suivi de <literal moreinfo="none">grails test-app
+      -unit -non-interactive</literal>. ur que cela fonctionne correctement, il faut mettre les options de la seconde commande entre guillemet, ce qui nous donne <literal moreinfo="none">grails clean "test-app -unit
       -non-interactive"</literal>.</para>
       <figure float="0" id="fig-hudson-build-job-grails">
-        <title>Configuring a Grails build step</title>
+        <title>Configurer une étape de build Grails</title>
         <mediaobject id="I_mediaobject5_d1e8138">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0538.pdf" format="PDF"/>
@@ -2429,53 +1967,22 @@ println env['BUILD_NUMBER']</programlisting>
           </imageobject>
         </mediaobject>
       </figure>
-      <para>The Grails build step takes many optional parameters. For example,
-      Grails is finicky about versions—if your project was created by an older
-      version, Grails will ask you to upgrade it. To be on the safe side, for
-      example, you may want to tick the Force Upgrade checkbox, which makes
-      sure that runs a <literal moreinfo="none">grails upgrade --non-interactive</literal>
-      before it runs the main targets.</para>
-      <para>You can also specify the server port (useful if you are executing
-      web tests), and any other properties you want to pass<indexterm id="I_indexterm5_d1e8150" class="endofrange" startref="ch05-grails1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8152" class="endofrange" startref="ch05-grails2" significance="normal"><primary/></indexterm> to the build.</para>
+      <para>L’étape de build Grails peut prendre beaucoup de paramètres optionnels. Par exemple, Grails est minutieux avec les versions — si vous projet a été créé avec une version plus ancienne, Grails vous demandera de la mettre à jour. Pour jouer la sécurité, par exemple, vous pourriez cocher la case à cocher Forge Upgrade, qui assure de lancer un <literal moreinfo="none">grails upgrade --non-interactive</literal> avant de démarrer les targets principales.</para>
+      <para>Vous pouvez aussi configurer le port du serveur (utile si vous exécutez des tests web), et n’importe quel autre propriété que vous voulez passer<indexterm id="I_indexterm5_d1e8150" class="endofrange" startref="ch05-grails1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8152" class="endofrange" startref="ch05-grails2" significance="normal"><primary/></indexterm> au build.</para>
     </sect2>
     <sect2>
-      <title>Building Projects with Gradle</title>
+      <title>Construire des projets avec Gradle</title>
       <para>
-        <emphasis>Contributed by Rene Groeschke</emphasis>
+        <emphasis>Rédigé par René Groeschke</emphasis>
       </para>
-      <para>In <indexterm class="startofrange" id="ch05-gradle1" significance="normal"><primary>Gradle</primary><secondary>builds in, running with Jenkins</secondary></indexterm><indexterm class="startofrange" id="ch05-gradle2" significance="normal"><primary>freestyle build jobs</primary><secondary>Gradle projects in</secondary></indexterm>comparison to the build tool veterans Ant and Maven,
-      <ulink url="http://gradle.org">Gradle</ulink> is a relatively new open
-      source build tool for the Java Virtual Machine. Build scripts for Gradle
-      are written in a Domain Specific Language (DSL) based on Groovy. Gradle
-      implements convention over configuration, allows direct access to Ant
-      tasks, and uses Maven-like declarative dependency management. The
-      concise nature of Groovy scripting lets you write very expressive build
-      scripts with very little code, albeit at the cost of loosing the IDE
-      support that exists for established tools like Ant and Maven.</para>
-      <para>There are two different ways to run your Gradle builds with
-      Jenkins. You can either use the Gradle plugin for Jenkins or the Gradle
-      wrapper functionality.</para>
+      <para>En <indexterm class="startofrange" id="ch05-gradle1" significance="normal"><primary>Gradle</primary><secondary>construit dans, démarrer avec Jenkins</secondary></indexterm><indexterm class="startofrange" id="ch05-gradle2" significance="normal"><primary>tâches de build Freestyle</primary><secondary>projets Gradle dans</secondary></indexterm>comparaison des outils de build anciens Ant et Maven, <ulink url="http://gradle.org">Gradle</ulink>est un nouvel outil de build open source pour la machine virtuel Java. Les scripts de build   pour Gradle sont construits dans un Domain Specific Langage (DSL) basé sur Groovy. Gradle implémente la convention avant la configuration, permet un accès direct aux tasks Ant, et utilise une gestion des dépendances déclarative comme Maven La nature concise du scripting Groovy vous permet d’écrire des scripts de build plus expressif avec très peu de code, au prix de la perte du support d’un IDE qui existe pour les outils établis tel que Ant et Maven.</para>
+      <para>Il y a deux manières différentes de lancer des builds Gradle avec Jenkins. Vous pouvez utiliser soit le plugin Gradle pour Jenkins soit la fonctionnalité d’enveloppement (wrapper) de Gradle.</para>
       <sect3 id="the-gradle-plugin-for-hudson">
-        <title>The Gradle plugin for Jenkins</title>
-        <para>You can install the Gradle plugin in the usual way—just go to
-        the Manage Plugins screen and select the Jenkins Gradle plugin. Click
-        Install and restart your Jenkins <phrase role="keep-together">instance</phrase>.</para>
-        <para>Once Jenkins has restarted, you will need to configure your new
-        Gradle plugin. You should now find a new Gradle section in your
-        Configure System screen. Here you will need to add the Gradle
-        installation you want to use. The process is similar to that used for
-        the other tool installations. First, click the Add Gradle button to
-        add a new Gradle installation, and enter an appropriate name (see
-        <xref linkend="fig-gradle-plugin"/>). If Gradle has already been
-        installed on your build server, you can point to the local Gradle home
-        directory. Alternatively, you can use the “Install automatically”
-        feature to download a Gradle installation, in the form of a ZIP or
-        GZipped TAR file, directly from a URL. You can use a public URL (see
-        <ulink url="http://gradle.org/downloads.html"/>), or may prefer
-        to make these installations available on a local server
-        instead.</para>
+        <title>Le plugin Gradle de Jenkins</title>
+        <para>Vous pouvez installer le plugin Gradle avec la façon habituel — il suffit d’aller sur l’écran du gestionnaire de plugin et de sélectionner le plugin Gradle. Cliquez sur installer et redémarrez l'<phrase role="keep-together">instance</phrase> de Jenkins.</para>
+        <para>Une fois que Jenkins a redémarré, il vous faut configurer vous nouveau plugin Gradle.  Vous trouverez maintenant une nouvelle section Gradle dans la page de configuration du système. Ici, il vous faudra ajouter une installation de Gradle que vous souhaitez utiliser. Le processus est similaire que pour les autres installations d’outil utilisé. Premièrement, cliquez sur le bouton Ajouter Gradle pour ajouter une nouvelle installation Gradle, et entrez un nom approprié (voir la figure <xref linkend="fig-gradle-plugin"/>). Si Gradle a déjà été installé sur votre serveur de build, vous pouvez pointer vers le répertoire local de Gradle. Sinon, vous pouvez utiliser la fonctionnalité « Installer automatiquement » pour télécharger une installation de Gradle, sous le forme d’un fichier ZIP ou GZipped TAR, directement à partir d’une URL. Vous pouvez utiliser une URL publique (voir <ulink url="http://gradle.org/downloads.html"/>), ou vous pourriez préférer de mettre ces installations disponibles sur le serveur local uniquement.</para>
         <figure float="none" id="fig-gradle-plugin">
-          <title>Configuring the Gradle plugin</title>
+          <title>Configurer le plugin Gradle</title>
           <mediaobject id="I_mediaobject5_d1e8196">
             <imageobject role="print">
               <imagedata fileref="figs/print/jtdg_0539.pdf" format="PDF"/>
@@ -2485,15 +1992,8 @@ println env['BUILD_NUMBER']</programlisting>
             </imageobject>
           </mediaobject>
         </figure>
-        <para>You typically use Freestyle build jobs to configure your Gradle
-        builds. When you add a build step to a Freestyle build job, you will
-        now have a new option called “Invoke Gradle script”, which lets you
-        add Gradle specific settings to your build job.</para>
-        <para>As an example, here is a very simple Gradle build script. It is
-        a simple Java project that uses a Maven directory structure and a
-        Maven repository manager. There is a customizable task, called
-        <emphasis>uploadArchives</emphasis>, to deploy the generated archive
-        to the local Enterprise repository manager:</para>
+        <para>Vous utilisez typiquement des tâches de build Freestyle pour configurer vos builds Gradle. Lorsque vous ajouter une étape de build a une tâche de build Freestyle, vous aurez maintenant une nouvelle option appelée « Invoque Gradle script », qui vous permet d’ajouter des options spécifiques de Gradle à votre tâche de build.</para>
+        <para>Par exemple, voici un script Gradle très simple. C’est un projet simple Java qui utilise une structure de répertoire Maven et un gestionnaire de dépôt Maven. Il y a une tâche paramétrable, appelée <emphasis>uploadArchives</emphasis>, pour déployer l’archive générée vers un gestionnaire local de dépôt d’entreprise :</para>
         <programlisting id="I_programlisting5_d1e8208" format="linespecific">apply plugin:'java'
 apply plugin:'maven'
 
@@ -2517,40 +2017,22 @@ uploadArchives {
      }
   }
 }</programlisting>
-        <para>In <xref linkend="fig-gradle-build-job"/>, we use the just
-        configured “Gradle-0.9RC2” instance to run this Gradle build. In this
-        case, we want to run the JUnit tests and upload the build artifacts to
-        our local Maven repository. Furthermore we configure our job to
-        collect the test results from
-        <filename moreinfo="none">**/build/test-results</filename>, the default directory for
-        storing test results in Gradle.</para>
+        <para>Dans la <xref linkend="fig-gradle-build-job"/>, nous utilisons l’instance « Gradle-0.9RC2 » qui vient d’être configurée pour démarrer un build Gradle. Dans ce cas, nous souhaitons démarrer des tests JUnit et télécharger les artefacts de build vers notre dépôt local Maven. De plus, nous configurons notre tâche pour collecter les résultats de test depuis <filename moreinfo="none">**/build/test-results</filename>, le répertoire par défaut stockant les résultats de test avec Gradle.</para>
       </sect3>
       <sect3 id="incremental-builds">
-        <title>Incremental builds</title>
-        <para>While running a Gradle build job with unchanged sources, Gradle
-        runs its builds incremental. If the output of a Gradle task is still
-        available and the sources haven’t changed since the last build, Gradle
-        is able to skip the task execution and marks the according task as
-        up-to-date. This incremental build feature can decrease the duration
-        of a running build job considerably.</para>
-        <para>If Gradle evaluates the test task as up-to-date even the
-        execution of your unit tests is skipped. This can cause problems when
-        running your Gradle build with Jenkins. In our sample build job above
-        we configured a post build action to publish the JUnit reports of our
-        build. If the test task is skipped by Gradle, the Jenkins job will be
-        marked as failed with the following message:</para>
+        <title>Les builds incrémentaux</title>
+        <para>Lorsqu’on lance une tâche de build Gradle avec des sources non modifiées, Gradle lance ses builds incrémentaux. Si la sortie d’une tâche Gradle est toujours disponible et que les sources n’ont pas changé depuis le dernier build, Gradle est capable de sauter l’exécution de la tâche et de la marquer comme à jour. Cette fonctionnalité de build incrémental peut considérable diminuer le temps d’une tâche de build.</para>
+        <para>Si Gradle évalue qu’une tâche de test est à jour, même l’exécution de vos tests unitaires et sautée. Cela peut poser des problèmes lorsque vous lancer votre build Gradle avec Jenkins. Dans notre tâche de build simple ci-dessus, nous avons configuré une action à la suite du build pour publier les rapports JUnit de votre build. Si la tâche de test est sautée par Gradle, Jenkins marquera la tâche en erreur avec le message suivant :</para>
         <blockquote>
           <para>Test reports were found but none of them are new. Did tests
           run?</para>
         </blockquote>
-        <para>You can easily fix this by invalidating the output and force a
-        re-execution of your tests by adding the following snippet to your
-        Gradle file:</para>
+        <para>Vous pouvez simplement résoudre ceci en invalidant la sortie et forcer une réexécution de vos tests en ajoutant le bout de code suivant dans votre fichier Gradle :</para>
         <screen format="linespecific">test {
     outputs.upToDateWhen { false }
 }</screen>
         <figure float="none" id="fig-gradle-build-job">
-          <title>Setting up a Gradle build job</title>
+          <title>Configurer une tâche de build Gradle</title>
           <mediaobject id="I_mediaobject5_d1e8234">
             <imageobject role="print">
               <imagedata fileref="figs/print/jtdg_0540.pdf" format="PDF"/>
@@ -2560,10 +2042,9 @@ uploadArchives {
             </imageobject>
           </mediaobject>
         </figure>
-        <para>After adding the snippet above to your build file, your job
-        console output should look like the one in <xref linkend="gradle-incremental-build"/>.</para>
+        <para>Après avoir ajouté le bout de code ci-dessus dans votre fichier de build, la sortie console de la tâche devrait ressembler à celle de la figure <xref linkend="gradle-incremental-build"/>.</para>
         <figure float="none" id="gradle-incremental-build">
-          <title>Incremental Gradle job</title>
+          <title>Tâche incrémentale de Gradle</title>
           <mediaobject id="I_mediaobject5_d1e8246">
             <imageobject role="print">
               <imagedata fileref="figs/print/jtdg_0541.pdf" format="PDF"/>
@@ -2573,26 +2054,17 @@ uploadArchives {
             </imageobject>
           </mediaobject>
         </figure>
-        <para>As you can see, all of the tasks except
-        <emphasis>test</emphasis> and <emphasis>uploadArchives</emphasis> have
-        been marked as up-to-date and not<indexterm id="I_indexterm5_d1e8259" class="endofrange" startref="ch05-gradle1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8261" class="endofrange" startref="ch05-gradle2" significance="normal"><primary/></indexterm> executed.</para>
+        <para>Comme vous pouvez le voir, toutes les tâches exceptées <emphasis>test</emphasis> et <emphasis>uploadArchives</emphasis> ont été marquées comme à jour et n’ont pas été<indexterm id="I_indexterm5_d1e8259" class="endofrange" startref="ch05-gradle1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8261" class="endofrange" startref="ch05-gradle2" significance="normal"><primary/></indexterm> exécutées.</para>
       </sect3>
     </sect2>
     <sect2>
-      <title>Building Projects with Visual Studio MSBuild</title>
-      <para>Jenkins<indexterm class="startofrange" id="ch05-net1" significance="normal"><primary>freestyle build jobs</primary><secondary sortas="NET projects">.NET projects in</secondary></indexterm><indexterm class="startofrange" id="ch05-net2" significance="normal"><primary sortas="NET projects">.NET projects</primary></indexterm><indexterm class="startofrange" id="ch05-net3" significance="normal"><primary>Visual Studio MSBuild</primary></indexterm> is a Java application, but it also provides excellent
-      support for .NET projects.</para>
-      <para>To build .NET projects in Jenkins, you need to install the
-      <indexterm id="I_indexterm5_d1e8283" significance="normal"><primary>plugins</primary><secondary>MSBuild</secondary></indexterm><indexterm id="I_indexterm5_d1e8288" significance="normal"><primary>MSBuild plugin</primary></indexterm><ulink url="http://wiki.jenkins-ci.org/display/HUDSON/MSBuild+Plugin">MSBuild
-      plugin</ulink>.</para>
-      <para>You may also want to install the <indexterm id="I_indexterm5_d1e8296" significance="normal"><primary>MSTest plugin</primary></indexterm><indexterm id="I_indexterm5_d1e8299" significance="normal"><primary>plugins</primary><secondary>MSTest</secondary></indexterm><ulink url="http://wiki.jenkins-ci.org//display/HUDSON/MSTest+Plugin">MSTest
-      plugin</ulink> and the <ulink url="http://wiki.jenkins-ci.org//display/HUDSON/NUnit+Plugin">NUnit
-      plugin</ulink>, to display your test results.</para>
-      <para>Once you have installed the .NET plugins and restarted Jenkins,
-      you need to configure your .NET build tools. Go to the Configure System
-      page and specify the path of the MSBuild executable (see <xref linkend="fig-hudson-msbuild-config"/>).</para>
+      <title>Construire des projets avec Visual Studio MSBuild</title>
+      <para>Jenkins<indexterm class="startofrange" id="ch05-net1" significance="normal"><primary>tâches de build Freestyle</primary><secondary sortas="NET projects">projets .NET dans</secondary></indexterm><indexterm class="startofrange" id="ch05-net2" significance="normal"><primary sortas="NET projects">projets .NET</primary></indexterm><indexterm class="startofrange" id="ch05-net3" significance="normal"><primary>Visual Studio MSBuild</primary></indexterm> est une application Java, mais il fournit aussi un excellent support pour les applications .NET.</para>
+      <para>Pour construire des projets .NET dans Jenkins, vous devez installer le <indexterm id="I_indexterm5_d1e8283" significance="normal"><primary>plugins</primary><secondary>MSBuild</secondary></indexterm><indexterm id="I_indexterm5_d1e8288" significance="normal"><primary>plugin MSBuild</primary></indexterm><ulink url="http://wiki.jenkins-ci.org/display/HUDSON/MSBuild+Plugin">MSBuild plugin</ulink>.</para>
+      <para>Vous pourriez aussi vouloir installer le <indexterm id="I_indexterm5_d1e8296" significance="normal"><primary>MSTest plugin</primary></indexterm><indexterm id="I_indexterm5_d1e8299" significance="normal"><primary>plugins</primary><secondary>MSTest</secondary></indexterm><ulink url="http://wiki.jenkins-ci.org//display/HUDSON/MSTest+Plugin">plugin MSTest</ulink> et le <ulink url="http://wiki.jenkins-ci.org//display/HUDSON/NUnit+Plugin">plugin NUnit</ulink>, pour afficher vos résultats de test.</para>
+      <para>Une fois que vous avez installé les plugins .NET et redémarré Jenkins, vous devez configurer vos outils de build .NET. Allez dans la page de configuration du système et spécifiez le chemin vers l’exécutable MSBuild (voir la figure <xref linkend="fig-hudson-msbuild-config"/>).</para>
       <figure float="none" id="fig-hudson-msbuild-config">
-        <title>Configuring .NET build tools in Jenkins</title>
+        <title>Configurer les outils de build .NET avec Jenkins</title>
         <mediaobject id="I_mediaobject5_d1e8317">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0542.pdf" format="PDF"/>
@@ -2602,14 +2074,10 @@ uploadArchives {
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Once you have this set up, you can return to your freestyle
-      project and add your .NET build step configuration.</para>
-      <para>Go to the Build section and choose “Build a Visual project or
-      solution using MSBuild” option in the Add Build Step menu. Then enter
-      the path to your MSBuild build script (a <filename moreinfo="none">.proj</filename> or <filename moreinfo="none">.sln</filename> file), along with any command-line
-      options your build <indexterm id="I_indexterm5_d1e8332" class="endofrange" startref="ch05-net1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8334" class="endofrange" startref="ch05-net2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8336" class="endofrange" startref="ch05-net3" significance="normal"><primary/></indexterm>requires (see <xref linkend="fig-hudson-msbuild-step"/>).</para>
+      <para>Une fois que vous l’avez configuré, vous pouvez retourner dans votre projet Freestyle et ajouter une étape de build .NET à la configuration.</para>
+      <para>Allez dans la section Build et choisissez l’option « Build a Visual project or solution using MSBuild » dans le menu Ajouter une étape de build. Ensuite, entrez le chemin vers votre script de build MSBuild (un fichier <filename moreinfo="none">.proj</filename> ou <filename moreinfo="none">.sln</filename>), avec n’importe quelle option de ligne de commande que votre script de build <indexterm id="I_indexterm5_d1e8332" class="endofrange" startref="ch05-net1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8334" class="endofrange" startref="ch05-net2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8336" class="endofrange" startref="ch05-net3" significance="normal"><primary/></indexterm>a besoin (voir la figure <xref linkend="fig-hudson-msbuild-step"/>).</para>
       <figure float="none" id="fig-hudson-msbuild-step">
-        <title>A build step using MSBuild</title>
+        <title>Une étape de build utilisant MSBuild</title>
         <mediaobject id="I_mediaobject5_d1e8344">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0543.pdf" format="PDF"/>
@@ -2621,23 +2089,12 @@ uploadArchives {
       </figure>
     </sect2>
     <sect2>
-      <title>Building Projects with NAnt</title>
-      <para>Another<indexterm id="I_indexterm5_d1e8354" significance="normal"><primary>NAnt build scripts</primary></indexterm><indexterm id="I_indexterm5_d1e8357" significance="normal"><primary>freestyle build jobs</primary><secondary>NAnt build scripts in</secondary></indexterm> way to build your .NET projects is to use NAnt. NAnt is a
-      .NET version of the Ant build scripting tool widely used in the Java
-      world. NAnt build scripts are XML files (typically with a <filename moreinfo="none">.build</filename> extension), with a very similar format
-      to Ant build scripts.</para>
-      <para>To build with NAnt in Jenkins, you need to install the Jenkins
-      <indexterm id="I_indexterm5_d1e8368" significance="normal"><primary>NAnt plugin</primary></indexterm><indexterm id="I_indexterm5_d1e8371" significance="normal"><primary>plugins</primary><secondary>NAnt</secondary></indexterm><ulink url="http://wiki.jenkins-ci.org/display/HUDSON/NAnt+Plugin">NAnt
-      plugin</ulink>. Once you have installed the plugin and restarted
-      Jenkins, go to the Configure System page and specify the NAnt
-      installation directory in the Nant Builders section (see <xref linkend="fig-hudson-msbuild-config"/>).</para>
-      <para>Now go to the Build section of your freestyle project and choose
-      “Execute NAnt build” (see <xref linkend="fig-hudson-nant-step"/>). Here
-      you specify your build script and the target you want to invoke. If you
-      click on the “Advanced...” option, you can also set property values to
-      be passed into the NAnt script.</para>
+      <title>Construire des projets avec NAnt</title>
+      <para>Un autre<indexterm id="I_indexterm5_d1e8354" significance="normal"><primary>Les scripts de build NAnt</primary></indexterm><indexterm id="I_indexterm5_d1e8357" significance="normal"><primary>tâches de build Freestyle</primary><secondary>Les scripts de build NAnt dans</secondary></indexterm> moyen de construire vos applications .NET est d’utiliser NAnt. NAnt est la version .NET de l’outil de scripting de build largement utilisé dans le monde Java. Les scripts de build NAnt sont des fichiers XML (typiquement avec une extension <filename moreinfo="none">.build</filename>), avec un format très similaire au script de build Ant.</para>
+      <para>Pour construire avec NAnt dans Jenkins, il vous faut installer le <indexterm id="I_indexterm5_d1e8368" significance="normal"><primary>NAnt plugin</primary></indexterm><indexterm id="I_indexterm5_d1e8371" significance="normal"><primary>plugins</primary><secondary>NAnt</secondary></indexterm><ulink url="http://wiki.jenkins-ci.org/display/HUDSON/NAnt+Plugin">plugin NAnt</ulink> de Jenkins. Une fois que vous l’avez installé et redémarré Jenkins, allez dans la page de configuration du système et spécifiez un répertoire d’installation NAnt dans la section NAnt Builder (voir la figure <xref linkend="fig-hudson-msbuild-config"/>).</para>
+      <para>Maintenant, allez dans la section Build de votre projet Freestyle et choisissez « Execute NAnt build » (voir la figure <xref linkend="fig-hudson-nant-step"/>). Ici, vous spécifiez le script de build et la target que vous voulez invoquer. Si vous cliquez sur l’option « Avancée… », vous pouvez aussi spécifier des valeurs de propriété pour les passer dans le script NAnt.</para>
       <figure float="none" id="fig-hudson-nant-step">
-        <title>A build step using NAnt</title>
+        <title>Une étape de build utilisant NAnt</title>
         <mediaobject id="I_mediaobject5_d1e8388">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0544.pdf" format="PDF"/>
@@ -2649,41 +2106,22 @@ uploadArchives {
       </figure>
     </sect2>
     <sect2 id="sect-ruby-builds">
-      <title>Building Projects with Ruby and Ruby on Rails</title>
-      <para>Jenkins <indexterm class="startofrange" id="ch05-ruby1" significance="normal"><primary>freestyle build jobs</primary><secondary>Ruby and Ruby on Rails projects in</secondary></indexterm><indexterm class="startofrange" id="ch05-ruby2" significance="normal"><primary>Ruby applications</primary></indexterm><indexterm class="startofrange" id="ch05-ruby3" significance="normal"><primary>Ruby on Rails projects</primary></indexterm>makes an excellent choice when it comes to integrating CI
-      into your Ruby and Ruby on Rails projects. The Rake Plugin lets you add
-      Rake build steps to your build jobs. You can also use the Ruby Plugin
-      lets you run Ruby scripts directly in your build job. Finally, the Ruby
-      Metrics Plugin provides support for Ruby code quality metrics tools such
-      as RCov, Rails stats, and Flog.</para>
-      <para>Another invaluable tool in this area is
-      <literal moreinfo="none">CI:Reporter</literal>. This library is an add-on to
-      <literal moreinfo="none">Test::Unit</literal>, <literal moreinfo="none">RSpec</literal>, and
-      <literal moreinfo="none">Cucumber</literal> that generates JUnit-compatible XML reports
-      for your tests. As we will see, JUnit-compatible test results can be
-      used directly by Jenkins to report on your test results. You would
-      install CI:Reporter using Gem as illustrated here:</para>
+      <title>Construire des projets avec Ruby et Ruby on Rails</title>
+      <para>Jenkins <indexterm class="startofrange" id="ch05-ruby1" significance="normal"><primary>tâches de build Freestyle</primary><secondary>projets Ruby et Ruby on Rails dans</secondary></indexterm><indexterm class="startofrange" id="ch05-ruby2" significance="normal"><primary>applications Ruby</primary></indexterm><indexterm class="startofrange" id="ch05-ruby3" significance="normal"><primary>projets Ruby on Rails</primary></indexterm>est un excellent choix lorsqu’il s’agit de faire de l’IC sur vos projets Ruby et Ruby on Rails. Le plugin Rake vous permet d’ajouter des étapes de build Rake dans vos tâches de build. Vous pouvez aussi utiliser le plugin Ruby qui vous permet de lancer des scripts Ruby directement dans votre tâche de build. Finallement, le plugin Ruby Metrics fournit un support pour les outils de métriques de qualité de code comme RCov, Rails stats, et Flog.</para>
+      <para>Un autre outil précieux dans ce domaine est <literal moreinfo="none">CI:Reporter</literal>.Cette librairie est un add-on de <literal moreinfo="none">Test::Unit</literal>, <literal moreinfo="none">RSpec</literal>, et <literal moreinfo="none">Cucumber</literal> qui génère des rapports compatible avec JUnit de vos  tests. Comme vous allez le voir, les résultats de test compatibles avec JUnit peuvent être utilisés directement par Jenkins pour faire des rapports de vos résultats de test. Vous devez installer CI:Reporter en utilisant Gem comme illustré ici :</para>
       <screen format="linespecific">$ <userinput moreinfo="none">sudo gem install ci_reporter</userinput>
 Successfully installed ci_reporter-1.6.4
 1 gem installed</screen>
-      <para>Next, you will need to set this up in your Rakefile, by adding the
-      following:</para>
+      <para>Ensuite, il vous faudra le configurer dans votre Rakefile, en ajoutant ce qui suit :</para>
       <programlisting id="I_programlisting5_d1e8431" format="linespecific">require 'rubygems'
 gem 'ci_reporter'
 require 'ci/reporter/rake/test_unit' # use this if you're using Test::Unit</programlisting>
-      <para>In <xref linkend="chapter-code-quality"/>, we discuss integrating
-      code quality metrics into your Jenkins builds. Jenkins also provides
-      support for code coverage metrics in Ruby. The Ruby Metrics Plugin
-      supports code coverage metrics using <command moreinfo="none">rcov</command> as well as general code statistics with
-      <command moreinfo="none">Rails stats</command>. To install the <command moreinfo="none">rcov-plugin</command>, you will first need to run
-      something along the following lines:</para>
+      <para>Dans le chapitre <xref linkend="chapter-code-quality"/>, nous discutons de l’intégration des métriques de qualité de code dans vos builds Jenkins. Jenkins fournit aussi un support sur les métriques de couverture de code en Ruby. Le plugin Ruby Metrics supporte les métriques de qualité de code en utilisant <command moreinfo="none">rcov</command> aussi bien que des statistiques de code générales avec <command moreinfo="none">Rails stats</command>. Pour installer le <command moreinfo="none">plugin rcov</command>, vous devez tout d'abord exécuter quelque chose comme les lignes suivantes :</para>
       <screen format="linespecific">$ <userinput moreinfo="none">./script/plugin install http://svn.codahale.com/rails_rcov</userinput></screen>
-      <para>Once this is set up, you will be able to display your test results
-      and test result trend in Jenkins.</para>
-      <para>Finally, you can configure a Rake build simply by using a Rake
-      build step, as illustrated in <xref linkend="fig-hudson-rake-step"/>.</para>
+      <para>Une fois que c’est configuré, vous serez en mesure d’afficher vos résultats de test et la tendance de résultat de test dans Jenkins.</para>
+      <para>Finalement, vous pouvez configurer un build Rake simplement en utilisant une étape de build Rake, comme illustré dans la <xref linkend="fig-hudson-rake-step"/>.</para>
       <figure float="none" id="fig-hudson-rake-step">
-        <title>A build step using Rake</title>
+        <title>Une étape de build utilisant Rake</title>
         <mediaobject id="I_mediaobject5_d1e8459">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0545.pdf" format="PDF"/>
@@ -2693,15 +2131,9 @@ require 'ci/reporter/rake/test_unit' # use this if you're using Test::Unit</prog
           </imageobject>
         </mediaobject>
       </figure>
-      <para>You also need to configure Jenkins to report on the test and
-      quality metrics results. You can do this by activating the “Publish
-      JUnit test result report”, “Publish Rails stats report”, and “Public
-      Rcov report” options (see <xref linkend="fig-hudson-rails-metrics"/>).
-      The JUnit XML reports will be found in the <filename moreinfo="none">results</filename> directory (enter
-      <userinput moreinfo="none">results/*.xml</userinput> in the “Test report XMLs” field),
-      and the Rcov date<indexterm id="I_indexterm5_d1e8475" class="endofrange" startref="ch05-ruby1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8477" class="endofrange" startref="ch05-ruby2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8479" class="endofrange" startref="ch05-ruby3" significance="normal"><primary/></indexterm> in the <filename moreinfo="none">coverage/units</filename> directory.</para>
+      <para>Vous devez aussi configurer Jenkins pour faire des rapports sur les résultats des tests et les métriques de qualité. Vous pouvez faire ceci en activant les options « Publish JUnit test result report », « Publish Rails stats report », et « Public Rcov report » (voir la figure <xref linkend="fig-hudson-rails-metrics"/>).Les rapports XML JUnit seront trouvés dans le répertoire <filename moreinfo="none">results</filename> (entrez <userinput moreinfo="none">results/*.xml</userinput> dans le champ “Test report XMLs”), et le rapport <indexterm id="I_indexterm5_d1e8475" class="endofrange" startref="ch05-ruby1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8477" class="endofrange" startref="ch05-ruby2" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e8479" class="endofrange" startref="ch05-ruby3" significance="normal"><primary/></indexterm> dans le répertoire <filename moreinfo="none">coverage/units</filename>.</para>
       <figure float="none" id="fig-hudson-rails-metrics">
-        <title>Publishing code quality metrics for Ruby and Rails</title>
+        <title>Publier des métriques de qualité de code pour Ruby et Rails</title>
         <mediaobject id="I_mediaobject5_d1e8489">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0546.pdf" format="PDF"/>
@@ -2715,10 +2147,6 @@ require 'ci/reporter/rake/test_unit' # use this if you're using Test::Unit</prog
   </sect1>
   <sect1 id="sect-build-jobs-conclusion">
     <title>Conclusion</title>
-    <para>In this chapter we have covered the basics of creating new build
-    jobs for the most common cases you are likely to encounter. Later on in
-    the book, we will build on these foundations to discuss more advanced
-    options such as parameterized builds, matrix builds, and build promotion
-    strategies.</para>
+    <para>Dans ce chapitre, nous avons couvert les bases sur la création de tâches de build pour les cas les plus communs que vous pouvez rencontrer. Plus tard dans ce livre, nous allons utiliser ces fondamentaux pour discuter sur des options plus avancées comme les builds paramétrés, les builds matriciels, et les stratégies de promotion de build.</para>
   </sect1>
 </chapter>
