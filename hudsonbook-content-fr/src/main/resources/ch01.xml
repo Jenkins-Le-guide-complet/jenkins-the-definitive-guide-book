@@ -4,7 +4,7 @@
   <title>Introduction à Jenkins</title>
   <sect1 id="I_sect11_d1e536">
     <title>Introduction</title>
-    <para>L'Intégration Continue, aussi connue sous le terme <indexterm class="startofrange" id="ch01-ci" significance="normal"><primary>IC (Intégration Continue)</primary></indexterm><indexterm id="I_indexterm1_d1e544" significance="normal"><primary>Intégrtion Continue</primary><see>IC</see></indexterm>IC, est l'un des piliers du développement logiciel moderne. En fait,
+    <para>L'Intégration Continue, aussi connue sous le terme <indexterm class="startofrange" id="ch01-ci" significance="normal"><primary>IC (Intégration Continue)</primary></indexterm><indexterm id="I_indexterm1_d1e544" significance="normal"><primary>Intégration Continue</primary><see>IC</see></indexterm>IC, est l'un des piliers du développement logiciel moderne. En fait,
     elle est un véritable tournant — quand l'Intégration Continue est mise en place dans 
     une organisation, elle change radicalement la manière dont les équipes 
     pensent le processus de développement. Elle est capable de permettre et
@@ -35,9 +35,9 @@
     qui surveille les modifications de code dans votre gestionnaire de configuration.
     Dès qu'un changement est détecté, cet outil va automatiquement compiler et tester
     votre application. Si la moindre erreur arrive alors l'outil va immédiatement avertir
-    les développeurs afin qu'ils puissent immédiatement corriger le problème.</para>
+    les développeurs afin qu'ils puissent tout de suite corriger le problème.</para>
     <para>Mais l'Intégration Continue est bien plus que cela. L'Intégration Continue
-    peut aussi suivre la santé de votre code en surveillant la qualité du code et
+    peut aussi suivre la santé de votre projet en surveillant la qualité du code et
     les métriques de couverture et ainsi aider à maintenir la dette technique 
     à un niveau bas et à abaisser les coûts de maintenance. Rendre visible publiquement
     les métriques de qualité de code encourage les développeurs à être fiers de la 
@@ -50,7 +50,7 @@
     <para>Dans le fond, l'Intégration Continue c'est réduire les risques en fournissant 
     des retours rapides. En premier lieu, de par sa conception, elle permet d'identifier et
     de corriger les problèmes d'intégration et les regressions plus rapidement ce qui 
-    permet de livrer plus facilement, plus rapidement et avec moins de bogues.
+    permet de livrer plus facilement et avec moins de bogues.
     En donnant une meilleure visibilité sur l'état du projet à tous les membres de l'équipe,
     techniques comme non-techniques, l'Intégration Continue facilite la communication au sein de
     l'équipe et encourage la collaboration pour résoudre les problèmes ainsi que l'amélioration du
@@ -64,7 +64,7 @@
     communément <indexterm id="I_indexterm1_d1e563" significance="normal"><primary>déploiement continu</primary></indexterm> <emphasis>Déploiement <phrase role="keep-together">Continu</phrase></emphasis>.</para>
     <para>Cependant, une approche pure du Déploiement Continu n'est pas toujours souhaitable.
     Par exemple, de nombreux utilisateurs n'apprécieraient pas d'avoir une nouvelle version
-    disponible plusieurs fois par semaine et préfereraient un cycle de livraison plus 
+    disponible plusieurs fois par semaine et préféreraient un cycle de livraison plus 
     prévisible (et transparent). Des considérations commerciales et marketing peuvent 
     aussi entrer en compte pour déterminer quand une nouvelle version doit être déployée.</para>
     <para>La notion de <emphasis><indexterm id="I_indexterm1_d1e577" significance="normal"><primary>livraison continue</primary></indexterm>Livraison Continue</emphasis> est très proche de cette idée
@@ -81,17 +81,17 @@
     équipe pour mettre une petite modification du code en production ? Dans ce temps
     quelle est la part des problèmes qui auraient pu être corrigés plus tôt si vous
     aviez su quelles modifications faisait Joe au bout du couloir ? Quelle part
-    est prise par le pénible travail des équipe de la qualité pour tester 
+    est prise par le pénible travail des équipes de la qualité pour tester 
     manuellement ? Combien d'étapes manuelles, dont les secrets ne sont connus 
     que de quelques initiés seulement, sont nécessaires à un déploiement ? L'Intégration
     Continue n'est pas la solution miracle, elle permet de rationaliser certains de ces problèmes.</para>
     <para>Mais l'Intégration Continue est tout autant une mentalité que des outils.
     Pour tirer un maximum de profit de l'IC, une équipe doit adopter un
     comportement IC. Par exemple, vos projets doivent avoir un build fiable,
-    reproductible et automatisé, sans intervention humaine. La correction les builds 
+    reproductible et automatisé, sans intervention humaine. La correction des builds 
     en erreur devrait être une priorité absolue, et ne devrait pas être oubliée 
     dans un coin. Le processus de déploiement devrait être automatisé,
-    sans étapes manuelles. Et puisque la confiance que vous mettez dans 
+    sans étape manuelle. Et puisque la confiance que vous mettez dans 
     votre serveur d'intégration dépend en grande partie de la qualité de 
     vos tests, l'équipe doit mettre l'accent sur la qualité des tests et 
     des pratiques associées.</para>
@@ -130,8 +130,8 @@
     évolutions, corrections et mises à jour des extensions.</para>
     <para>Cependant, Jenkins répond tout aussi bien aux attentes des utilisateurs qui ne 
     souhaitent pas mettre à jour toutes les semaines. Pour ceux qui veulent un rythme moins trépidant,
-    il existe une version Long-term Support, ou <indexterm id="I_indexterm1_d1e628" significance="normal"><primary>livraisons LTS (Long-Term Support)</primary></indexterm>LTS, un ensemble
-    de versions qui sont à la traine par rapport à la dernière en termes de nouveautés 
+    il existe une version Long-term Support, ou <indexterm id="I_indexterm1_d1e628" significance="normal"><primary>livraisons LTS (Long-Term Support)</primary></indexterm>LTS. Il s'agit d'un ensemble
+    de versions qui sont à la traine par rapport à la toute dernière en termes de nouveautés 
     mais qui apportent plus de stabilité et moins de changements. Les versions LTS
     sortent environ tous les trois mois, les correctifs importants y sont 
     intégrés. Ce concept est identique aux <phrase role="keep-together">versions</phrase> Ubuntu LTS .</para>
@@ -141,9 +141,9 @@
     <para>Jenkins<indexterm class="startofrange" id="ch01-history" significance="normal"><primary>Jenkins</primary><secondary>historique</secondary></indexterm> est le produit d'un développeur visionnaire, <indexterm id="I_indexterm1_d1e646" significance="normal"><primary>Kawaguchi, Kohsuke (développeur d'Hudson)</primary></indexterm>Kohsuke Kawaguchi, qui a commencé ce projet comme un loisir sous le nom d'<indexterm id="I_indexterm1_d1e650" significance="normal"><primary>Hudson</primary></indexterm>Hudson à la fin de l'année 2004 alors qu'il travaillait chez Sun. Comme Hudson évoluait au cours des années, 
 	il était de plus en plus utilisé par les équipes de Sun pour leurs propres projets. Début 2008, Sun reconnaissait la qualité et la valeur
 	de cet outil et demandait à Kohsuke de travailler à plein temps sur Hudson, commençant ainsi à fournir des services professionnels et
-	du support sur Hudson. En 2010, Hudson était dévenu la principale solution d'Intégration Continue avec une part de amrché d'environ 70%.</para>
-    <para>En 2009, Oracle racheta Sun. Vers la fin 2010, des tensions apparurent entre la communauté de développeurs d'Hudson et Oracle, dont la source
-		était les problèmes de l'infrastructure Java.net, aggravée par la politique d'Oracle au sujet de la marque Hudson.Ces tensions révélaient de profonds
+	du support sur Hudson. En 2010, Hudson était dévenu la principale solution d'Intégration Continue avec une part de marché d'environ 70%.</para>
+    <para>En 2009, Oracle racheta Sun. Vers la fin 2010, des tensions apparurent entre la communauté de développeurs d'Hudson et d'Oracle, dont la source
+		était les problèmes de l'infrastructure Java.net, aggravées par la politique d'Oracle au sujet de la marque Hudson. Ces tensions révélaient de profonds
 		désaccords sur la gestion du projet par Oracle. En effet, Oracle voulait orienter le projet vers un processus de développement plus controlé, avec 
 		des livraisons moins fréquentes, alors que le coeur des développeurs d'Hudson, mené par Kohsuke, preferait continuer à fonctionner selon le modèle 
 		communautaire ouvert, flexible et rapide qui avait si bien fonctionné pour Hudson par le passé.</para>
@@ -151,12 +151,12 @@
 		<indexterm id="I_indexterm1_d1e658" significance="normal"><primary>projet Github</primary></indexterm><ulink url="https://github.com/jenkinsci">projet Github</ulink> 
 		et y poursuivirent leur travail. La grande majorité des développeurs du coeur et des plugins leva le camp et suivit Kohsuke Kawaguchi et les autres principaux contributeurs
 		dans le camp de Jenkins, où le gros de l'activité de développement peut être observée aujourd'hui.</para>
-    <para>Après ce fork, la majorité des utilisateurs suivit la communauté des développeurs Jenkins et passa à Jenkins. AU moment où ces lignessont écrites, 
-		les sondages montrent qu'environ 75% des utilisateurs d'Hudson sont passés à Jenkins, 13 % utilisent encore Hudson et 12% utilisent Jenkisn et Hudson ou
+    <para>Après ce fork, la majorité des utilisateurs suivit la communauté des développeurs Jenkins et passa à Jenkins. Au moment où ces lignes sont écrites, 
+		les sondages montrent qu'environ 75% des utilisateurs d'Hudson sont passés à Jenkins, 13 % utilisent encore Hudson et 12% utilisent Jenkins et Hudson ou
 		sont en cours de migration vers Jenkins.</para>
     <para>Cependant, Oracle et Sonatype (la compagnie derière Maven et Nexus) ont poursuivi leur travail à partir du code d'Hudson (qui est maintenant lui aussi hébergé chez GitHub à <ulink url="https://github.com/hudson"/>), 
 	mais selon un axe différent. En effet, les <indexterm id="I_indexterm1_d1e670" significance="normal"><primary>outils Sonatype</primary></indexterm>développeurs de Sonatype se sont concentrés sur 
-	des modifications dans l'architecture, notamment sur l'intégration de Maven, leframework d'injection de dépendances, et l'<indexterm id="I_indexterm1_d1e674" class="endofrange" startref="ch01-jenkins" significance="normal"><primary/></indexterm><indexterm id="I_indexterm1_d1e676" class="endofrange" startref="ch01-history" significance="normal"><primary/></indexterm>architecture des plugins.</para>
+	des modifications dans l'architecture, notamment sur l'intégration avec Maven, sur le framework d'injection de dépendances, et sur l'<indexterm id="I_indexterm1_d1e674" class="endofrange" startref="ch01-jenkins" significance="normal"><primary/></indexterm><indexterm id="I_indexterm1_d1e676" class="endofrange" startref="ch01-history" significance="normal"><primary/></indexterm>architecture des plugins.</para>
   </sect1>
   <sect1 id="intro-sect-jenkins-or-hudson">
     <title>Dois-je utiliser Jenkins ou Hudson?</title>
@@ -183,7 +183,7 @@
       </listitem>
       <listitem>
         <para><emphasis>Le rythme de développement <indexterm id="I_indexterm1_d1e717" significance="normal"><primary>Jenkins</primary><secondary>cycle de livraisons rapide de</secondary></indexterm>intense</emphasis>. 
-        Jenkins conserve la fréquence élévée des sorties typique d'Hudson et que de
+        Jenkins conserve la fréquence élévée des sorties, typique d'Hudson, et que de
         nombreux développeurs apprécient. Les nouvelles fonctionnalités, les nouveaux plugins
         et les corrections de bogues apparaissent hebdomadairement et le temps de correction
         des bogues est vraiment très court. Si, par contre, vous préferrez plus de stabilité, il y a toujours les versions LTS.</para>
@@ -192,15 +192,15 @@
     <para>Et, <indexterm id="I_indexterm1_d1e726" significance="normal"><primary>Hudson</primary></indexterm>pour équilibrer les choses, voici quelques raisons qui peuvent vous faire préferrer Hudson :</para>
     <itemizedlist>
       <listitem>
-        <para><emphasis>Siça fonctionne, ne le touchez pas.</emphasis> Vous
+        <para><emphasis>Si ça fonctionne, ne le touchez pas.</emphasis> Vous
         avez déjà un Hudson installé dont vous êtes très satisfait et vous ne 
         ressentez pas le besoin d'installer la dernière version.</para>
       </listitem>
       <listitem>
         <para><emphasis>L'intégration professionnelle et <indexterm id="I_indexterm1_d1e740" significance="normal"><primary>outils Sonatype</primary></indexterm>les outils Sonatype.</emphasis> Hudson va probablement
         mettre l'accent sur son intégration avec des outils professionnels comme 
-        <indexterm id="I_indexterm1_d1e745" significance="normal"><primary>LDAP/Active Directory</primary></indexterm>un annuaireLDAP/Active Director et les produits de Sonatype tels que
-        <indexterm id="I_indexterm1_d1e749" significance="normal"><primary>Maven</primary><secondary>support d'Hudson pour</secondary></indexterm>Maven 3, <indexterm id="I_indexterm1_d1e755" significance="normal"><primary>Nexus</primary><secondary>support d'Hudson pour</secondary></indexterm>Nexus et <indexterm id="I_indexterm1_d1e761" significance="normal"><primary>M2Eclipse</primary></indexterm>M2Ecipse,alors que Jenkins
+        <indexterm id="I_indexterm1_d1e745" significance="normal"><primary>LDAP/Active Directory</primary></indexterm>un annuaire LDAP/Active Directory et les produits de Sonatype tels que
+        <indexterm id="I_indexterm1_d1e749" significance="normal"><primary>Maven</primary><secondary>support d'Hudson pour</secondary></indexterm>Maven 3, <indexterm id="I_indexterm1_d1e755" significance="normal"><primary>Nexus</primary><secondary>support d'Hudson pour</secondary></indexterm>Nexus et <indexterm id="I_indexterm1_d1e761" significance="normal"><primary>M2Eclipse</primary></indexterm>M2Ecipse, alors que Jenkins
         sera plus ouvert à des outils concurrents comme  <indexterm id="I_indexterm1_d1e765" significance="normal"><primary>Artifactory</primary><secondary>support de Jenkins pour</secondary></indexterm>Artifactory et <indexterm id="I_indexterm1_d1e772" significance="normal"><primary>Gradle</primary><secondary>support de Jenkins pour</secondary></indexterm>Gradle.</para>
       </listitem>
       <listitem>
@@ -218,7 +218,7 @@
   </sect1>
   <sect1 id="intro-sect-your-organization">
     <title>Mettre en place l'Intégration Continue au sein de votre organisation</title>
-    <para>L'Intégration Coninue <indexterm class="startofrange" id="ch01-phases" significance="normal"><primary>IC (Intégration Continue)</primary></indexterm> n'est pas une histoire de tout ou rien. En fait,
+    <para>L'Intégration Continue <indexterm class="startofrange" id="ch01-phases" significance="normal"><primary>IC (Intégration Continue)</primary></indexterm> n'est pas une histoire de tout ou rien. En fait,
     mettre en place l'IC au sein d'une organisation suit un chemin qui vous fera passer
     par différentes phases. A chacune de ces phases se rattachent des améliorations
     de l'infrastructure technique, mais aussi, et c'est peut-être le plus important,
@@ -230,13 +230,13 @@
       Le logiciel est construit manuellement sur la machine du développeur, même si cela peut être réalisé par un script Ant ou equivalent.
       Le code source peut être enregistré dans un gestionnaire de configuration centralisé, mais les développeurs n'ont pas 
       l'habitude de commiter leurs modifications régulièrement.
-      Peu de temp avant la prochine livraison prévue, un développeur intègre manuellement les modifications, une opération 
+      Peu de temps avant la prochaine livraison prévue, un développeur intègre manuellement les modifications, une opération 
       qui produit beaucoup de peine et de soufffrance.</para>
     </sect2>
     <sect2>
       <title>Phase 2 — Builds quotidiens</title>
-      <para>Dans cette phase, l'équipe possède un serveur de build et <indexterm id="I_indexterm1_d1e814" significance="normal"><primary>builds quotidiens automatisés</primary></indexterm><indexterm id="I_indexterm1_d1e817" significance="normal"><primary>builds quotidiens</primary><see>builds quotidiens automatisés</see></indexterm>builds automatisés 
-      sont exécutés réguulièrement (générallement la nuit). Ce build compile tout simplement le code
+      <para>Dans cette phase, l'équipe possède un serveur de build et <indexterm id="I_indexterm1_d1e814" significance="normal"><primary>builds quotidiens automatisés</primary></indexterm><indexterm id="I_indexterm1_d1e817" significance="normal"><primary>builds quotidiens</primary><see>builds quotidiens automatisés</see></indexterm>des builds automatisés 
+      sont exécutés régulièrement (généralement la nuit). Ce build compile tout simplement le code
       car il n'existe pas de tests unitaires pertinents et répétables. En effet, les tests automatisés,
       même s'ils sont écrits, ne font pas partie du processus de build, et peuvent ne pas s'exécuter correctement du tout.
       Cependant, maintenant les développeurs commitent leurs modifications régulièrement au moins à la fin de la journée.
@@ -252,7 +252,7 @@
       dans l'outil de gestion de configuration et les membres de l'équipe peuvent facilement
       voir quelles sont les modifications du code qui correspondent à chaque build et de quel problème elles traitent. 
       A cela s'ajoute le fait que le script de build compile l'application et lance une série de tests unitaires ou d'intégration automatisés.
-      En plus des emails, le serveur de build avertit aussi les membres de l'équipe des problèmes d'intégration en uitilisant des canaux plus
+      En plus des emails, le serveur de build avertit aussi les membres de l'équipe des problèmes d'intégration en utilisant des canaux plus
       proactifs tel que la messagerie instantanée. Les builds en echec sont maintenant réparés rapidement.</para>
     </sect2>
     <sect2>
@@ -273,16 +273,16 @@
     </sect2>
     <sect2>
       <title>Phase 6 — Tests d'acceptance automatisés et un <phrase role="keep-together">déploiement</phrase> plus automatisé</title>
-      <para>Le Développment piloté par les tests d'acceptance<indexterm id="I_indexterm1_d1e882" significance="normal"><primary>trests d'acceptance tests, automatisés</primary></indexterm><indexterm id="I_indexterm1_d1e885" significance="normal"><primary>développment piloté par les tests d'acceptance</primary></indexterm><indexterm id="I_indexterm1_d1e888" significance="normal"><primary>tests</primary><secondary>tests d'acceptance</secondary></indexterm><indexterm id="I_indexterm1_d1e893" significance="normal"><primary>tests</primary><secondary>automatisation</secondary></indexterm><indexterm id="I_indexterm1_d1e898" significance="normal"><primary>tests automatisés</primary><see>tests</see></indexterm> est utilisé, guidant 
+      <para>Le Développment piloté par les tests d'acceptance<indexterm id="I_indexterm1_d1e882" significance="normal"><primary>tests d'acceptance tests, automatisés</primary></indexterm><indexterm id="I_indexterm1_d1e885" significance="normal"><primary>développment piloté par les tests d'acceptance</primary></indexterm><indexterm id="I_indexterm1_d1e888" significance="normal"><primary>tests</primary><secondary>tests d'acceptance</secondary></indexterm><indexterm id="I_indexterm1_d1e893" significance="normal"><primary>tests</primary><secondary>automatisation</secondary></indexterm><indexterm id="I_indexterm1_d1e898" significance="normal"><primary>tests automatisés</primary><see>tests</see></indexterm> est utilisé, guidant 
       les efforts de développement et fournissant des rapports de haut niveau sur l'état du projet.
       Ces tests automatisés profitent des outils issus du monde du Développement piloté par le comportement (BDD)
-      et du Développement piloté par les tests d'acceptance non seulment comme outils de tests mais aussi
+      et du Développement piloté par les tests d'acceptance non seulement comme outils de tests mais aussi
       comme outils de communication et de documentation, en produisant des rapports de tests utilisant
       les termes métier qu'un non-développeur peut comprendre. Puisque ces tests de haut-niveau 
       sont automatisés dès le début du processus de développement, ils permettent de savoir
       très simplement quelles sont les fonctionnalités qui sont réalisées et celles qu'il reste à faire.
       L'application est automatiquement déployée sur un environnement de test pour l'équipe qualité (QA) 
-      soit à chaque modification soit tous les soirs; une version peut être déployée (ou “promue”) pour des tests de conformité utilisateurs 
+      soit à chaque modification soit tous les soirs ; une version peut être déployée (ou “promue”) pour des tests de conformité utilisateurs 
       et il est possible de la déployer dans des environnements de production au moyen d'un build lancé manuellement
       quand les testeurs la considère prête. L'équipe peut aussi utiliser le serveur de build pour revenir en arrière d'une version en cas 
       de catastrophe.</para>
@@ -301,10 +301,10 @@
   </sect1>
   <sect1 id="I_sect11_d1e919">
     <title>Et maintenant ?</title>
-    <para>Tout au long du reste du livre, pendant que nous étudirons les différentes fonctionnalités de Jenkins 
+    <para>Tout au long du reste du livre, pendant que nous étudierons les différentes fonctionnalités de Jenkins 
         ainsi que les pratiques associées pour en profiter au maximum, nous verrons comment progresser 
-        suivant ces différents niveaux avec Jenkins.Et souvenez-vous, la plupart es exemples de ce livre sont 
+        suivant ces différents niveaux avec Jenkins.Et souvenez-vous, la plupart des exemples de ce livre sont 
         disponibles en ligne (cf. <ulink url="http://www.wakaleo.com/books/jenkins-the-definitive-guide"/>
-        pour plus d'informations), donc vous pouvez mettre les mains dans le cambouis vous aussi !</para>
+        pour plus d'informations), vous pouvez donc mettre les mains dans le cambouis vous aussi !</para>
   </sect1>
 </chapter>
