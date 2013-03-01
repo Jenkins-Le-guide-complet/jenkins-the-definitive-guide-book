@@ -7,7 +7,7 @@
     <para><indexterm class="startofrange" id="ch03-install" significance="normal">
     <primary>installation</primary>
     <secondary>Jenkins</secondary></indexterm>
-    L'une des premières que vous avez dû remarquer à propos de Jenkins, est qu'il est très simple à installer.
+    L'une des premières choses que vous avez dû remarquer à propos de Jenkins, est qu'il est très simple à installer.
     En effet, en moins de cinq minutes, vous pouvez avoir un serveur Jenkins installé et disponible.
     Néanmoins, comme toujours, dans le monde réel, les choses ne sont pas aussi simples,
     et il y a quelques détails auxquelles vous devez penser lorsque vous installez un serveur 
@@ -18,7 +18,9 @@
   </sect1>
   <sect1 id="chapter-installing-downloading">
     <title>Télécharger et installer Jenkins</title>
-    <para>Jenkins is easy to install, and can run just about anywhere. You can
+    <para>Jenkings est simple à installer, et vous pouvez le faire tourner n'importe où.
+    Vous pouvez soit 
+    You can
     run it either as a stand-alone application, or deployed on a conventional
     Java application server such as Tomcat or JBoss. This first option makes
     it easy to install and try out on your local machine, and you can be up
