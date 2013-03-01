@@ -4,18 +4,10 @@
   <title>Installer Jenkins</title>
   <sect1 id="chapter-installing-introduction">
     <title>Introduction</title>
-    <para><indexterm class="startofrange" id="ch03-install" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary></indexterm>L'une des premières que vous avez dû remarquer à propos de Jenkins, est qu'il est très simple à installer. Indeed, in less than five minutes,
-    you can have a Jenkins server up and running. However, as always, in the
-    real world, things aren’t always that simple, and there are a few details
-    you should take into account when installing your Jenkins server for
-    production use. In this chapter, we look at how to install Jenkins onto
-    both your local machine and onto a fully fledged build server. We will
-    also look at how to take care of your Jenkins installation once it’s up
-    and running, and how to perform basic maintenance tasks such as backups
-    and upgrades.</para>
+    <para><indexterm class="startofrange" id="ch03-install" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary></indexterm>L'une des premières que vous avez dû remarquer à propos de Jenkins, est qu'il est très simple à installer. En effet, en moins de cinq minutes, vous pouvez avoir un serveur Jenkins installé et disponible. Néanmoins, comme toujours, dans le monde réel, les choses ne sont pas aussi simples, et il y a quelques détails auxquelles vous devez penser lorsque vous installez un serveur Jenkins en production. Dans ce chapitre, nous allons voir comment installer Jenkins sur votre poste poste de travail ou sur un véritable serveur. Nous allons également voir comment entretenir votre installation de Jenkins une fois en production, et comment réaliser les actions de maintenance simples comme les sauvegardes et les mises à jour.</para>
   </sect1>
   <sect1 id="chapter-installing-downloading">
-    <title>Downloading and Installing Jenkins</title>
+    <title>Télécharger et installer Jenkins</title>
     <para>Jenkins is easy to install, and can run just about anywhere. You can
     run it either as a stand-alone application, or deployed on a conventional
     Java application server such as Tomcat or JBoss. This first option makes
