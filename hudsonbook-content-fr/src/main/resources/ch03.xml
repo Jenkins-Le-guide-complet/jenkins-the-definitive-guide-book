@@ -4,7 +4,17 @@
   <title>Installer Jenkins</title>
   <sect1 id="chapter-installing-introduction">
     <title>Introduction</title>
-    <para><indexterm class="startofrange" id="ch03-install" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary></indexterm>L'une des premières que vous avez dû remarquer à propos de Jenkins, est qu'il est très simple à installer. En effet, en moins de cinq minutes, vous pouvez avoir un serveur Jenkins installé et disponible. Néanmoins, comme toujours, dans le monde réel, les choses ne sont pas aussi simples, et il y a quelques détails auxquelles vous devez penser lorsque vous installez un serveur Jenkins en production. Dans ce chapitre, nous allons voir comment installer Jenkins sur votre poste poste de travail ou sur un véritable serveur. Nous allons également voir comment entretenir votre installation de Jenkins une fois en production, et comment réaliser les actions de maintenance simples comme les sauvegardes et les mises à jour.</para>
+    <para><indexterm class="startofrange" id="ch03-install" significance="normal">
+    <primary>installation</primary>
+    <secondary>Jenkins</secondary></indexterm>
+    L'une des premières que vous avez dû remarquer à propos de Jenkins, est qu'il est très simple à installer.
+    En effet, en moins de cinq minutes, vous pouvez avoir un serveur Jenkins installé et disponible.
+    Néanmoins, comme toujours, dans le monde réel, les choses ne sont pas aussi simples,
+    et il y a quelques détails auxquelles vous devez penser lorsque vous installez un serveur 
+    Jenkins en production. Dans ce chapitre, nous allons voir comment installer Jenkins sur 
+    votre poste poste de travail ou sur un véritable serveur. Nous allons également voir comment 
+    entretenir votre installation de Jenkins une fois en production, et comment réaliser les actions 
+    de maintenance simples comme les sauvegardes et les mises à jour.</para>
   </sect1>
   <sect1 id="chapter-installing-downloading">
     <title>Télécharger et installer Jenkins</title>
