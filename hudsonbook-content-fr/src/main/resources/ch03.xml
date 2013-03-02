@@ -19,18 +19,9 @@
   <sect1 id="chapter-installing-downloading">
     <title>Télécharger et installer Jenkins</title>
     <para>Jenkings est simple à installer, et vous pouvez le faire tourner n'importe où.
-    Vous pouvez soit 
-    You can
-    run it either as a stand-alone application, or deployed on a conventional
-    Java application server such as Tomcat or JBoss. This first option makes
-    it easy to install and try out on your local machine, and you can be up
-    and running with a bare-bones installation in a matter of minutes.</para>
-    <para>Since <indexterm id="I_indexterm3_d1e2510" significance="normal"><primary>Jenkins</primary><secondary>Java requirements for</secondary></indexterm><indexterm id="I_indexterm3_d1e2515" significance="normal"><primary>JDK (Java Development Kit)</primary><secondary>requirements for</secondary></indexterm>Jenkins is a Java application, you will need a recent
-    version of Java on your machine. More precisely, you will need at least
-    Java 5. In fact, on your build server, you will almost certainly need the
-    full features of the Java Development Kit (JDK) 5.0 or better to execute
-    your builds. If you’re not sure, you can check the version of <indexterm id="I_indexterm3_d1e2521" significance="normal"><primary>Java version installed, checking</primary></indexterm>Java on your machine by executing the <literal moreinfo="none">java
-    -version</literal> command:</para>
+    Vous pouvez le lancer soit comme une application, ou le déployer dans un conteneur d'application Java classique comme Tomcat ou JBoss. La première option est simple à mettre à oeuvre, et permet de tester Jenkins sur votre poste de travail, en quelques minutes, vous pouvez installer et lancer une version minimaliste de Jenkins.</para>
+    <para>Since <indexterm id="I_indexterm3_d1e2510" significance="normal"><primary>Jenkins</primary><secondary>Java requirements for</secondary></indexterm><indexterm id="I_indexterm3_d1e2515" significance="normal"><primary>JDK (Java Development Kit)</primary><secondary>requirements for</secondary></indexterm>Jenkins étant une application Java, vous aurez besoin d'une version récente de Java sur votre machine. Plus précisèment, vous aurez besoin de Java 5. En fait, sur votre serveur, vous aurez même certainement besoin du Java Development Kit (JDK) 5.0 ou d'une version supérieure pour éxécuter vos builds. Si vous n'en êtes pas sûr, vous pouvez vérifier <indexterm id="I_indexterm3_d1e2521" significance="normal"><primary>votre version de Java</primary></indexterm>en éxécutant la commande suivante sur votre machine : <literal moreinfo="none">java
+    -version</literal></para>
     <screen format="linespecific">$ <userinput moreinfo="none">java -version</userinput>
 java version "1.6.0_17"
 Java(TM) SE Runtime Environment (build 1.6.0_17-b04-248-10M3025)
