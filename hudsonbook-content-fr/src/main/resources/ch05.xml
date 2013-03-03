@@ -29,7 +29,7 @@
   </sect1>
   <sect1 id="sect-build-jobs">
     <title>Tâches de Build Jenkins</title>
-    <para>Créer des<indexterm class="startofrange" id="ch05-create" significance="normal"><primary>tâches de build</primary><secondary>créer</secondary></indexterm> une nouvelle tâche de build dans Jenkins est simple : cliquez simplement sur
+    <para>Créer <indexterm class="startofrange" id="ch05-create" significance="normal"><primary>tâches de build</primary><secondary>créer</secondary></indexterm> une nouvelle tâche de build dans Jenkins est simple : cliquez simplement sur
         le lien “Nouveau Job” du menu dans le tableau de bord de Jenkins. Jenkins supporte différents
         <indexterm id="I_indexterm5_d1e4989" significance="normal"><primary>tâches de build</primary><secondary>types de</secondary></indexterm><indexterm id="I_indexterm5_d1e4994" significance="normal"><primary>tâches de build</primary><seealso>tâches de build free-style; tâches de build Apache Maven</seealso></indexterm> types de tâches de build qui vous sont présentés lorsque vous choisissez de créer
         un nouveau job (voir <xref linkend="fig-hudson-build-types"/>).</para>
@@ -137,7 +137,7 @@
           Si un build en particulier a une valeur sentimentale pour vous, vous pouvez
           toujours demander à Jenkins de le conserver à tout jamais en utilisant le bouton
           de conservation sans limite de temps sur la page de détails du build (voir <xref linkend="fig-jenkins-keep-forever"/>).
-          Notez que ce bouton n'apparaitra seulement que si vous avez demandé à Jenkins de
+          Notez que ce bouton n'apparaitra que si vous avez demandé à Jenkins de
           supprimer les anciens builds.</para>
       <figure float="0" id="fig-jenkins-keep-forever">
         <title>Conserver un build sans limite de temps</title>
@@ -157,7 +157,7 @@
           le conservera en plus des vingt derniers builds échoués.</para>
       <para>Vous<indexterm id="I_indexterm5_d1e5151" significance="normal"><primary>tâches de build free-style</primary><secondary>désactiver</secondary></indexterm> avez aussi la
           possibilité de désactiver une tâche. Une tâche désactivée ne sera pas exécutée tant que
-          vous ne l'aurez pas réactivé. Utiliser cette option lorsque vous venez de créer
+          vous ne l'aurez pas réactivée. Utiliser cette option lorsque vous venez de créer
           votre job est cependant assez rare. D'un autre côté, cette option est souvent utile
           lorsque vous devez suspendre temporairement une tâche pendant une maintenance ou une
           grande refactorisation du projet et plus généralement lorsqu'une notification d'echec
@@ -191,24 +191,24 @@
       <para>L'option<indexterm id="I_indexterm5_d1e5193" significance="normal"><primary>tâches de build free-style</primary><secondary>bloquer pour un projet en amont</secondary></indexterm> “Empêcher le build quand un projet en amont est en cours de build” est utile lorsque plusieurs
           projets liés sont affectés par un seul commit mais qu'ils doivent être construits
           dans un ordre spécifique. Si vous activez cette option, Jenkins attendra que toutes
-          les tâches de build en amont (voir <xref linkend="sect-build-triggers"/>) soient terminés
+          les tâches de build en amont (voir <xref linkend="sect-build-triggers"/>) soient terminées
           avant de démarrer le build.</para>
       <para>Par exemple, lorsque vous livrez une nouvelle version d'un projet Apache
           Maven multimodule, la mise à jour du numéro de version se fera dans plusieurs,
           voir l'ensemble, des modules du projet. Supposons que nous ayons ajouté une application
           web au projet Game of Life que nous avons utilisé dans le <xref linkend="chapter-first-steps"/>,
-          et que nous l'ayons ajouté sous la forme d'un projet Apache Maven séparé. Lorsque que
+          et que nous l'ayons ajouté sous la forme d'un projet Apache Maven séparé. Lorsque
           nous livrons une nouvelle version de ce projet, aussi bien le numéro de version du core que celui de
           l'application web seront mis à jour (voir <xref linkend="fig-hudson-new-job-version-updates"/>).
           Avant de pouvoir construire l'application web, nous devons construire une nouvelle version
-          du module core de Game of Life. Si vous avez cependant des tâches de build free-style séparés
-          pour chaque module, les tâches de build de l'application web et du core démarreraient
+          du module core de Game of Life. Cependant, si vous avez des tâches de build free-style séparées
+          pour chaque module, les tâches de build de l'application web et du core devraient démarrer
           simultanément. Le build de l'application web échouera si le build du core n'a pas produit
           de nouvelle version du module du core, même s'il n'y a pas de test échoué.</para>
       <para>Pour éviter ce problème, vous pourriez configurer la tâche de build de l'application web
-          pour ne démarrer <emphasis>seulement</emphasis> lorsque le build du core s'est terminé
-          avec succès. Cela signifie cependant que l'application web ne serai jamais construite
-          si des changements été effectué uniquement pour celle-ci et non pour le module core.
+          pour démarrer <emphasis>seulement</emphasis> si le build du core s'est terminé
+          avec succès. Cependant, cela signifie que l'application web ne serait jamais construite
+          si des changements étaient effectués uniquement pour celle-ci et non pour le module core.
           Une meilleure approche est alors d'utiliser l'option “Construire à la suite d'autres
           projets (projets en amont)”. Dans ce cas, lorsqu'un numéro de version a été mis à jour
           dans le contrôle de version, Jenkins programmera les deux builds pour leur exécution.
@@ -232,7 +232,7 @@
           dans le répertoire de la tâche de build de votre projet (voir <xref linkend="sec-hudson-home-directory-contents"/>). Cela fonctionne dans
           presque tous les cas. Il y a cependant des cas dans lesquels vous
           pourriez avoir besoin de forcer Jenkins à utiliser un espace de travail
-          différent grâce à cette option. Un example serait le cas où vous
+          différent grâce à cette option. Un exemple serait le cas où vous
           auriez besoin de construire plusieurs tâches de build dans un même espace de
           travail. Vous pouvez définir un répertoire de travail différent en <phrase role="keep-together">cochant</phrase> l'option “Utiliser un répertoire de travail spécifique”
           et en spécifiant le chemin vous même. Ce chemin peut aussi bien être absolu ou relatif au
@@ -286,7 +286,7 @@
       du dernier élément de l'URL Subversion. Donc si votre URL Subversion
       est <ulink url="svn://localhost/gameoflife/trunk"/>, Jenkins récupérera
       le contenu du dépôt dans une répertoire nommé <filename moreinfo="none">trunk</filename> 
-      dans l'espace de travail de votre tâche de build. So vous préférez nommer 
+      dans l'espace de travail de votre tâche de build. Si vous préférez nommer 
       votre répertoire différemment, remplissez le nom que vous souhaitez 
       dans le champ <command moreinfo="none">Local module directory</command>. 
       Mettez un point (“.”) dans le champ si vous souhaitez mettre le code 
@@ -421,7 +421,7 @@
       <sect3 id="installing-the-plugin">
         <title>Installation du plugin</title>
         <para>Le plugin Git <indexterm class="startofrange" id="ch05-gitinstall1" significance="normal"><primary>plugin Git</primary></indexterm><indexterm class="startofrange" id="ch05-gitinstall2" significance="normal"><primary>plugins</primary><secondary>Git</secondary></indexterm>est disponible dans le Gestionnaire de Plugins Jenkins et
-            est documenté sur sa propre <ulink url="http://wiki.hudson-ci.org/display/HUDSON/Git+Plugin">page de
+            est documenté sur sa propre <ulink url="https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin">page de
             wiki</ulink>. Le plugin suppose que Git (version 1.3.3 ou ultérieure) a
             été installé sur le serveur de build. Vous devrez donc vous en assurer
             préalablement. Vous pouvez vous en assurer en exécutant la commande suivante
@@ -481,7 +481,7 @@ git version 1.7.1</screen>
           <para>Dans la plupart des cas, l'URL du dépôt Git que vous utilisez
               devrait être suffisante. Cependant, si vous avez besoin de plus
               d'options, cliquez sur le bouton Avancé (voir <xref linkend="I_figure1_id2245574"/>).
-              Cela apporte un un contrôle plus précis sur le comportement du
+              Cela apporte un contrôle plus précis sur le comportement du
               <literal moreinfo="none">pull</literal>.</para>
           <para>Le <emphasis>Nom du dépôt</emphasis> est un titre raccourci
               (ou <literal moreinfo="none">remote</literal> en langage Git)
@@ -536,7 +536,7 @@ git version 1.7.1</screen>
         </sect4>
         <sect4 id="excluded-regions">
           <title>Régions exclues</title>
-          <para>Les régions (vues dans<xref linkend="I_figure1_id2245692"/>)
+          <para>Les régions (vues dans <xref linkend="I_figure1_id2245692"/>)
           <indexterm id="I_indexterm5_d1e5681" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>exclure certaines régions du déclenchement</tertiary></indexterm><indexterm id="I_indexterm5_d1e5688" significance="normal"><primary>Git</primary><secondary>exclure certaines régions du déclenchement de builds</secondary></indexterm>sont des chemins nommés spécifiquement ou génériques de votre 
           code source qui, même une fois modifiés, ne doivent pas déclencher 
           de build. Il s'agit généralement de fichiers non compilés tels que 
@@ -560,7 +560,7 @@ git version 1.7.1</screen>
           même s'ils effectuent des changements du code source qui auraient 
           dû normalement déclencher un build.</para>
           <para>Cette action n'est pas aussi méchante qu'elle peut paraitre : 
-          les utilisateyrs exclus sont généralement des utilisateurs 
+          les utilisateurs exclus sont généralement des utilisateurs 
           automatisés ou des développeurs non humains, qui ont des 
           comptes distincts avec des droits de commit sur le gestionnaire 
           de code source. Ces utilisateurs automatisés font généralement 
@@ -605,7 +605,7 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
         </sect4>
         <sect4 id="prune-remote-branches-before-build">
           <title>Tailler les branches distantes avant le build</title>
-          <para>Tailler <indexterm id="I_indexterm5_d1e5811" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>tailler les branches distantes avant le build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5818" significance="normal"><primary>Git</primary><secondary>tailler les branches distantes avant le build</secondary></indexterm> supprime les copies locales de branches distantes qui proviennent 
+          <para>Le taillage <indexterm id="I_indexterm5_d1e5811" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>tailler les branches distantes avant le build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5818" significance="normal"><primary>Git</primary><secondary>tailler les branches distantes avant le build</secondary></indexterm> supprime les copies locales de branches distantes qui proviennent 
           d'un clone précédent mais qui ne sont plus présentent sur le dépôt 
           distant. En résumé, il s'agit du nettoyage du clone local pour qu'il 
           soit parfaitement synchronisé avec son jumeau distant.</para>
@@ -634,11 +634,11 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
           <para>Typiquement<indexterm id="I_indexterm5_d1e5887" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>espace de travail, effacer avant le build</tertiary></indexterm><indexterm id="I_indexterm5_d1e5894" significance="normal"><primary>Git</primary><secondary>espace de travail, effacer avant le build</secondary></indexterm> Jenkins réutilisera l'espace de travail, le rafraîchissant simplement 
           si nécessaire et si vous avez activé l'option “Clean after
           checkout”, nettoiera les fichiers non versionnés. Cependant, si vous 
-          préférez avec un espace de travail complétement propre, vous pouvez
+          préférez avoir un espace de travail complétement propre, vous pouvez
           utiliser l'option “Wipe out workspace” pour supprimer et 
           reconstruire l'espace de travail de zéro. Gardez à l'esprit 
           que cela allongera significativement le temps d'initialisation 
-          et de construiction du projet.</para>
+          et de construction du projet.</para>
         </sect4>
         <sect4 id="choosing-strategy">
           <title>Choix de la stratégie</title>
@@ -662,9 +662,8 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
         <sect4 id="git-executable">
           <title>Exécutable Git</title>
           <para>Dans les <indexterm id="I_indexterm5_d1e5936" significance="normal"><primary>tâches de build free-style</primary><secondary>Git utilisé avec</secondary><tertiary>exécutable Git, spécifier</tertiary></indexterm>options globales de Jenkins (voir <xref linkend="I_figure1_id2246035"/>), plusieurs exécutables Git 
-          peuvent être configurés et utilisés build par build. Cela est peu 
-          régulièrement utilisé et seulement lorsqu'un clone ou d'autres opérations 
-          Git sont spécifiques à une version particulière de Git. Git tend à  
+          peuvent être configurés et utilisés build par build. Cela est rarement utilisé et l'est seulement lorsqu'un clone ou d'autres opérations 
+          Git sont sensibles à une version particulière de Git. Git tend à  
           être très flexible quant à ses numéro de version ; les dépôts légèrement 
           anciens peuvent être clonés très facilement avec une nouvelle version 
           de Git et inversement.</para>
@@ -724,9 +723,9 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
             </imageobject>
           </mediaobject>
         </figure>
-        <para>La scrutation de Git est dilluée dans un format plus orienté 
+        <para>La scrutation de Git est disponible dans un format plus orienté 
           développeur qui montre les commentaires de commit ainsi que des 
-          hyperliens qui vers une vue plus détaillée des utilisateurs et des 
+          hyperliens pointant vers une vue plus détaillée des utilisateurs et des 
           fichiers modifiés.</para>
         <figure float="0" id="I_figure1_id2246192">
           <title>Résultats de la scrutation de Git</title>
@@ -774,7 +773,7 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
           ainsi que le <emphasis>Type de Branches</emphasis>
           et leur <emphasis>Pattern</emphasis>. Dans chaque paire, le
           <emphasis>type</emphasis> peut être <emphasis>Plain</emphasis>,
-          <emphasis>Path</emphasis>ou bien <phrase role="keep-together"><emphasis>RegExp</emphasis> — </phrase>descriptif 
+          <emphasis>Path</emphasis> ou bien <phrase role="keep-together"><emphasis>RegExp</emphasis> — </phrase>descriptif 
           de ce qu'il faut observer — et la valeur
           (<emphasis>pattern</emphasis>) à évaluer en utilisant le type
           <emphasis>type</emphasis> comme<indexterm id="I_indexterm5_d1e6127" class="endofrange" startref="ch05-gittrigger1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm5_d1e6130" class="endofrange" startref="ch05-gittrigger2" significance="normal"><primary/></indexterm> guide.</para>
@@ -808,7 +807,7 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
         <sect4 id="merge-results">
           <title>Fusionner les résultats</title>
           <para>Si une fusion au début du build a été configurée, la 
-          branche résultante est alors pousser vers son origine (voir <xref linkend="I_figure1_id2246482"/>).</para>
+          branche résultante est alors poussée vers son origine (voir <xref linkend="I_figure1_id2246482"/>).</para>
           <figure float="none" id="I_figure1_id2246482">
             <title>Fusionner les résultats</title>
             <mediaobject id="I_mediaobject5_d1e6176">
@@ -914,8 +913,8 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
       <title>Déclencher une tâche de build lorsqu'une autre tâche de build
       se termine</title>
       <para>La <indexterm id="I_indexterm5_d1e6314" significance="normal"><primary>déclencheurs de build</primary><secondary>quand un autre build se termine</secondary></indexterm>première option vous permet de configurer un build qui
-      qui le lancera à chaque fois qu'un autre build se terminera. C'est une 
-      manière facile de construire un séquenceur de build. Par exemple, vous 
+      se lancera à chaque fois qu'un autre build se terminera. C'est une 
+      manière facile de construire une séquence de build. Par exemple, vous 
       pourriez configurer une tâche de build initiale qui lancera des tests 
       unitaires et des tests d'intégration, suivie d'une autre tâche de build 
       séparée qui lancera de l'analyse statique de code, plus gourmande en CPU. 
@@ -947,13 +946,13 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
     </sect2>
     <sect2>
       <title>Tâches de build périodiques</title>
-      <para>Une autre<indexterm class="startofrange" id="ch05-regular" significance="normal"><primary>déclencheurs de builds</primary><secondary sortas="regular">à intervalles régulières</secondary></indexterm> stratégie est simplement de déclencher une tâche de build à intervalles régulières. Il est important 
+      <para>Une autre<indexterm class="startofrange" id="ch05-regular" significance="normal"><primary>déclencheurs de builds</primary><secondary sortas="regular">à intervalles régulières</secondary></indexterm> stratégie est simplement de déclencher une tâche de build à intervalle régulier. Il est important 
       de faire remarquer qu'il ne s'agit plus d'Intégration Continue ; il 
       s'agit simplement de builds périodiques, chose que vous pourriez tout 
       aussi bien faire, par exemple, avec une tâche cron sous Unix. Aux débuts 
       des builds automatisés, et toujours aujourd'hui dans beaucoup 
       d'entreprises, les builds ne sont pas exécutés en réponse aux 
-      changements commités dans le contrôle de version mais seulement la 
+      changements commités dans le système de contrôle de version mais seulement la 
       nuit (build nocturne journalier). Cependant, pour être efficace, le 
       serveur d'Intégration Continue doit apporter un retour d'information 
       beaucoup plus rapidement qu'une seule fois par jour.</para>
@@ -962,8 +961,8 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
       retour rapide est moins critique. Par exemple, des tests de charge et 
       de performance intensifs qui prennent plusieurs heures à s'exécuter ou 
       <indexterm id="I_indexterm5_d1e6361" significance="normal"><primary>Sonar</primary><secondary>fréquence des builds</secondary></indexterm>des tâches de build Sonar. Sonar est une excellente manière de conserver une 
-      vue sur vos indicateurs de qualité du code à travers vos projets et 
-      au fur et à mesure du temps mais il ne permet de conserver qu'un 
+      vue sur vos indicateurs de qualité du code de vos projets et 
+      au fur et à mesure que le temps passe mais il ne permet de conserver qu'un 
       seul lot de données par jour. Il n'est donc pas nécessaire d'exécuter 
       des builds Sonar plus fréquemment que cela.</para>
       <para>Pour toutes les tâches périodiques, Jenkins utilise une 
@@ -1041,11 +1040,11 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
       la meilleure stratégie pour la plupart des tâches de <phrase role="keep-together">build d'Intégration Continue</phrase>.
       La valeur du retour d'information est proportionnelle à la vitesse à 
       laquelle vous recevez ce retour et il n'y a pas d'exception en ce qui 
-      concerne l'Intégration Continue. C'est pour cette raison que de scruter 
+      concerne l'Intégration Continue. C'est pour cette raison que scruter 
       le SCM est généralement une bien meilleure option.</para>
       <para>La scrutation implique l'interrogation à intervalles réguliers 
       du serveur de contrôle de version pour savoir si des changements ont 
-      été ajoutés. Si des changements ont été faits dans le source code du 
+      été ajoutés. Si des changements ont été faits dans le code source du 
       projet, Jenkins lance alors un build. Scruter est habituellement une 
       opération peu coûteuse, vous pouvez donc le faire fréquemment pour vous 
       assurer qu'un build sera lancé rapidement après tout commit de code 
@@ -1053,16 +1052,16 @@ git checkout -b maBranche 73434e4a0af0f51c242f5ae8efc51a88383afc8a</screen>
       démarrera rapidement et plus précis sera le retour d'information lié aux 
       changements effectués dans le cas où le build échoue.</para>
       <para>Dans Jenkins, la scrutation du SCM est très facile à configurer et 
-      utilise la même syntaxe cron discutée précédemment.</para>
+      utilise la même syntaxe cron précédemment présentée.</para>
       <para>Naturellement vous aurez l'envie de scruter le SCM le plus souvent 
       possible (par exemple en utilisant “* * * * *” pour chaque minute). 
       Comme Jenkins n'utilise que des requêtes simples et ne lance de build 
-      que lorsque le source code a été modifié, cette approche est souvent 
+      que lorsque le code source a été modifié, cette approche est souvent 
       raisonnable pour de petits projets. Cela montre cependant des limites 
       quand il y a un grand nombre de tâches de build car cela pourrait 
       saturer le serveur SCM et le réseau avec les requêtes dont beaucoup 
       sont inutiles. Dans ce cas, une approche plus précise sera plus 
-      appropriée avec le déclenchement de la tâche de build fait directement 
+      appropriée avec un déclenchement de la tâche de build directement 
       par le SCM lorsqu'il reçoit un changement. Cette option est discutée dans <xref linkend="sect-build-trigger-remote"/>.</para>
       <para>Si des changements sont commités très fréquemment et dans un 
       grand nombre de projets, cela peut causer la création d'une longue liste 
