@@ -19,18 +19,43 @@
   <sect1 id="chapter-installing-downloading">
     <title>Télécharger et installer Jenkins</title>
     <para>Jenkings est simple à installer, et vous pouvez le faire tourner n'importe où.
-    Vous pouvez le lancer soit comme une application, ou le déployer dans un conteneur d'application Java classique comme Tomcat ou JBoss. La première option est simple à mettre à oeuvre, et permet de tester Jenkins sur votre poste de travail, en quelques minutes, vous pouvez installer et lancer une version minimaliste de Jenkins.</para>
-    <para>Since <indexterm id="I_indexterm3_d1e2510" significance="normal"><primary>Jenkins</primary><secondary>Java requirements for</secondary></indexterm><indexterm id="I_indexterm3_d1e2515" significance="normal"><primary>JDK (Java Development Kit)</primary><secondary>requirements for</secondary></indexterm>Jenkins étant une application Java, vous aurez besoin d'une version récente de Java sur votre machine. Plus précisèment, vous aurez besoin de Java 5. En fait, sur votre serveur, vous aurez même certainement besoin du Java Development Kit (JDK) 5.0 ou d'une version supérieure pour éxécuter vos builds. Si vous n'en êtes pas sûr, vous pouvez vérifier <indexterm id="I_indexterm3_d1e2521" significance="normal"><primary>votre version de Java </primary></indexterm>en éxécutant la commande suivante sur votre machine : <literal moreinfo="none">java
+    Vous pouvez le lancer soit comme une application, ou le déployer dans un conteneur d'application Java classique 
+    comme Tomcat ou JBoss. La première option est simple à mettre à oeuvre, et permet de tester Jenkins sur votre poste
+    de travail, en quelques minutes, vous pouvez installer et lancer une version minimaliste de Jenkins.</para>
+    
+    <para><indexterm id="I_indexterm3_d1e2510" significance="normal"><primary>Jenkins</primary>
+    <secondary>Java requirements for</secondary></indexterm>
+    <indexterm id="I_indexterm3_d1e2515" significance="normal">
+    <primary>JDK (Java Development Kit)</primary><secondary>pré-requis pour</secondary></indexterm>
+    Jenkins étant une application Java, vous aurez besoin d'une version récente de Java sur votre machine. 
+    Plus précisèment, vous aurez besoin de Java 5. En fait, sur votre serveur, vous aurez même certainement
+    besoin du Java Development Kit (JDK) 5.0 ou d'une version supérieure pour éxécuter vos builds. Si vous 
+    n'en êtes pas sûr, vous pouvez vérifier 
+    <indexterm id="I_indexterm3_d1e2521" significance="normal">
+    <primary>votre version de Java </primary></indexterm>en éxécutant la commande suivante sur votre machine : 
+    <literal moreinfo="none">java
     -version</literal></para>
     <screen format="linespecific">$ <userinput moreinfo="none">java -version</userinput>
 java version "1.6.0_17"
 Java(TM) SE Runtime Environment (build 1.6.0_17-b04-248-10M3025)
 Java HotSpot(TM) 64-Bit Server VM (build 14.3-b01-101, mixed mode)</screen>
     <?dbfo-need height=”1in”?>
-    <para>Jenkins<indexterm id="I_indexterm3_d1e2536" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary><tertiary sortas="WAR file">from WAR file</tertiary></indexterm> est disponible sous la forme d'une application Java packagé (un fichier WAR). Vous pouvez télécharger la dernière version sur le site web de Jenkins (<ulink url="http://jenkins-ci.org"/>—see <xref linkend="fig-jenkins-windows-installer"/>) ou depuis le site web du livre.
+    <para>Jenkins<indexterm id="I_indexterm3_d1e2536" significance="normal"><primary>installation</primary>
+    <secondary>Jenkins</secondary><tertiary sortas="WAR file">depuis un fichier WAR</tertiary></indexterm> 
+    est disponible sous la forme d'une application Java packagé (un fichier WAR). Vous pouvez télécharger 
+    la dernière version sur le site web de Jenkins (<ulink url="http://jenkins-ci.org"/>—see <xref linkend="fig-jenkins-windows-installer"/>) ou depuis le site web du livre.
     Jenkins est un projet actif, et de nouvelles versions sont disponibles régulièrement.</para>
-    <para>Pour <indexterm id="I_indexterm3_d1e2550" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary><tertiary sortas="Windows">on Windows</tertiary></indexterm><indexterm id="I_indexterm3_d1e2557" significance="normal"><primary>Windows</primary><secondary>installation package for Jenkins</secondary></indexterm>les utilisateurs de Windows, il existe un installateur Windows pour Jenkins. L'installateur se présente sous la forme d'un fichier zip contenant un package MSI pour Jenkins, ainsi qu'un fichier <filename moreinfo="none">setup.exe</filename> pouvant être utilisé pour installer les librairies .NET si elles n'ont pas déjà été installées sur votre poste. Dans la plupart des cas, tout ce que vous aurez à faire sera de décompresser le fichier zip et de lancer le fichier <filename moreinfo="none">jenkins-x.x.msi</filename> (voir
-    <xref linkend="fig-hudson-home-page"/>). L'installateur MSI est livré avec une version du JRE intégré, il n'est donc pas nécessaire d'avoir une version de Java installée.</para>
+    <para>Pour <indexterm id="I_indexterm3_d1e2550" significance="normal"><primary>installation</primary>
+    <secondary>Jenkins</secondary><tertiary sortas="Windows">on Windows</tertiary></indexterm>
+    <indexterm id="I_indexterm3_d1e2557" significance="normal"><primary>Windows</primary><secondary>
+    installation package for Jenkins</secondary></indexterm>les utilisateurs de Windows, il existe un installateur 
+    Windows pour Jenkins. L'installateur se présente sous la forme d'un fichier zip contenant un package MSI pour
+    Jenkins, ainsi qu'un fichier <filename moreinfo="none">setup.exe</filename> pouvant être utilisé pour installer 
+    les librairies .NET si elles n'ont pas déjà été installées sur votre poste. Dans la plupart des cas, tout ce que
+    vous aurez à faire sera de décompresser le fichier zip et de lancer le fichier 
+    <filename moreinfo="none">jenkins-x.x.msi</filename> (voir
+    <xref linkend="fig-hudson-home-page"/>). L'installateur MSI est livré avec une version du JRE intégré, 
+    il n'est donc pas nécessaire d'avoir une version de Java installée.</para>
     <figure float="none" id="fig-jenkins-windows-installer">
       <title>Vous pouvez télécharger les binaires de Jenkins sur le site web de Jenkins</title>
       <mediaobject id="I_mediaobject3_d1e2574">
@@ -42,9 +67,11 @@ Java HotSpot(TM) 64-Bit Server VM (build 14.3-b01-101, mixed mode)</screen>
         </imageobject>
       </mediaobject>
     </figure>
-    <para>Once you have run the installer, <indexterm id="I_indexterm3_d1e2581" significance="normal"><primary>Jenkins</primary><secondary>port running on</secondary></indexterm>Jenkins will automatically start on port 8080 (see <xref linkend="fig-hudson-starting-page"/>). The installer will have created a
-    new Jenkins service for you, that you can start and stop just like any
-    other Windows service.</para>
+    <para>Une fois que vous avez lancé l'installateur, <indexterm id="I_indexterm3_d1e2581" significance="normal">
+    <primary>Jenkins</primary><secondary>port running on</secondary></indexterm>
+    Jenkins démarrera automatiquement sur le port 8080 (voir <xref linkend="fig-hudson-starting-page"/>). 
+    L'installateur crééra un service Jenkins pour vous, que vous pourrez démarrer et arrêter commen 
+    n'importe quel autre service Windows.</para>
     <para>There are also excellent native packages for Mac OS X and most of
     the major Linux distributions, including Ubuntu, RedHat (including CentOS
     and Fedora) and OpenSolaris. We discuss how to install Jenkins on Ubuntu
