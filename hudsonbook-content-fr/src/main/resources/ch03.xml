@@ -24,7 +24,7 @@
     de travail, en quelques minutes, vous pouvez installer et lancer une version minimaliste de Jenkins.</para>
     
     <para><indexterm id="I_indexterm3_d1e2510" significance="normal"><primary>Jenkins</primary>
-    <secondary>Java requirements for</secondary></indexterm>
+    <secondary>pré-requis pour</secondary></indexterm>
     <indexterm id="I_indexterm3_d1e2515" significance="normal">
     <primary>JDK (Java Development Kit)</primary><secondary>pré-requis pour</secondary></indexterm>
     Jenkins étant une application Java, vous aurez besoin d'une version récente de Java sur votre machine. 
@@ -70,17 +70,13 @@ Java HotSpot(TM) 64-Bit Server VM (build 14.3-b01-101, mixed mode)</screen>
     <para>Une fois que vous avez lancé l'installateur, <indexterm id="I_indexterm3_d1e2581" significance="normal">
     <primary>Jenkins</primary><secondary>port running on</secondary></indexterm>
     Jenkins démarrera automatiquement sur le port 8080 (voir <xref linkend="fig-hudson-starting-page"/>). 
-    L'installateur crééra un service Jenkins pour vous, que vous pourrez démarrer et arrêter commen 
+    L'installateur crééra un service Jenkins pour vous, que vous pourrez démarrer et arrêter comme
     n'importe quel autre service Windows.</para>
-    <para>There are also excellent native packages for Mac OS X and most of
-    the major Linux distributions, including Ubuntu, RedHat (including CentOS
-    and Fedora) and OpenSolaris. We discuss how to install Jenkins on Ubuntu
-    and Redhat below.</para>
-    <para>If you<indexterm id="I_indexterm3_d1e2593" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary><tertiary sortas="binary">from binary distribution</tertiary></indexterm> are not installing Jenkins using one of the native
-    packages, you can simply download the latest binary distribution from the
-    Jenkins website. Once you have downloaded the latest and greatest Jenkins
-    release, place it in an appropriate directory on your build server. On a
-    <indexterm id="I_indexterm3_d1e2601" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary><tertiary sortas="Windows">on Windows</tertiary></indexterm>Windows environment, you might put it in a directory called
+    <para>Il existe également de très bon installateurs pour Mac OS X et également pour la plupart des distributions Linux, comme Ubuntu, RedHat (incluant CentOS
+    et Fedora) et OpenSolaris. Nous expliquerons comment installer Jenkins sur Ubuntu et Redhal plus loin.</para>
+    <para>Si vous <indexterm id="I_indexterm3_d1e2593" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary><tertiary sortas="binary">from binary distribution</tertiary></indexterm> n'installez pas Jenkins via l'une des instalations natives, vous pouvez simplement télécharger la dernière installation depuis le site web de Jenkins. Une fois que vous aurez téléchargé la dernière installation de Jenkins, copiez le dans un répertoire approprié sur votre serveur de build. 
+    On a
+    <indexterm id="I_indexterm3_d1e2601" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary><tertiary sortas="Windows">Windows</tertiary></indexterm>Windows environment, you might put it in a directory called
     <filename moreinfo="none">C:\Tools\Jenkins</filename> (it’s a good idea
     <emphasis>not</emphasis> to place Jenkins in a directory containing spaces
     in the path, such as <filename moreinfo="none">C:\Program
