@@ -292,19 +292,20 @@ drwxr-xr-x   28 johnsmart  staff    952 26 May  2009 war</screen>
     <sect2>
       <title>Les traducteurs du présent livre en français</title>
       <itemizedlist>
-        <listitem>Alexis Morelle</listitem>
-        <listitem>Alexis Thomas</listitem>
-        <listitem>Antoine Meausoone</listitem>
-        <listitem>Baptiste Mathus</listitem>
-        <listitem>Emmanuel Hugonnet</listitem>
-        <listitem>Frederic Bouquet</listitem>
-        <listitem>Jeff Maury</listitem>
-        <listitem>Joseph Pachod</listitem>
-        <listitem>Kevin Lecouvey</listitem>
-        <listitem>Michael Pailloncy</listitem>
-        <listitem>Nacef Labidi</listitem>
-        <listitem>Thibault Richard</listitem>
+        <listitem><ulink url="http://github.com/almorelle">Alexis Morelle</ulink></listitem>
+        <listitem><ulink url="http://github.com/ath0mas">Alexis Thomas</ulink></listitem>
+        <listitem><ulink url="http://github.com/Ameausoone">Antoine Meausoone</ulink></listitem>
+        <listitem><ulink url="http://github.com/Batmat">Baptiste Mathus</ulink></listitem>
+        <listitem><ulink url="http://github.com/cluelessjoe">Joseph Pachod</ulink></listitem>
+        <listitem><ulink url="http://github.com/ehsavoie">Emmanuel Hugonnet</ulink></listitem>
+        <listitem><ulink url="http://github.com/bouquetf">Frederic Bouquet</ulink></listitem>
+        <listitem><ulink url="http://github.com/jeffmaury">Jeff Maury</ulink></listitem>
+        <listitem><ulink url="http://github.com/Maetis">Kevin Lecouvey</ulink></listitem>
+        <listitem><ulink url="https://github.com/mpapo">Michael Pailloncy</ulink></listitem>
+        <listitem><ulink url="http://github.com/nacef-labidi">Nacef Labidi</ulink></listitem>
+        <listitem><ulink url="http://github.com/thbkrkr">Thibault Richard</ulink></listitem>
       </itemizedlist>
+
     </sect2>
 
   </sect1>
