@@ -127,24 +127,23 @@ git version 1.7.1</screen>
       existe des instructions claires et détaillées pour chaque système d'exploitation sur le <ulink url="http://help.github.com/set-up-git-redirect">site de GitHub</ulink>.</para>
     </sect2>
     <sect2 id="sect-git-fork">
-      <title>Forking the Sample Repository</title>
-      <para>As <indexterm class="startofrange" id="ch02-fork" significance="normal"><primary>GitHub repository</primary><secondary>forking</secondary></indexterm>we mentioned earlier, all the sample code for this book is
-      stored on GitHub, at the following URL: <ulink url="https://github.com/wakaleo/game-of-life"/>. This is a public
-      repository, so you can freely view the source code online and check out
-      your own working copy. However, if you want to make changes, you will
-      need to create your own fork. A fork is a personal copy of a repository
-      that you can use as you wish. To create a fork, login to your GitHub
-      account and navigate to the <ulink role="orm:hideurl" url="https://github.com/wakaleo/game-of-life">repository URL</ulink>.
-      Then click on the Fork button (see <xref linkend="fig-github-fork"/>).
-      This will create your own personal copy of the repository.</para>
-      <para>Once <indexterm id="I_indexterm2_d1e1128" significance="normal"><primary>GitHub repository</primary><secondary>cloning a local copy of</secondary></indexterm>you have forked the repository, you should clone a local
-      copy to make sure everything is set up correctly. Go to the command line
-      and run the following command (replacing
-      <replaceable>&lt;username&gt;</replaceable> with your own GitHub
-      username):</para>
+      <title>Forker le dépôt des exemples</title>
+      <para>Comme <indexterm class="startofrange" id="ch02-fork" significance="normal"><primary>dépôt GitHub</primary><secondary>forker</secondary></indexterm>nous l'avons mentionné plus tôt, tout les exemples de code de ce livre
+      sont stockés sur GitHub, à l'URL suivante : <ulink url="https://github.com/wakaleo/game-of-life"/>. C'est un dépôt
+      public, vous pouvez donc librement voir les sources en ligne et récupérer
+      votre propre copie de travail. Toutefois, si vous voulez effectuer des changements, vous devrez
+      créer votre propre fork. Un fork est une copie personnelle d'un dépôt 
+      que vous pouvez utiliser à votre guise. Pour créer un fork, connectez à votre compte 
+      GitHub et cliquez sur l'<ulink role="orm:hideurl" url="https://github.com/wakaleo/game-of-life">URL du dépôt</ulink>.
+      Cliquez ensuite sur le bouton Fork (see <xref linkend="fig-github-fork"/>).
+      Cela créera votre propre copie du dépôt.</para>
+      <para>Une fois que <indexterm id="I_indexterm2_d1e1128" significance="normal"><primary>dépôt</primary><secondary>cloner une copie locale de </secondary></indexterm>vous avez forké le dépôt, vous devez cloner une copie
+      locale pour vérifier que tout est correctement configuré. Ouvrez la ligne de commande
+      et exécutez la commande suivante (en remplaçant
+      <replaceable>&lt;username&gt;</replaceable> avec votre propre nom d'utilisateur GitHub):</para>
       <screen format="linespecific">$ <userinput moreinfo="none">git clone git@github.com:<replaceable>&lt;username&gt;</replaceable>/game-of-life.git</userinput></screen>
-      <para>This will “clone” (or check out, in Subversion terms) a copy of
-      the project onto your local drive:</para>
+      <para>Ceci va “cloner” (ou faire un check out, en termes Subversion) une copie du
+      projet sur votre disque local :</para>
       <screen format="linespecific">git clone git@github.com:john-smart/game-of-life.git
 Initialized empty Git repository in /Users/johnsmart/.../game-of-life/.git/
 remote: Counting objects: 1783, done.
@@ -152,11 +151,11 @@ remote: Compressing objects: 100% (589/589), done.
 remote: Total 1783 (delta 1116), reused 1783 (delta 1116)
 Receiving objects: 100% (1783/1783), 14.83 MiB | 119 KiB/s, done.
 Resolving deltas: 100% (1116/1116), done.</screen>
-      <para>You should now have a local copy of the project that you can build
-      and execute. We will be using this project later on to trigger changes
-      in <indexterm id="I_indexterm2_d1e1150" class="endofrange" startref="ch02-fork" significance="normal"><primary/></indexterm><indexterm id="I_indexterm2_d1e1152" class="endofrange" startref="ch02-env" significance="normal"><primary/></indexterm>the repository.</para>
+      <para>Vous devriez à présent disposer d'une copie locale du projet 
+      que vous pouvez construire et exécuter. Nous utiliserons ce projet plus tard pour déclencher des changements
+      dans <indexterm id="I_indexterm2_d1e1150" class="endofrange" startref="ch02-fork" significance="normal"><primary/></indexterm><indexterm id="I_indexterm2_d1e1152" class="endofrange" startref="ch02-env" significance="normal"><primary/></indexterm>le dépôt.</para>
       <figure float="none" id="fig-github-fork">
-        <title>Forking the sample code repository</title>
+        <title>Forker le dépôt des exemples de code</title>
         <mediaobject id="I_mediaobject2_d1e1158">
           <imageobject role="print">
             <imagedata fileref="figs/print/jtdg_0203.pdf" format="PDF"/>
