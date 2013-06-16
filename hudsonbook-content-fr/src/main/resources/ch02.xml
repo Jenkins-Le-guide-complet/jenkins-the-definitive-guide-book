@@ -169,25 +169,25 @@ Resolving deltas: 100% (1116/1116), done.</screen>
   </sect1>
   <sect1 id="sect-first-steps-starting">
     <title>Démarrer Jenkins</title>
-    <para><indexterm class="startofrange" id="ch02-jws1" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary><tertiary sortas="Java Web Start">with Java Web start</tertiary></indexterm><indexterm class="startofrange" id="ch02-jws2" significance="normal"><primary>Java Web Start</primary><secondary>installing and starting Jenkins using</secondary></indexterm><indexterm id="I_indexterm2_d1e1179" significance="normal"><primary>Jenkins</primary><secondary>running</secondary><tertiary sortas="Java Web Start">from Java Web Start</tertiary></indexterm>There are several ways to run Jenkins on your machine. One
-    of the easiest ways to run Jenkins for the first time is to use Java Web
-    Start. Java Web Start is a technology that lets you start up a Java
-    application on your local machine via a URL on a web page—it comes bundled
-    with the Java JRE. In our case, this will start a Jenkins server running
-    on your machine, and let you experiment with it as if it were installed
-    locally. All you need for this to work is a recent (Java 6 or later)
-    version of the Java Runtime Environment (JRE), which we installed in the
-    previous section.</para>
-    <para>For convenience, there is a link to the Jenkins Java Web Start
-    instance on the <ulink url="http://www.wakaleo.com/books/jenkins-the-definitive-guide">book
-    resources page</ulink>. Here you will find a large orange Launch button in
-    the Book Resources section (see <xref linkend="fig-hudson-webstart-page"/>). You can also find this link on the
-    Meet Jenkins page on the <ulink url="http://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins">Jenkins
-    website</ulink>, where, if you scroll down far enough, you should find a
-    Test Drive section with an identical Launch button.</para>
+    <para><indexterm class="startofrange" id="ch02-jws1" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary><tertiary sortas="Java Web Start">with Java Web start</tertiary></indexterm><indexterm class="startofrange" id="ch02-jws2" significance="normal"><primary>Java Web Start</primary><secondary>installer et démarrer Jenkins en utilisant</secondary></indexterm><indexterm id="I_indexterm2_d1e1179" significance="normal"><primary>Jenkins</primary><secondary>exécuter</secondary><tertiary sortas="Java Web Start">avec Java Web Start</tertiary></indexterm>Il y a plusieurs façons d'exécuter Jenkins sur votre machine. Une
+    des plus faciles pour exécuter Jenkins pour la première fois est d'utiliser Java Web
+    Start. Java Web Start est une technologie qui vous permet de démarrer une application 
+    Java sur votre machine locale via une URL sur une page web — cela vient préinstallé
+    avec le JRE Java. Dans notre cas, cela démarrera un serveur Jenkins s'exécutant sur 
+    votre machine, et vous permettra de l'expérimenter comme si vous l'aviez installé
+    localement. Tout ce dont vous avez besoin pour cela est de travailler avec une version récente (Java 6 ou plus)
+    du Java Runtime Environment (JRE), que nous avons installé dans la section
+    précédente.</para>
+    <para>Par commodité, il y a un lien vers l'instance Java Web Start de Jenkins
+    sur la <ulink url="http://www.wakaleo.com/books/jenkins-the-definitive-guide">page 
+    de ressources du livre</ulink>. Vous y trouverez un large bouton orange dans la section Ressources du Livre
+    (voir <xref linkend="fig-hudson-webstart-page"/>). Vous pouvez aussi trouver ce lien sur la 
+    page Meet Jenkins sur le <ulink url="http://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins">site Web
+    de Jenkins</ulink>, où, si vous scrollez assez loin, vous devriez trouver
+    une section "Test Drive" avec un bouton "Launch" identique.</para>
     <figure float="none" id="fig-hudson-webstart-page">
-      <title>Running Jenkins using Java Web Start from the book’s
-      website</title>
+      <title>Exécuter Jenkins en utilisant Java Web Start à partir du site web
+      du livre</title>
       <mediaobject id="I_mediaobject2_d1e1200">
         <imageobject role="print">
           <imagedata fileref="figs/print/jtdg_0304.pdf" format="PDF"/>
@@ -197,13 +197,13 @@ Resolving deltas: 100% (1116/1116), done.</screen>
         </imageobject>
       </mediaobject>
     </figure>
-    <para>Java Web Start seems to work best on Firefox. When you click on the
-    Launch button on either of these sites in Firefox, the browser will ask if
-    you want to open a file called <filename moreinfo="none">jenkins.jnlp</filename> using
-    Java Web Start. Click on OK—this will download Jenkins and start it up on
-    your machine (see <xref linkend="fig-first-steps-downloading-hudson"/>).</para>
+    <para>Java Web Start semble fonctionner le mieux sur Firefox. Quand vous cliquez sur le bouton
+    Launch sur l'un de ces sites dans Firefox, le navigateur vous demandera si
+    vous voulez ouvrir un fichier appelé <filename moreinfo="none">jenkins.jnlp</filename> en utilisant
+    Java Web Start. Cliquez sur OK — cela téléchargera Jenkins et le démarrera sur
+    votre machine (voir <xref linkend="fig-first-steps-downloading-hudson"/>).</para>
     <figure float="none" id="fig-first-steps-downloading-hudson">
-      <title>Java Web Start will download and run the latest version of
+      <title>Java Web Start téléchargera et exécutera la dernière version de 
       Jenkins</title>
       <mediaobject id="I_mediaobject2_d1e1215">
         <imageobject role="print">
@@ -214,22 +214,22 @@ Resolving deltas: 100% (1116/1116), done.</screen>
         </imageobject>
       </mediaobject>
     </figure>
-    <para>In other browsers, clicking on this button may simply download the
-    JNLP file. In Internet Explorer, you may even need to right click on the
-    link and select “Save Target As” to save the JNLP file, and then run it
-    from Windows Explorer. However, in both of these cases, when you open the
-    JNLP file, Java Web Start will download and start Jenkins.</para>
-    <para>Java Web Start will only need to download a particular version of
-    Jenkins once. From then on, when you click on the “Launch” button again,
-    Java Web Start will use the copy of Jenkins it has already downloaded
-    (that is, until the next version comes out). Ignore any messages your
-    operating system or anti-virus software may bring up—it is perfectly safe
-    to run Jenkins on your local machine.</para>
-    <para>Once it has finished downloading, it will start up Jenkins on your
-    machine. You will be able to see it running in a small window
-    called<indexterm id="I_indexterm2_d1e1226" significance="normal"><primary>Jenkins Console</primary></indexterm> “Jenkins Console” (see <xref linkend="fig-first-steps-console"/>). To stop <indexterm id="I_indexterm2_d1e1232" significance="normal"><primary>Jenkins</primary><secondary>stopping</secondary></indexterm>Jenkins at any time, just close this <indexterm id="I_indexterm2_d1e1238" class="endofrange" startref="ch02-jws1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm2_d1e1240" class="endofrange" startref="ch02-jws2" significance="normal"><primary/></indexterm>window.</para>
+    <para>Dans d'autres navigateurs, cliquer sur le bouton pourrait simplement télécharger le 
+    fichier JNLP. Dans Internet Explorer, vous pourriez même avoir à cliquer avec le bouton droit sur
+    le lien et sélectionner “Enregistrer sous” pour enregistrer le fichier JNLP, et l'exécuter depuis
+    Windows Explorer. Toutefois, dans chacun de ces cas, quand vous ouvrez le 
+    fichier JNLP, Java Web Start téléchargera et démarrera Jenkins.</para>
+    <para>Java Web Start n'aura besoin de télécharger une version particulière de
+    Jenkins qu'une seule fois. A partir de ce moment, quand vous cliquez sur le bouton “Launch” à nouveau,
+    Java Web Start utilisera une copie de Jenkins qu'il a déjà téléchargée
+    (jusqu'à ce qu'une nouvelle version sorte). Ignorez tout message que votre
+    système d'exploitation ou votre anti-virus pourrait afficher — il est parfaitement
+    sûr d'exécuter Jenkins sur votre machine locale.</para>
+    <para>Une fois qu'il aura fini de télécharger, il démarrera Jenkins sur votre
+    machine. Vous pourrez le voir s'exécuter dans une petite fenêtre
+    appelée<indexterm id="I_indexterm2_d1e1226" significance="normal"><primary>Console Jenkins</primary></indexterm> “Console Jenkins” (voir <xref linkend="fig-first-steps-console"/>). Pour arrêter <indexterm id="I_indexterm2_d1e1232" significance="normal"><primary>Jenkins</primary><secondary>arrêter</secondary></indexterm>Jenkins à tout moment, fermez simplement cette <indexterm id="I_indexterm2_d1e1238" class="endofrange" startref="ch02-jws1" significance="normal"><primary/></indexterm><indexterm id="I_indexterm2_d1e1240" class="endofrange" startref="ch02-jws2" significance="normal"><primary/></indexterm>fenêtre.</para>
     <figure float="none" id="fig-first-steps-console">
-      <title>Java Web Start running Jenkins</title>
+      <title>Java Web Start exécutant Jenkins</title>
       <mediaobject id="I_mediaobject2_d1e1246">
         <imageobject role="print">
           <imagedata fileref="figs/print/jtdg_0206.pdf" format="PDF"/>
@@ -239,35 +239,34 @@ Resolving deltas: 100% (1116/1116), done.</screen>
         </imageobject>
       </mediaobject>
     </figure>
-    <para>There <indexterm id="I_indexterm2_d1e1253" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary><tertiary sortas="WAR file">from WAR file</tertiary></indexterm><indexterm id="I_indexterm2_d1e1260" significance="normal"><primary>WAR file, installing Jenkins from</primary></indexterm><indexterm id="I_indexterm2_d1e1263" significance="normal"><primary>Jenkins</primary><secondary>installing</secondary><see>installation</see></indexterm>are also installers available for the principal operating
-    systems available on the <ulink url="http://jenkins-ci.org">Jenkins
-    website</ulink>. Or, if you are an experienced Java user versed in the
-    ways of WAR files, you may prefer to simply download the latest version of
-    Jenkins and run it from the command line. Jenkins comes in the form of an
-    executable WAR file—you can download the most recent version from the
-    Jenkins website <ulink url="http://http://jenkins-ci.org">home
-    page</ulink>. For convenience, there is also a link to the latest version
-    of Jenkins in the Resources section of this book’s <ulink url="http://www.wakaleo.com/books/jenkins-the-definitive-guide">website</ulink>.</para>
-    <para>Once <indexterm id="I_indexterm2_d1e1283" significance="normal"><primary>Jenkins</primary><secondary>running</secondary><tertiary sortas="command line">from command line</tertiary></indexterm>downloaded, you can start Jenkins from the command line as
-    shown here:</para>
+    <para>Il <indexterm id="I_indexterm2_d1e1253" significance="normal"><primary>installation</primary><secondary>Jenkins</secondary><tertiary sortas="WAR file">à partir du fichier WAR</tertiary></indexterm><indexterm id="I_indexterm2_d1e1260" significance="normal"><primary>fichier WAR, installer Jenkins à partir de </primary></indexterm><indexterm id="I_indexterm2_d1e1263" significance="normal"><primary>Jenkins</primary><secondary>installer</secondary><see>installation</see></indexterm>y a aussi des installeurs disponibles pour les principaux systèmes d'exploitations sur le <ulink url="http://jenkins-ci.org">site Web
+    de Jenkins</ulink>. Ou, si vous êtes un utilisateur Java expérimenté versé dans
+    les manipulations de fichiers WAR, vous pourriez préférer simplement télécharger la dernière version de
+    Jenkins et l'exécuter depuis la ligne de commande. Jenkins est fourni sous la forme d'un 
+    WAR exécutable — vous pouvez télécharger la version la plus récente à partir
+    de <ulink url="http://http://jenkins-ci.org">la page d'accueil</ulink> du site de Jenkins. 
+    Par facilité, il y a un lien vers la dernière version
+    de Jenkins dans la section Ressources du <ulink url="http://www.wakaleo.com/books/jenkins-the-definitive-guide">site web</ulink> de ce livre.</para>
+    <para>Une fois <indexterm id="I_indexterm2_d1e1283" significance="normal"><primary>Jenkins</primary><secondary>exécuter</secondary><tertiary sortas="command line">depuis la ligne de commande</tertiary></indexterm>téléchargé, vous pouvez démarrer Jenkins depuis 
+    la ligne de commande comme montré ici :</para>
     <screen format="linespecific">$ <userinput moreinfo="none">java -jar jenkins.war</userinput></screen>
-    <para>Whether you have started Jenkins using Java Web Start or from the
-    command line, Jenkins should now be running on your local machine. By
-    default, Jenkins will be running on port 8080, so you can access Jenkins
-    in your web <phrase role="keep-together">browser on</phrase> <ulink url="http://localhost:8080"/>.</para>
-    <para>Alternatively, if you are familiar with Java application servers
-    such as <indexterm id="I_indexterm2_d1e1304" significance="normal"><primary>Jenkins</primary><secondary>running</secondary><tertiary sortas="application">from application server</tertiary></indexterm><indexterm id="I_indexterm2_d1e1311" significance="normal"><primary>Tomcat application server</primary><secondary>deploying Jenkins using</secondary></indexterm><indexterm id="I_indexterm2_d1e1316" significance="normal"><primary>application server</primary><secondary>deploying Jenkins to</secondary></indexterm>Tomcat, you can simply deploy the Jenkins WAR file to your
-    application server—with Tomcat, for example, you could simply place the
-    <filename moreinfo="none">jenkins.war</filename> file in Tomcat’s
-    <filename moreinfo="none">webapps</filename> directory. If you are running
-    Jenkins on an application server, the URL that you use to access Jenkins
-    will be slightly different. On a default Tomcat installation, for example,
-    you can access Jenkins in your web browser on <ulink url="http://localhost:8080/jenkins"/>.</para>
-    <para>When <indexterm id="I_indexterm2_d1e1332" significance="normal"><primary>Jenkins</primary><secondary>home page for</secondary></indexterm><indexterm id="I_indexterm2_d1e1337" significance="normal"><primary>home page</primary></indexterm><indexterm id="I_indexterm2_d1e1340" significance="normal"><primary>start page</primary><see>home page</see></indexterm>you open Jenkins in your browser, you should see a screen
-    like the one shown in <xref linkend="fig-hudson-start" os=""/>. You are
-    now ready to take your first steps with Jenkins!</para>
+    <para>Si vous avez démarré Jenkins en utilisant Java Web Start ou via
+    la ligne de commande, Jenkins devrait à présent tourner sur votre machine locale. Par
+    défault, Jenkins s'exécutera sur le port 8080, vous pouvez donc accéder à Jenkins
+    dans votre <phrase role="keep-together">navigateur web sur </phrase> <ulink url="http://localhost:8080"/>.</para>
+    <para>Sinon, si vous êtes familier avec les serveurs d'application
+    comme <indexterm id="I_indexterm2_d1e1304" significance="normal"><primary>Jenkins</primary><secondary>exécuter</secondary><tertiary sortas="application">dans un serveur d'application</tertiary></indexterm><indexterm id="I_indexterm2_d1e1311" significance="normal"><primary>serveur d'application Tomcat</primary><secondary>déployer Jenkins en utilisant</secondary></indexterm><indexterm id="I_indexterm2_d1e1316" significance="normal"><primary>serveur d'application</primary><secondary>déployer Jenkins dans</secondary></indexterm>Tomcat, vous pouvez simplement déployer le WAR de Jenkins dans votre 
+    serveur d'application — avec Tomcat, par exemple, vous pouvez simplement placer le fichier
+    <filename moreinfo="none">jenkins.war</filename> dans le répertoire
+    <filename moreinfo="none">webapps</filename> de Tomcat. Si vous exécutez
+    Jenkins sur un serveur d'application, l'URL à utiliser pour accéder à Jenkins
+    sera légèrement différente. Sur une installation Tomcat par défaut, par exemple, ,
+    vous pouvez accéder à Jenkins dans votre navigateur web à l'adresse <ulink url="http://localhost:8080/jenkins"/>.</para>
+    <para>Quand <indexterm id="I_indexterm2_d1e1332" significance="normal"><primary>Jenkins</primary><secondary>page d'accueil pour</secondary></indexterm><indexterm id="I_indexterm2_d1e1337" significance="normal"><primary>page d'accueil</primary></indexterm><indexterm id="I_indexterm2_d1e1340" significance="normal"><primary>page de démarrage</primary><see>page d'accueil</see></indexterm>vous ouvrez Jenkins dans votre navigateur, vous devez voir un écran 
+    comme celui montré dans <xref linkend="fig-hudson-start" os=""/>. Vous êtes maintenant
+    prêt à faire vos premiers pas avec Jenkins !</para>
     <figure float="none" id="fig-hudson-start">
-      <title>The Jenkins start page</title>
+      <title>La page de démarrage Jenkins</title>
       <mediaobject id="I_mediaobject2_d1e1351">
         <imageobject role="print">
           <imagedata fileref="figs/print/jtdg_0303.pdf" format="PDF"/>
