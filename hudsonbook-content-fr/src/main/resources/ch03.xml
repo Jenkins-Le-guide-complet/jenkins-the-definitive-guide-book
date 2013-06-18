@@ -252,23 +252,23 @@
 	</sect1>
 	
 	<sect1 id="chapter-installing-build-server">
-		<title>Preparing a Build Server for Jenkins</title>
+		<title>Préparation d'un serveur de build pour Jenkins</title>
 		<para>
-			Installing
+			L'installation
 			<indexterm class="startofrange" id="ch03-build2" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="build server">on build server</tertiary>
+				<tertiary sortas="build server">sur un serveur de build</tertiary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-build3" significance="normal">
-				<primary>build server</primary>
-				<secondary>installing Jenkins on</secondary>
+				<primary>serveur de build</primary>
+				<secondary>installation de Jenkins sur</secondary>
 			</indexterm>
-			Jenkins on your local development machine is one thing, but
-			installing
+			de Jenkins sur votre machine locale de développement est une chose, mais
+			l'installation de 
 			<phrase role="keep-together">Jenkins</phrase>
-			on a proper build
-			server deserves a little more forethought and planning.
+			sur un bon serveur de build 
+			mérite un peu plus de prévoyance et de planification.
 		</para>
 		<para>
 			Before
