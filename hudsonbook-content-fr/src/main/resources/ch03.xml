@@ -44,10 +44,10 @@
 				<secondary>pré-requis</secondary>
 			</indexterm>
 			Jenkins étant une application Java, vous aurez besoin d'une version
-			récente de Java sur votre machine. Plus précisèment, vous aurez besoin de Java 5. En fait, sur votre
+			récente de Java sur votre machine. Plus précisément, vous aurez besoin de Java 5. En fait, sur votre
 			serveur, vous aurez même certainement besoin du Java
 			Development Kit (JDK) 5.0 ou d'une version supérieure pour
-			éxécuter vos builds. Si vous n'en êtes pas sûr, vous pouvez vérifier
+			exécuter vos builds. Si vous n'en êtes pas sûr, vous pouvez vérifier
 			<indexterm id="I_indexterm3_d1e2521" significance="normal">
 				<primary>votre version de Java </primary>
 			</indexterm>
@@ -71,7 +71,7 @@
 				<secondary>Jenkins</secondary>
 				<tertiary sortas="WAR file">depuis un fichier WAR</tertiary>
 			</indexterm>
-			est disponible sous la forme d'une application Java packagé (un fichier WAR). Vous pouvez télécharger
+			est disponible sous la forme d'une application Java packagée (un fichier WAR). Vous pouvez télécharger
 			la dernière version sur le site web de Jenkins (
 			<ulink url="http://jenkins-ci.org" />
 			—voir
@@ -122,7 +122,7 @@
 			Une fois que vous avez lancé l'installateur,
 			<indexterm id="I_indexterm3_d1e2581" significance="normal">
 				<primary>Jenkins</primary>
-				<secondary>port running on</secondary>
+				<secondary>port d'écoute</secondary>
 			</indexterm>
 			Jenkins démarrera automatiquement sur le port 8080 (voir
 			<xref linkend="fig-hudson-starting-page" />
@@ -135,7 +135,7 @@
 			Il existe également de très bon installateurs pour Mac OS X et
 			également pour la plupart des distributions Linux,
 			comme Ubuntu, RedHat (incluant CentOS et Fedora) et OpenSolaris. Nous expliquerons comment installer Jenkins
-			sur Ubuntu et Redhal plus loin.
+			sur Ubuntu et RedHat plus loin.
 		</para>
 
 		<para>
@@ -156,8 +156,8 @@
 			</indexterm>
 			environnement Windows, vous devriez installer Jenkins dans un répertoire comme
 			<filename moreinfo="none">C:\Tools\Jenkins</filename>
-			(il est préférable de ne
-			<emphasis>not</emphasis>
+			(il est préférable de 
+			<emphasis>ne pas</emphasis>
 			installer Jenkins dans un répertoire contenant des espaces, comme par exemple
 			<filename moreinfo="none">C:\Program
 				Files
@@ -175,7 +175,7 @@
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2633" significance="normal">
 				<primary>Unix</primary>
-				<seealso>specific Unix platforms</seealso>
+				<seealso>plates-formes Unix spécifiques</seealso>
 			</indexterm>
 			un serveur Linux ou Unix, vous pouvez l'installer dans
 			<filename moreinfo="none">/usr/local/jenkins</filename>
@@ -200,10 +200,10 @@
 	Avant
 	<indexterm id="I_indexterm3_d1e2656" significance="normal">
 		<primary>Jenkins</primary>
-		<secondary>running</secondary>
+		<secondary>exécution</secondary>
 		<tertiary sortas="command line">ligne de commande</tertiary>
 	</indexterm>
-	d'aller plus loin, démarrons simplement Jenkins and jetez-y un coup d'oeil. Si vous ne l'avez pas encore testé dans les chapitres
+	d'aller plus loin, démarrons simplement Jenkins et jetons-y un coup d'oeil. Si vous ne l'avez pas encore testé dans les chapitres
 	précédents, il est temps de vous salir les mains. Ouvrez une invite de commande dans le répertoire contenant le fichier 
 	<filename moreinfo="none">jenkins.war</filename> et lancez la commande suivante:
 		</para>
@@ -227,7 +227,7 @@
 		<primary>Jenkins</primary>
 		<secondary>disponible sur le port</secondary>
 	</indexterm>
-	disponible sur le port 8080. Ouvrez votre navigateur et allez à l'adresse 
+	sur le port 8080. Ouvrez votre navigateur et allez à l'adresse 
 	<ulink url="http://localhost:8080" />
 	et jetez y un 
 	<indexterm id="I_indexterm3_d1e2682" class="endofrange" startref="ch03-install" significance="normal">
