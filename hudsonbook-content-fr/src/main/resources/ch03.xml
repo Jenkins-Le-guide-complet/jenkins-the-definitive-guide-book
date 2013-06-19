@@ -302,32 +302,32 @@
 			non hébergés), et il vaut mieux ne pas être avare.
 		</para>
 		<para>
-			A build
+			Un serveur de
 			<indexterm id="I_indexterm3_d1e2734" significance="normal">
-				<primary>build server</primary>
-				<secondary>processor requirements for</secondary>
+				<primary>serveur de build</primary>
+				<secondary>besoins en processeur pour</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2739" significance="normal">
-				<primary>processors, build server requirements for</primary>
+				<primary>processeurs, les besoins d'un serveur de build en</primary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2742" significance="normal">
-				<primary>CPUs, build server requirements for</primary>
+				<primary>CPUs, les besoins d'un serveur de build en</primary>
 			</indexterm>
-			server also needs CPU horsepower. As a rule of thumb, you
-			will need one processor per parallel build, though, in
-			practice, you can
-			capitalize on I/O delays to do a little better than this. It is also
-			in
-			your best interest to dedicate
-			your build server as much as possible to
-			the task of running continuous builds. In particular, you should
-			avoid
-			memory
-			or CPU-intensive applications such as test servers, heavily-used
-			<phrase role="keep-together">enterprise</phrase>
-			applications, enterprise
-			databases such as Oracle, enterprise mail servers, and
-			<phrase role="keep-together">so on</phrase>
+			build a aussi besoin d'un CPU puissant. En règle générale, vous
+			aurez besoin d'un processeur par build parallèle, même si, dans
+			la practique, vous pouvez
+			capitaliser sur les délais d'E/S pour faire un peu mieux que cela. Il est également
+			dans
+			votre intérêt de dédier
+			votre serveur de build, autant que possible, à
+			la tâche de gestion des builds continus. En particulier, vous devriez
+			éviter
+			les applications
+			gourmandes en mémoire ou en CPU tels que les serveurs de test, les applications
+			<phrase role="keep-together">d'enterprise</phrase>
+			fortement utilisées, les base de données 
+			d'entreprise tel que Oracle, les serveurs de messagerie d'entreprise, et
+			<phrase role="keep-together">ainsi de suite</phrase>
 			.
 		</para>
 		<para>
