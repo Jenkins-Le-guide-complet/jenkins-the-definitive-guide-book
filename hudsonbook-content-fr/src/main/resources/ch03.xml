@@ -271,37 +271,35 @@
 			mérite un peu plus de prévoyance et de planification.
 		</para>
 		<para>
-			Before
+			Avant
 			<indexterm id="I_indexterm3_d1e2718" significance="normal">
-				<primary>build server</primary>
-				<secondary>memory requirements for</secondary>
+				<primary>serveur de build</primary>
+				<secondary>mémoire requise pour</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2723" significance="normal">
-				<primary>memory, requirements for</primary>
+				<primary>mémoire, requise pour</primary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2726" significance="normal">
 				<primary>Jenkins</primary>
-				<secondary>memory requirements for</secondary>
+				<secondary>mémoire requise pour</secondary>
 			</indexterm>
-			you start your installation, the first thing you will need
-			is a build server. To work well, Jenkins needs both
-			processor power and
-			memory. Jenkins itself is a relatively modest Java web application.
-			However, in most
-			configurations, at least some of the builds will be
-			run
-			on the principal build server. Builds tend to be both memory
-			and
-			processor-intensive operations, and Jenkins can be configured to run
-			several builds in parallel. Depending on the
-			number of build jobs you
-			are
-			managing, Jenkins will also need memory of its own for its own internal
-			use. The amount of
-			memory required will depend largely on the nature of
-			your builds, but memory is cheap these days (at least in
-			non-hosted
-			environments), and it’s best not to be stingy.
+			de commencer votre installation, la première chose dont vous aurez besoin
+			est un serveur de build. Pour fonctionner correctement, Jenkins a besoin à la fois d'un
+			processeur puissant et de
+			mémoire. Jenkins, pour sa part, est une application web Java relativement modeste.
+			Cependant, pour la majorité des
+			configurations, au moins une partie des builds sera exécutée
+			sur le serveur de build principal. Les builds ont tendance à être à la fois gourmand en mémoire
+			et
+			en temps processeur, et Jenkins peut être configuré pour exécuter
+			plusieurs builds en parallèle. Selon le
+			nombre de tâches de build que vous
+			gérez, Jenkins aura aussi besoin de mémoire dédiée pour son propre usage
+			interne. La quantité de
+			mémoire nécessaire dépendra en grande partie de la nature de
+			vos builds, mais la mémoire n'est pas cher ces temps-ci (du moins pour
+			des environnements
+			non hébergés), et il vaut mieux ne pas être avare.
 		</para>
 		<para>
 			A build
