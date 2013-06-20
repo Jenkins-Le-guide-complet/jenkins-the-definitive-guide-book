@@ -331,30 +331,30 @@
 			.
 		</para>
 		<para>
-			One very
+			Une option
 			<indexterm id="I_indexterm3_d1e2754" significance="normal">
-				<primary>build server</primary>
-				<secondary>virtual machine for</secondary>
+				<primary>serveur de build</primary>
+				<secondary>machine virtuelle pour</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2759" significance="normal">
-				<primary>virtual machine, for build server</primary>
+				<primary>machine virtuelle, pour serveur de build</primary>
 			</indexterm>
-			practical option available in many organizations today is to
-			use a virtual machine. This way, you can choose the
-			amount of memory and
-			number of processors you think appropriate for your initial
-			installation,
-			and easily add more
-			memory and processors later on as required. However,
-			if you are using a virtual machine, make sure that it has enough
-			memory to
-			support the maximum number of parallel builds you expect to be running.
-			The memory usage of a Continuous
-			Integration server is best described as
-			spiky—Jenkins will be creating additional JVMs as required for its
-			build
-			jobs,
-			and these need memory.
+			vraiment pratique, disponible dans de nombreuses organisations aujourd'hui, est
+			d'utliser une machine virtuelle. De cette façon, vous pouvez choisir la
+			quantité de mémoire et
+			le nombre de processeurs que vous jugez appropriés pour votre installation
+			initiale,
+			et d'ajouter facilement de la
+			mémoire et des processeurs plutard si nécessaire. Cependant,
+			si vous utilisez une machine virtuelle, assurez-vous qu'elle dispose de suffisamment
+			de mémoire pour
+			supporter le nombre maximal de builds en parrallèle auquel vous vous attendez à être exécuté.
+			L'utilisation de la mémoire d'un serveur d'intégration
+			continue peut-être vu comme des dents de scie
+			— Jenkins créera, au besoin, des JVMs supplémentaires pour ses
+			tâches de
+			build,
+			et celles-ci ont besoin de mémoire.
 		</para>
 		<para>
 			Another
