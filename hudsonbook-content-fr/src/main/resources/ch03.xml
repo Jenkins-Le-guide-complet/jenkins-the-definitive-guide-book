@@ -357,35 +357,35 @@
 			et celles-ci ont besoin de mémoire.
 		</para>
 		<para>
-			Another
+			Une autre
 			<indexterm id="I_indexterm3_d1e2765" significance="normal">
-				<primary>slave machines</primary>
-				<secondary sortas="distributed builds">for distributed
-					builds
+				<primary>machines esclaves</primary>
+				<secondary sortas="distributed builds">pour 
+					builds distributés
 				</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2770" significance="normal">
-				<primary>distributed builds</primary>
+				<primary>builds distributés</primary>
 			</indexterm>
-			useful approach is to set up multiple build machines.
-			Jenkins makes it quite easy to set up “slaves” on other machines
-			that can
-			be used to run additional build jobs. The slaves remain inactive until
-			a
-			new build job is requested—then the
-			main Jenkins installation dispatches
-			the build job to the slave and reports on the results. This is a
-			great way
-			to
-			absorb sudden spikes of build activity, for example just before a
-			major
-			release of your principal product. It is also a
-			useful strategy if certain
-			heavy-weight builds tend to “hog” the main build server—just put them
-			on
-			their own dedicated
-			build agent! We will look at how to do this in detail
-			later on in the book.
+			approche utile est de configurer plusieurs machines de build.
+			Jenkins rend facile la mise en place d'“esclaves” sur d'autres machines
+			qui peuvent
+			être utilisées pour exécuter des tâches de build additionnelles. Les esclaves restent inactifs jusqu'à
+			ce
+			qu'une nouvelle tâche de build soit demandée — puis l'installation
+			principale de Jenkins envois
+			la tâche de build à un esclave et rend compte des resultats. C'est une
+			excellente façon
+			d'absorber
+			les pointes soudaines de l'activité de build, par exemple juste avant une
+			livraison
+			majeure de votre principal produit. C'est aussi une stratégie
+			utile si certains
+			gros builds ont tendance à “accaparer” le serveur de build principal — il suffit de les mettre
+			sur
+			leur propre
+			agent de build! Nous verrons comment faire cela en détail
+			plus loin dans ce livre.
 		</para>
 		<para>
 			<indexterm id="I_indexterm3_d1e2775" significance="normal">
