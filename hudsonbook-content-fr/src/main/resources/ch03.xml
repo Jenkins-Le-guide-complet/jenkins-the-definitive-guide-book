@@ -432,15 +432,15 @@
 			.
 		</para>
 		<para>
-			In most environments, you will need to configure Java correctly for
-			this user. For example, you can do this by
-			defining the
+			Dans la majorité des environnements, vous devrez configurer correctement Java pour
+			cet utilisateur. Par exemple, vous pouvez le faire en
+			définissant les variables
 			<literal moreinfo="none">JAVA_HOME</literal>
-			and
+			et
 			<literal moreinfo="none">PATH</literal>
-			variables in the
+			dans le fichier
 			<filename moreinfo="none">.bashrc</filename>
-			file, as shown here:
+			, comme montré ici:
 		</para>
 		<programlisting id="I_programlisting3_d1e2812" format="linespecific">export
 			JAVA_HOME=/usr/local/java/jdk1.6.0
