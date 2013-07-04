@@ -458,35 +458,35 @@
 		</para>
 	</sect1>
 	<sect1 id="sec-hudson-home-directory">
-		<title>The Jenkins Home Directory</title>
+		<title>Le répertoire de travail de Jenkins</title>
 		<para>
 			<indexterm class="startofrange" id="ch03-home" significance="normal">
-				<primary>home directory for Jenkins</primary>
+				<primary>répertoire de travail pour Jenkins</primary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-home3" significance="normal">
 				<primary>Jenkins</primary>
-				<secondary>home directory for</secondary>
+				<secondary>répertoire de travail pour</secondary>
 			</indexterm>
-			Before we install Jenkins, however, there are some things
-			you need to know about how Jenkins stores its data. Indeed,
-			no matter
-			where you store the Jenkins WAR file, Jenkins keeps all its important
-			data
-			in a special separate directory
-			called the Jenkins home directory.
-			Here,
-			Jenkins stores information about your build server configuration, your
-			build
-			jobs, build artifacts, user accounts, and other useful information,
-			as well as any plugins you may have installed. The
-			Jenkins home
-			directory
-			format is
-			<phrase role="keep-together">backward</phrase>
-			compatible across
-			versions, so you can freely update or reinstall your Jenkins executable
-			without affecting your
-			Jenkins home directory.
+			Avant que nous installions Jenkins, toutefois, il y a certaines choses
+			que vous devez savoir sur la façon dont Jenkins stocke ses données. En effet,
+			peu importe
+			où vous stockez le fichier WAR de Jenkins, Jenkins conserve toutes ses données
+			importantes
+			dans un répertoire spécial séparé
+			appelé le répertoire de travail Jenkins.
+			Ici,
+			Jenkins stocke les informations sur la configuration de votre serveur de build, vos
+			tâches de
+			build, les artefacts de build, les comptes utilisateur, et d'autres informations utiles,
+			ainsi que tous les plugins que vous avez installé. Le
+			formart du répertoire de travail 
+			de Jenkins
+			est
+			<phrase role="keep-together">rétro</phrase>
+			compatible entre
+			les versions, donc vous pouvez librement mettre à jour ou ré-installer votre exécutable Jenkins
+			sans affecter votre
+			répertoire de travail Jenkins.
 		</para>
 		<para>Needless to say, this directory will need a lot of disk
 			space.
