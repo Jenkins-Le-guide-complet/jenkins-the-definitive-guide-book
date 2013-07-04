@@ -418,18 +418,18 @@
 				/bin/bash --groups build jenkins</userinput>
 		</screen>
 		<para>
-			The exact details may vary depending on your environment. For
-			example, you may prefer to use a graphical
-			administration console
-			instead
-			of the command line, or, on a Debian-based Linux server (such as
+			Les détails exacts peuvent varier en fonction de votre environnement. Par
+			exemple, vous préférerez peut-être utiliser une console d'administration
+			graphique
+			au lieu 
+			de la ligne de commande, ou, sur un serveur Linux basé sur une Debian (comme
 			Ubuntu),
-			you might use
-			the more user-friendly
+			vous pouvez utiliser
+			des commandes plus conviviales comme :
 			<literal moreinfo="none">adduser</literal>
-			and
+			et
 			<literal moreinfo="none">addgroup</literal>
-			commands.
+			.
 		</para>
 		<para>
 			In most environments, you will need to configure Java correctly for
