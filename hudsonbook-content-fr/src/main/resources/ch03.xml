@@ -390,25 +390,25 @@
 		<para>
 			<indexterm id="I_indexterm3_d1e2775" significance="normal">
 				<primary>Jenkins</primary>
-				<secondary>dedicated user for</secondary>
+				<secondary>utilisateur dédié pour</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2780" significance="normal">
-				<primary>users</primary>
-				<secondary sortas="Jenkins">for Jenkins, on build server</secondary>
+				<primary>utilisateurs</primary>
+				<secondary sortas="Jenkins">pour Jenkins, sur un serveur de build</secondary>
 			</indexterm>
-			If you are installing Jenkins on a Linux or Unix build
-			server, it is a good idea to create a special user (and user
-			group) for
-			Jenkins. This makes it easier to monitor at a glance the system
-			resources
-			being used by the Jenkins builds,
-			and to troubleshoot problematic builds
-			in real conditions. The native binary installation packages discussed
-			below do
-			this for you. If you did not use one of these, you can
-			create a
-			dedicated Jenkins user from the command line as shown
-			here:
+			Si vous installez Jenkins sur un serveur de build Linux ou
+			Unix, cela peut-être une bonne idée de créer un utilisateur spécial (et
+			un groupe utilisateur) pour
+			Jenkins. Cela rend plus facile de surveiller d'un coup d'oeil les ressources
+			système
+			utilisées par les builds de Jenkins,
+			et ainsi résoudre les builds qui posent problème
+			en conditions réelles. Les paquets d'installation des binaires natifs décrit
+			ci-dessous
+			font cela pour vous. Si vous n'avez pas utilisez l'un d'entre eux, vous pouvez
+			créer
+			un utilisateur Jenkins dédié depuis la ligne de commande comme montré
+			ici:
 		</para>
 		<screen format="linespecific">
 			$
