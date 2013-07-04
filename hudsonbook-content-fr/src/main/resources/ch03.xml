@@ -446,15 +446,15 @@
 			JAVA_HOME=/usr/local/java/jdk1.6.0
 			export PATH=$JAVA_HOME/bin:$PATH</programlisting>
 		<para>
-			You will now be able to use this user to run Jenkins in an
-			isolated
+			Vous devriez maintenant être en mesure d'utiliser cet utilisateur pour exécuter Jenkins dans un
+			environnement
 			<indexterm id="I_indexterm3_d1e2817" class="endofrange" startref="ch03-build2" significance="normal">
 				<primary />
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2819" class="endofrange" startref="ch03-build3" significance="normal">
 				<primary />
 			</indexterm>
-			environment.
+			isolé.
 		</para>
 	</sect1>
 	<sect1 id="sec-hudson-home-directory">
