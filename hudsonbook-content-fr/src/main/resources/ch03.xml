@@ -488,27 +488,27 @@
 			sans affecter votre
 			répertoire de travail Jenkins.
 		</para>
-		<para>Needless to say, this directory will need a lot of disk
-			space.
+		<para>Il va sans dire que ce répertoire aura besoin de beaucoup d'espace
+			disque.
 		</para>
 		<para>
-			By default, the Jenkins home directory will be called
+			Par défaut, le répertoire de travail Jenkins sera appelé
 			<filename moreinfo="none">.jenkins,</filename>
-			and will be placed in your home
-			directory. For example, if you are running a machine under Windows 7, if
-			your username
-			is “john”, you would find the Jenkins home directory under
+			et sera placé dans votre réprtoire de
+			travail. Par exemple, si vous utilisez une machine sous Windows 7 et si
+			votre nom d'utilisateur
+			est “john”, vous trouverez le répertoire de travail Jenkins sous
 			<filename moreinfo="none">C:\Users\john\.jenkins</filename>
-			. Under Windows
-			XP, it would be
+			. Sous Windows
+			XP, ce serait
 			<filename moreinfo="none">C:\Documents and
 				Settings\John\.jenkins
 			</filename>
-			. On a Linux machine, it would most
-			likely be under
+			. Sur une machine Linux, ce serait probablement
+			sous
 			<filename moreinfo="none">/home/john/.jenkins</filename>
 			.
-			And so on.
+			Et ainsi de suite.
 		</para>
 		<para>
 			You
