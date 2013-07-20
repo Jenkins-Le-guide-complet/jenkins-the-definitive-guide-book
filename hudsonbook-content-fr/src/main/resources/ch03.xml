@@ -345,12 +345,12 @@
 			le nombre de processeurs que vous jugez appropriés pour votre installation
 			initiale,
 			et d'ajouter facilement de la
-			mémoire et des processeurs plutard si nécessaire. Cependant,
+			mémoire et des processeurs plus tard si nécessaire. Cependant,
 			si vous utilisez une machine virtuelle, assurez-vous qu'elle dispose de suffisamment
 			de mémoire pour
-			supporter le nombre maximal de builds en parrallèle auquel vous vous attendez à être exécuté.
+			supporter le nombre maximal de builds en parallèle auquel vous vous attendez à être exécuté.
 			L'utilisation de la mémoire d'un serveur d'intégration
-			continue peut-être vu comme des dents de scie
+			continue peut-être vue comme des dents de scie
 			— Jenkins créera, au besoin, des JVMs supplémentaires pour ses
 			tâches de
 			build,
@@ -361,11 +361,11 @@
 			<indexterm id="I_indexterm3_d1e2765" significance="normal">
 				<primary>machines esclaves</primary>
 				<secondary sortas="distributed builds">pour 
-					builds distributés
+					builds distribués
 				</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2770" significance="normal">
-				<primary>builds distributés</primary>
+				<primary>builds distribués</primary>
 			</indexterm>
 			approche utile est de configurer plusieurs machines de build.
 			Jenkins rend facile la mise en place d'“esclaves” sur d'autres machines
@@ -373,8 +373,8 @@
 			être utilisées pour exécuter des tâches de build additionnelles. Les esclaves restent inactifs jusqu'à
 			ce
 			qu'une nouvelle tâche de build soit demandée — puis l'installation
-			principale de Jenkins envois
-			la tâche de build à un esclave et rend compte des resultats. C'est une
+			principale de Jenkins envoie
+			la tâche de build à un esclave et rend compte des résultats. C'est une
 			excellente façon
 			d'absorber
 			les pointes soudaines de l'activité de build, par exemple juste avant une
@@ -384,7 +384,7 @@
 			gros builds ont tendance à “accaparer” le serveur de build principal — il suffit de les mettre
 			sur
 			leur propre
-			agent de build! Nous verrons comment faire cela en détail
+			agent de build ! Nous verrons comment faire cela en détail
 			plus loin dans ce livre.
 		</para>
 		<para>
@@ -403,9 +403,9 @@
 			système
 			utilisées par les builds de Jenkins,
 			et ainsi résoudre les builds qui posent problème
-			en conditions réelles. Les paquets d'installation des binaires natifs décrit
+			en conditions réelles. Les paquets d'installation des binaires natifs décrits
 			ci-dessous
-			font cela pour vous. Si vous n'avez pas utilisez l'un d'entre eux, vous pouvez
+			font cela pour vous. Si vous n'avez pas utilisé l'un d'entre eux, vous pouvez
 			créer
 			un utilisateur Jenkins dédié depuis la ligne de commande comme montré
 			ici:
