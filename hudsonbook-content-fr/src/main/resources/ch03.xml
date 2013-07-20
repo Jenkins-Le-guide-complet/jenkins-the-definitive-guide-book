@@ -511,25 +511,25 @@
 			Et ainsi de suite.
 		</para>
 		<para>
-			You
+			Vous
 			<indexterm class="startofrange" id="ch03-home2" significance="normal">
-				<primary>JENKINS_HOME environment variable</primary>
+				<primary>variable d'environnement JENKINS_HOME</primary>
 			</indexterm>
-			can force Jenkins to use a different directory as its home
-			directory by defining the
+			pouvez forcer Jenkins à utiliser un répertoire différent pour son répertoire
+			de travail en définissant la variable d'environnement
 			<code>JENKINS_HOME</code>
-			environment variable.
-			You may need to do this on a build server to conform to local directory
-			conventions or to make
-			your system administrator happy. For example,
-			if
-			your Jenkins WAR file is installed in
+			.
+			Vous pourriez avoir besoin de le faire sur une serveur de build pour vous conformer aux convention du répertoire
+			local ou pour rendre
+			votre administrateur système heureux. Par exemple,
+			si
+			votre fichier WAR Jenkins est installé dans
 			<filename moreinfo="none">/usr/local/jenkins</filename>
-			, and the Jenkins home
-			directory needs to be in the
+			, et que le répertoire de travail
+			Jenkins a besoin d'être dans le répertoire
 			<filename moreinfo="none">/data/jenkins</filename>
-			directory, you might write a
-			startup script along the following lines:
+			, vous pourriez écrire un
+			script de démarrage comme suit :
 		</para>
 		<programlisting id="I_programlisting3_d1e2869" format="linespecific">export
 			JENKINS_BASE=/usr/local/jenkins
