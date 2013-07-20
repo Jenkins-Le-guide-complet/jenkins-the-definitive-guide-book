@@ -536,16 +536,16 @@
 			export JENKINS_HOME=/var/jenkins-data
 			java -jar ${JENKINS_BASE}/jenkins.war</programlisting>
 		<para>
-			If you are running Jenkins in a Java EE container such as Tomcat or
-			JBoss, you can configure the webapp to expose its
-			own environments
-			variables. For example, if you are using Tomcat, you could create a
-			file
-			called
+			Si vous utilisez Jenkins dans un conteneur Java EE comme Tomcat ou
+			JBoss, vous pouvez configurer la webapp pour exposer ses
+			propres variables
+			d'environnement. Par exemple, si vous utilisez Tomcat, vous pouvez créer un
+			fichier
+			appelé
 			<filename moreinfo="none">jenkins.xml</filename>
-			in the
+			dans le répertoire
 			<filename moreinfo="none">$CATALINA_BASE/conf/localhost</filename>
-			directory:
+			:
 		</para>
 		<programlisting id="I_programlisting3_d1e2879" format="linespecific">&lt;Context
 			docBase="../jenkins.war"&gt;
