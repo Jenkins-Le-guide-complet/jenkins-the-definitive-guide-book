@@ -11,14 +11,14 @@
 				<secondary>Jenkins</secondary>
 			</indexterm>
 			L'une des premières choses que vous avez dû remarquer à propos de
-			Jenkins, est qu'il est très simple à installer.
+			Jenkins, c'est qu'il est très simple à installer.
 			En effet, en moins de cinq minutes, vous pouvez avoir un serveur
 			Jenkins installé et disponible. Néanmoins, comme
 			toujours, dans le monde réel, les choses ne sont pas aussi
 			simples, et il y a quelques détails auxquelles vous devez
 			penser lorsque vous installez un serveur
 			Jenkins en production. Dans ce chapitre, nous allons voir comment installer
-			Jenkins sur votre poste poste de travail ou sur un véritable serveur. Nous allons
+			Jenkins sur votre poste de travail ou sur un véritable serveur. Nous allons
 			également voir comment entretenir votre installation de Jenkins une fois en production, et comment
 			réaliser les actions de maintenance simples comme les sauvegardes et les mises à jour.
 		</para>
@@ -44,10 +44,10 @@
 				<secondary>pré-requis</secondary>
 			</indexterm>
 			Jenkins étant une application Java, vous aurez besoin d'une version
-			récente de Java sur votre machine. Plus précisèment, vous aurez besoin de Java 5. En fait, sur votre
+			récente de Java sur votre machine. Plus précisément, vous aurez besoin de Java 5. En fait, sur votre
 			serveur, vous aurez même certainement besoin du Java
 			Development Kit (JDK) 5.0 ou d'une version supérieure pour
-			éxécuter vos builds. Si vous n'en êtes pas sûr, vous pouvez vérifier
+			exécuter vos builds. Si vous n'en êtes pas sûr, vous pouvez vérifier
 			<indexterm id="I_indexterm3_d1e2521" significance="normal">
 				<primary>votre version de Java </primary>
 			</indexterm>
@@ -71,7 +71,7 @@
 				<secondary>Jenkins</secondary>
 				<tertiary sortas="WAR file">depuis un fichier WAR</tertiary>
 			</indexterm>
-			est disponible sous la forme d'une application Java packagé (un fichier WAR). Vous pouvez télécharger
+			est disponible sous la forme d'une application Java packagée (un fichier WAR). Vous pouvez télécharger
 			la dernière version sur le site web de Jenkins (
 			<ulink url="http://jenkins-ci.org" />
 			—voir
@@ -122,7 +122,7 @@
 			Une fois que vous avez lancé l'installateur,
 			<indexterm id="I_indexterm3_d1e2581" significance="normal">
 				<primary>Jenkins</primary>
-				<secondary>port running on</secondary>
+				<secondary>port d'écoute</secondary>
 			</indexterm>
 			Jenkins démarrera automatiquement sur le port 8080 (voir
 			<xref linkend="fig-hudson-starting-page" />
@@ -135,7 +135,7 @@
 			Il existe également de très bon installateurs pour Mac OS X et
 			également pour la plupart des distributions Linux,
 			comme Ubuntu, RedHat (incluant CentOS et Fedora) et OpenSolaris. Nous expliquerons comment installer Jenkins
-			sur Ubuntu et Redhal plus loin.
+			sur Ubuntu et RedHat plus loin.
 		</para>
 
 		<para>
@@ -156,8 +156,8 @@
 			</indexterm>
 			environnement Windows, vous devriez installer Jenkins dans un répertoire comme
 			<filename moreinfo="none">C:\Tools\Jenkins</filename>
-			(il est préférable de ne
-			<emphasis>not</emphasis>
+			(il est préférable de 
+			<emphasis>ne pas</emphasis>
 			installer Jenkins dans un répertoire contenant des espaces, comme par exemple
 			<filename moreinfo="none">C:\Program
 				Files
@@ -175,7 +175,7 @@
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2633" significance="normal">
 				<primary>Unix</primary>
-				<seealso>specific Unix platforms</seealso>
+				<seealso>plates-formes Unix spécifiques</seealso>
 			</indexterm>
 			un serveur Linux ou Unix, vous pouvez l'installer dans
 			<filename moreinfo="none">/usr/local/jenkins</filename>
@@ -200,10 +200,10 @@
 	Avant
 	<indexterm id="I_indexterm3_d1e2656" significance="normal">
 		<primary>Jenkins</primary>
-		<secondary>running</secondary>
+		<secondary>exécution</secondary>
 		<tertiary sortas="command line">ligne de commande</tertiary>
 	</indexterm>
-	d'aller plus loin, démarrons simplement Jenkins and jetez-y un coup d'oeil. Si vous ne l'avez pas encore testé dans les chapitres
+	d'aller plus loin, démarrons simplement Jenkins et jetons-y un coup d'oeil. Si vous ne l'avez pas encore testé dans les chapitres
 	précédents, il est temps de vous salir les mains. Ouvrez une invite de commande dans le répertoire contenant le fichier 
 	<filename moreinfo="none">jenkins.war</filename> et lancez la commande suivante:
 		</para>
@@ -227,7 +227,7 @@
 		<primary>Jenkins</primary>
 		<secondary>disponible sur le port</secondary>
 	</indexterm>
-	disponible sur le port 8080. Ouvrez votre navigateur et allez à l'adresse 
+	sur le port 8080. Ouvrez votre navigateur et allez à l'adresse 
 	<ulink url="http://localhost:8080" />
 	et jetez y un 
 	<indexterm id="I_indexterm3_d1e2682" class="endofrange" startref="ch03-install" significance="normal">
@@ -252,165 +252,163 @@
 	</sect1>
 	
 	<sect1 id="chapter-installing-build-server">
-		<title>Preparing a Build Server for Jenkins</title>
+		<title>Préparation d'un serveur de build pour Jenkins</title>
 		<para>
-			Installing
+			L'installation
 			<indexterm class="startofrange" id="ch03-build2" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="build server">on build server</tertiary>
+				<tertiary sortas="build server">sur un serveur de build</tertiary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-build3" significance="normal">
-				<primary>build server</primary>
-				<secondary>installing Jenkins on</secondary>
+				<primary>serveur de build</primary>
+				<secondary>installation de Jenkins sur</secondary>
 			</indexterm>
-			Jenkins on your local development machine is one thing, but
-			installing
+			de Jenkins sur votre machine locale de développement est une chose, mais
+			l'installation de 
 			<phrase role="keep-together">Jenkins</phrase>
-			on a proper build
-			server deserves a little more forethought and planning.
+			sur un bon serveur de build 
+			mérite un peu plus de prévoyance et de planification.
 		</para>
 		<para>
-			Before
+			Avant
 			<indexterm id="I_indexterm3_d1e2718" significance="normal">
-				<primary>build server</primary>
-				<secondary>memory requirements for</secondary>
+				<primary>serveur de build</primary>
+				<secondary>mémoire requise pour</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2723" significance="normal">
-				<primary>memory, requirements for</primary>
+				<primary>mémoire, requise pour</primary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2726" significance="normal">
 				<primary>Jenkins</primary>
-				<secondary>memory requirements for</secondary>
+				<secondary>mémoire requise pour</secondary>
 			</indexterm>
-			you start your installation, the first thing you will need
-			is a build server. To work well, Jenkins needs both
-			processor power and
-			memory. Jenkins itself is a relatively modest Java web application.
-			However, in most
-			configurations, at least some of the builds will be
-			run
-			on the principal build server. Builds tend to be both memory
-			and
-			processor-intensive operations, and Jenkins can be configured to run
-			several builds in parallel. Depending on the
-			number of build jobs you
-			are
-			managing, Jenkins will also need memory of its own for its own internal
-			use. The amount of
-			memory required will depend largely on the nature of
-			your builds, but memory is cheap these days (at least in
-			non-hosted
-			environments), and it’s best not to be stingy.
+			de commencer votre installation, la première chose dont vous aurez besoin
+			est un serveur de build. Pour fonctionner correctement, Jenkins a besoin à la fois d'un
+			processeur puissant et de
+			mémoire. Jenkins, pour sa part, est une application web Java relativement modeste.
+			Cependant, pour la majorité des
+			configurations, au moins une partie des builds sera exécutée
+			sur le serveur de build principal. Les builds ont tendance à être à la fois gourmand en mémoire
+			et
+			en temps processeur, et Jenkins peut être configuré pour exécuter
+			plusieurs builds en parallèle. Selon le
+			nombre de tâches de build que vous
+			gérez, Jenkins aura aussi besoin de mémoire dédiée pour son propre usage
+			interne. La quantité de
+			mémoire nécessaire dépendra en grande partie de la nature de
+			vos builds, mais la mémoire n'est pas cher ces temps-ci (du moins pour
+			des environnements
+			non hébergés), et il vaut mieux ne pas être avare.
 		</para>
 		<para>
-			A build
+			Un serveur de
 			<indexterm id="I_indexterm3_d1e2734" significance="normal">
-				<primary>build server</primary>
-				<secondary>processor requirements for</secondary>
+				<primary>serveur de build</primary>
+				<secondary>besoins en processeur pour</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2739" significance="normal">
-				<primary>processors, build server requirements for</primary>
+				<primary>processeurs, les besoins d'un serveur de build en</primary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2742" significance="normal">
-				<primary>CPUs, build server requirements for</primary>
+				<primary>CPUs, les besoins d'un serveur de build en</primary>
 			</indexterm>
-			server also needs CPU horsepower. As a rule of thumb, you
-			will need one processor per parallel build, though, in
-			practice, you can
-			capitalize on I/O delays to do a little better than this. It is also
-			in
-			your best interest to dedicate
-			your build server as much as possible to
-			the task of running continuous builds. In particular, you should
-			avoid
-			memory
-			or CPU-intensive applications such as test servers, heavily-used
-			<phrase role="keep-together">enterprise</phrase>
-			applications, enterprise
-			databases such as Oracle, enterprise mail servers, and
-			<phrase role="keep-together">so on</phrase>
+			build a aussi besoin d'un CPU puissant. En règle générale, vous
+			aurez besoin d'un processeur par build parallèle, même si, dans
+			la practique, vous pouvez
+			capitaliser sur les délais d'E/S pour faire un peu mieux que cela. Il est également
+			dans
+			votre intérêt de dédier
+			votre serveur de build, autant que possible, à
+			la tâche de gestion des builds continus. En particulier, vous devriez
+			éviter
+			les applications
+			gourmandes en mémoire ou en CPU tels que les serveurs de test, les applications
+			<phrase role="keep-together">d'enterprise</phrase>
+			fortement utilisées, les base de données 
+			d'entreprise tel que Oracle, les serveurs de messagerie d'entreprise, et
+			<phrase role="keep-together">ainsi de suite</phrase>
 			.
 		</para>
 		<para>
-			One very
+			Une option
 			<indexterm id="I_indexterm3_d1e2754" significance="normal">
-				<primary>build server</primary>
-				<secondary>virtual machine for</secondary>
+				<primary>serveur de build</primary>
+				<secondary>machine virtuelle pour</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2759" significance="normal">
-				<primary>virtual machine, for build server</primary>
+				<primary>machine virtuelle, pour serveur de build</primary>
 			</indexterm>
-			practical option available in many organizations today is to
-			use a virtual machine. This way, you can choose the
-			amount of memory and
-			number of processors you think appropriate for your initial
-			installation,
-			and easily add more
-			memory and processors later on as required. However,
-			if you are using a virtual machine, make sure that it has enough
-			memory to
-			support the maximum number of parallel builds you expect to be running.
-			The memory usage of a Continuous
-			Integration server is best described as
-			spiky—Jenkins will be creating additional JVMs as required for its
-			build
-			jobs,
-			and these need memory.
+			vraiment pratique, disponible dans de nombreuses organisations aujourd'hui, est
+			d'utliser une machine virtuelle. De cette façon, vous pouvez choisir la
+			quantité de mémoire et
+			le nombre de processeurs que vous jugez appropriés pour votre installation
+			initiale,
+			et d'ajouter facilement de la
+			mémoire et des processeurs plus tard si nécessaire. Cependant,
+			si vous utilisez une machine virtuelle, assurez-vous qu'elle dispose de suffisamment
+			de mémoire pour
+			supporter le nombre maximal de builds en parallèle auquel vous vous attendez à être exécuté.
+			L'utilisation de la mémoire d'un serveur d'intégration
+			continue peut-être vue comme des dents de scie
+			— Jenkins créera, au besoin, des JVMs supplémentaires pour ses
+			tâches de
+			build,
+			et celles-ci ont besoin de mémoire.
 		</para>
 		<para>
-			Another
+			Une autre
 			<indexterm id="I_indexterm3_d1e2765" significance="normal">
-				<primary>slave machines</primary>
-				<secondary sortas="distributed builds">for distributed
-					builds
+				<primary>machines esclaves</primary>
+				<secondary sortas="distributed builds">pour 
+					builds distribués
 				</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2770" significance="normal">
-				<primary>distributed builds</primary>
+				<primary>builds distribués</primary>
 			</indexterm>
-			useful approach is to set up multiple build machines.
-			Jenkins makes it quite easy to set up “slaves” on other machines
-			that can
-			be used to run additional build jobs. The slaves remain inactive until
-			a
-			new build job is requested—then the
-			main Jenkins installation dispatches
-			the build job to the slave and reports on the results. This is a
-			great way
-			to
-			absorb sudden spikes of build activity, for example just before a
-			major
-			release of your principal product. It is also a
-			useful strategy if certain
-			heavy-weight builds tend to “hog” the main build server—just put them
-			on
-			their own dedicated
-			build agent! We will look at how to do this in detail
-			later on in the book.
+			approche utile est de configurer plusieurs machines de build.
+			Jenkins rend facile la mise en place d'“esclaves” sur d'autres machines
+			qui peuvent
+			être utilisées pour exécuter des tâches de build additionnelles. Les esclaves restent inactifs jusqu'à
+			ce
+			qu'une nouvelle tâche de build soit demandée — puis l'installation
+			principale de Jenkins envoie
+			la tâche de build à un esclave et rend compte des résultats. C'est une
+			excellente façon
+			d'absorber
+			les pointes soudaines de l'activité de build, par exemple juste avant une
+			livraison
+			majeure de votre principal produit. C'est aussi une stratégie
+			utile si certains
+			gros builds ont tendance à “accaparer” le serveur de build principal — il suffit de les mettre
+			sur
+			leur propre
+			agent de build ! Nous verrons comment faire cela en détail
+			plus loin dans ce livre.
 		</para>
 		<para>
 			<indexterm id="I_indexterm3_d1e2775" significance="normal">
 				<primary>Jenkins</primary>
-				<secondary>dedicated user for</secondary>
+				<secondary>utilisateur dédié pour</secondary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2780" significance="normal">
-				<primary>users</primary>
-				<secondary sortas="Jenkins">for Jenkins, on build server</secondary>
+				<primary>utilisateurs</primary>
+				<secondary sortas="Jenkins">pour Jenkins, sur un serveur de build</secondary>
 			</indexterm>
-			If you are installing Jenkins on a Linux or Unix build
-			server, it is a good idea to create a special user (and user
-			group) for
-			Jenkins. This makes it easier to monitor at a glance the system
-			resources
-			being used by the Jenkins builds,
-			and to troubleshoot problematic builds
-			in real conditions. The native binary installation packages discussed
-			below do
-			this for you. If you did not use one of these, you can
-			create a
-			dedicated Jenkins user from the command line as shown
-			here:
+			Si vous installez Jenkins sur un serveur de build Linux ou
+			Unix, cela peut-être une bonne idée de créer un utilisateur spécial (et
+			un groupe utilisateur) pour
+			Jenkins. Cela rend plus facile de surveiller d'un coup d'oeil les ressources
+			système
+			utilisées par les builds de Jenkins,
+			et ainsi résoudre les builds qui posent problème
+			en conditions réelles. Les paquets d'installation des binaires natifs décrits
+			ci-dessous
+			font cela pour vous. Si vous n'avez pas utilisé l'un d'entre eux, vous pouvez
+			créer
+			un utilisateur Jenkins dédié depuis la ligne de commande comme montré
+			ici:
 		</para>
 		<screen format="linespecific">
 			$
@@ -420,75 +418,75 @@
 				/bin/bash --groups build jenkins</userinput>
 		</screen>
 		<para>
-			The exact details may vary depending on your environment. For
-			example, you may prefer to use a graphical
-			administration console
-			instead
-			of the command line, or, on a Debian-based Linux server (such as
+			Les détails exacts peuvent varier en fonction de votre environnement. Par
+			exemple, vous préférerez peut-être utiliser une console d'administration
+			graphique
+			au lieu 
+			de la ligne de commande, ou, sur un serveur Linux basé sur une Debian (comme
 			Ubuntu),
-			you might use
-			the more user-friendly
+			vous pouvez utiliser
+			des commandes plus conviviales comme :
 			<literal moreinfo="none">adduser</literal>
-			and
+			et
 			<literal moreinfo="none">addgroup</literal>
-			commands.
+			.
 		</para>
 		<para>
-			In most environments, you will need to configure Java correctly for
-			this user. For example, you can do this by
-			defining the
+			Dans la majorité des environnements, vous devrez configurer correctement Java pour
+			cet utilisateur. Par exemple, vous pouvez le faire en
+			définissant les variables
 			<literal moreinfo="none">JAVA_HOME</literal>
-			and
+			et
 			<literal moreinfo="none">PATH</literal>
-			variables in the
+			dans le fichier
 			<filename moreinfo="none">.bashrc</filename>
-			file, as shown here:
+			, comme montré ici:
 		</para>
 		<programlisting id="I_programlisting3_d1e2812" format="linespecific">export
 			JAVA_HOME=/usr/local/java/jdk1.6.0
 			export PATH=$JAVA_HOME/bin:$PATH</programlisting>
 		<para>
-			You will now be able to use this user to run Jenkins in an
-			isolated
+			Vous devriez maintenant être en mesure d'utiliser cet utilisateur pour exécuter Jenkins dans un
+			environnement
 			<indexterm id="I_indexterm3_d1e2817" class="endofrange" startref="ch03-build2" significance="normal">
 				<primary />
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2819" class="endofrange" startref="ch03-build3" significance="normal">
 				<primary />
 			</indexterm>
-			environment.
+			isolé.
 		</para>
 	</sect1>
 	<sect1 id="sec-hudson-home-directory">
-		<title>The Jenkins Home Directory</title>
+		<title>Le répertoire de travail de Jenkins</title>
 		<para>
 			<indexterm class="startofrange" id="ch03-home" significance="normal">
-				<primary>home directory for Jenkins</primary>
+				<primary>répertoire de travail pour Jenkins</primary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-home3" significance="normal">
 				<primary>Jenkins</primary>
-				<secondary>home directory for</secondary>
+				<secondary>répertoire de travail pour</secondary>
 			</indexterm>
-			Before we install Jenkins, however, there are some things
-			you need to know about how Jenkins stores its data. Indeed,
-			no matter
-			where you store the Jenkins WAR file, Jenkins keeps all its important
-			data
-			in a special separate directory
-			called the Jenkins home directory.
-			Here,
-			Jenkins stores information about your build server configuration, your
-			build
-			jobs, build artifacts, user accounts, and other useful information,
-			as well as any plugins you may have installed. The
-			Jenkins home
-			directory
-			format is
-			<phrase role="keep-together">backward</phrase>
-			compatible across
-			versions, so you can freely update or reinstall your Jenkins executable
-			without affecting your
-			Jenkins home directory.
+			Avant que nous installions Jenkins, toutefois, il y a certaines choses
+			que vous devez savoir sur la façon dont Jenkins stocke ses données. En effet,
+			peu importe
+			où vous stockez le fichier WAR de Jenkins, Jenkins conserve toutes ses données
+			importantes
+			dans un répertoire spécial séparé
+			appelé le répertoire de travail Jenkins.
+			Ici,
+			Jenkins stocke les informations sur la configuration de votre serveur de build, vos
+			tâches de
+			build, les artefacts de build, les comptes utilisateur, et d'autres informations utiles,
+			ainsi que tous les plugins que vous avez installé. Le
+			formart du répertoire de travail 
+			de Jenkins
+			est
+			<phrase role="keep-together">rétro</phrase>
+			compatible entre
+			les versions, donc vous pouvez librement mettre à jour ou ré-installer votre exécutable Jenkins
+			sans affecter votre
+			répertoire de travail Jenkins.
 		</para>
 		<para>Needless to say, this directory will need a lot of disk
 			space.
