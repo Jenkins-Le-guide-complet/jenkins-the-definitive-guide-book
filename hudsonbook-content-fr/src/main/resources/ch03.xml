@@ -553,54 +553,54 @@
 			value="/data/jenkins" override="true"/&gt;
 			&lt;/Context&gt;</programlisting>
 		<para>
-			In a previous life, Jenkins was known as Hudson. Jenkins remains
-			compatible with previous Hudson installations, and
-			upgrading from
+			Dans une vie antérieure, Jenkins était connu sous le nom de Hudson. Jenkins reste
+			compatible avec les installations précédentes de Hudson, et
+			le passage de
 			Hudson
-			to Jenkins can be as simple as replacing the old
+			à Jenkins peut-être aussi simple que de remplacer l'ancien fichier
 			<filename moreinfo="none">hudson.war</filename>
-			file with
+			par
 			<filename moreinfo="none">jenkins.war</filename>
-			. Jenkins will look for its home
-			directory in the following places (by order of
+			. Jenkins cherchera son répertoire de travail
+			dans les places suivantes (par ordre de
 			<indexterm id="I_indexterm3_d1e2889" significance="normal">
-				<primary>HUDSON_HOME environment variable</primary>
+				<primary>variable d'environnement HUDSON_HOME</primary>
 			</indexterm>
-			precedence):
+			préséance):
 		</para>
 		<orderedlist continuation="restarts" inheritnum="ignore">
 			<listitem>
-				<para>A JNDI environment entry called JENKINS_HOME</para>
+				<para>Une entrée d'environnement JNDI appelé JENKINS_HOME</para>
 			</listitem>
 			<listitem>
-				<para>A JNDI environment entry called HUDSON_HOME</para>
+				<para>Une entrée d'environnement JNDI appelé HUDSON_HOME</para>
 			</listitem>
 			<listitem>
-				<para>A system property named JENKINS_HOME</para>
+				<para>Une propriété système nommé JENKINS_HOME</para>
 			</listitem>
 			<listitem>
-				<para>A system property named HUDSON_HOME</para>
+				<para>Une propriété système nommé HUDSON_HOME</para>
 			</listitem>
 			<listitem>
-				<para>An environment variable named JENKINS_HOME</para>
+				<para>Une variable d'environnement nommée JENKINS_HOME</para>
 			</listitem>
 			<listitem>
-				<para>An environment variable named HUDSON_HOME</para>
+				<para>Une variable d'environnement nommée HUDSON_HOME</para>
 			</listitem>
 			<listitem>
 				<para>
-					The
+					Le répertoire
 					<filename moreinfo="none">.hudson</filename>
-					directory in
-					the user’s home directory, if it already exists
+					dans
+					le répertoire de travail utilisateur, si il existe déjà
 				</para>
 			</listitem>
 			<listitem>
 				<para>
-					The
+					Le répertoire
 					<filename moreinfo="none">.jenkins</filename>
-					directory in
-					the user’s home
+					dans
+					le répertoire de travail
 					<indexterm id="I_indexterm3_d1e2924" class="endofrange" startref="ch03-home" significance="normal">
 						<primary />
 					</indexterm>
@@ -610,7 +610,7 @@
 					<indexterm id="I_indexterm3_d1e2928" class="endofrange" startref="ch03-home3" significance="normal">
 						<primary />
 					</indexterm>
-					directory
+					utilisateur
 				</para>
 			</listitem>
 		</orderedlist>
