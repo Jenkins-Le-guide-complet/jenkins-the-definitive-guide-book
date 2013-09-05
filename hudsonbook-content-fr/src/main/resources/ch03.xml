@@ -726,27 +726,27 @@
 		</para>
 	</sect1>
 	<sect1 id="sect-hudson-redhat">
-		<title>Installing Jenkins on Redhat, Fedora, or CentOS</title>
+		<title>Installer Jenkins sur Redhat, Fedora ou CentOS</title>
 		<para>
 			<indexterm class="startofrange" id="ch03-rfc1" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="RedHat">on Redhat</tertiary>
+				<tertiary sortas="RedHat">sur Redhat</tertiary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-rfc2" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="Fedora">on Fedora</tertiary>
+				<tertiary sortas="Fedora">sur Fedora</tertiary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-rfc3" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="CentOS">on CentOS</tertiary>
+				<tertiary sortas="CentOS">sur CentOS</tertiary>
 			</indexterm>
-			There are also native binary packages available for Redhat,
-			Fedora, and CentOS. First you need to set up the
-			repository as
-			follows:
+			Il exite également des paquets binaires natifs pour Redhat,
+			Fedora et CentOS. Il vous faut d'abord configurer le
+			référentiel comme
+			il suit :
 		</para>
 		<screen format="linespecific">
 			$
@@ -757,64 +757,64 @@
 			<userinput moreinfo="none">sudo rpm --import
 				http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key</userinput>
 		</screen>
-		<para>On a fresh installation, you may need to install the JDK:</para>
+		<para>Sur une nouvelle installation, vous devrez peut-être installer le JDK:</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo yum install java-1.6.0-openjdk</userinput>
 		</screen>
-		<para>Next, you can install the package as shown here:</para>
+		<para>Ensuite, vous pouvez installer le paquet comme montré ici :</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo yum install jenkins</userinput>
 		</screen>
 		<para>
-			This will install the latest version of Jenkins into the
-			<filename moreinfo="none">/usr/lib/jenkins</filename>
-			directory. The default Jenkins
-			home directory will be in
+			Ceci installera la dernière version de Jenkins dans le
+			répertoire <filename moreinfo="none">/usr/lib/jenkins</filename>
+			. Le répertoire de travail par défaut
+			de Jenkins sera
 			<filename moreinfo="none">/var/lib/jenkins</filename>
 			.
 		</para>
 		<para>
-			Now you can start Jenkins using the
-			<literal moreinfo="none">service</literal>
-			command:
+			Vous pouvez maintenant démarrer Jenkins en utilisant la
+			commande de <literal moreinfo="none">service</literal>
+			:
 		</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo service jenkins start</userinput>
 		</screen>
 		<para>
-			Jenkins will now be running on the default port of 8080 (
+			Jenkins va maintenant être exécuté sur le port par défaut : 8080 (
 			<ulink url="http://localhost:8080/" />
 			).
 		</para>
 		<para>
-			Jenkins’s configuration parameters are placed in the
+			Les paramètres de configuration de Jenkins sont placés dans le fichier
 			<filename moreinfo="none">/etc/sysconfig/jenkins</filename>
-			file. However at the
-			time of writing the configuration options are more limited than those
-			provided by the Ubuntu
-			package: you can define the HTTP port using
-			the
+			. Cependant, au
+			moment de l'écriture de ce livre, les options de configuration sont plus limitées que celles
+			fournit par le paquet 
+			Ubuntu : vous pouvez définir le port HTTP en utilisant
+			le
 			<indexterm id="I_indexterm3_d1e3109" significance="normal">
-				<primary>JENKINS_PORT parameter</primary>
+				<primary>paramètre JENKINS_PORT</primary>
 			</indexterm>
-			JENKINS_PORT parameter, for example, but to specify an
-			application context you need to modify the startup script by
-			hand. The
-			principal configuration options are listed here:
+			paramètre JENKINS_PORT, par exemple, mais pour spécifier un
+			contexte d'application vous devez modifier le script de démarrage à
+			la main. Les
+			principales options de configuration sont listées ici :
 		</para>
 		<variablelist>
 			<varlistentry>
 				<term>JENKINS_JAVA_CMD</term>
 				<listitem>
 					<para>
-						The
+						La
 						<indexterm id="I_indexterm3_d1e3120" significance="normal">
-							<primary>JENKINS_JAVA_CMD parameter</primary>
+							<primary>paramètre JENKINS_JAVA_CMD</primary>
 						</indexterm>
-						version of Java you want to use to run Jenkins
+						version de Java que vous voulez utiliser pour exécuter Jenkins
 					</para>
 				</listitem>
 			</varlistentry>
@@ -822,11 +822,11 @@
 				<term>JENKINS_JAVA_OPTIONS</term>
 				<listitem>
 					<para>
-						Command-line
+						Les options de ligne de commande
 						<indexterm id="I_indexterm3_d1e3130" significance="normal">
-							<primary>JENKINS_JAVA_OPTIONS parameter</primary>
+							<primary>paramètre JENKINS_JAVA_OPTIONS</primary>
 						</indexterm>
-						options to pass to Java, such as memory options
+						à passer à Java, tels que les options de mémoire
 					</para>
 				</listitem>
 			</varlistentry>
@@ -834,7 +834,7 @@
 				<term>JENKINS_PORT</term>
 				<listitem>
 					<para>
-						The port that Jenkins will to
+						Le port sur lequel Jenkins sera
 						<indexterm id="I_indexterm3_d1e3140" class="endofrange" startref="ch03-rfc1" significance="normal">
 							<primary />
 						</indexterm>
@@ -844,7 +844,7 @@
 						<indexterm id="I_indexterm3_d1e3144" class="endofrange" startref="ch03-rfc3" significance="normal">
 							<primary />
 						</indexterm>
-						run on
+						exécuté
 					</para>
 				</listitem>
 			</varlistentry>
