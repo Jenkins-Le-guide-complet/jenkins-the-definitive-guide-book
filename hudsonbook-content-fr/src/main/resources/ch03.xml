@@ -488,64 +488,64 @@
 			sans affecter votre
 			répertoire de travail Jenkins.
 		</para>
-		<para>Needless to say, this directory will need a lot of disk
-			space.
+		<para>Il va sans dire que ce répertoire aura besoin de beaucoup d'espace
+			disque.
 		</para>
 		<para>
-			By default, the Jenkins home directory will be called
+			Par défaut, le répertoire de travail Jenkins sera appelé
 			<filename moreinfo="none">.jenkins,</filename>
-			and will be placed in your home
-			directory. For example, if you are running a machine under Windows 7, if
-			your username
-			is “john”, you would find the Jenkins home directory under
+			et sera placé dans votre réprtoire de
+			travail. Par exemple, si vous utilisez une machine sous Windows 7 et si
+			votre nom d'utilisateur
+			est “john”, vous trouverez le répertoire de travail Jenkins sous
 			<filename moreinfo="none">C:\Users\john\.jenkins</filename>
-			. Under Windows
-			XP, it would be
+			. Sous Windows
+			XP, ce serait
 			<filename moreinfo="none">C:\Documents and
 				Settings\John\.jenkins
 			</filename>
-			. On a Linux machine, it would most
-			likely be under
+			. Sur une machine Linux, ce serait probablement
+			sous
 			<filename moreinfo="none">/home/john/.jenkins</filename>
 			.
-			And so on.
+			Et ainsi de suite.
 		</para>
 		<para>
-			You
+			Vous
 			<indexterm class="startofrange" id="ch03-home2" significance="normal">
-				<primary>JENKINS_HOME environment variable</primary>
+				<primary>variable d'environnement JENKINS_HOME</primary>
 			</indexterm>
-			can force Jenkins to use a different directory as its home
-			directory by defining the
+			pouvez forcer Jenkins à utiliser un répertoire différent pour son répertoire
+			de travail en définissant la variable d'environnement
 			<code>JENKINS_HOME</code>
-			environment variable.
-			You may need to do this on a build server to conform to local directory
-			conventions or to make
-			your system administrator happy. For example,
-			if
-			your Jenkins WAR file is installed in
+			.
+			Vous pourriez avoir besoin de le faire sur une serveur de build pour vous conformer aux convention du répertoire
+			local ou pour rendre
+			votre administrateur système heureux. Par exemple,
+			si
+			votre fichier WAR Jenkins est installé dans
 			<filename moreinfo="none">/usr/local/jenkins</filename>
-			, and the Jenkins home
-			directory needs to be in the
+			, et que le répertoire de travail
+			Jenkins a besoin d'être dans le répertoire
 			<filename moreinfo="none">/data/jenkins</filename>
-			directory, you might write a
-			startup script along the following lines:
+			, vous pourriez écrire un
+			script de démarrage comme suit :
 		</para>
 		<programlisting id="I_programlisting3_d1e2869" format="linespecific">export
 			JENKINS_BASE=/usr/local/jenkins
 			export JENKINS_HOME=/var/jenkins-data
 			java -jar ${JENKINS_BASE}/jenkins.war</programlisting>
 		<para>
-			If you are running Jenkins in a Java EE container such as Tomcat or
-			JBoss, you can configure the webapp to expose its
-			own environments
-			variables. For example, if you are using Tomcat, you could create a
-			file
-			called
+			Si vous utilisez Jenkins dans un conteneur Java EE comme Tomcat ou
+			JBoss, vous pouvez configurer la webapp pour exposer ses
+			propres variables
+			d'environnement. Par exemple, si vous utilisez Tomcat, vous pouvez créer un
+			fichier
+			appelé
 			<filename moreinfo="none">jenkins.xml</filename>
-			in the
+			dans le répertoire
 			<filename moreinfo="none">$CATALINA_BASE/conf/localhost</filename>
-			directory:
+			:
 		</para>
 		<programlisting id="I_programlisting3_d1e2879" format="linespecific">&lt;Context
 			docBase="../jenkins.war"&gt;
@@ -553,54 +553,54 @@
 			value="/data/jenkins" override="true"/&gt;
 			&lt;/Context&gt;</programlisting>
 		<para>
-			In a previous life, Jenkins was known as Hudson. Jenkins remains
-			compatible with previous Hudson installations, and
-			upgrading from
+			Dans une vie antérieure, Jenkins était connu sous le nom de Hudson. Jenkins reste
+			compatible avec les installations précédentes de Hudson, et
+			le passage de
 			Hudson
-			to Jenkins can be as simple as replacing the old
+			à Jenkins peut-être aussi simple que de remplacer l'ancien fichier
 			<filename moreinfo="none">hudson.war</filename>
-			file with
+			par
 			<filename moreinfo="none">jenkins.war</filename>
-			. Jenkins will look for its home
-			directory in the following places (by order of
+			. Jenkins cherchera son répertoire de travail
+			dans les places suivantes (par ordre de
 			<indexterm id="I_indexterm3_d1e2889" significance="normal">
-				<primary>HUDSON_HOME environment variable</primary>
+				<primary>variable d'environnement HUDSON_HOME</primary>
 			</indexterm>
-			precedence):
+			préséance):
 		</para>
 		<orderedlist continuation="restarts" inheritnum="ignore">
 			<listitem>
-				<para>A JNDI environment entry called JENKINS_HOME</para>
+				<para>Une entrée d'environnement JNDI appelé JENKINS_HOME</para>
 			</listitem>
 			<listitem>
-				<para>A JNDI environment entry called HUDSON_HOME</para>
+				<para>Une entrée d'environnement JNDI appelé HUDSON_HOME</para>
 			</listitem>
 			<listitem>
-				<para>A system property named JENKINS_HOME</para>
+				<para>Une propriété système nommé JENKINS_HOME</para>
 			</listitem>
 			<listitem>
-				<para>A system property named HUDSON_HOME</para>
+				<para>Une propriété système nommé HUDSON_HOME</para>
 			</listitem>
 			<listitem>
-				<para>An environment variable named JENKINS_HOME</para>
+				<para>Une variable d'environnement nommée JENKINS_HOME</para>
 			</listitem>
 			<listitem>
-				<para>An environment variable named HUDSON_HOME</para>
+				<para>Une variable d'environnement nommée HUDSON_HOME</para>
 			</listitem>
 			<listitem>
 				<para>
-					The
+					Le répertoire
 					<filename moreinfo="none">.hudson</filename>
-					directory in
-					the user’s home directory, if it already exists
+					dans
+					le répertoire de travail utilisateur, si il existe déjà
 				</para>
 			</listitem>
 			<listitem>
 				<para>
-					The
+					Le répertoire
 					<filename moreinfo="none">.jenkins</filename>
-					directory in
-					the user’s home
+					dans
+					le répertoire de travail
 					<indexterm id="I_indexterm3_d1e2924" class="endofrange" startref="ch03-home" significance="normal">
 						<primary />
 					</indexterm>
@@ -610,36 +610,36 @@
 					<indexterm id="I_indexterm3_d1e2928" class="endofrange" startref="ch03-home3" significance="normal">
 						<primary />
 					</indexterm>
-					directory
+					utilisateur
 				</para>
 			</listitem>
 		</orderedlist>
 	</sect1>
 	<sect1 id="sect-installing-debian">
-		<title>Installing Jenkins on Debian or Ubuntu</title>
+		<title>Installer Jenkins sur Debian ou Ubuntu</title>
 		<para>
 			<indexterm class="startofrange" id="ch03-du1" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="Debian">on Debian</tertiary>
+				<tertiary sortas="Debian">sur Debian</tertiary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-du2" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="Ubuntu">on Ubuntu</tertiary>
+				<tertiary sortas="Ubuntu">sur Ubuntu</tertiary>
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e2949" significance="normal">
 				<primary>Linux</primary>
-				<seealso>specific Linux platforms</seealso>
+				<seealso>plates-formes Linux spécifiques</seealso>
 			</indexterm>
-			If you are installing Jenkins on Debian and Ubuntu, it is
-			convenient to install the native binary package for these
-			platforms. This
-			is easy enough to do, though these binaries are not provided in the
-			standard repositories because of
-			the high frequency of updates.
-			First, you
-			need to add the key to your system as shown here:
+			Si vous installez Jenkins sur Debian et Ubuntu, il est commode
+			d'installer le paquet binaire natif pour ces
+			plates-formes. Cela
+			est assez simple à faire, même si ces binaires ne sont pas fournis dans les
+			dépôts standard en raison de
+			la fréquence élevée des mises à jour.
+			Premièrement, vous
+			devez ajouter la clé à votre système comme indiqué ici:
 		</para>
 		<screen format="linespecific">
 			$
@@ -651,102 +651,102 @@
 				http://pkg.jenkins-ci.org/debian binary/" &gt; \</userinput>
 			<userinput moreinfo="none">/etc/apt/sources.list.d/jenkins.list</userinput>
 		</screen>
-		<para>Now, update the Debian package repository:</para>
+		<para>Maintenant, mettez à jour le référentiel des paquets Debian :</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo aptitude update</userinput>
 		</screen>
 		<para>
-			Once this is done, you can install Jenkins using the
-			<command moreinfo="none">aptitude</command>
-			tool:
+			Une fois que cela est fait, vous pouvez installer Jenkins en utilisant
+			l'outil
+			<command moreinfo="none">aptitude</command> :
 		</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo aptitude install -y jenkins</userinput>
 		</screen>
 		<para>
-			This will install Jenkins as a service, with a correctly configured
-			startup script in
+			Ceci installera Jenkins comme un service, avec un script de démarrage
+			correctement configuré dans
 			<filename moreinfo="none">/etc/init.d/jenkins</filename>
-			and a corresponding system user called “jenkins”. If you didn’t
-			already
-			have Java installed on your server, it will
-			also install the OpenJDK
-			version of Java. By default, you will find the Jenkins WAR file in
-			the
+			et un utilisateur système correspondant nommé “jenkins”. Si vous
+			n'avez pas
+			déjà Java d'installé sur votre serveur, ceci 
+			installera aussi la verion OpenJDK
+			de Java. Par défaut, vous trouverez le fichier WAR de Jenkins dans
+			le répertoire
 			<filename moreinfo="none">/usr/share/jenkins</filename>
-			directory, and
-			the Jenkins home directory in
+			, et
+			le répertoire de travail de Jenkins dans
 			<filename moreinfo="none">/var/lib/jenkins</filename>
 			.
 		</para>
-		<para>The installation process should have started Jenkins. In
-			general, to
-			start Jenkins, simply invoke this script:
+		<para>Le processus d'installation devrait avoir démarré Jenkins. En
+			général, pour
+			démarrer Jenkins, exécutez simplement ce script:
 		</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo /etc/init.d/jenkins start</userinput>
 		</screen>
 		<para>
-			Jenkins will now be running on the default port of 8080 (
+			Jenkins va maintenant être exécuté sur le port par défaut : 8080 (
 			<ulink url="http://localhost:8080/" />
 			).
 		</para>
-		<para>You can stop Jenkins as follows:</para>
+		<para>Vous pouvez arrêter Jenkins comme il suite :</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo /etc/inid.d/jenkins stop</userinput>
 		</screen>
 		<para>
-			Jenkins will write log files to
+			Jenkins écrira les fichiers de journalisation dans
 			<filename moreinfo="none">/var/log/jenkins/jenkins.log</filename>
-			. You can also
-			fine-tune the configuration parameters in the
+			. Vous pouvez aussi
+			affiner les paramètres de configuration dans le fichier
 			<filename moreinfo="none">/etc/default/jenkins</filename>
-			file. This is useful if
-			you need to modify the Java
+			. Ceci peut-être utile si
+			vous avez besoin de modifier les arguments de
 			<indexterm id="I_indexterm3_d1e3019" significance="normal">
-				<primary>JAVA_ARGS parameter</primary>
+				<primary>paramètre JAVA_ARGS</primary>
 			</indexterm>
-			startup arguments (JAVA_ARGS). You can also use this file to
-			<phrase role="keep-together">configure</phrase>
-			arguments that will be
-			passed to Jenkins in this file, such as the HTTP port or web application
+			de démarrage de Java (JAVA_ARGS). Vous pouvez aussi utiliser ce fichier pour
+			<phrase role="keep-together">configurer</phrase>
+			les arguments qui seront
+			passés à Jenkins, comme le port HTTP ou le contexte d'application
 			<indexterm id="I_indexterm3_d1e3026" class="endofrange" startref="ch03-du1" significance="normal">
 				<primary />
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e3028" class="endofrange" startref="ch03-du2" significance="normal">
 				<primary />
 			</indexterm>
-			context (see
+			web (voir
 			<xref linkend="sect-running-hudson-standalone" />
 			).
 		</para>
 	</sect1>
 	<sect1 id="sect-hudson-redhat">
-		<title>Installing Jenkins on Redhat, Fedora, or CentOS</title>
+		<title>Installer Jenkins sur Redhat, Fedora ou CentOS</title>
 		<para>
 			<indexterm class="startofrange" id="ch03-rfc1" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="RedHat">on Redhat</tertiary>
+				<tertiary sortas="RedHat">sur Redhat</tertiary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-rfc2" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="Fedora">on Fedora</tertiary>
+				<tertiary sortas="Fedora">sur Fedora</tertiary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-rfc3" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="CentOS">on CentOS</tertiary>
+				<tertiary sortas="CentOS">sur CentOS</tertiary>
 			</indexterm>
-			There are also native binary packages available for Redhat,
-			Fedora, and CentOS. First you need to set up the
-			repository as
-			follows:
+			Il exite également des paquets binaires natifs pour Redhat,
+			Fedora et CentOS. Il vous faut d'abord configurer le
+			référentiel comme
+			il suit :
 		</para>
 		<screen format="linespecific">
 			$
@@ -757,64 +757,64 @@
 			<userinput moreinfo="none">sudo rpm --import
 				http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key</userinput>
 		</screen>
-		<para>On a fresh installation, you may need to install the JDK:</para>
+		<para>Sur une nouvelle installation, vous devrez peut-être installer le JDK:</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo yum install java-1.6.0-openjdk</userinput>
 		</screen>
-		<para>Next, you can install the package as shown here:</para>
+		<para>Ensuite, vous pouvez installer le paquet comme montré ici :</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo yum install jenkins</userinput>
 		</screen>
 		<para>
-			This will install the latest version of Jenkins into the
-			<filename moreinfo="none">/usr/lib/jenkins</filename>
-			directory. The default Jenkins
-			home directory will be in
+			Ceci installera la dernière version de Jenkins dans le
+			répertoire <filename moreinfo="none">/usr/lib/jenkins</filename>
+			. Le répertoire de travail par défaut
+			de Jenkins sera
 			<filename moreinfo="none">/var/lib/jenkins</filename>
 			.
 		</para>
 		<para>
-			Now you can start Jenkins using the
-			<literal moreinfo="none">service</literal>
-			command:
+			Vous pouvez maintenant démarrer Jenkins en utilisant la
+			commande de <literal moreinfo="none">service</literal>
+			:
 		</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo service jenkins start</userinput>
 		</screen>
 		<para>
-			Jenkins will now be running on the default port of 8080 (
+			Jenkins va maintenant être exécuté sur le port par défaut : 8080 (
 			<ulink url="http://localhost:8080/" />
 			).
 		</para>
 		<para>
-			Jenkins’s configuration parameters are placed in the
+			Les paramètres de configuration de Jenkins sont placés dans le fichier
 			<filename moreinfo="none">/etc/sysconfig/jenkins</filename>
-			file. However at the
-			time of writing the configuration options are more limited than those
-			provided by the Ubuntu
-			package: you can define the HTTP port using
-			the
+			. Cependant, au
+			moment de l'écriture de ce livre, les options de configuration sont plus limitées que celles
+			fournit par le paquet 
+			Ubuntu : vous pouvez définir le port HTTP en utilisant
+			le
 			<indexterm id="I_indexterm3_d1e3109" significance="normal">
-				<primary>JENKINS_PORT parameter</primary>
+				<primary>paramètre JENKINS_PORT</primary>
 			</indexterm>
-			JENKINS_PORT parameter, for example, but to specify an
-			application context you need to modify the startup script by
-			hand. The
-			principal configuration options are listed here:
+			paramètre JENKINS_PORT, par exemple, mais pour spécifier un
+			contexte d'application vous devez modifier le script de démarrage à
+			la main. Les
+			principales options de configuration sont listées ici :
 		</para>
 		<variablelist>
 			<varlistentry>
 				<term>JENKINS_JAVA_CMD</term>
 				<listitem>
 					<para>
-						The
+						La
 						<indexterm id="I_indexterm3_d1e3120" significance="normal">
-							<primary>JENKINS_JAVA_CMD parameter</primary>
+							<primary>paramètre JENKINS_JAVA_CMD</primary>
 						</indexterm>
-						version of Java you want to use to run Jenkins
+						version de Java que vous voulez utiliser pour exécuter Jenkins
 					</para>
 				</listitem>
 			</varlistentry>
@@ -822,11 +822,11 @@
 				<term>JENKINS_JAVA_OPTIONS</term>
 				<listitem>
 					<para>
-						Command-line
+						Les options de ligne de commande
 						<indexterm id="I_indexterm3_d1e3130" significance="normal">
-							<primary>JENKINS_JAVA_OPTIONS parameter</primary>
+							<primary>paramètre JENKINS_JAVA_OPTIONS</primary>
 						</indexterm>
-						options to pass to Java, such as memory options
+						à passer à Java, tels que les options de mémoire
 					</para>
 				</listitem>
 			</varlistentry>
@@ -834,7 +834,7 @@
 				<term>JENKINS_PORT</term>
 				<listitem>
 					<para>
-						The port that Jenkins will to
+						Le port sur lequel Jenkins sera
 						<indexterm id="I_indexterm3_d1e3140" class="endofrange" startref="ch03-rfc1" significance="normal">
 							<primary />
 						</indexterm>
@@ -844,7 +844,7 @@
 						<indexterm id="I_indexterm3_d1e3144" class="endofrange" startref="ch03-rfc3" significance="normal">
 							<primary />
 						</indexterm>
-						run on
+						exécuté
 					</para>
 				</listitem>
 			</varlistentry>
