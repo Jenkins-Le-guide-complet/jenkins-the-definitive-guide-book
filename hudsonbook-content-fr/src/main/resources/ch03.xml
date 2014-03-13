@@ -519,7 +519,7 @@
 			de travail en définissant la variable d'environnement
 			<code>JENKINS_HOME</code>
 			.
-			Vous pourriez avoir besoin de le faire sur une serveur de build pour vous conformer aux convention du répertoire
+			Vous pourriez avoir besoin de le faire sur une serveur de build pour vous conformer aux conventions du répertoire
 			local ou pour rendre
 			votre administrateur système heureux. Par exemple,
 			si
@@ -570,16 +570,16 @@
 		</para>
 		<orderedlist continuation="restarts" inheritnum="ignore">
 			<listitem>
-				<para>Une entrée d'environnement JNDI appelé JENKINS_HOME</para>
+				<para>Une entrée d'environnement JNDI appelée JENKINS_HOME</para>
 			</listitem>
 			<listitem>
-				<para>Une entrée d'environnement JNDI appelé HUDSON_HOME</para>
+				<para>Une entrée d'environnement JNDI appelée HUDSON_HOME</para>
 			</listitem>
 			<listitem>
-				<para>Une propriété système nommé JENKINS_HOME</para>
+				<para>Une propriété système nommée JENKINS_HOME</para>
 			</listitem>
 			<listitem>
-				<para>Une propriété système nommé HUDSON_HOME</para>
+				<para>Une propriété système nommée HUDSON_HOME</para>
 			</listitem>
 			<listitem>
 				<para>Une variable d'environnement nommée JENKINS_HOME</para>
@@ -592,7 +592,7 @@
 					Le répertoire
 					<filename moreinfo="none">.hudson</filename>
 					dans
-					le répertoire de travail utilisateur, si il existe déjà
+					le répertoire de travail utilisateur, s'il existe déjà
 				</para>
 			</listitem>
 			<listitem>
@@ -694,7 +694,7 @@
 			<ulink url="http://localhost:8080/" />
 			).
 		</para>
-		<para>Vous pouvez arrêter Jenkins comme il suite :</para>
+		<para>Vous pouvez arrêter Jenkins comme il suit :</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo /etc/inid.d/jenkins stop</userinput>
@@ -743,7 +743,7 @@
 				<secondary>Jenkins</secondary>
 				<tertiary sortas="CentOS">sur CentOS</tertiary>
 			</indexterm>
-			Il exite également des paquets binaires natifs pour Redhat,
+			Il existe également des paquets binaires natifs pour Redhat,
 			Fedora et CentOS. Il vous faut d'abord configurer le
 			référentiel comme
 			il suit :
@@ -794,7 +794,7 @@
 			<filename moreinfo="none">/etc/sysconfig/jenkins</filename>
 			. Cependant, au
 			moment de l'écriture de ce livre, les options de configuration sont plus limitées que celles
-			fournit par le paquet 
+			fournies par le paquet 
 			Ubuntu : vous pouvez définir le port HTTP en utilisant
 			le
 			<indexterm id="I_indexterm3_d1e3109" significance="normal">
