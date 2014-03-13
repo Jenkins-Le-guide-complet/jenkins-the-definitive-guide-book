@@ -519,7 +519,7 @@
 			de travail en définissant la variable d'environnement
 			<code>JENKINS_HOME</code>
 			.
-			Vous pourriez avoir besoin de le faire sur une serveur de build pour vous conformer aux convention du répertoire
+			Vous pourriez avoir besoin de le faire sur une serveur de build pour vous conformer aux conventions du répertoire
 			local ou pour rendre
 			votre administrateur système heureux. Par exemple,
 			si
@@ -570,16 +570,16 @@
 		</para>
 		<orderedlist continuation="restarts" inheritnum="ignore">
 			<listitem>
-				<para>Une entrée d'environnement JNDI appelé JENKINS_HOME</para>
+				<para>Une entrée d'environnement JNDI appelée JENKINS_HOME</para>
 			</listitem>
 			<listitem>
-				<para>Une entrée d'environnement JNDI appelé HUDSON_HOME</para>
+				<para>Une entrée d'environnement JNDI appelée HUDSON_HOME</para>
 			</listitem>
 			<listitem>
-				<para>Une propriété système nommé JENKINS_HOME</para>
+				<para>Une propriété système nommée JENKINS_HOME</para>
 			</listitem>
 			<listitem>
-				<para>Une propriété système nommé HUDSON_HOME</para>
+				<para>Une propriété système nommée HUDSON_HOME</para>
 			</listitem>
 			<listitem>
 				<para>Une variable d'environnement nommée JENKINS_HOME</para>
@@ -592,7 +592,7 @@
 					Le répertoire
 					<filename moreinfo="none">.hudson</filename>
 					dans
-					le répertoire de travail utilisateur, si il existe déjà
+					le répertoire de travail utilisateur, s'il existe déjà
 				</para>
 			</listitem>
 			<listitem>
@@ -694,7 +694,7 @@
 			<ulink url="http://localhost:8080/" />
 			).
 		</para>
-		<para>Vous pouvez arrêter Jenkins comme il suite :</para>
+		<para>Vous pouvez arrêter Jenkins comme il suit :</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo /etc/inid.d/jenkins stop</userinput>
@@ -743,7 +743,7 @@
 				<secondary>Jenkins</secondary>
 				<tertiary sortas="CentOS">sur CentOS</tertiary>
 			</indexterm>
-			Il exite également des paquets binaires natifs pour Redhat,
+			Il existe également des paquets binaires natifs pour Redhat,
 			Fedora et CentOS. Il vous faut d'abord configurer le
 			référentiel comme
 			il suit :
@@ -794,7 +794,7 @@
 			<filename moreinfo="none">/etc/sysconfig/jenkins</filename>
 			. Cependant, au
 			moment de l'écriture de ce livre, les options de configuration sont plus limitées que celles
-			fournit par le paquet 
+			fournies par le paquet 
 			Ubuntu : vous pouvez définir le port HTTP en utilisant
 			le
 			<indexterm id="I_indexterm3_d1e3109" significance="normal">
@@ -851,24 +851,24 @@
 		</variablelist>
 	</sect1>
 	<sect1 id="sect-install-jenkins-suse">
-		<title>Installing Jenkins on SUSE or OpenSUSE</title>
+		<title>Installer Jenkins sur SUSE ou OpenSUSE</title>
 		<para>
-			Binary
+			Les paquets binaire
 			<indexterm class="startofrange" id="ch03-suse1" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="SUSE">on SUSE</tertiary>
+				<tertiary sortas="SUSE">sur SUSE</tertiary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-suse2" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
-				<tertiary sortas="OpenSUSE">on OpenSUSE</tertiary>
+				<tertiary sortas="OpenSUSE">sur OpenSUSE</tertiary>
 			</indexterm>
-			packages are also available for SUSE and OpenSUSE, so the
-			installation process on these platforms is straightforward.
-			First,
-			you
-			need to add the Jenkins repository to the SUSE repository list:
+			sont aussi disponibles pour SUSE et OpenSUSE, donc le
+			processus d'installation process sur ces plates-formes est simple.
+			Premièrement,
+			vous
+			devez ajouter le dépôt Jenkins à la liste des dépôts SUSE :
 		</para>
 		<screen format="linespecific">
 			$
@@ -876,26 +876,26 @@
 				http://pkg.jenkins-ci.org/opensuse/ jenkins</userinput>
 		</screen>
 		<para>
-			Finally, you simply install Jenkins using the
-			<literal moreinfo="none">zypper</literal>
-			command:
+			Enfin, il vous suffit d'installer Jenkins en utilisant la
+			commande
+			<literal moreinfo="none">zypper</literal> :
 		</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo zypper install jenkins</userinput>
 		</screen>
 		<para>
-			As you can gather from the console output, this will install both
-			Jenkins and the latest JDK from Sun, if the latter
-			is not already
-			installed. OpenSuse installations typically
-			<phrase role="keep-together">have the</phrase>
-			OpenJDK version of Java, but
-			Jenkins prefers the Sun variety. When it
-			<phrase role="keep-together">downloads</phrase>
-			the Sun JDK, it will prompt you to
-			validate the Sun Java license before continuing with the
-			installation.
+			Comme vous pouvez le voir sur la sortie de la console, ceci installera à la fois
+			Jenkins et le dernier JDK de Sun, si ce dernier
+			n'est pas déjà
+			installé. Les installations OpenSuse 
+			<phrase role="keep-together">ont généralement</phrase>
+			la version OpenJDK de Java, mais
+			Jenkins préfère celle de Sun. Lors du
+			<phrase role="keep-together">téléchargement</phrase>
+			JDK de Sun, il vous sera demandé de
+			valider la licence de Java Sun avant de continuer
+			l'installation.
 		</para>
 		<para>
 			This installation process will also create a
