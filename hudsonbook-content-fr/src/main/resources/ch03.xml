@@ -853,7 +853,7 @@
 	<sect1 id="sect-install-jenkins-suse">
 		<title>Installer Jenkins sur SUSE ou OpenSUSE</title>
 		<para>
-			Les paquets binaire
+			Les paquets binaires
 			<indexterm class="startofrange" id="ch03-suse1" significance="normal">
 				<primary>installation</primary>
 				<secondary>Jenkins</secondary>
@@ -898,106 +898,106 @@
 			l'installation.
 		</para>
 		<para>
-			This installation process will also create a
+			Ce processus d'installation créera aussi un utilisateur
 			<filename moreinfo="none">jenkins</filename>
-			user and install Jenkins as a service,
-			so that it will start up automatically whenever the machine boots. To
-			start
-			Jenkins manually, you can invoke the jenkins startup script in
-			the
+			et installera Jenkins en tant que service,
+			de sorte qu'il se lancera automatiquement à chaque démarrage de la machine. Pour
+			démarrer manuellement
+			Jenkins, vous pouvez appeler le script de démarrage jenkins depuis
+			le répertoire
 			<filename moreinfo="none">/etc/init.d</filename>
-			directory:
+			:
 		</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo /etc/init.d/jenkins jenkins start</userinput>
 		</screen>
 		<para>
-			Jenkins will now be running on the default port of 8080 (
+			Jenkins sera maintenant exécuté par défaut sur le port 8080 (
 			<ulink url="http://localhost:8080/" />
 			).
 		</para>
 		<para>
-			The configuration options are similar to the Redhat installation
-			(see
+			Les options de configuration sont similaires à celles de l'installation pour Redhat
+			(voir
 			<xref linkend="sect-hudson-redhat" />
-			). You can define a limited
-			number of configuration variables in the
+			). Vous pouvez définir un nombre limité
+			de variables de configuration dans le fichier
 			<filename moreinfo="none">/etc/sysconfig/jenkins</filename>
-			file, but for any
-			advanced configuration options, you need to modify the startup script in
+			, mais pour toutes
+			les options de configuration avancées, vous devrez modifier le script de démarrage dans
 			<filename moreinfo="none">/etc/init.d/jenkins</filename>
 			.
 		</para>
 		<para>
-			The
+			L'outil
 			<literal moreinfo="none">zypper</literal>
-			tool also makes it easy to update your
-			Jenkins instance:
+			facilite aussi la mise à jour de votre
+			instance Jenkins:
 		</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">sudo zypper update jenkins</userinput>
 		</screen>
 		<para>
-			This will download and install the latest version of Jenkins from
-			the Jenkins
+			Ceci téléchargera et installera la dernière version de Jenkins depuis
+			le site de Jenkins
 			<indexterm id="I_indexterm3_d1e3226" class="endofrange" startref="ch03-suse1" significance="normal">
 				<primary />
 			</indexterm>
 			<indexterm id="I_indexterm3_d1e3228" class="endofrange" startref="ch03-suse2" significance="normal">
 				<primary />
 			</indexterm>
-			website.
+			.
 		</para>
 	</sect1>
 	<sect1 id="sect-running-hudson-standalone">
-		<title>Running Jenkins as a Stand-Alone Application</title>
+		<title>Exécuter Jenkins comme une application autonome</title>
 		<para>
-			You
+			Vous
 			<indexterm class="startofrange" id="ch03-stand" significance="normal">
 				<primary>Jenkins</primary>
-				<secondary>running</secondary>
-				<tertiary sortas="stand-alone">as stand-alone application</tertiary>
+				<secondary>exécuter</secondary>
+				<tertiary sortas="stand-alone">comme une application autonome</tertiary>
 			</indexterm>
 			<indexterm class="startofrange" id="ch03-stand2" significance="normal">
-				<primary>stand-alone application</primary>
-				<secondary>running Jenkins as</secondary>
+				<primary>application autonome</primary>
+				<secondary>exécuter Jenkins comme</secondary>
 			</indexterm>
-			can run the Jenkins server in one of two ways: either as a
-			stand-alone application, or deployed as a standard web
-			application
-			onto a
-			Java Servlet container or application server such as Tomcat, JBoss, or
-			GlassFish. Both approaches
-			have their pros and cons, so we will look
-			at
-			both here.
+			pouvez exécuter le serveur Jenkins d'une des deux manières suivantes: soit comme une
+			application autonome, soit deployé comme une application web
+			standard
+			sur un
+			conteneur de servlets Java Servlet ou un serveur d'application comme Tomcat, JBoss, ou
+			GlassFish. Les deux approches
+			ont leurs avantages et leurs inconvénients, nous allons donc examiner les
+			deux
+			ici.
 		</para>
 		<para>
 			Jenkins
 			<indexterm id="I_indexterm3_d1e3251" significance="normal">
-				<primary>Servlet container</primary>
-				<secondary>running Jenkins stand-alone using</secondary>
+				<primary>conteneur de servlets</primary>
+				<secondary>exécuter Jenkins de façon autonome en utilisant</secondary>
 			</indexterm>
-			comes bundled as a WAR file that you can run directly using
-			an embedded servlet container. Jenkins uses the
-			lightweight Winstone
-			servlet engine to allow you to run the server out of the box, without
-			having to configure a web
-			server yourself. This is probably the
-			easiest
-			way to get started, allowing you to be up and running with Jenkins in a
-			matter of minutes. It is also a very flexible option, and provides
-			some
-			extra features unavailable if you deploy
-			Jenkins to a conventional
-			application server. In particular, if you are running Jenkins as a
-			stand-alone server, you
-			will be able to install plugins and upgrades
-			on
-			the fly, and restart Jenkins directly from the administration
-			screens.
+			est fourni sous la forme d'un fichier WAR que vous pouvez exécuter directement en utilisant
+			un conteneur de servlet intégré. Jenkins utilise le
+			moteur de servlet léger Winstone
+			pour vous permettre d'exécuter le serveur <emphasis><quote>out of the box</quote></emphasis>, sans
+			avoir à configurer un serveur web
+			par vous-même. C'est probablement la
+			meilleure
+			façon de commencer, vous permettant d'être opérationnel avec Jenkins en
+			quelques minutes. C'est aussi une option très flexible, offrant
+			quelques
+			fonctionnalités supplémentaires non-accessibles si vous déployez
+			Jenkins sur un serveur
+			d'application classique. En particulier, si vous exécutez Jenkins en tant que
+			serveur autonome, vous
+			serez en mesure d'installer et mettre à jour les <emphasis>plugins</emphasis>
+			à
+			la volée, et de redémarrer Jenkins directement depuis les écrans 
+			d'administration.
 		</para>
 		<para>To run Jenkins using the embedded servlet container, just go to
 			the
