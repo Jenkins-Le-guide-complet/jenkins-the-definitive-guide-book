@@ -1038,23 +1038,23 @@
 			[Winstone 2011/07/16 02:11:31] - Winstone Servlet Engine v0.9.10 running:
 			controlPort=disabled</screen>
 		<para>
-			This will start the embedded servlet engine in the console window.
-			The Jenkins web application will now be available
-			on port 8080. When
-			you
-			run Jenkins using the embedded server, there is no web application
-			context, so you access Jenkins
-			directly using the server URL (e.g.,
+			Cela démarrera le moteur de servlet intégré dans la fenêtre de la console.
+			L'application Web Jenkins sera maintenant disponible
+			sur le port 8080. Lorsque
+			vous
+			exécutez Jenkins en utilisant le serveur intégré, il n'y a pas de contexte d'application
+			Web, donc vous accèdez à Jenkins
+			directement en utilisant l'URL du serveur (e.g.,
 			<ulink url="http://localhost:8080" />
 			).
 		</para>
-		<para>To stop Jenkins, just press Ctrl-C.</para>
+		<para>Pour arrêter Jenkins, pressez simplement Ctrl-C.</para>
 		<para>
-			By default, Jenkins will run on the 8080 port. If this doesn’t suit
-			your environment, you can specify the port
-			manually, using the
+			Par défaut, Jenkins s'exécutera sur le port 8080. Si cela ne convient pas
+			à votre environnement, vous pouvez spécifier le port
+			manuellement, en utilisant l'option
 			<literal moreinfo="none">--httpPort</literal>
-			option:
+			:
 		</para>
 		<screen format="linespecific">
 			$
