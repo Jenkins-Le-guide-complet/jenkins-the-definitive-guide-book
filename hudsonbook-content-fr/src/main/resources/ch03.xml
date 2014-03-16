@@ -964,11 +964,11 @@
 				<primary>application autonome</primary>
 				<secondary>exécuter Jenkins comme</secondary>
 			</indexterm>
-			pouvez exécuter le serveur Jenkins d'une des deux manières suivantes: soit comme une
+			pouvez exécuter le serveur Jenkins d'une des deux manières suivantes : soit comme une
 			application autonome, soit deployé comme une application web
 			standard
 			sur un
-			conteneur de servlets Java Servlet ou un serveur d'application comme Tomcat, JBoss, ou
+			conteneur de servlets Java ou un serveur d'application comme Tomcat, JBoss, ou
 			GlassFish. Les deux approches
 			ont leurs avantages et leurs inconvénients, nous allons donc examiner les
 			deux
@@ -983,7 +983,7 @@
 			est fourni sous la forme d'un fichier WAR que vous pouvez exécuter directement en utilisant
 			un conteneur de servlet intégré. Jenkins utilise le
 			moteur de servlet léger Winstone
-			pour vous permettre d'exécuter le serveur <emphasis><quote>out of the box</quote></emphasis>, sans
+			pour vous permettre d'exécuter le serveur de façon standard, sans
 			avoir à configurer un serveur web
 			par vous-même. C'est probablement la
 			meilleure
@@ -999,9 +999,9 @@
 			la volée, et de redémarrer Jenkins directement depuis les écrans 
 			d'administration.
 		</para>
-		<para>To run Jenkins using the embedded servlet container, just go to
-			the
-			command line and type the following:
+		<para>Pour exécuter Jenkins en utilisant le conteneur de servlet intégré, allez à
+			la
+			ligne de commande et entrez la commande suivante :
 		</para>
 		<screen format="linespecific">C:\Program
 			Files\Jenkins&gt;
@@ -1019,11 +1019,11 @@
 			controlPort=disabled
 			[Winstone 2011/07/01 20:55:08] - AJP13 Listener started: port=8009
 		</screen>
-		<para>In a Linux environment, the procedure is similar. Note how we
-			start
-			the Jenkins server from with the “jenkins”
-			user account we created
-			earlier:
+		<para>Dans un environnement Linux, la procéure est similaire. Notez comment mous
+			démarrons
+			le serveur Jenkins à partir du compte utilisateur
+			“jenkins” que nous avons créé
+			plus tôt :
 		</para>
 		<screen format="linespecific">john@lambton:~$ sudo su - jenkins
 			jenkins@lambton:~$ java -jar /usr/local/jeknins/jenkins.war
