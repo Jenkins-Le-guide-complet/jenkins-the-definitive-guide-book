@@ -1117,11 +1117,11 @@
 					<literal moreinfo="none">--daemon</literal>
 				</term>
 				<listitem>
-					<para>If you are running Jenkins on a Unix machine, you can use
-						this
-						option to start Jenkins as a background task,
-						running as a unix
-						daemon.
+					<para>Si vous exécutez Jenkins sur une machine Unix, vous pouvez utiliser
+						cette
+						option pour démarrer Jenkins comme une tâche de fond,
+						s'exécutant comme un démon
+						unix.
 					</para>
 				</listitem>
 			</varlistentry>
@@ -1130,12 +1130,12 @@
 					<literal moreinfo="none">--logfile</literal>
 				</term>
 				<listitem>
-					<para>By default, Jenkins writes its logfile into the current
-						directory. However, on a server, you often need to
-						write your log
-						files into a predetermined directory. You can use this option to
-						redirect your messages to some other
-						file:
+					<para>Par défaut, Jenkins écrit son fichier de journalisation dans le répertoire
+						courant. Cependant, sur un serveur, vous avez souvent besoin
+						d'écrire vos fichier de journalisation
+						dans un répertoire prédéterminé. Vous pouvez utiliser cette option pour
+						rediriger vos messages vers un autre
+						fichier :
 					</para>
 					<screen format="linespecific">
 						$
