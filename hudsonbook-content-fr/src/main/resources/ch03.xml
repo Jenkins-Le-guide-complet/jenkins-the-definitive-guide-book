@@ -983,7 +983,7 @@
 			est fourni sous la forme d'un fichier WAR que vous pouvez exécuter directement en utilisant
 			un conteneur de servlet intégré. Jenkins utilise le
 			moteur de servlet léger Winstone
-			pour vous permettre d'exécuter le serveur de façon standard, sans
+			pour vous permettre d'exécuter le serveur directement, sans
 			avoir à configurer un serveur web
 			par vous-même. C'est probablement la
 			meilleure
