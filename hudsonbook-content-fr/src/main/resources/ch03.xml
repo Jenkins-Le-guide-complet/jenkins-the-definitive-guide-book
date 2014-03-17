@@ -1061,25 +1061,25 @@
 			<userinput moreinfo="none">java -jar jenkins.war --httpPort=8081</userinput>
 		</screen>
 		<para>
-			In a real-world architecture, Jenkins may not be the only web
-			application running on your build server. Depending on
-			the capacity
-			of
-			your server, Jenkins may have to cohabit with other web applications or
-			Maven repository managers, for
-			example. If you are running Jenkins
-			along
-			side another application server, such as Tomcat, Jetty, or GlassFish, you
-			will also need to override the ajp13 port, using the
+			Dans une architecture réelle, Jenkins peut ne pas être la seule
+			application Web à s'exécuter sur votre serveur de <emphasis>build</emphasis>. Selon
+			la capacité
+			de
+			votre serveur, Jenkins peut avoir à cohabiter avec d'autres applications Web ou
+			des gestionnaires de dépôts Maven, par
+			exemple. Si vous exécutez Jenkins
+			aux
+			côtés d'un autre serveur d'application, tels que Tomcat, Jetty ou GlassFish, vous
+			aurez aussi besoin de remplacer le port ajp13, en utilisant l'option
 			<literal moreinfo="none">--ajp13Port</literal>
-			option:
+			:
 		</para>
 		<screen format="linespecific">
 			$
 			<userinput moreinfo="none">java -jar jenkins.war --httpPort=8081
 				--ajp13Port=8010</userinput>
 		</screen>
-		<para>Some other useful options are:</para>
+		<para>Quelques autres options utiles sont :</para>
 		<variablelist>
 			<varlistentry>
 				<term>
@@ -1087,15 +1087,15 @@
 				</term>
 				<listitem>
 					<para>
-						This option lets you define a context path for your Jenkins
-						server. By default Jenkins will run on the port 8080
-						with no
-						context
-						path (
+						Cet option vous permet de définir un chemin de contexte pour votre serveur
+						Jenkins. Par défaut Jenkins s'exécutera sur le port 8080
+						sans
+						chemin de
+						contexte (
 						<ulink url="http://localhost:8080" />
-						). However, if you
-						use this option, you can force Jenkins to use whatever context path
-						suits you, for example:
+						). Toutefois, si vous
+						utilisez cette option, vous pouvez forcer Jenkins à utiliser n'importe quel chemin de contexte
+						qui vous plaît, par exemple:
 					</para>
 					<screen format="linespecific">
 						$
@@ -1103,12 +1103,12 @@
 							--prefix=jenkins</userinput>
 					</screen>
 					<para>
-						In this case, Jenkins will be accessible on
-						<ulink url="http://localhost:8080/hudson" />
+						Dans ce cas, Jenkins sera accessible depuis
+						<ulink url="http://localhost:8080/jenkins" />
 						.
 					</para>
-					<para>This option is often used when integrating a stand-alone
-						instance of Jenkins with Apache.
+					<para>Cette option est souvent utilisée lors de l'intégration d'une instance
+						autonome de Jenkins avec Apache.
 					</para>
 				</listitem>
 			</varlistentry>
